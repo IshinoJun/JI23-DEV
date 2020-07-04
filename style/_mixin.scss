@@ -1,25 +1,25 @@
 // --------------------------------------------------------
-//  mixin (pc to mobile)
+//  mixin (mobile to pc)
 // --------------------------------------------------------
 
-$sp: 767px;
-$tab: 1023px;
-$lap: 1199px;
-
-@mixin sp {
-  @media screen and (max-width: ($sp)) {
-    @content;
-  }
-}
+$tab: 768px;
+$lap: 1024px;
+$pc: 1200px;
 
 @mixin tab {
-  @media screen and (max-width: ($tab)) {
+  @media screen and (min-width: ($tab)) {
     @content;
   }
 }
 
 @mixin lap {
-  @media screen and (max-width: ($lap)) {
+  @media screen and (min-width: ($lap)) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
     @content;
   }
 }

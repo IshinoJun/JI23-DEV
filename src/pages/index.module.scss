@@ -1,9 +1,219 @@
 @import '../../style/mixin';
 @import '../../style/function';
+@import '../../style/settings';
 
 .wrapper {
+  background-color: $color-white;
+  border-color: $color-gray;
   border-style: solid;
   border-width: 1px;
-  margin: 50px auto;
-  width: 1230px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  font-size: fz(14);
+  margin: em(14, 50) auto;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+
+  @include pc {
+    font-size: fz(16);
+    margin: em(16, 50) auto;
+    width: em(16, 1230);
+  }
+
+  .section {
+    border-bottom-color: $color-hight-gray;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: em(16, 48);
+    text-align: center;
+
+    @include lap {
+      padding-top: em(16, 48);
+    }
+
+    @include pc {
+      text-align: initial;
+    }
+  }
+
+  .nav {
+    padding-top: em(16, 48);
+
+    @include lap {
+      padding-bottom: em(16, 48);
+    }
+
+    @include pc {
+      text-align: initial;
+    }
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    @include tab {
+      width: 90%;
+    }
+
+    .profile {
+      @include tab {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .iconArea {
+        display: flex;
+        justify-content: center;
+        margin-bottom: em(14, 30);
+        padding-left: em(14, 15);
+        padding-right: em(14, 15);
+        text-align: center;
+
+        @include tab {
+          width: 40%;
+        }
+
+        .icon {
+          height: em(20, 238);
+          width: em(20, 238);
+        }
+      }
+
+      .titleArea {    
+        border-right-color: $color-hight-gray;
+        border-right-style: solid;
+        border-right-width: 1px;
+        margin-bottom: em(14, 30);
+        padding-left: em(14, 15);
+        padding-right: em(14, 15);
+        text-align: center;
+
+        @include tab {
+          width: 60%;
+        }
+
+        .title {
+          font-size: fz(36);
+          line-height: em(36, 40);
+          margin-top: em(36, 48);
+
+          @include tab {
+            font-size: fz(66);
+            line-height: em(66, 72);
+            margin-top: em(66, 48);
+          }
+        }
+      }
+
+      .linkArea {
+        margin-bottom: em(16, 12);
+        margin-top: em(16, 12);
+      }
+    }
+
+    .contents {
+      text-align: center;
+
+      .content {
+        background-color: $color-hight-blue;
+        border-color: #ccc;
+        border-radius: 2px;
+        border-style: solid;
+        border-width: 1px;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: em(14, 22);
+        margin-left: em(14, 22);
+        margin-right: em(14, 22);
+        overflow: hidden;
+        padding-bottom: em(14, 17);
+        padding-top: em(14, 17);
+        position: relative;
+        width: em(14, 170);
+
+        @include pc {
+          height: em(16, 170);
+          margin-bottom: em(16, 20);
+          margin-left: em(16, 20);
+          margin-right: em(16, 20);
+          padding-bottom: initial;
+          padding-top: initial;
+          width: em(16, 170);
+        }
+
+        .before {
+          align-items: center;
+          display: block;
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+
+          @include pc {
+            height: em(16, 170);
+            position: relative;
+            transition: all 0.5s ease-in-out;
+            width: em(16, 170);
+            z-index: 4;
+          }
+
+          img {
+            height: em(16, 120);
+            width: em(16, 100);
+          }
+        }
+
+        &:hover .before {
+          @include pc {
+            margin-top: - em(16, 172);
+          }
+        }
+
+        .after {
+          display: block;
+          padding-top: em(16, 10);
+          text-align: center;
+          top: 0;
+
+          @include pc {
+            font-size: fz(21);
+            height: em(21, 170);
+            padding-top: em(21, 75);
+            width: em(21, 170);
+            z-index: 3;
+          }
+        }
+      }
+    }
+
+    .footerContent {
+      padding-left: 15px;
+      padding-right: 15px;
+      text-align: center;
+
+      span {
+        color: #c5c5c5;
+      }
+    }
+  }
+
+  footer {
+    border-top-color: #c6c6c6;
+    border-top-style: solid;
+    border-top-width: 1px;
+    line-height: 36px;
+    padding: 17px 0;
+  }
+}
+
+.twitter {
+  background-color: $color-twitter !important;
+  color: $color-white !important;
+  margin-right: em(16, 20) !important;
+}
+
+.github {
+  background-color: $color-black !important;
+  color: $color-white !important;
 }

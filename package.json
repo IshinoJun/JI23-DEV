@@ -28,7 +28,9 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "add": "^2.0.6",
     "husky": "^4.2.5",
     "prettier-stylelint": "^0.4.2",
     "ress": "^2.0.4",
@@ -37,7 +39,8 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.18.0"
+    "stylelint-scss": "^3.18.0",
+    "yarn": "^1.22.4"
   },
   "husky": {
     "hooks": {

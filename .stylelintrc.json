@@ -30,17 +30,6 @@
     "function-url-quotes": "always",
     "indentation": 2,
     "length-zero-no-unit": true,
-    "max-nesting-depth": [
-      1,
-      {
-        "ignoreAtRules": [
-          "each",
-          "media",
-          "supports",
-          "include"
-        ]
-      }
-    ],
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-parentheses-space-inside": "never",
     "no-missing-end-of-source-newline": true,
@@ -89,15 +78,7 @@
     "scss/dollar-variable-pattern": "^[_]?[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
     "scss/percent-placeholder-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
     "scss/selector-no-redundant-nesting-selector": true,
-    "selector-class-pattern": [
-      "^[a-z0-9\\-]+$",
-      {
-        "message":
-          "Selector should be written in lowercase with hyphens (selector-class-pattern)"
-      }
-    ],
     "selector-list-comma-newline-after": "always",
-    "selector-max-compound-selectors": 3,
     "selector-max-id": 0,
     "selector-no-qualifying-type": true,
     "selector-no-vendor-prefix": true,
