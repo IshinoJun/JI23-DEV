@@ -1,0 +1,34 @@
+/**
+ * 引数のfontSizeをremに変換する関数
+ * @param fontSize フォントサイズ
+ */
+@function fz($fontSize) {
+  @return $fontSize / 16 + rem;
+}
+
+/**
+ * 引数の最大画面サイズから指定されたpx数を元にvwに変換する関数
+ * @param maxScreenSize 最大画面サイズ
+ * @param px 変換するpx数
+ */
+@function vw($maxScreenSize, $px) {
+  @return ($px / $maxScreenSize) * 100 + vw;
+}
+
+/**
+ * 引数のpx数とparentを元に割合を返す関数
+ * @param percent 最大画面サイズ
+ * @param px 変換するpx数
+ */
+@function rate($percent, $px) {
+  @return ($px / ($percent / 100)) * 100 * (1 / 100);
+}
+
+/**
+ * 引数のfontSizeを元に指定されたpx数をemに変換する関数
+ * @param fontSize フォントサイズ
+ * @param px 変換するpx数
+ */
+@function em($fontSize, $px) {
+  @return $px / $fontSize + em;
+}

@@ -1,0 +1,33 @@
+@import "style/settings";
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: medium;
+  font-family: $fontFamily-primary;
+  line-height: 1.5;
+  letter-spacing: .05em;
+  word-break: break-all;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  height: 100%;
+  font-feature-settings: "palt";
+  color: $color-text-primary;
+  background-color: $color-body-background;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+a {
+  color: inherit;
+}
+h1, h2, h3, h4, h5,strong {
+  font-weight: bold;
+}

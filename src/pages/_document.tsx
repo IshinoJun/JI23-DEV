@@ -1,15 +1,17 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
+import { ServerStyleSheets } from "@material-ui/styles";
 
 interface CustomDocumentInterface {
-  url: string
-  title: string
-  description: string
+  url: string;
+  title: string;
+  description: string;
 }
 
 class CustomDocument extends Document implements CustomDocumentInterface {
-  url = 'https://example.com'
-  title = 'Demo Next.js'
-  description = 'Demo of Next.js'
+  url = "https://example.com";
+  title = "Jun Dev Blog";
+  description = "Jun Dev Blog";
 
   render(): JSX.Element {
     return (
@@ -29,6 +31,7 @@ class CustomDocument extends Document implements CustomDocumentInterface {
           <meta name="twitter:title" content={this.title} />
           <meta name="twitter:description" content={this.description} />
           <meta name="twitter:image" content={`${this.url}/ogp.png`}></meta>
+          <title>{this.title}</title>
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         </Head>
@@ -37,8 +40,32 @@ class CustomDocument extends Document implements CustomDocumentInterface {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default CustomDocument
+CustomDocument.getInitialProps = async (ctx) => {
+  // Render app and page and get the context of the page with collected side effects.
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: [
+      <React.Fragment key="styles">
+        {initialProps.styles}
+        {sheets.getStyleElement()}
+      </React.Fragment>,
+    ],
+  };
+};
+
+export default CustomDocument;
