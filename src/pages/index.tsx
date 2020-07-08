@@ -1,57 +1,52 @@
 import React from "react";
-import index from "./index.module.scss";
+import style from "./index.module.scss";
 
 import { NextPage } from "next";
 import { Avatar, Button } from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Footer from "../components/shared/Footer";
+import HomeContent from "../components/shared/HomeContent";
 
 const Home: NextPage = () => {
   return (
-    <main className={index.wrapper}>
-      <nav className={index.nav}>
-        <div className={index.container}>
-          <div className={index.contents}>
-            <a className={index.content}>
-              <div className={index.before}>
-                <p>
-                  <img src="/profile.png" alt="Profile" />
-                </p>
-              </div>
-              <span className={index.after}>Profile</span>
-            </a>
-            <a className={index.content}>
-              <span className={index.before}>
-                <img src="/portfolio.png" alt="Portfolio" />
-              </span>
-              <span className={index.after}>Portfolio</span>
-            </a>
-            <a className={index.content}>
-              <span className={index.before}>
-                <img src="/blog.png" alt="Blog" />
-              </span>
-              <span className={index.after}>Blog</span>
-            </a>
-            <a className={index.content}>
-              <span className={index.before}>
-                <img src="/contact.png" alt="Contact" />
-              </span>
-              <span className={index.after}>Contact</span>
-            </a>
+    <main className="wrapper">
+      <nav className={style.nav}>
+        <div className="container">
+          <div className={style.contents}>
+            <HomeContent
+              linkProps={{ href: "/profile" }}
+              imgProps={{ src: "/profile.png", alt: "Profile" }}
+              name="Profile"
+            />
+            <HomeContent
+              linkProps={{ href: "/portfolio" }}
+              imgProps={{ src: "/portfolio.png", alt: "Portfolio" }}
+              name="Portfolio"
+            />
+            <HomeContent
+              linkProps={{ href: "/blog" }}
+              imgProps={{ src: "/blog.png", alt: "Blog" }}
+              name="Blog"
+            />
+            <HomeContent
+              linkProps={{ href: "/contact" }}
+              imgProps={{ src: "/contact.png", alt: "Contact" }}
+              name="Contact"
+            />
           </div>
         </div>
       </nav>
-      <section className={index.section}>
-        <div className={index.container}>
-          <div className={index.profile}>
-            <div className={index.titleArea}>
-              <h1 className={index.title}>JUN ISHINO</h1>
+      <section className={style.section}>
+        <div className="container">
+          <div className={style.profile}>
+            <div className={style.titleArea}>
+              <h1 className={style.title}>JUN ISHINO</h1>
               <h3>Web Developer</h3>
-              <div className={index.linkArea}>
+              <div className={style.linkArea}>
                 <Button
                   variant="contained"
-                  className={index.twitter}
+                  className={style.twitter}
                   href="https://twitter.com/JJ_1123_I"
                   target="_blank"
                 >
@@ -59,7 +54,7 @@ const Home: NextPage = () => {
                 </Button>
                 <Button
                   variant="contained"
-                  className={index.github}
+                  className={style.github}
                   href="https://github.com/IshinoJun"
                   target="_blank"
                 >
@@ -67,9 +62,9 @@ const Home: NextPage = () => {
                 </Button>
               </div>
             </div>
-            <div className={index.iconArea}>
+            <div className={style.iconArea}>
               {/** TODO 良い感じの画像に差し替える */}
-              <Avatar className={index.icon} src="" />
+              <Avatar className={style.icon} src="" />
             </div>
           </div>
         </div>

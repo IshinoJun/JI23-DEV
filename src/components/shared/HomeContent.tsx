@@ -1,0 +1,29 @@
+import React from "react";
+import style from "./HomeContent.module.scss";
+import Link, { LinkProps } from "next/link";
+
+interface Props {
+  linkProps: LinkProps;
+  imgProps: React.DetailedHTMLProps<
+    React.ImgHTMLAttributes<HTMLImageElement>,
+    HTMLImageElement
+  >;
+  name: string;
+}
+
+const HomeContent: React.FC<Props> = (props: Props) => {
+  const { linkProps, imgProps, name } = props;
+
+  return (
+    <Link {...linkProps}>
+      <a className={style.content}>
+        <div className={style.before}>
+          <img {...imgProps} />
+        </div>
+        <span className={style.after}>{name}</span>
+      </a>
+    </Link>
+  );
+};
+
+export default HomeContent;
