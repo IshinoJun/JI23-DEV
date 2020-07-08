@@ -5,6 +5,7 @@ import { NextPage } from "next";
 import { Avatar, Button } from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import Footer from "../components/shared/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -67,20 +68,13 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className={index.iconArea}>
-              <Avatar className={index.icon} src="/test.jpeg" />
+              {/** TODO 良い感じの画像に差し替える */}
+              <Avatar className={index.icon} src="" />
             </div>
           </div>
         </div>
       </section>
-      <footer>
-        <div className={index.container}>
-          <div className={index.footerContent}>
-            <span>
-              Jun Ishino {new Date().getFullYear()} All right reserved
-            </span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };
