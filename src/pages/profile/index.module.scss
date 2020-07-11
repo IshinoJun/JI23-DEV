@@ -1,0 +1,116 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.content {
+  padding-left: em(14, 15);
+  padding-right: em(14, 15);
+
+  @include tab {
+    display: flex;
+    padding-left: em(16, 15);
+    padding-right: em(16, 15);
+  }
+
+  .title {
+    margin-bottom: em(14, 64);
+
+    @include tab {
+      flex: 1;
+      margin-bottom: em(16, 16);
+      margin-right: em(16, 30);
+    }
+
+    h3 {
+      font-size: fz(26);
+      line-height: em(26, 26);
+      margin-bottom: em(26, 16);
+    }
+
+    p {
+      margin-bottom: em(14, 12);
+      margin-top: em(14, 12);
+
+      @include tab {
+        margin-bottom: em(16, 12);
+        margin-top: em(16, 12);
+      }
+    }
+  
+  }
+
+  .about {
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+    padding: 0 em(14, 16) em(14, 16) em(14, 16);
+
+    @include tab {
+      flex: 2;
+      padding: 0 em(16, 32) em(16, 16) em(16, 32);
+    }
+
+    .name {
+      background: $color-hight-blue;
+      border-radius: 8px;
+      bottom: 15px;
+      box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+      margin: 0 0 em(14, 32);
+      padding: em(14, 16);
+      position: relative;
+      text-align: center;
+
+      @include tab {
+        margin: 0 0 em(16, 32);
+        padding: em(16, 16);
+      }
+    }
+
+    dl {
+      margin-bottom: em(14, 16);
+
+      @include tab {
+        margin-bottom: em(16, 16);
+      }
+
+      dt {
+        font-weight: bold;
+      }
+
+      dd {
+        margin-left: em(14, 20);
+        padding-top: em(14, 4);
+
+        @include tab {
+          margin-bottom: em(16, 16);
+          margin-left: em(16, 40);
+        }
+
+        li {
+          list-style: none;
+          padding-left: em(14, 20);
+          position: relative;
+
+          @include tab {
+            padding-left: em(16, 20);
+          }
+        }
+
+        li::before {
+          border-bottom: 6px solid transparent;
+          border-left: 9px solid #aaa;
+          border-right: 7px solid transparent;
+          border-top: 6px solid transparent;
+          box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2) inset;
+          content: '';
+          display: block;
+          height: 0;
+          left: 2px;
+          position: absolute;
+          top: 3px;
+          width: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.head {
+  border-bottom-color: #c6c6c6;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: em(14, 30);
+  padding-top: em(14, 30);
+
+  @include tab {
+    padding-bottom: em(16, 30);
+    padding-top: em(16, 30);
+  }
+
+  .row {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: em(14, 15);
+    padding-right: em(14, 15);
+
+    @include tab {
+      padding-left: em(16, 15);
+      padding-right: em(16, 15);
+    }
+  }
+
+  .titleArea {
+    display: flex;
+  }
+
+  .icon {
+    align-items: center;
+    background-color: $color-hight-blue;
+    border-color: $color-gray;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    justify-content: center;
+    margin-right: em(14, 20);
+
+    @include tab {
+      margin-right: em(16, 20);
+    }
+
+    @include pc {
+      height: em(16, 70);
+      width: em(16, 70);
+    }
+
+    img {
+      height: em(14, 50);
+      width: em(14, 50);
+
+      @include tab {
+        height: em(16, 50);
+        width: em(16, 50);
+      }
+    }
+  }
+
+  .close {
+    padding: 0 !important;
+  
+    svg {
+      font-size: fz(54);
+    }
+  }
+}

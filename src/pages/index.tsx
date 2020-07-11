@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </nav>
-      <section className={style.section}>
+      <section className="section">
         <div className="container">
           <div className={style.profile}>
             <div className={style.titleArea}>
