@@ -31,7 +31,7 @@ const ProfileIndex: NextPage = () => {
         linkProps={{ href: "/" }}
         imgProps={{ src: "/profile.png", alt: "Profile" }}
       />
-      <section className="section">
+      <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>
             <div className={style.title}>
