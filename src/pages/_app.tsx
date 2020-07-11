@@ -5,6 +5,7 @@ import { AppProps } from "next/app";
 import { NextPage } from "next";
 import "ress";
 import "../../styles.scss";
+import { DevClientContextProvider } from "../context/DevClientContext";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -16,11 +17,11 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <>
+    <DevClientContextProvider>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </DevClientContextProvider>
   );
 };
 

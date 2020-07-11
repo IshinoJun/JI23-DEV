@@ -30,8 +30,11 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@types/lodash": "^4.14.157",
     "add": "^2.0.6",
+    "axios": "^0.19.2",
     "husky": "^4.2.5",
+    "lodash": "^4.17.19",
     "prettier-stylelint": "^0.4.2",
     "ress": "^2.0.4",
     "sass": "^1.26.8",

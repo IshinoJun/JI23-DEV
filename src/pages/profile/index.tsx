@@ -1,11 +1,19 @@
 import React from "react";
 import style from "./index.module.scss";
 
-import { NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 import Footer from "../../components/shared/Footer";
 import Header from "../../components/shared/Header";
+import DevClient from "../../api/DevClient";
+import Profile from "../../api/models/profile";
 
-const ProfileIndex: NextPage = () => {
+interface Props {
+  profile: Profile;
+}
+
+const ProfileIndex: NextPage<Props> = (props: Props) => {
+  const { profile } = props;
+
   const getAge = (year = 1992, month = 11, day = 23): number => {
     const birthdayDate = new Date(year, month - 1, day);
     const todayDate = new Date();
@@ -27,7 +35,7 @@ const ProfileIndex: NextPage = () => {
     <main className="wrapper">
       <Header
         title="Profile"
-        subTitle="A Brief About Me"
+        subTitle="プロフィール"
         linkProps={{ href: "/" }}
         imgProps={{ src: "/profile.png", alt: "Profile" }}
       />
@@ -36,30 +44,29 @@ const ProfileIndex: NextPage = () => {
           <div className={style.content}>
             <div className={style.title}>
               <h3>About me</h3>
-              <p>
-                2015年大学卒業後、某Slerにて4年間、クラウドサービス（IaaS,DaaS,PaaS）を全業種向けに提案・導入・運用を対応していました。
-              </p>
-              <p>
-                2019年7月からWebアプリ開発へ転身。SPAの設計・開発・テストをフロントとバックともに行なっています。
-              </p>
+              {profile.introduction.split("\n").map((intro, index) => (
+                <p key={index}>{intro}</p>
+              ))}
             </div>
             <div className={style.about}>
               <div className={style.name}>
-                <h2>Jun Ishino</h2>
-                <h4>Web Developer</h4>
+                <h2>{profile.name}</h2>
+                <h4>{profile.profession}</h4>
               </div>
               <div>
                 <dl>
                   <dt>誕生年 / 年齢</dt>
-                  <dd>1992 / {getAge()}</dd>
+                  <dd>
+                    {profile.year} / {getAge()}
+                  </dd>
                 </dl>
                 <dl>
                   <dt>技術スタック</dt>
                   <dd>
                     <ul>
-                      <li>React / TypeScript / Next.js</li>
-                      <li>Spring Boot / Java</li>
-                      <li>AWS</li>
+                      {profile.skills.map((skill, index) => (
+                        <li key={index}>{skill.name}</li>
+                      ))}
                     </ul>
                   </dd>
                 </dl>
@@ -67,25 +74,21 @@ const ProfileIndex: NextPage = () => {
                   <dt>資格・認定</dt>
                   <dd>
                     <ul>
-                      <li>
-                        AWS Certified Solutions Architect - Professional
-                        (SAP)（2018-09）
-                      </li>
-                      <li>
-                        AWS Certified Solutions Architect - Associate
-                        (SAA)（2018-03）
-                      </li>
-                      <li>ORACLE MASTER Silver Oracle Database（2016-09）</li>
-                      <li>ITIL Foundation（2016-09）</li>
-                      <li>ORACLE MASTER Bronze Oracle Database（2016-04）</li>
-                      <li>剣道三段（2014-09）</li>
-                      <li>基本情報技術者（2014-04）</li>
+                      {profile.qualifications.map((qualification, index) => (
+                        <li key={index}>{qualification.name}</li>
+                      ))}
                     </ul>
                   </dd>
                 </dl>
                 <dl>
                   <dt>趣味</dt>
-                  <dd>筋トレ、 ドライブ、 温泉・サウナ</dd>
+                  <dd>
+                    {profile.hobbies.map(
+                      (hobby, index) =>
+                        hobby.name +
+                        (profile.hobbies.length !== index + 1 ? "、　" : "")
+                    )}
+                  </dd>
                 </dl>
               </div>
             </div>
@@ -96,4 +99,19 @@ const ProfileIndex: NextPage = () => {
     </main>
   );
 };
+
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props;
+}> => {
+  const devClient = new DevClient();
+
+  const profile = await devClient.getMyProfile();
+
+  return {
+    props: {
+      profile,
+    },
+  };
+};
+
 export default ProfileIndex;

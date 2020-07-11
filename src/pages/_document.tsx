@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import React from "react";
+import * as React from "react";
 import { ServerStyleSheets } from "@material-ui/styles";
 
 interface CustomDocumentInterface {
