@@ -6,6 +6,7 @@ import { NextPage } from "next";
 import "ress";
 import "../../styles.scss";
 import { DevClientContextProvider } from "../context/DevClientContext";
+import Head from "next/head";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -18,6 +19,10 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <DevClientContextProvider>
+      <Head>
+        <title>Jun Dev Blog</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
