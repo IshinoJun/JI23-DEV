@@ -2,10 +2,10 @@ import React from "react";
 import style from "./index.module.scss";
 
 import { NextPage, GetStaticProps } from "next";
-import Footer from "../../components/shared/Footer";
-import Header from "../../components/shared/Header";
 import DevClient from "../../api/DevClient";
 import Profile from "../../api/models/profile";
+import HeaderProps from "../../models/HeaderProps";
+import Layout from "../../components/shared/Layout";
 
 interface Props {
   profile: Profile;
@@ -13,6 +13,13 @@ interface Props {
 
 const ProfileIndex: NextPage<Props> = (props: Props) => {
   const { profile } = props;
+
+  const headerProps: HeaderProps = {
+    title: "Profile",
+    subTitle: "プロフィール",
+    linkProps: { href: "/" },
+    imgProps: { src: "/profile.png", alt: "Profile" },
+  } as const;
 
   const getAge = (year = 1992, month = 11, day = 23): number => {
     const birthdayDate = new Date(year, month - 1, day);
@@ -32,13 +39,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <main className="wrapper">
-      <Header
-        title="Profile"
-        subTitle="プロフィール"
-        linkProps={{ href: "/" }}
-        imgProps={{ src: "/profile.png", alt: "Profile" }}
-      />
+    <Layout title="Profile | dev-blog" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>
@@ -95,8 +96,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
           </div>
         </div>
       </section>
-      <Footer />
-    </main>
+    </Layout>
   );
 };
 

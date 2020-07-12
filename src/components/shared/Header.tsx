@@ -3,18 +3,9 @@ import style from "./Header.module.scss";
 import Link, { LinkProps } from "next/link";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import HeaderProps from "../../models/HeaderProps";
 
-interface Props {
-  title: string;
-  subTitle: string;
-  linkProps: LinkProps;
-  imgProps: React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  >;
-}
-
-const Header: React.FC<Props> = (props: Props) => {
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { title, subTitle, linkProps, imgProps } = props;
 
   return (

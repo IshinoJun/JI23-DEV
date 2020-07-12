@@ -5,12 +5,12 @@ import { NextPage } from "next";
 import { Avatar, Button } from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import Footer from "../components/shared/Footer";
 import HomeContent from "../components/shared/HomeContent";
+import Layout from "../components/shared/Layout";
 
 const Home: NextPage = () => {
   return (
-    <main className="wrapper">
+    <Layout title="Home | dev-blog">
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>
@@ -69,8 +69,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </section>
-      <Footer />
-    </main>
+    </Layout>
   );
 };
 export default Home;
