@@ -39,16 +39,13 @@
     border-style: solid;
     border-width: 1px;
     display: flex;
+    height: em(14, 70);
     justify-content: center;
     margin-right: em(14, 20);
+    width: em(14, 70);
 
     @include tab {
       margin-right: em(16, 20);
-    }
-
-    @include pc {
-      height: em(16, 70);
-      width: em(16, 70);
     }
 
     img {

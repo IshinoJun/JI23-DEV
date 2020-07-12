@@ -1,0 +1,57 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.contact {
+  background-color: $color-white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  .title {
+    background-color: $color-hight-green;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+    color: $color-white;
+
+    h2 {
+      font-size: fz(24);
+      padding: em(24, 18) 0;
+      text-align: center;
+    }
+  }
+
+  form {
+    padding: em(14, 28) em(14, 16) em(14, 14) em(14, 16);
+
+    @include tab {
+      flex: 2;
+      padding: em(16, 32) em(16, 32) em(16, 16) em(16, 32);
+    }
+
+    .send {
+      background-color: $color-hight-green !important;
+      color: $color-white;
+      margin-top: em(14, 36);
+      width: 100%;
+
+      @include tab {
+        margin-top: em(16, 36);
+        width: 15%;
+      }
+    }
+
+    .error {
+      color: $color-red;
+      font-size: fz(12);
+      font-weight: 400;
+      letter-spacing: 0.03333em;
+      line-height: 1.66;
+      margin-left: em(12, 14);
+      margin-right: em(12, 14);
+      margin-top: em(12, 3);
+      text-align: left;
+    }
+  }
+}
+
