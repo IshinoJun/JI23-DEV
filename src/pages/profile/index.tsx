@@ -3,7 +3,7 @@ import style from "./index.module.scss";
 
 import { NextPage, GetStaticProps } from "next";
 import DevClient from "../../api/DevClient";
-import Profile from "../../api/models/profile";
+import Profile from "../../api/models/Profile";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 

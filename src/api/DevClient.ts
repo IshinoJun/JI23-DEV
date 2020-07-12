@@ -3,7 +3,8 @@ import Axios, {
   AxiosRequestConfig,
   AxiosPromise,
 } from "axios";
-import Profile from "./models/profile";
+import Profile from "./models/Profile";
+import Contact from "./models/Contact";
 
 class DevClient {
   private axios = Axios.create({
@@ -53,13 +54,15 @@ class DevClient {
     return this.resolvePromise(this.axios.get<T>(url, this.resolveConfig()));
   }
 
-  private post<T>(url: string, data?: Record<string, unknown>) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  private post<T>(url: string, data?: object) {
     return this.resolvePromise(
       this.axios.post<T>(url, data, this.resolveConfig())
     );
   }
 
-  private put<T>(url: string, data?: Record<string, unknown>) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  private put<T>(url: string, data?: object) {
     return this.resolvePromise(
       this.axios.put<T>(url, data, this.resolveConfig())
     );
@@ -71,6 +74,10 @@ class DevClient {
 
   public getMyProfile(): Promise<Profile> {
     return this.get<Profile>("profile/ujoo8cbvf");
+  }
+
+  public createContact(contact: Contact): Promise<void> {
+    return this.post("contacts", contact);
   }
 }
 export default DevClient;

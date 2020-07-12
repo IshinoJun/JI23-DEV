@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Header.module.scss";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import HeaderProps from "../../models/HeaderProps";

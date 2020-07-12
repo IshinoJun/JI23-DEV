@@ -51,10 +51,11 @@
     }
 
     .name {
-      background: $color-hight-blue;
+      background: $color-hight-green;
       border-radius: 8px;
       bottom: 15px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+      color: $color-white;
       margin: 0 0 em(14, 32);
       padding: em(14, 16);
       position: relative;
@@ -71,10 +72,6 @@
 
       @include tab {
         margin-bottom: em(16, 16);
-      }
-
-      dt {
-        font-weight: bold;
       }
 
       dd {
