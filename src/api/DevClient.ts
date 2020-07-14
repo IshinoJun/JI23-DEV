@@ -5,6 +5,8 @@ import Axios, {
 } from "axios";
 import Profile from "./models/Profile";
 import Contact from "./models/Contact";
+import Portfolio from "./models/Portfolio";
+import ArrayList from "./models/Array";
 
 class DevClient {
   private axios = Axios.create({
@@ -78,6 +80,10 @@ class DevClient {
 
   public createContact(contact: Contact): Promise<void> {
     return this.post("contacts", contact);
+  }
+
+  public getPortfolio(): Promise<ArrayList<Portfolio>> {
+    return this.get<ArrayList<Portfolio>>("portfolio");
   }
 }
 export default DevClient;

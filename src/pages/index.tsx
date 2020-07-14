@@ -2,11 +2,11 @@ import React from "react";
 import style from "./index.module.scss";
 
 import { NextPage } from "next";
-import { Avatar, Button } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import { Avatar } from "@material-ui/core";
 import HomeContent from "../components/shared/HomeContent";
 import Layout from "../components/shared/Layout";
+import IconButton from "../components/shared/IconButton";
+import IconButtonType from "../enums/IconButtonType";
 
 const Home: NextPage = () => {
   return (
@@ -44,22 +44,14 @@ const Home: NextPage = () => {
               <h1 className={style.title}>JUN ISHINO</h1>
               <h3>Web Developer</h3>
               <div className={style.linkArea}>
-                <Button
-                  variant="contained"
-                  className={style.twitter}
+                <IconButton
+                  iconButtonType={IconButtonType.twitter}
                   href="https://twitter.com/JJ_1123_I"
-                  target="_blank"
-                >
-                  <TwitterIcon />
-                </Button>
-                <Button
-                  variant="contained"
-                  className={style.github}
+                />
+                <IconButton
+                  iconButtonType={IconButtonType.gitHub}
                   href="https://github.com/IshinoJun"
-                  target="_blank"
-                >
-                  <GitHubIcon />
-                </Button>
+                />
               </div>
             </div>
             <div className={style.iconArea}>

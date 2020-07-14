@@ -2,56 +2,87 @@
 @import 'style/function';
 @import 'style/settings';
 
-.contact {
-  background-color: $color-white;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.content {
+  padding-left: em(14, 15);
+  padding-right: em(14, 15);
 
-  .title {
-    background-color: $color-hight-green;
-    border-radius: 6px 6px 0 0;
-    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-    color: $color-white;
+  @include tab {
+    padding-left: em(16, 15);
+    padding-right: em(16, 15);
+  }
 
-    h2 {
-      font-size: fz(24);
-      padding: em(24, 18) 0;
-      text-align: center;
+  &:not(:last-child) {
+    margin-bottom: em(14, 30);
+
+    @include tab {
+      margin-bottom: em(16, 30);
     }
   }
 
-  form {
-    padding: em(14, 28) em(14, 16) em(14, 14) em(14, 16);
+  .portfolio {
+    background-color: $color-white;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+    padding: em(14, 16);
 
     @include tab {
-      flex: 2;
-      padding: em(16, 32) em(16, 32) em(16, 16) em(16, 32);
+      display: flex;
+      padding: em(16, 16) em(16, 32);
     }
 
-    .send {
-      background-color: $color-hight-green !important;
-      color: $color-white;
-      margin-top: em(14, 36);
-      width: 100%;
+    .photo {
+      text-align: center;
 
       @include tab {
-        margin-top: em(16, 36);
-        width: 15%;
+        flex: 1;
+      }
+
+      .linkArea {
+        margin-top: em(14, 20);
+
+        @include tab {
+          flex: 1;
+          margin-top: em(16, 20);
+        }
+
+        a:not(:nth-child(1)) {
+          margin-left: em(14, 20);
+
+          @include tab {
+            margin-left: em(16, 20);
+          }
+        };
+      }
+
+      img {
+        max-height: 300px;
       }
     }
 
-    .error {
-      color: $color-red;
-      font-size: fz(12);
-      font-weight: 400;
-      letter-spacing: 0.03333em;
-      line-height: 1.66;
-      margin-left: em(12, 14);
-      margin-right: em(12, 14);
-      margin-top: em(12, 3);
-      text-align: left;
+    .detail {
+      margin-top: em(14, 20);
+
+      @include tab {
+        flex: 1;
+        margin-left: em(16, 20);
+        margin-top: em(16, 20);
+      }
+
+      h2 {
+        font-size: fz(26);
+        padding-bottom: em(14, 5);
+        padding-top: em(14, 5);
+
+        @include tab {
+          padding-bottom: em(16, 5);
+          padding-top: em(16, 5);
+        }
+      }
+
+      p {
+        padding-bottom: em(14, 5);
+        padding-top: em(14, 5);
+      }
     }
   }
 }
-

@@ -89,20 +89,13 @@
       margin-bottom: em(16, 12);
       margin-top: em(16, 12);
     }
+
+    a:not(:nth-child(1)) {
+      margin-left: em(14, 20);
+
+      @include tab {
+        margin-left: em(16, 20);
+      }
+    };
   }
-}
-
-.twitter {
-  background-color: $color-twitter !important;
-  color: $color-white !important;
-  margin-right: em(14, 20) !important;
-
-  @include tab {
-    margin-right: em(16, 20) !important;
-  }
-}
-
-.github {
-  background-color: $color-black !important;
-  color: $color-white !important;
 }
