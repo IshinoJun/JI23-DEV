@@ -7,6 +7,7 @@ import Profile from "./models/Profile";
 import Contact from "./models/Contact";
 import Portfolio from "./models/Portfolio";
 import ArrayList from "./models/Array";
+import SNS from "./models/SNS";
 
 class DevClient {
   private axios = Axios.create({
@@ -84,6 +85,10 @@ class DevClient {
 
   public getPortfolio(): Promise<ArrayList<Portfolio>> {
     return this.get<ArrayList<Portfolio>>("portfolio");
+  }
+
+  public getMySNS(): Promise<SNS> {
+    return this.get<SNS>("sns/guy_hqnt8");
   }
 }
 export default DevClient;

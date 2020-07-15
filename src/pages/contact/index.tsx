@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./index.module.scss";
 
-import { NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 import { Grid, TextField, Button } from "@material-ui/core";
@@ -11,8 +11,16 @@ import { yupResolver } from "@hookform/resolvers";
 import Contact from "../../api/models/Contact";
 import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
+import SNS from "../../api/models/SNS";
+import DevClient from "../../api/DevClient";
 
-const ContactIndex: NextPage = () => {
+interface Props {
+  sns: SNS;
+}
+
+const ContactIndex: NextPage<Props> = (props: Props) => {
+  const { sns } = props;
+
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
@@ -65,11 +73,7 @@ const ContactIndex: NextPage = () => {
                 <div className={style.message}>
                   <p>
                     お問い合わせがある場合は、
-                    <a
-                      href="https://twitter.com/JJ_1123_I"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={sns.twitterUrl} target="_blank" rel="noreferrer">
                       Twitter
                     </a>
                     でDMして頂くか、下記のフォームからご連絡ください。
@@ -147,6 +151,20 @@ const ContactIndex: NextPage = () => {
       </section>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props;
+}> => {
+  const devClient = new DevClient();
+
+  const sns = await devClient.getMySNS();
+
+  return {
+    props: {
+      sns,
+    },
+  };
 };
 
 export default ContactIndex;

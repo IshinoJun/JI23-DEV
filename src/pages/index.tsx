@@ -1,14 +1,22 @@
 import React from "react";
 import style from "./index.module.scss";
 
-import { NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { Avatar } from "@material-ui/core";
 import HomeContent from "../components/shared/HomeContent";
 import Layout from "../components/shared/Layout";
 import IconButton from "../components/shared/IconButton";
 import IconButtonType from "../enums/IconButtonType";
+import SNS from "../api/models/SNS";
+import DevClient from "../api/DevClient";
 
-const Home: NextPage = () => {
+interface Props {
+  sns: SNS;
+}
+
+const Home: NextPage<Props> = (props: Props) => {
+  const { sns } = props;
+
   return (
     <Layout title="Home | dev-blog">
       <nav className={style.nav}>
@@ -46,11 +54,11 @@ const Home: NextPage = () => {
               <div className={style.linkArea}>
                 <IconButton
                   iconButtonType={IconButtonType.twitter}
-                  href="https://twitter.com/JJ_1123_I"
+                  href={sns.twitterUrl}
                 />
                 <IconButton
                   iconButtonType={IconButtonType.gitHub}
-                  href="https://github.com/IshinoJun"
+                  href={sns.gitHubUrl}
                 />
               </div>
             </div>
@@ -64,4 +72,19 @@ const Home: NextPage = () => {
     </Layout>
   );
 };
+
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props;
+}> => {
+  const devClient = new DevClient();
+
+  const sns = await devClient.getMySNS();
+
+  return {
+    props: {
+      sns,
+    },
+  };
+};
+
 export default Home;
