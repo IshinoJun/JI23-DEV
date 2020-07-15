@@ -24,6 +24,7 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
             className={style.github}
             href={href}
             target="_blank"
+            rel="noreferrer"
           >
             <GitHubIcon />
           </Button>
@@ -37,6 +38,7 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
             className={style.twitter}
             href={href}
             target="_blank"
+            rel="noreferrer"
           >
             <TwitterIcon />
           </Button>
@@ -45,7 +47,12 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
 
       case IconButtonType.siteLink: {
         return (
-          <Button variant="contained" href={href} target="_blank">
+          <Button
+            variant="contained"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+          >
             <LinkIcon />
           </Button>
         );

@@ -56,73 +56,92 @@ const ContactIndex: NextPage = () => {
     <Layout title="Contact | dev-blog" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
-          <div className={style.contact}>
-            <div className={style.title}>
-              <h2>お問い合わせフォーム</h2>
+          <div className={style.content}>
+            <div className={style.contact}>
+              <div className={style.title}>
+                <h2>お問い合わせフォーム</h2>
+              </div>
+              <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <div className={style.message}>
+                  <p>
+                    お問い合わせがある場合は、
+                    <a
+                      href="https://twitter.com/JJ_1123_I"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Twitter
+                    </a>
+                    でDMして頂くか、下記のフォームからご連絡ください。
+                  </p>
+                </div>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Controller
+                      as={TextField}
+                      control={control}
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="name"
+                      label="名前"
+                      name="name"
+                      autoComplete="name"
+                      defaultValue=""
+                      error={!!errors.name?.message}
+                    />
+                    {errors.name && (
+                      <p className={style.error}>{errors.name.message}</p>
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Controller
+                      as={TextField}
+                      control={control}
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="email"
+                      label="メールアドレス"
+                      name="email"
+                      autoComplete="email"
+                      defaultValue=""
+                      error={!!errors.email?.message}
+                    />
+                    {errors.email && (
+                      <p className={style.error}>{errors.email.message}</p>
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Controller
+                      as={TextField}
+                      control={control}
+                      variant="outlined"
+                      required
+                      fullWidth
+                      multiline
+                      rows={6}
+                      name="body"
+                      label="内容"
+                      id="body"
+                      autoComplete="body"
+                      defaultValue=""
+                      error={!!errors.body?.message}
+                    />
+                    {errors.body && (
+                      <p className={style.error}>{errors.body.message}</p>
+                    )}
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className={style.send}
+                >
+                  送信
+                </Button>
+              </form>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Controller
-                    as={TextField}
-                    control={control}
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="name"
-                    label="名前"
-                    name="name"
-                    autoComplete="name"
-                    defaultValue=""
-                    error={!!errors.name?.message}
-                  />
-                  {errors.name && (
-                    <p className={style.error}>{errors.name.message}</p>
-                  )}
-                </Grid>
-                <Grid item xs={12}>
-                  <Controller
-                    as={TextField}
-                    control={control}
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="email"
-                    label="メールアドレス"
-                    name="email"
-                    autoComplete="email"
-                    defaultValue=""
-                    error={!!errors.email?.message}
-                  />
-                  {errors.email && (
-                    <p className={style.error}>{errors.email.message}</p>
-                  )}
-                </Grid>
-                <Grid item xs={12}>
-                  <Controller
-                    as={TextField}
-                    control={control}
-                    variant="outlined"
-                    required
-                    fullWidth
-                    multiline
-                    rows={6}
-                    name="body"
-                    label="内容"
-                    id="body"
-                    autoComplete="body"
-                    defaultValue=""
-                    error={!!errors.body?.message}
-                  />
-                  {errors.body && (
-                    <p className={style.error}>{errors.body.message}</p>
-                  )}
-                </Grid>
-              </Grid>
-              <Button type="submit" variant="contained" className={style.send}>
-                送信
-              </Button>
-            </form>
           </div>
         </div>
       </section>
