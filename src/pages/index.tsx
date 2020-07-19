@@ -7,8 +7,8 @@ import HomeContent from "../components/shared/HomeContent";
 import Layout from "../components/shared/Layout";
 import IconButton from "../components/shared/IconButton";
 import IconButtonType from "../enums/IconButtonType";
-import SNS from "../api/models/SNS";
-import DevClient from "../api/DevClient";
+import SNS from "../models/SNS";
+import DevClient from "../pages/api/DevClient";
 
 interface Props {
   sns: SNS;

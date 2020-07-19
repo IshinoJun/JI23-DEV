@@ -4,9 +4,9 @@ import style from "./index.module.scss";
 import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
-import Portfolio from "../../api/models/Portfolio";
-import DevClient from "../../api/DevClient";
-import ArrayList from "../../api/models/Array";
+import Portfolio from "../../models/Portfolio";
+import DevClient from "../../pages/api/DevClient";
+import ArrayList from "../../models/Array";
 
 import { formatEndMonth } from "../../utils/FormatUtils";
 import IconButton from "../../components/shared/IconButton";

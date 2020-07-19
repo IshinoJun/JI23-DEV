@@ -1,5 +1,5 @@
 import React from "react";
-import DevClient from "../api/DevClient";
+import DevClient from "../pages/api/DevClient";
 
 const DevClientContext = React.createContext<DevClient | null>(null);
 

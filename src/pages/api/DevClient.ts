@@ -3,12 +3,12 @@ import Axios, {
   AxiosRequestConfig,
   AxiosPromise,
 } from "axios";
-import Profile from "./models/Profile";
-import Contact from "./models/Contact";
-import Portfolio from "./models/Portfolio";
-import ArrayList from "./models/Array";
-import SNS from "./models/SNS";
-import Blog from "./models/Blog";
+import Profile from "../../models/Profile";
+import Contact from "../../models/Contact";
+import Portfolio from "../../models/Portfolio";
+import ArrayList from "../../models/Array";
+import SNS from "../../models/SNS";
+import Blog from "../../models/Blog";
 
 class DevClient {
   private axios = Axios.create({

@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./index.module.scss";
 
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
+import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
-import DevClient from "../../api/DevClient";
-import Blog from "../../api/models/Blog";
-import ArrayList from "../../api/models/Array";
+import DevClient from "../../pages/api/DevClient";
+import Blog from "../../models/Blog";
+import ArrayList from "../../models/Array";
 import Head from "next/head";
 import Link from "next/link";
 import { isPreviewData } from "../../utils/TypeGuardUtils";

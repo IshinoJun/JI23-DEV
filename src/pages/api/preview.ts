@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from "next";
-import DevClient from "../../api/DevClient";
+import DevClient from "./DevClient";
 
 const preview = async (
   req: NextApiRequest,

@@ -3,8 +3,8 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import Link from "next/link";
 import * as React from "react";
-import Blog from "../../api/models/Blog";
-import DevClient from "../../api/DevClient";
+import Blog from "../../models/Blog";
+import DevClient from "../../pages/api/DevClient";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
 
 interface Props {

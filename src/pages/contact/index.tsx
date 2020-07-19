@@ -8,11 +8,11 @@ import { Grid, TextField, Button } from "@material-ui/core";
 import * as Yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
-import Contact from "../../api/models/Contact";
+import Contact from "../../models/Contact";
 import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
-import SNS from "../../api/models/SNS";
-import DevClient from "../../api/DevClient";
+import SNS from "../../models/SNS";
+import DevClient from "../../pages/api/DevClient";
 
 interface Props {
   sns: SNS;
