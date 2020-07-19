@@ -7,9 +7,12 @@ import Layout from "../../components/shared/Layout";
 import DevClient from "../../pages/api/DevClient";
 import Blog from "../../models/Blog";
 import ArrayList from "../../models/Array";
-import Head from "next/head";
 import Link from "next/link";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
+import { formatDate } from "../../utils/FormatUtils";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import Tags from "../../components/shared/tags";
+import { Button } from "@material-ui/core";
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -29,27 +32,31 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
     <Layout title="Blogs | dev-blog" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
-          <div className={style.contact}>
-            <Head>
-              <title>blogs</title>
-            </Head>
-
-            <h1 className="title">ブログトップ</h1>
-            <Link href="/">
-              <a className="link">ホームへ</a>
-            </Link>
-            <div>
-              {blogs.contents.map((blog, index) => (
-                <div key={index}>
-                  <h2>{blog.title}</h2>
-                  <p>{blog.introduction}</p>
-                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                    <a>詳細へ</a>
-                  </Link>
+          {blogs.contents.map((blog, index) => (
+            <div key={index} className={style.contact}>
+              <div className={style.blog}>
+                <div className={style.photo}>
+                  <img src={blog.ogp.url} />
                 </div>
-              ))}
+                <h3>{blog.title}</h3>
+                <div className={style.date}>
+                  <AccessTimeIcon />
+                  <span>{formatDate(new Date(blog.date))}</span>
+                </div>
+                <p className={style.introduction}>{blog.introduction}</p>
+                <Tags tags={blog.tags} tagsPosition="left" />
+                <Button
+                  type="button"
+                  variant="contained"
+                  style={{ textTransform: "none" }}
+                >
+                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                    <a>Read More</a>
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
     </Layout>

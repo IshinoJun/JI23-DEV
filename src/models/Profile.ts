@@ -18,9 +18,9 @@ interface Profile extends Model {
   profession: string;
   introduction: string;
   year: number;
-  skills: Skill[];
-  hobbies: Hobby[];
-  qualifications: Qualification[];
+  skills: Array<Skill>;
+  hobbies: Array<Hobby>;
+  qualifications: Array<Qualification>;
 }
 
 export default Profile;

@@ -5,8 +5,8 @@ interface Blog {
   title: string;
   introduction: string;
   date: string;
-  tags: Tag[];
-  ogp: string;
+  tags?: Tag[];
+  ogp: { url: string };
   content: string;
 }
 
