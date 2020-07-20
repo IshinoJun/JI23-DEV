@@ -1,0 +1,63 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.contact {
+  border-bottom-color: #ededed;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding: em(14, 48) em(14, 15);
+
+  @include tab {
+    padding: em(16, 48) em(16, 15);
+  }
+
+  h3 {
+    font-size: fz(26);
+    line-height: em(26, 48);
+    margin-top: em(26, 24);
+  }
+
+  .photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .blog {
+    @include tab {
+      margin: 0 auto;
+      width: 50%;
+    }
+
+    .date {
+      align-items: center;
+      display: flex;
+      margin: em(14, 10) 0 em(14, 15);
+
+      @include tab {
+        margin: em(16, 10) 0 em(16, 15);
+      }
+
+      svg {
+        color: #00b6f8;
+        font-size: fz(16);
+        margin-right: em(16, 5);
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .introduction {
+      margin-bottom: em(14, 12);
+      margin-top: em(14, 12);
+
+      @include tab {
+        margin-bottom: em(16, 12);
+        margin-top: em(16, 12);
+      }
+    }
+  }
+}
+
