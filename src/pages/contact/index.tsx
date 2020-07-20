@@ -61,7 +61,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout title="Contact | dev-blog" headerProps={headerProps}>
+    <Layout title="Contact" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>

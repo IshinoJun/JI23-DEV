@@ -29,7 +29,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   return (
-    <Layout title="Blogs | dev-blog" headerProps={headerProps}>
+    <Layout title="Blogs" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           {blogs.contents.map((blog, index) => (

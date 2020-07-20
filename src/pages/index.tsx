@@ -18,7 +18,7 @@ const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
   return (
-    <Layout title="Home | dev-blog">
+    <Layout title="Home">
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>

@@ -39,7 +39,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout title="Profile | dev-blog" headerProps={headerProps}>
+    <Layout title="Profile" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>

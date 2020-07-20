@@ -1,11 +1,12 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import ErrorPage from "next/error";
-import Head from "next/head";
 import Link from "next/link";
 import * as React from "react";
 import Blog from "../../models/Blog";
 import DevClient from "../../pages/api/DevClient";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
+import Layout from "../../components/shared/Layout";
+import HeaderProps from "../../models/HeaderProps";
 
 interface Props {
   blog: Blog | null;
@@ -14,14 +15,17 @@ interface Props {
 
 const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog } = props;
+  const headerProps: HeaderProps = {
+    title: "Blogs",
+    subTitle: "ブログ",
+    linkProps: { href: "/" },
+    imgProps: { src: "/blog.png", alt: "Blogs" },
+  } as const;
 
   return (
     <>
       {blog ? (
-        <>
-          <Head>
-            <title>ブログ詳細</title>
-          </Head>
+        <Layout title={blog.title} headerProps={headerProps}>
           <h1 className="title">ブログ詳細</h1>
           <Link href="/blogs/">
             <a className="link">ブログトップへ</a>
@@ -29,7 +33,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
           <div className="item">
             <h2 className="item__title">{blog.title}</h2>
           </div>
-        </>
+        </Layout>
       ) : (
         <ErrorPage statusCode={404} />
       )}

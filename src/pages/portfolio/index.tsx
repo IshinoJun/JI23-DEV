@@ -27,7 +27,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   return (
-    <Layout title="Portfolio | dev-blog" headerProps={headerProps}>
+    <Layout title="Portfolio" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           {portfolioAry.contents.map((portfolio, index) => (

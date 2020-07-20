@@ -19,7 +19,7 @@ const SuccessIndex: NextPage = () => {
   } as const;
 
   return (
-    <Layout title="ContactSuccess | dev-blog" headerProps={headerProps}>
+    <Layout title="ContactSuccess" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.contact}>
