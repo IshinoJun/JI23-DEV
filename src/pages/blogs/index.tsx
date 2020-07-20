@@ -11,7 +11,7 @@ import Link from "next/link";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
 import { formatDate } from "../../utils/FormatUtils";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import Tags from "../../components/shared/tags";
+import Tags from "../../components/shared/Tags";
 import { Button } from "@material-ui/core";
 
 interface Props {

@@ -29,8 +29,8 @@ const Home: NextPage<Props> = (props: Props) => {
             />
             <HomeContent
               linkProps={{ href: "/portfolio" }}
-              imgProps={{ src: "/portfolio.png", alt: "portfolio" }}
-              name="portfolio"
+              imgProps={{ src: "/portfolio.png", alt: "Portfolio" }}
+              name="Portfolio"
             />
             <HomeContent
               linkProps={{ href: "/blogs" }}
