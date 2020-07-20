@@ -10,7 +10,7 @@ import style from "./id.module.scss";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import { formatDate } from "../../utils/FormatUtils";
 import Tags from "../../components/shared/Tags";
-
+import Highlight from "react-highlight";
 interface Props {
   blog: Blog | null;
   errors?: string;
@@ -42,9 +42,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                     <span>{formatDate(new Date(blog.date))}</span>
                   </div>
                   <Tags tags={blog.tags} tagsPosition="left" />
-                  <div
-                    dangerouslySetInnerHTML={{ __html: `${blog.content}` }}
-                  />
+                  <Highlight innerHTML>{blog.content}</Highlight>
                 </div>
               </div>
             </div>

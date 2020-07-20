@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
 // --- color ---
 $color-black: #0D0D0D;
 $color-gray: #c6c6c6;
@@ -26,4 +28,4 @@ $color-body-background: $color-hight-blue;
 $color-footer-background: $color-black;
 
 // --- font family ---
-$fontFamily-primary: 'Noto Sans JP', 游ゴシック, 'Yu Gothic', 游ゴシック体, YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', メイリオ, Meiryo, sans-serif;
+$fontFamily-primary: "'Ubuntu, sans-serif','Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif";

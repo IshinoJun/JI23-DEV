@@ -7,6 +7,7 @@ import "ress";
 import "../../styles.scss";
 import { DevClientContextProvider } from "../context/DevClientContext";
 import Head from "next/head";
+import "highlightjs/styles/monokai.css";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
