@@ -8,6 +8,9 @@ import "../../styles.scss";
 import { DevClientContextProvider } from "../context/DevClientContext";
 import Head from "next/head";
 import "highlightjs/styles/monokai.css";
+import Router from "next/router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -17,6 +20,10 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
+  Router.events.on("routeChangeStart", () => NProgress.start());
+  Router.events.on("routeChangeComplete", () => NProgress.done());
+  Router.events.on("routeChangeError", () => NProgress.done());
 
   return (
     <DevClientContextProvider>

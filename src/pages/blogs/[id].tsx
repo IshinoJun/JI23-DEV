@@ -82,11 +82,10 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const devClient = new DevClient();
   const res = await devClient.getBlogs();
-  const paths = res.contents.map((item) => ({
-    params: { id: item.id },
-  }));
+  const paths = res.contents.map((item) => `/blogs/${item.id}`);
+  console.log(paths);
 
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({
