@@ -32,10 +32,10 @@
   border-bottom-color: #ededed;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding: em(14, 48) em(14, 15);
+  padding: 0 em(14, 48) em(14, 15) em(14, 48);
 
   @include tab {
-    padding: em(16, 48) em(16, 15);
+    padding: 0 em(16, 48) em(16, 15) em(16, 48);
   }
 
   h3 {

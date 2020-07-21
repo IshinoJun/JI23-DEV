@@ -12,6 +12,10 @@
     padding: em(16, 48) em(16, 15);
   }
 
+  &:first-child {
+    padding-top: 0;
+  }
+
   h3 {
     font-size: fz(26);
     line-height: em(26, 48);

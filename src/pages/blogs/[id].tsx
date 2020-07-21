@@ -83,7 +83,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const devClient = new DevClient();
   const res = await devClient.getBlogs();
   const paths = res.contents.map((item) => `/blogs/${item.id}`);
-  console.log(paths);
 
   return { paths, fallback: false };
 };

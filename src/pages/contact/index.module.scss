@@ -16,12 +16,24 @@
     border-radius: 8px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
     text-align: center;
+    
+    @include tab {
+      margin: 0 auto;
+      min-width: 530px;
+      width: 50%;
+    }
 
     .title {
-      background-color: $color-hight-green;
-      border-radius: 6px 6px 0 0;
+      background: $color-hight-green;
+      border-radius: 8px;
+      bottom: 15px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
       color: $color-white;
+      margin: 0 auto;
+      min-width: 280px;
+      position: relative;
+      text-align: center;
+      width: 80%;
 
       h2 {
         font-size: fz(24);
@@ -31,11 +43,11 @@
     }
 
     form {
-      padding: em(14, 28) em(14, 16) em(14, 14) em(14, 16);
+      padding: 0 em(14, 16) em(14, 14) em(14, 16);
 
       @include tab {
         flex: 2;
-        padding: em(16, 32) em(16, 32) em(16, 16) em(16, 32);
+        padding: 0 em(16, 32) em(16, 16) em(16, 32);
       }
 
       .message {
@@ -57,11 +69,11 @@
         background-color: $color-hight-green !important;
         color: $color-white;
         margin-top: em(14, 36);
-        width: 100%;
+        width: em(14, 200);
 
         @include tab {
           margin-top: em(16, 36);
-          width: 15%;
+          width: em(16, 200);
         }
       }
 

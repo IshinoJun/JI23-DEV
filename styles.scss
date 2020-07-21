@@ -80,11 +80,8 @@ code {
   text-align: center;
 
   @include tab {
-    padding-bottom: em(16, 48);
-  }
-
-  @include lap {
     padding-top: em(16, 48);
+    padding-bottom: em(16, 48);
   }
 
   @include pc {
