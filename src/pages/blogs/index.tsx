@@ -23,7 +23,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
 
   const headerProps: HeaderProps = {
     title: "Blogs",
-    subTitle: "ブログ",
+    subTitle: "ブログ一覧",
     linkProps: { href: "/" },
     imgProps: { src: "/blog.png", alt: "Blogs" },
   } as const;

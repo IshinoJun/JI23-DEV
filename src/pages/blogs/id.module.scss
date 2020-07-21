@@ -2,6 +2,32 @@
 @import 'style/function';
 @import 'style/settings';
 
+.blogContainer {
+  font-size: fz(14);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @include tab {
+    font-size: fz(16);
+    width: 50%;
+  }
+}
+
+.linkArea {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: em(14, 20);
+
+  a {
+    box-shadow: 0 1px 0 0 currentColor;
+    color: #007acc;
+    text-decoration: none;
+  }
+}
+
 .contact {
   border-bottom-color: #ededed;
   border-bottom-style: solid;
@@ -26,7 +52,6 @@
   .blog {
     @include tab {
       margin: 0 auto;
-      width: 50%;
     }
 
     .date {
@@ -60,4 +85,3 @@
     }
   }
 }
-

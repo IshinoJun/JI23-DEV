@@ -11,26 +11,34 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import { formatDate } from "../../utils/FormatUtils";
 import Tags from "../../components/shared/Tags";
 import Highlight from "react-highlight";
+import Link from "next/link";
+import ArrayList from "../../models/Array";
+
 interface Props {
   blog: Blog | null;
+  blogs: ArrayList<Blog>;
   errors?: string;
 }
 
 const BlogDetail: NextPage<Props> = (props: Props) => {
-  const { blog } = props;
+  const { blog, blogs } = props;
   const headerProps: HeaderProps = {
-    title: "Blogs",
+    title: "Blog",
     subTitle: "ブログ",
-    linkProps: { href: "/" },
+    linkProps: { href: "/blogs" },
     imgProps: { src: "/blog.png", alt: "Blogs" },
   } as const;
+
+  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? "");
+  const nextBlog = blogs.contents[blogIndex - 1];
+  const prevBlog = blogs.contents[blogIndex + 1];
 
   return (
     <>
       {blog ? (
         <Layout title={blog.title} headerProps={headerProps}>
           <section className="padding-block border-bottom">
-            <div className="container">
+            <div className={style.blogContainer}>
               <div className={style.contact}>
                 <div className={style.blog}>
                   <div className={style.photo}>
@@ -45,6 +53,22 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                   <Highlight innerHTML>{blog.content}</Highlight>
                 </div>
               </div>
+              <ul className={style.linkArea}>
+                <li>
+                  {prevBlog && (
+                    <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
+                      <a>{"← " + prevBlog.title}</a>
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {nextBlog && (
+                    <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
+                      <a>{nextBlog.title + " →"}</a>
+                    </Link>
+                  )}
+                </li>
+              </ul>
             </div>
           </section>
         </Layout>
@@ -84,8 +108,10 @@ export const getStaticProps: GetStaticProps = async ({
     blog = await devClient.getBlog(paramsId);
   }
 
+  const blogs = await devClient.getBlogs();
+
   return {
-    props: { blog },
+    props: { blog, blogs },
   };
 };
 
