@@ -4,12 +4,21 @@ import Link from "next/link";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import HeaderProps from "../../models/HeaderProps";
+import useMedia from "../../hooks/useMedia";
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { title, subTitle, linkProps, imgProps } = props;
+  const isTab = useMedia("tab");
 
   return (
     <header className={style.head}>
+      <div className={style.logo}>
+        <Link href="/" as={`/`}>
+          <a>
+            <img src="/logo.png" />
+          </a>
+        </Link>
+      </div>
       <div className="container">
         <div className={style.row}>
           <div className={style.titleArea}>
@@ -21,6 +30,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
               <h4 style={{ fontWeight: "normal" }}>{subTitle}</h4>
             </div>
           </div>
+
           <Link {...linkProps}>
             <IconButton size="medium" className={style.close}>
               <CloseIcon />

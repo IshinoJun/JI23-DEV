@@ -7,11 +7,29 @@
   border-bottom-style: solid;
   border-bottom-width: 1px;
   padding-bottom: em(14, 30);
-  padding-top: em(14, 30);
+  padding-top: em(14, 22);
 
   @include tab {
     padding-bottom: em(16, 30);
-    padding-top: em(16, 30);
+    padding-top: em(16, 24);
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 300px;
+
+      @include tab {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 350px;
+      }
+    }
   }
 
   .row {
@@ -49,11 +67,11 @@
     }
 
     img {
-      height: em(14, 50);
+      height: em(14, 64);
       width: em(14, 50);
 
       @include tab {
-        height: em(16, 50);
+        height: em(16, 64);
         width: em(16, 50);
       }
     }

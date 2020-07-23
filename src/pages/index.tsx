@@ -2,6 +2,7 @@ import React from "react";
 import style from "./index.module.scss";
 
 import { NextPage, GetStaticProps } from "next";
+import Link from "next/link";
 import { Avatar } from "@material-ui/core";
 import HomeContent from "../components/shared/HomeContent";
 import Layout from "../components/shared/Layout";
@@ -31,6 +32,13 @@ const Home: NextPage<Props> = (props: Props) => {
 
   return (
     <Layout headProps={headProps}>
+      <header className={style.logo}>
+        <Link href="/" as={`/`}>
+          <a>
+            <img src="/logo.png" />
+          </a>
+        </Link>
+      </header>
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>

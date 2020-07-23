@@ -2,14 +2,32 @@
 @import 'style/function';
 @import 'style/settings';
 
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-top: em(14, 21);
+
+  @include tab {
+    padding-top: em(16, 24);
+  }
+
+  img {
+    width: 300px;
+
+    @include tab {
+      width: 350px;
+    }
+  }
+}
+
 .nav {
   border-bottom-color: $color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding-top: em(14, 48);
+  padding-top: em(14, 32);
 
   @include tab {
-    padding-top: em(16, 48);
+    padding-top: em(16, 32);
   }
 
   @include lap {
