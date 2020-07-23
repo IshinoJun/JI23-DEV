@@ -1,23 +1,22 @@
 import React from "react";
-import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 import HeaderProps from "../../models/HeaderProps";
+import HeadProps from "../../models/HeadProps";
+import JI23Head from "./JI23Head";
 
 interface Props {
-  title: string;
   children: React.ReactNode;
+  headProps: HeadProps;
   headerProps?: HeaderProps;
 }
 
 const Layout: React.FC<Props> = (props: Props) => {
-  const { title, children, headerProps } = props;
+  const { children, headerProps, headProps } = props;
 
   return (
     <>
-      <Head>
-        <title>{title + " | JI23-Dev"}</title>
-      </Head>
+      <JI23Head {...headProps} />
       <main className="wrapper">
         {headerProps && <Header {...headerProps} />}
         {children}

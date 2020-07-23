@@ -11,6 +11,8 @@ import ArrayList from "../../models/Array";
 import { formatEndMonth } from "../../utils/FormatUtils";
 import IconButton from "../../components/shared/IconButton";
 import IconButtonType from "../../enums/IconButtonType";
+import { useRouter } from "next/router";
+import HeadProps from "../../models/HeadProps";
 
 interface Props {
   portfolioAry: ArrayList<Portfolio>;
@@ -18,6 +20,7 @@ interface Props {
 
 const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const { portfolioAry } = props;
+  const router = useRouter();
 
   const headerProps: HeaderProps = {
     title: "Portfolio",
@@ -26,8 +29,16 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
     imgProps: { src: "/portfolio.png", alt: "Portfolio" },
   } as const;
 
+  const headProps: HeadProps = {
+    title: "Portfolio",
+    type: "article",
+    description: "JI23-Devのポートフォリオのページになります。",
+    image: "/portfolio.png",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+  } as const;
+
   return (
-    <Layout title="Portfolio" headerProps={headerProps}>
+    <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           {portfolioAry.contents.map((portfolio, index) => (

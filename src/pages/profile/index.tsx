@@ -6,6 +6,8 @@ import DevClient from "../api/DevClient";
 import Profile from "../../models/Profile";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
+import HeadProps from "../../models/HeadProps";
+import { useRouter } from "next/router";
 
 interface Props {
   profile: Profile;
@@ -13,12 +15,21 @@ interface Props {
 
 const ProfileIndex: NextPage<Props> = (props: Props) => {
   const { profile } = props;
+  const router = useRouter();
 
   const headerProps: HeaderProps = {
     title: "Profile",
     subTitle: "プロフィール",
     linkProps: { href: "/" },
     imgProps: { src: "/profile.png", alt: "Profile" },
+  } as const;
+
+  const headProps: HeadProps = {
+    title: "Profile",
+    type: "article",
+    description: "JI23-Devのプロフィールのページになります。",
+    image: "/profile.png",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
   const getAge = (year = 1992, month = 11, day = 23): number => {
@@ -39,7 +50,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout title="Profile" headerProps={headerProps}>
+    <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>

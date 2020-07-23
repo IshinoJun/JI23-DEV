@@ -13,6 +13,8 @@ import Tags from "../../components/shared/Tags";
 import Highlight from "react-highlight";
 import Link from "next/link";
 import ArrayList from "../../models/Array";
+import HeadProps from "../../models/HeadProps";
+import { useRouter } from "next/router";
 
 interface Props {
   blog: Blog | null;
@@ -22,11 +24,21 @@ interface Props {
 
 const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog, blogs } = props;
+  const router = useRouter();
+
   const headerProps: HeaderProps = {
     title: "Blog",
     subTitle: "ブログ",
     linkProps: { href: "/blogs" },
     imgProps: { src: "/blog.png", alt: "Blogs" },
+  } as const;
+
+  const headProps: HeadProps = {
+    title: blog?.title ?? "",
+    type: "article",
+    description: blog?.introduction ?? "",
+    image: blog?.ogp.url ?? "",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
   const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? "");
@@ -36,7 +48,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   return (
     <>
       {blog ? (
-        <Layout title={blog.title} headerProps={headerProps}>
+        <Layout headProps={headProps} headerProps={headerProps}>
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
               <div className={style.wrapper}>

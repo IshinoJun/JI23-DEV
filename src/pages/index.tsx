@@ -9,6 +9,8 @@ import IconButton from "../components/shared/IconButton";
 import IconButtonType from "../enums/IconButtonType";
 import SNS from "../models/SNS";
 import DevClient from "../pages/api/DevClient";
+import HeadProps from "../models/HeadProps";
+import { useRouter } from "next/router";
 
 interface Props {
   sns: SNS;
@@ -16,9 +18,19 @@ interface Props {
 
 const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
+  const router = useRouter();
+
+  //TODO:なんか説明と画像を用意する
+  const headProps: HeadProps = {
+    title: "Home",
+    type: "website",
+    description: "JI23-Devのホームのページになります。",
+    image: "",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+  } as const;
 
   return (
-    <Layout title="Home">
+    <Layout headProps={headProps}>
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>

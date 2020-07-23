@@ -13,6 +13,7 @@ import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Tags from "../../components/shared/Tags";
 import { Button } from "@material-ui/core";
+import HeadProps from "../../models/HeadProps";
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -28,8 +29,17 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
     imgProps: { src: "/blog.png", alt: "Blogs" },
   } as const;
 
+  //TODO:画像を用意する
+  const headProps: HeadProps = {
+    title: "Blogs",
+    type: "article",
+    description: "JI23-Devのブログ一覧のページになります。",
+    image: "/blog.png",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/blogs`,
+  } as const;
+
   return (
-    <Layout title="Blogs" headerProps={headerProps}>
+    <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.wrapper}>

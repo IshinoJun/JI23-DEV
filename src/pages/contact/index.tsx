@@ -13,6 +13,7 @@ import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
 import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
+import HeadProps from "../../models/HeadProps";
 
 interface Props {
   sns: SNS;
@@ -21,6 +22,10 @@ interface Props {
 const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
+  const devClient = useContextDevClient();
+
+  const router = useRouter();
+
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
@@ -28,9 +33,14 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
-  const devClient = useContextDevClient();
-
-  const router = useRouter();
+  //TODO:なんか説明と画像を用意する
+  const headProps: HeadProps = {
+    title: "Contact",
+    type: "article",
+    description: "JI23-Devの問い合わせのページになります。",
+    image: "/contact.png",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+  } as const;
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("名前は必須項目です"),
@@ -61,7 +71,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout title="Contact" headerProps={headerProps}>
+    <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>
