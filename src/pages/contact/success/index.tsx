@@ -7,9 +7,13 @@ import { Button } from "@material-ui/core";
 import Link from "next/link";
 import HeaderProps from "../../../models/HeaderProps";
 import useMedia from "../../../hooks/useMedia";
+import { useRouter } from "next/router";
+import HeadProps from "../../../models/HeadProps";
 
 const SuccessIndex: NextPage = () => {
   const isTab = useMedia("tab");
+
+  const router = useRouter();
 
   const headerProps: HeaderProps = {
     title: "Contact",
@@ -18,8 +22,16 @@ const SuccessIndex: NextPage = () => {
     imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
+  const headProps: HeadProps = {
+    title: "Contact",
+    type: "article",
+    description: "JI23-DEVの問い合わせのページになります。",
+    image: "/contact.png",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+  } as const;
+
   return (
-    <Layout title="ContactSuccess" headerProps={headerProps}>
+    <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.contact}>

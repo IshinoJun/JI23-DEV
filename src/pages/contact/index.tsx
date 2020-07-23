@@ -33,7 +33,6 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
-  //TODO:なんか説明と画像を用意する
   const headProps: HeadProps = {
     title: "Contact",
     type: "article",
