@@ -3,25 +3,17 @@
 @import 'style/settings';
 
 .tags {
-  margin-bottom: em(14, 12);
-  margin-top: em(14, 12);
-
   p:first-child {
     margin-left: 0;
   }
 
   .tag {
     background-color: #00b6f8;
-    border: 1px solid #1c1c1c;
     border-radius: 2px;
     color: $color-white;
     display: inline-block;
     font-size: fz(12);
     margin: 0 0 em(14, 8) em(14, 16);
     padding: em(14, 4) em(14, 16);
-  
-    span:first-child {
-      margin-right: em(14, 5);
-    }
   }
 }

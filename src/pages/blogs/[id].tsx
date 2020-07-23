@@ -8,7 +8,7 @@ import Layout from "../../components/shared/Layout";
 import HeaderProps from "../../models/HeaderProps";
 import style from "./id.module.scss";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { formatDate } from "../../utils/FormatUtils";
+import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
 import Tags from "../../components/shared/Tags";
 import Highlight from "react-highlight";
 import Link from "next/link";
@@ -39,36 +39,42 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
         <Layout title={blog.title} headerProps={headerProps}>
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
-              <div className={style.contact}>
-                <div className={style.blog}>
-                  <div className={style.photo}>
-                    <img src={blog.ogp.url} />
+              <div className={style.wrapper}>
+                <div className={style.contact}>
+                  <div className={style.blog}>
+                    <img src={formatOgpSetting(blog.ogp.url, blog.title)} />
+                    <header className={style.entryHeader}>
+                      <div className={style.date}>
+                        <AccessTimeIcon />
+                        <span>{formatDate(new Date(blog.date))}</span>
+                      </div>
+                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                        <a>
+                          <h3>{blog.title}</h3>
+                        </a>
+                      </Link>
+                      <Tags tags={blog.tags} tagsPosition="left" />
+                    </header>
+                    <Highlight innerHTML>{blog.content}</Highlight>
                   </div>
-                  <h3>{blog.title}</h3>
-                  <div className={style.date}>
-                    <AccessTimeIcon />
-                    <span>{formatDate(new Date(blog.date))}</span>
-                  </div>
-                  <Tags tags={blog.tags} tagsPosition="left" />
-                  <Highlight innerHTML>{blog.content}</Highlight>
                 </div>
+                <ul className={style.linkArea}>
+                  <li>
+                    {prevBlog && (
+                      <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
+                        <a>{"← " + prevBlog.title}</a>
+                      </Link>
+                    )}
+                  </li>
+                  <li>
+                    {nextBlog && (
+                      <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
+                        <a>{nextBlog.title + " →"}</a>
+                      </Link>
+                    )}
+                  </li>
+                </ul>
               </div>
-              <ul className={style.linkArea}>
-                <li>
-                  {prevBlog && (
-                    <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
-                      <a>{"← " + prevBlog.title}</a>
-                    </Link>
-                  )}
-                </li>
-                <li>
-                  {nextBlog && (
-                    <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
-                      <a>{nextBlog.title + " →"}</a>
-                    </Link>
-                  )}
-                </li>
-              </ul>
             </div>
           </section>
         </Layout>

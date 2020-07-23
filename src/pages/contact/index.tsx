@@ -88,7 +88,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
                       required
                       fullWidth
                       id="name"
-                      label="名前"
+                      label="お名前"
                       name="name"
                       autoComplete="name"
                       defaultValue=""

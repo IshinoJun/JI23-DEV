@@ -10,7 +10,15 @@
 
   @include tab {
     font-size: fz(16);
-    width: 50%;
+    width: 70%;
+  }
+
+  .wrapper {
+    padding: 0 em(14, 15);
+  
+    @include tab {
+      padding: 0 em(16, 15);
+    }
   }
 }
 
@@ -32,21 +40,16 @@
   border-bottom-color: #ededed;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding: 0 em(14, 48) em(14, 15) em(14, 48);
+  padding-bottom: em(14, 15);
 
   @include tab {
-    padding: 0 em(16, 48) em(16, 15) em(16, 48);
+    padding: em(16, 15);
   }
 
   h3 {
     font-size: fz(26);
     line-height: em(26, 48);
-    margin-top: em(26, 24);
-  }
-
-  .photo {
-    display: flex;
-    justify-content: center;
+    margin-top: em(26, 12);
   }
 
   .blog {
@@ -54,23 +57,28 @@
       margin: 0 auto;
     }
 
-    .date {
-      align-items: center;
-      display: flex;
-      margin: em(14, 10) 0 em(14, 15);
+    .entryHeader {
+      margin-bottom: em(14, 28);
 
-      @include tab {
-        margin: em(16, 10) 0 em(16, 15);
-      }
+      .date {
+        align-items: center;
+        display: flex;
+        margin-top: em(14, 10);
 
-      svg {
-        color: #00b6f8;
-        font-size: fz(16);
-        margin-right: em(16, 5);
-      }
+        @include tab {
+          margin-top: em(16, 10);
+        }
 
-      span {
-        font-weight: bold;
+        svg {
+          color: #00b6f8;
+          font-size: fz(13);
+          margin-right: em(13, 5);
+        }
+
+        span {
+          color: #959c9e;
+          font-size: fz(13);
+        }
       }
     }
 

@@ -17,7 +17,6 @@ class CustomDocument extends Document implements CustomDocumentInterface {
     return (
       <Html lang="ja-JP">
         <Head>
-          {/* `<Head>` の内容は必要に応じて変更 */}
           <meta name="description" content={this.description} />
           <meta name="theme-color" content="#333" />
           <meta property="og:type" content="website" />

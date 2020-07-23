@@ -13,7 +13,6 @@ const Tags: React.FC<Props> = (props: Props) => {
     <div style={{ textAlign: tagsPosition }} className={style.tags}>
       {tags?.map((tag, index) => (
         <p key={index} className={style.tag}>
-          <span>#</span>
           <span>{tag.name}</span>
         </p>
       ))}

@@ -9,7 +9,7 @@ import Blog from "../../models/Blog";
 import ArrayList from "../../models/Array";
 import Link from "next/link";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
-import { formatDate } from "../../utils/FormatUtils";
+import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Tags from "../../components/shared/Tags";
 import { Button } from "@material-ui/core";
@@ -32,31 +32,39 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
     <Layout title="Blogs" headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
-          {blogs.contents.map((blog, index) => (
-            <div key={index} className={style.contact}>
-              <div className={style.blog}>
-                <div className={style.photo}>
-                  <img src={blog.ogp.url} />
-                </div>
-                <h3>{blog.title}</h3>
-                <div className={style.date}>
-                  <AccessTimeIcon />
-                  <span>{formatDate(new Date(blog.date))}</span>
-                </div>
-                <p className={style.introduction}>{blog.introduction}</p>
-                <Tags tags={blog.tags} tagsPosition="left" />
-                <Button
-                  type="button"
-                  variant="contained"
-                  style={{ textTransform: "none" }}
-                >
+          <div className={style.wrapper}>
+            {blogs.contents.map((blog, index) => (
+              <div key={index} className={style.content}>
+                <div className={style.blog}>
                   <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                    <a>Read More</a>
+                    <a>
+                      <img src={formatOgpSetting(blog.ogp.url, blog.title)} />
+                    </a>
                   </Link>
-                </Button>
+                  <div className={style.date}>
+                    <AccessTimeIcon />
+                    <span>{formatDate(new Date(blog.date))}</span>
+                  </div>
+                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                    <a>
+                      <h3>{blog.title}</h3>
+                    </a>
+                  </Link>
+                  <Tags tags={blog.tags} tagsPosition="left" />
+                  <p className={style.introduction}>{blog.introduction}</p>
+                  <Button
+                    type="button"
+                    variant="contained"
+                    className={style.read}
+                  >
+                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                      <a>記事を読む</a>
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </Layout>
@@ -79,6 +87,7 @@ export const getStaticProps: GetStaticProps = async ({
     const draftRes = await devClient.getBlogPreview(previewDataId, draftKey);
     res.contents.unshift(draftRes);
   }
+
   return {
     props: {
       blogs: res,

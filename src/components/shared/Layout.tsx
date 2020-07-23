@@ -16,7 +16,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Head>
-        <title>{title + " | dev-blog"}</title>
+        <title>{title + " | JI23-Dev"}</title>
       </Head>
       <main className="wrapper">
         {headerProps && <Header {...headerProps} />}
