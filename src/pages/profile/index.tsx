@@ -27,7 +27,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Profile",
     type: "article",
-    description: "JI23-Devのプロフィールのページになります。",
+    description: "JI23-DEVのプロフィールのページになります。",
     image: "/profile.png",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;

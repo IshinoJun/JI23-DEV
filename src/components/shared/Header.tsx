@@ -4,11 +4,9 @@ import Link from "next/link";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import HeaderProps from "../../models/HeaderProps";
-import useMedia from "../../hooks/useMedia";
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { title, subTitle, linkProps, imgProps } = props;
-  const isTab = useMedia("tab");
 
   return (
     <header className={style.head}>

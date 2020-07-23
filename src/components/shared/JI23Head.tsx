@@ -7,7 +7,7 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
 
   return (
     <Head>
-      <title>{title + " | JI23-Dev"}</title>
+      <title>{title + " | JI23-DEV"}</title>
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />

@@ -32,7 +32,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Portfolio",
     type: "article",
-    description: "JI23-Devのポートフォリオのページになります。",
+    description: "JI23-DEVのポートフォリオのページになります。",
     image: "/portfolio.png",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
