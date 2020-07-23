@@ -83,8 +83,7 @@ const Home: NextPage<Props> = (props: Props) => {
               </div>
             </div>
             <div className={style.iconArea}>
-              {/** TODO 良い感じの画像に差し替える */}
-              <Avatar className={style.icon} src="" />
+              <Avatar className={style.icon} src="/icon.png" />
             </div>
           </div>
         </div>

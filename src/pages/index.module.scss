@@ -65,8 +65,17 @@
     }
 
     .icon {
+      background-color: $color-gray;
+      border: 1px solid $color-black;
       height: em(20, 238);
       width: em(20, 238);
+
+      img {
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+      }
     }
   }
 
