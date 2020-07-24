@@ -70,7 +70,9 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                       </Link>
                       <Tags tags={blog.tags} tagsPosition="left" />
                     </header>
-                    <Highlight innerHTML>{blog.content}</Highlight>
+                    <Highlight innerHTML className="markdown-body">
+                      {blog.content}
+                    </Highlight>
                   </div>
                 </div>
                 <ul className={style.linkArea}>
