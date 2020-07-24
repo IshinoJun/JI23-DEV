@@ -28,7 +28,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
               <h4 style={{ fontWeight: "normal" }}>{subTitle}</h4>
             </div>
           </div>
-
           <Link {...linkProps}>
             <IconButton size="medium" className={style.close}>
               <CloseIcon />

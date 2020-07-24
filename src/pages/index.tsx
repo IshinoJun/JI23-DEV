@@ -23,7 +23,7 @@ const Home: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Home",
     type: "website",
-    description: "JI23-DEVのホームのページになります。",
+    description: "JI23-DEV/ブログ兼ブログになります。",
     image: "/icon.png",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
