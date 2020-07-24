@@ -30,9 +30,8 @@
   margin-top: em(14, 20);
 
   a {
-    box-shadow: 0 1px 0 0 currentColor;
-    color: #007acc;
-    text-decoration: none;
+    color: $color-blue;
+    text-decoration: underline;
   }
 }
 

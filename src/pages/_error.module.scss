@@ -1,0 +1,51 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-top: em(14, 21);
+
+  @include tab {
+    padding-top: em(16, 24);
+  }
+
+  img {
+    width: 300px;
+
+    @include tab {
+      width: 350px;
+    }
+  }
+}
+
+.wrapper {
+  padding: 0 em(14, 15);
+
+  @include tab {
+    padding: 0 em(16, 15);
+  }
+}
+
+.content {
+  text-align: center;
+
+  h1 {
+    color: $color-dark-blue;
+    font-size: fz(78);
+  }
+
+  p {
+    margin-bottom: em(14, 20);
+
+    @include tab {
+      margin-bottom: 0 em(16, 20);
+    }
+  }
+
+  a {
+    color: $color-blue;
+    text-decoration: underline;
+  }
+}
