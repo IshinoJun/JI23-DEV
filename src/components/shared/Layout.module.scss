@@ -1,0 +1,21 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-top: em(14, 21);
+
+  @include tab {
+    padding-top: em(16, 24);
+  }
+
+  img {
+    width: 300px;
+
+    @include tab {
+      width: 350px;
+    }
+  }
+}

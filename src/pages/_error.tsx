@@ -23,13 +23,6 @@ const Error: NextPage<Props> = ({ statusCode }) => {
   return (
     <Layout headProps={headProps}>
       <div className={style.wrapper}>
-        <header className={style.logo}>
-          <Link href="/" as={`/`}>
-            <a>
-              <img src="/logo.png" />
-            </a>
-          </Link>
-        </header>
         <section className="section">
           <div className="container">
             <div className={style.content}>

@@ -2,7 +2,6 @@ import React from "react";
 import style from "./index.module.scss";
 
 import { NextPage, GetStaticProps } from "next";
-import Link from "next/link";
 import { Avatar } from "@material-ui/core";
 import HomeContent from "../components/shared/HomeContent";
 import Layout from "../components/shared/Layout";
@@ -21,24 +20,16 @@ const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
 
-  //TODO:なんか説明と画像を用意する
   const headProps: HeadProps = {
     title: "Home",
     type: "website",
     description: "JI23-DEVのホームのページになります。",
-    image: "",
+    image: "/icon.png",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
   return (
     <Layout headProps={headProps}>
-      <header className={style.logo}>
-        <Link href="/" as={`/`}>
-          <a>
-            <img src="/logo.png" />
-          </a>
-        </Link>
-      </header>
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>

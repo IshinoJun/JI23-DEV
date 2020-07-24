@@ -4,16 +4,14 @@ import style from "./index.module.scss";
 import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
-import { Grid, TextField, Button } from "@material-ui/core";
 import * as Yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers";
 import Contact from "../../models/Contact";
 import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
 import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
 import HeadProps from "../../models/HeadProps";
+import ContactForm from "../../components/shared/ContactForm";
 
 interface Props {
   sns: SNS;
@@ -49,12 +47,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     body: Yup.string().required("お問い合わせ内容は必須です。"),
   });
 
-  const { control, handleSubmit, errors } = useForm<Contact>({
-    mode: "onBlur",
-    resolver: yupResolver(validationSchema),
-  });
-
-  const onSubmit = (contact: Contact) => {
+  const handleSubmit = (contact: Contact) => {
     if (!devClient) return;
 
     void (async (): Promise<void> => {
@@ -78,82 +71,11 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
               <div className={style.title}>
                 <h2>お問い合わせフォーム</h2>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                <div className={style.message}>
-                  <p>
-                    お問い合わせがある場合は、
-                    <a href={sns.twitterUrl} target="_blank" rel="noreferrer">
-                      Twitter
-                    </a>
-                    でDMして頂くか、下記のフォームからご連絡ください。
-                  </p>
-                </div>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <Controller
-                      as={TextField}
-                      control={control}
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="name"
-                      label="お名前"
-                      name="name"
-                      autoComplete="name"
-                      defaultValue=""
-                      error={!!errors.name?.message}
-                    />
-                    {errors.name && (
-                      <p className={style.error}>{errors.name.message}</p>
-                    )}
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Controller
-                      as={TextField}
-                      control={control}
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="email"
-                      label="メールアドレス"
-                      name="email"
-                      autoComplete="email"
-                      defaultValue=""
-                      error={!!errors.email?.message}
-                    />
-                    {errors.email && (
-                      <p className={style.error}>{errors.email.message}</p>
-                    )}
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Controller
-                      as={TextField}
-                      control={control}
-                      variant="outlined"
-                      required
-                      fullWidth
-                      multiline
-                      rows={6}
-                      name="body"
-                      label="内容"
-                      id="body"
-                      autoComplete="body"
-                      defaultValue=""
-                      error={!!errors.body?.message}
-                    />
-                    {errors.body && (
-                      <p className={style.error}>{errors.body.message}</p>
-                    )}
-                  </Grid>
-                </Grid>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  className={style.send}
-                >
-                  送信
-                </Button>
-              </form>
+              <ContactForm
+                onSubmit={handleSubmit}
+                validationSchema={validationSchema}
+                sns={sns}
+              />
             </div>
           </div>
         </div>

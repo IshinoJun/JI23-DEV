@@ -1,0 +1,51 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.form {
+  padding: 0 em(14, 16) em(14, 14) em(14, 16);
+
+  @include tab {
+    flex: 2;
+    padding: 0 em(16, 32) em(16, 16) em(16, 32);
+  }
+
+  .message {
+    padding-bottom: em(14, 29);
+    padding-top: em(14, 15);
+    text-align: start;
+  
+    @include tab {
+      padding-bottom: em(16, 31);
+      padding-top: em(16, 15);
+    }
+
+    a {
+      color: $color-twitter;
+    }
+  }
+
+  .send {
+    background-color: $color-hight-green !important;
+    color: $color-white;
+    margin-top: em(14, 36);
+    width: em(14, 200);
+
+    @include tab {
+      margin-top: em(16, 36);
+      width: em(16, 200);
+    }
+  }
+
+  .error {
+    color: $color-red;
+    font-size: fz(12);
+    font-weight: 400;
+    letter-spacing: 0.03333em;
+    line-height: 1.66;
+    margin-left: em(12, 14);
+    margin-right: em(12, 14);
+    margin-top: em(12, 3);
+    text-align: left;
+  }
+}
