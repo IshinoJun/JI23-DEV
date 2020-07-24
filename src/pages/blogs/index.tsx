@@ -64,6 +64,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
                   </Link>
                   <Tags tags={blog.tags} tagsPosition="left" />
                   <Button
+                    style={{ marginTop: 20 }}
                     type="button"
                     variant="contained"
                     className={style.read}
