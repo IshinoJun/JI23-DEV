@@ -68,15 +68,25 @@
         margin-top: em(16, 20);
       }
 
+      .date {
+        align-items: center;
+        display: flex;
+
+        svg {
+          color: #00b6f8;
+          font-size: fz(13);
+          margin-right: em(13, 5);
+        }
+
+        span {
+          color: #959c9e;
+          font-size: fz(13);
+        }
+      }
+
       h2 {
         font-size: fz(26);
-        padding-bottom: em(14, 5);
-        padding-top: em(14, 5);
-
-        @include tab {
-          padding-bottom: em(16, 5);
-          padding-top: em(16, 5);
-        }
+        padding-top: em(26, 5);
       }
 
       p {

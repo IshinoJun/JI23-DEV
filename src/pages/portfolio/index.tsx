@@ -13,6 +13,8 @@ import IconButton from "../../components/shared/IconButton";
 import IconButtonType from "../../enums/IconButtonType";
 import { useRouter } from "next/router";
 import HeadProps from "../../models/HeadProps";
+import Tags from "../../components/shared/Tags";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 interface Props {
   portfolioAry: ArrayList<Portfolio>;
@@ -59,7 +61,11 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
                 </div>
                 <div className={style.detail}>
                   <h2>{portfolio.name}</h2>
-                  <p>{formatEndMonth(new Date(portfolio.date))}</p>
+                  <p className={style.date}>
+                    <AccessTimeIcon />
+                    <span>{formatEndMonth(new Date(portfolio.date))}</span>
+                  </p>
+                  <Tags tags={portfolio.tags} tagsPosition="left" />
                   {portfolio.introduction.split("\n").map((intro, index) => (
                     <p key={index}>{intro}</p>
                   ))}
