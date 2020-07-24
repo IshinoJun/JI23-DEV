@@ -10,7 +10,6 @@ const preview = async (
 
   const { id, draftKey, secret } = req.query;
 
-  // クエリの確認
   if (
     secret !== SECRET_KEY ||
     typeof id !== "string" ||
@@ -23,16 +22,13 @@ const preview = async (
 
   const post = await devClient.getBlogPreview(id, draftKey);
 
-  // エラー処理
   if (!post) return res.status(401).json({ message: "Invalid draft key" });
 
-  // プレビューデータを格納
   res.setPreviewData({
     draftKey: req.query.draftKey,
     id: req.query.id,
   });
 
-  // 詳細ページへリダイレクト
   res.writeHead(307, { Location: `/blogs/${id}` });
 
   res.end("Preview mode enabled");

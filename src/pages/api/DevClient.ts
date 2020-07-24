@@ -33,7 +33,6 @@ class DevClient {
     return config;
   };
 
-  // 緩いエラーハンドリング
   private resolvePromise<T>(promise: AxiosPromise<T>) {
     return new Promise<T>((resolve, reject) => {
       promise

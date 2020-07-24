@@ -54,7 +54,6 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     resolver: yupResolver(validationSchema),
   });
 
-  //TODO: エラーハンドリングを考えなきゃダメ
   const onSubmit = (contact: Contact) => {
     if (!devClient) return;
 
@@ -62,6 +61,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
       try {
         await devClient.createContact(contact);
       } catch (err) {
+        void router.push("/contact/error");
         return;
       }
 
