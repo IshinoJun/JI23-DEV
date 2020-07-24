@@ -48,7 +48,9 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
                 <div className={style.blog}>
                   <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                     <a>
-                      <img src={formatOgpSetting(blog.ogp.url, blog.title)} />
+                      <img
+                        src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
+                      />
                     </a>
                   </Link>
                   <div className={style.date}>

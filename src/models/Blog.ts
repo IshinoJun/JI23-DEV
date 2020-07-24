@@ -7,6 +7,7 @@ interface Blog {
   date: string;
   tags?: Tag[];
   ogp: { url: string };
+  ogpTitle: string;
   content: string;
 }
 
