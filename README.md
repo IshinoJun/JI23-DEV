@@ -29,7 +29,7 @@ JI23-DEVのポートフォリオサイト兼ブログです。
 | NEXT_PUBLIC_X_WRITE_API_KEY|microCMSのPOST, PUT, PATCH, DELETE APIリクエストの際に必要な認証キー|
 | NEXT_PUBLIC_SECRET_KEY            | ブログ記事のプレビュー時に利用するセキュリティーkey|
 | NEXT_PUBLIC_END_POINT             | microCMSのエンドポイント                 |
-| NEXT_PUBLIC_BASE_URL           | 離脱アラートを表示するか否か (`true` or `false`)             |
+| NEXT_PUBLIC_BASE_URL           | webページのBASE_URL             |
 
 ## スクリプト
 
