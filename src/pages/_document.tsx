@@ -7,8 +7,8 @@ class CustomDocument extends Document {
     return (
       <Html lang="ja-JP">
         <Head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="icon" href="/icon.png" />
+          <link rel="apple-touch-icon" href="/icon.png" />
         </Head>
         <body>
           <Main />
