@@ -9,6 +9,7 @@ import Portfolio from "../../models/Portfolio";
 import ArrayList from "../../models/Array";
 import SNS from "../../models/SNS";
 import Blog from "../../models/Blog";
+import Home from "../../models/Home";
 
 class DevClient {
   private axios = Axios.create({
@@ -85,6 +86,10 @@ class DevClient {
 
   public getPortfolio(): Promise<ArrayList<Portfolio>> {
     return this.get<ArrayList<Portfolio>>("portfolio");
+  }
+
+  public getHome(id = "mugn6h-wl"): Promise<Home> {
+    return this.get<Home>("home/" + id);
   }
 
   public getSNS(id = "guy_hqnt8"): Promise<SNS> {

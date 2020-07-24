@@ -40,7 +40,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
     title: blog?.ogpTitle ?? "",
     type: "article",
     description: blog?.introduction ?? "",
-    image: formatOgpSetting(blog?.ogp.url ?? "", blog?.title ?? ""),
+    image: formatOgpSetting(blog?.ogp.url ?? "", blog?.ogpTitle ?? ""),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
