@@ -167,7 +167,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 }> => {
   const devClient = new DevClient();
 
-  const sns = await devClient.getMySNS();
+  const sns = await devClient.getSNS();
 
   return {
     props: {

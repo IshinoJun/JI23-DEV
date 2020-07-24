@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 }> => {
   const devClient = new DevClient();
 
-  const profile = await devClient.getMyProfile();
+  const profile = await devClient.getProfile();
 
   return {
     props: {

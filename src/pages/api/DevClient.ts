@@ -75,8 +75,8 @@ class DevClient {
     return this.resolvePromise<T>(this.axios.delete(url, this.resolveConfig()));
   }
 
-  public getMyProfile(): Promise<Profile> {
-    return this.get<Profile>("profile/ujoo8cbvf");
+  public getProfile(id = "ujoo8cbvf"): Promise<Profile> {
+    return this.get<Profile>("profile/" + id);
   }
 
   public createContact(contact: Contact): Promise<void> {
@@ -87,8 +87,8 @@ class DevClient {
     return this.get<ArrayList<Portfolio>>("portfolio");
   }
 
-  public getMySNS(): Promise<SNS> {
-    return this.get<SNS>("sns/guy_hqnt8");
+  public getSNS(id = "guy_hqnt8"): Promise<SNS> {
+    return this.get<SNS>("sns/" + id);
   }
 
   public getBlog(id: string): Promise<Blog> {
