@@ -145,15 +145,5 @@
     .entryHeader {
       margin-bottom: em(14, 28);
     }
-
-    .introduction {
-      margin-bottom: em(14, 12);
-      margin-top: em(14, 12);
-
-      @include tab {
-        margin-bottom: em(16, 12);
-        margin-top: em(16, 12);
-      }
-    }
   }
 }

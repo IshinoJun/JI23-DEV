@@ -25,7 +25,7 @@
 
     h3 {
       font-size: fz(26);
-      line-height: em(26, 48);
+      margin-bottom: em(26, 12);
       margin-top: em(26, 12);
     }
 
@@ -58,16 +58,6 @@
         span {
           color: #959c9e;
           font-size: fz(13);
-        }
-      }
-
-      .introduction {
-        margin-bottom: em(14, 12);
-        margin-top: em(14, 12);
-
-        @include tab {
-          margin-bottom: em(16, 12);
-          margin-top: em(16, 12);
         }
       }
     }
