@@ -15,6 +15,9 @@ import Link from "next/link";
 import ArrayList from "../../models/Array";
 import HeadProps from "../../models/HeadProps";
 import { useRouter } from "next/router";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 interface Props {
   blog: Blog | null;
@@ -74,14 +77,70 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                   <li>
                     {prevBlog && (
                       <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
-                        <a>{"← " + prevBlog.title}</a>
+                        <a>
+                          <ArrowBackIcon
+                            fontSize="large"
+                            className={style.arrow}
+                            style={{ marginRight: 20 }}
+                          />
+                          <div>
+                            <p className={style.tag}>
+                              <LocalOfferIcon />
+                              {prevBlog.tags?.map((tag, index) => (
+                                <span key={index}>
+                                  {tag.name}
+                                  {index + 1 !== prevBlog.tags?.length
+                                    ? ", "
+                                    : ""}
+                                </span>
+                              ))}
+                            </p>
+                            <p
+                              className={[style.text, style.ellipsis].join(" ")}
+                            >
+                              {prevBlog.title}
+                            </p>
+                            <p className={style.date}>
+                              <AccessTimeIcon />
+                              <span>{formatDate(new Date(prevBlog.date))}</span>
+                            </p>
+                          </div>
+                        </a>
                       </Link>
                     )}
                   </li>
                   <li>
                     {nextBlog && (
                       <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
-                        <a>{nextBlog.title + " →"}</a>
+                        <a>
+                          <div style={{ marginLeft: 55 }}>
+                            <p className={style.tag}>
+                              <LocalOfferIcon />
+                              {nextBlog.tags?.map((tag, index) => (
+                                <span key={index}>
+                                  {tag.name}
+                                  {index + 1 !== nextBlog.tags?.length
+                                    ? ", "
+                                    : ""}
+                                </span>
+                              ))}
+                            </p>
+                            <p
+                              className={[style.text, style.ellipsis].join(" ")}
+                            >
+                              {nextBlog.title}
+                            </p>
+                            <p className={style.date}>
+                              <AccessTimeIcon />
+                              <span>{formatDate(new Date(nextBlog.date))}</span>
+                            </p>
+                          </div>
+                          <ArrowForwardIcon
+                            fontSize="large"
+                            className={style.arrow}
+                            style={{ marginLeft: 20 }}
+                          />
+                        </a>
                       </Link>
                     )}
                   </li>

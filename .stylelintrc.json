@@ -58,8 +58,6 @@
       ]
     ],
     "order/properties-alphabetical-order": true,
-    "property-no-unknown": true,
-    "property-no-vendor-prefix": true,
     "rule-empty-line-before": [
       "always-multi-line",
       {
@@ -85,7 +83,6 @@
     "selector-pseudo-element-colon-notation": "double",
     "selector-pseudo-element-no-unknown": true,
     "shorthand-property-no-redundant-values": true,
-    "string-quotes": "single",
-    "value-no-vendor-prefix": true
+    "string-quotes": "single"
   }
 }
