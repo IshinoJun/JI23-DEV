@@ -6,7 +6,6 @@ import HeadProps from "../../models/HeadProps";
 import JI23Head from "./JI23Head";
 import Link from "next/link";
 import style from "./Layout.module.scss";
-import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   children: React.ReactNode;
@@ -16,8 +15,6 @@ interface Props {
 
 const Layout: React.FC<Props> = (props: Props) => {
   const { children, headerProps, headProps } = props;
-
-  const images = useContextImageContext();
 
   return (
     <>
@@ -29,7 +26,7 @@ const Layout: React.FC<Props> = (props: Props) => {
           <header className={style.logo}>
             <Link href="/" as={`/`}>
               <a>
-                <img src={images.logoImage.url} alt="ロゴ画像" />
+                <img src="/logo.png" alt="ロゴ画像" />
               </a>
             </Link>
           </header>

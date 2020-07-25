@@ -12,7 +12,6 @@ import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
 import HeadProps from "../../models/HeadProps";
 import ContactForm from "../../components/shared/ContactForm";
-import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -22,7 +21,6 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
   const devClient = useContextDevClient();
-  const images = useContextImageContext();
 
   const router = useRouter();
 
@@ -30,7 +28,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: images.contactImage.url, alt: "Contact" },
+    imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {

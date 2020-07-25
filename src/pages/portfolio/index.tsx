@@ -15,7 +15,6 @@ import { useRouter } from "next/router";
 import HeadProps from "../../models/HeadProps";
 import Tags from "../../components/shared/Tags";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   portfolioAry: ArrayList<Portfolio>;
@@ -25,13 +24,11 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const { portfolioAry } = props;
   const router = useRouter();
 
-  const images = useContextImageContext();
-
   const headerProps: HeaderProps = {
     title: "Portfolio",
     subTitle: "ポートフォリオ",
     linkProps: { href: "/" },
-    imgProps: { src: images.portfolioImage.url, alt: "Portfolio" },
+    imgProps: { src: "/portfolio.png", alt: "Portfolio" },
   } as const;
 
   const headProps: HeadProps = {

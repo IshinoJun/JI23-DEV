@@ -9,21 +9,17 @@ import HeaderProps from "../../../models/HeaderProps";
 import useMedia from "../../../hooks/useMedia";
 import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
-import { useContextImageContext } from "../../../context/ImageContext";
-import { formatOgpSetting } from "../../../utils/FormatUtils";
 
 const SuccessIndex: NextPage = () => {
   const isTab = useMedia("tab");
 
   const router = useRouter();
 
-  const images = useContextImageContext();
-
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: images.contactImage.url, alt: "Contact" },
+    imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {

@@ -14,7 +14,6 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Tags from "../../components/shared/Tags";
 import { Button } from "@material-ui/core";
 import HeadProps from "../../models/HeadProps";
-import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -23,13 +22,11 @@ interface Props {
 const BlogIndex: NextPage<Props> = (props: Props) => {
   const { blogs } = props;
 
-  const images = useContextImageContext();
-
   const headerProps: HeaderProps = {
     title: "Blogs",
     subTitle: "ブログ一覧",
     linkProps: { href: "/" },
-    imgProps: { src: images.blogImage.url, alt: "Blogs" },
+    imgProps: { src: "/blog.png", alt: "Blogs" },
   } as const;
 
   const headProps: HeadProps = {

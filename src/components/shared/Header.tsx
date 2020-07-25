@@ -4,19 +4,16 @@ import Link from "next/link";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import HeaderProps from "../../models/HeaderProps";
-import { useContextImageContext } from "../../context/ImageContext";
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { title, subTitle, linkProps, imgProps } = props;
-
-  const images = useContextImageContext();
 
   return (
     <header className={style.head}>
       <div className={style.logo}>
         <Link href="/" as={`/`}>
           <a>
-            <img src={images.logoImage.url} alt="ロゴ画像" />
+            <img src="/logo.png" alt="ロゴ画像" />
           </a>
         </Link>
       </div>
