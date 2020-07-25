@@ -8,7 +8,7 @@ import Portfolio from "../../models/Portfolio";
 import DevClient from "../../pages/api/DevClient";
 import ArrayList from "../../models/Array";
 
-import { formatEndMonth, formatOgpSetting } from "../../utils/FormatUtils";
+import { formatEndMonth } from "../../utils/FormatUtils";
 import IconButton from "../../components/shared/IconButton";
 import IconButtonType from "../../enums/IconButtonType";
 import { useRouter } from "next/router";
