@@ -55,10 +55,12 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
                     <IconButton
                       iconButtonType={IconButtonType.siteLink}
                       href={portfolio.siteLink}
+                      aria-label="サイトのリンク"
                     />
                     <IconButton
                       iconButtonType={IconButtonType.gitHub}
                       href={portfolio.githubLink}
+                      aria-label="twitterのリンク"
                     />
                   </div>
                 </div>
