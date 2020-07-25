@@ -3,7 +3,7 @@
 @import 'style/settings';
 
 .contact {
-  background-color: #fdfdfd;
+  background-color: $color-white;
   border-radius: 8px;
   box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
   padding: em(14, 16) em(14, 32);
@@ -32,7 +32,7 @@
   }
 
   .back {
-    background-color: $color-hight-green !important;
+    background-color: $color-dark-blue !important;
     color: $color-white;
     margin-top: em(14, 36);
     width: em(14, 150);

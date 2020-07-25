@@ -73,13 +73,12 @@
         display: flex;
 
         svg {
-          color: #00b6f8;
+          color: $color-right-blue;
           font-size: fz(13);
           margin-right: em(13, 5);
         }
 
         span {
-          color: #959c9e;
           font-size: fz(13);
         }
       }

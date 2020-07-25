@@ -56,7 +56,7 @@
     }
 
     .arrow {
-      background-color: $color-hight-green;
+      background-color: $color-dark-blue;
       border-radius: 8px;
       color: $color-white;
     }
@@ -111,12 +111,11 @@
   }
 
   svg {
-    color: #00b6f8;
+    color: $color-right-blue;
     font-size: fz(13);
   }
 
   span {
-    color: $color-gray;
     font-size: fz(13);
   }
 }
