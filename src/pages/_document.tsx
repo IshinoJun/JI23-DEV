@@ -7,6 +7,10 @@ class CustomDocument extends Document {
     return (
       <Html lang="ja-JP">
         <Head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           <link rel="icon" href="/icon.png" />
           <link rel="apple-touch-icon" href="/icon.png" />
         </Head>

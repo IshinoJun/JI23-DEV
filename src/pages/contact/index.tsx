@@ -6,13 +6,11 @@ import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 import * as Yup from "yup";
 import Contact from "../../models/Contact";
-import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
 import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
 import HeadProps from "../../models/HeadProps";
 import ContactForm from "../../components/shared/ContactForm";
-import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -21,16 +19,13 @@ interface Props {
 const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
-  const devClient = useContextDevClient();
-  const images = useContextImageContext();
-
   const router = useRouter();
 
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: images.contactImage.url, alt: "Contact" },
+    imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {
@@ -50,7 +45,11 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const handleSubmit = (contact: Contact) => {
     void (async (): Promise<void> => {
       try {
-        await devClient.createContact(contact);
+        await fetch(
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL as string
+          }/api/contact?contact=${JSON.stringify(contact)}`
+        );
       } catch (err) {
         void router.push("/contact/error");
         return;

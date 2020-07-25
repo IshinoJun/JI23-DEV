@@ -1,5 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import ErrorPage from "next/error";
+import Error from "../_error";
 import * as React from "react";
 import Blog from "../../models/Blog";
 import DevClient from "../../pages/api/DevClient";
@@ -158,7 +158,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
           </section>
         </Layout>
       ) : (
-        <ErrorPage statusCode={404} />
+        <Error statusCode={404} />
       )}
     </>
   );
