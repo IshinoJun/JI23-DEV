@@ -35,6 +35,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
+    title: "Portfolio",
     type: "article",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;

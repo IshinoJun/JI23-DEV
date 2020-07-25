@@ -11,7 +11,6 @@ import HeadProps from "../../../models/HeadProps";
 import DevClient from "../../api/DevClient";
 import SNS from "../../../models/SNS";
 import { useContextImageContext } from "../../../context/ImageContext";
-import { formatOgpSetting } from "../../../utils/FormatUtils";
 
 interface Props {
   sns: SNS;
@@ -31,6 +30,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
+    title: "Error",
     type: "article",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;

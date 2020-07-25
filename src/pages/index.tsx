@@ -24,6 +24,7 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
   const images = useContextImageContext();
 
   const headProps: HeadProps = {
+    title: "Home",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;

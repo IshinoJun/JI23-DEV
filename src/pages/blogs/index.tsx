@@ -33,6 +33,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
+    title: "Blogs",
     type: "article",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/blogs`,
   } as const;

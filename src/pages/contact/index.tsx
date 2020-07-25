@@ -34,6 +34,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
+    title: "Contact",
     type: "article",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;

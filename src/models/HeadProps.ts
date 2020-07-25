@@ -1,5 +1,5 @@
 interface HeadProps {
-  title?: string;
+  title: string;
   type: "website" | "article";
   description?: string;
   image?: string;

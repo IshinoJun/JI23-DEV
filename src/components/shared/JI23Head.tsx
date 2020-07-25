@@ -10,17 +10,14 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
 
   return (
     <Head>
-      <title>{title ? `${title} | ${defaultTitle}` : defaultTitle}</title>
+      <title>{`${title} | ${defaultTitle}`}</title>
       <meta name="Description" content={description} />
       <meta
         property="og:url"
         content={url ?? process.env.NEXT_PUBLIC_BASE_URL}
       />
       <meta property="og:type" content={type} />
-      <meta
-        property="og:title"
-        content={title ? `${title} | ${defaultTitle}` : defaultTitle}
-      />
+      <meta property="og:title" content={`${title} | ${defaultTitle}`} />
       <meta
         property="og:description"
         content={description ?? defaultDescription}
@@ -36,10 +33,7 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
         name="twitter:url"
         content={url ?? process.env.NEXT_PUBLIC_BASE_URL}
       />
-      <meta
-        name="twitter:title"
-        content={title ? `${title} | ${defaultTitle}` : defaultTitle}
-      />
+      <meta name="twitter:title" content={`${title} | ${defaultTitle}`} />
       <meta
         name="twitter:description"
         content={description ?? defaultDescription}
