@@ -33,10 +33,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
-    title: "Blogs",
     type: "article",
-    description: "JI23-DEVのブログ一覧のページになります。",
-    image: formatOgpSetting(images.blogImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/blogs`,
   } as const;
 

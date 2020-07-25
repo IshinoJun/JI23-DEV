@@ -35,10 +35,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
-    title: "Portfolio",
     type: "article",
-    description: "JI23-DEVのポートフォリオのページになります。",
-    image: formatOgpSetting(images.portfolioImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

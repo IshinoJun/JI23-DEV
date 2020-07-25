@@ -12,7 +12,6 @@ import DevClient from "../pages/api/DevClient";
 import HeadProps from "../models/HeadProps";
 import { useRouter } from "next/router";
 import { useContextImageContext } from "../context/ImageContext";
-import { formatOgpSetting } from "../utils/FormatUtils";
 
 interface Props {
   sns: SNS;
@@ -25,10 +24,7 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
   const images = useContextImageContext();
 
   const headProps: HeadProps = {
-    title: "Home",
     type: "website",
-    description: "JI23-DEV | ブログ兼ブログ",
-    image: formatOgpSetting(images.logoImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

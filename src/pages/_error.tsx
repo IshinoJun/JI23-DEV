@@ -13,10 +13,7 @@ const Error: NextPage<Props> = ({ statusCode }) => {
   const router = useRouter();
 
   const headProps: HeadProps = {
-    title: "Error",
     type: "article",
-    description: "JI23-DEVのエラーのページになります。",
-    image: "",
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

@@ -29,10 +29,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
-    title: "Profile",
     type: "article",
-    description: "JI23-DEVのプロフィールのページになります。",
-    image: formatOgpSetting(images.profileImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
