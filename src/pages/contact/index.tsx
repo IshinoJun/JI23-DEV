@@ -6,7 +6,6 @@ import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 import * as Yup from "yup";
 import Contact from "../../models/Contact";
-import { useContextDevClient } from "../../context/DevClientContext";
 import { useRouter } from "next/router";
 import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
@@ -19,8 +18,6 @@ interface Props {
 
 const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
-
-  const devClient = useContextDevClient();
 
   const router = useRouter();
 
@@ -48,7 +45,11 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const handleSubmit = (contact: Contact) => {
     void (async (): Promise<void> => {
       try {
-        await devClient.createContact(contact);
+        await fetch(
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL as string
+          }/api/contact?contact=${JSON.stringify(contact)}`
+        );
       } catch (err) {
         void router.push("/contact/error");
         return;

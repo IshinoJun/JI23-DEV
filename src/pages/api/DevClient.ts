@@ -12,11 +12,11 @@ import Blog from "../../models/Blog";
 
 class DevClient {
   private axios = Axios.create({
-    baseURL: process.env.NEXT_PUBLIC_END_POINT,
+    baseURL: process.env.END_POINT,
     headers: {
       "Content-Type": "application/json",
-      "X-API-KEY": process.env.NEXT_PUBLIC_X_API_KEY,
-      "X-WRITE-API-KEY": process.env.NEXT_PUBLIC_X_WRITE_API_KEY,
+      "X-API-KEY": process.env.API_KEY,
+      "X-WRITE-API-KEY": process.env.WRITE_API_KEY,
     },
   });
 
@@ -79,7 +79,8 @@ class DevClient {
     return this.get<Profile>("profile/" + id);
   }
 
-  public createContact(contact: Contact): Promise<void> {
+  //TODO:レスポンスの型を整備する
+  public createContact(contact: Contact): Promise<string> {
     return this.post("contacts", contact);
   }
 

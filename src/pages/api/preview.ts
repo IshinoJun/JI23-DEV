@@ -5,7 +5,7 @@ const preview = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  const SECRET_KEY = process.env.NEXT_PUBLIC_SECRET_KEY ?? "";
+  const SECRET_KEY = process.env.SECRET_KEY ?? "";
   const devClient = new DevClient();
 
   const { id, draftKey, secret } = req.query;
