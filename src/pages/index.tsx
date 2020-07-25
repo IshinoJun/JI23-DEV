@@ -64,15 +64,17 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
           <div className={style.profile}>
             <div className={style.titleArea}>
               <h1 className={style.title}>Jun Ishino</h1>
-              <h3>Web Develope</h3>
+              <h2>Web Develope</h2>
               <div className={style.linkArea}>
                 <IconButton
                   iconButtonType={IconButtonType.twitter}
                   href={sns.twitterUrl}
+                  aria-label="twitterのリンク"
                 />
                 <IconButton
                   iconButtonType={IconButtonType.gitHub}
                   href={sns.gitHubUrl}
+                  aria-label="twitterのリンク"
                 />
               </div>
             </div>
