@@ -77,7 +77,11 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
               </div>
             </div>
             <div className={style.iconArea}>
-              <Avatar className={style.icon} src={images.iconImage.url} />
+              <Avatar
+                className={style.icon}
+                src={images.iconImage.url}
+                alt="ロゴ画像"
+              />
             </div>
           </div>
         </div>
