@@ -25,7 +25,10 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       <meta property="og:site_name" content={defaultTitle} />
       <meta
         property="og:image"
-        content={image ?? process.env.NEXT_PUBLIC_DEFAULT_IMAGE_URL}
+        content={
+          image ??
+          `${process.env.NEXT_PUBLIC_BASE_URL as string}/defaultOgpImage.png`
+        }
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@JJ_1123_I" />
@@ -40,7 +43,10 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       />
       <meta
         name="twitter:image"
-        content={image ?? process.env.NEXT_PUBLIC_DEFAULT_IMAGE_URL}
+        content={
+          image ??
+          `${process.env.NEXT_PUBLIC_BASE_URL as string}/defaultOgpImage.png`
+        }
       />
       <link rel="canonical" href={url ?? process.env.NEXT_PUBLIC_BASE_URL} />
     </Head>

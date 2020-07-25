@@ -11,7 +11,6 @@ import SNS from "../models/SNS";
 import DevClient from "../pages/api/DevClient";
 import HeadProps from "../models/HeadProps";
 import { useRouter } from "next/router";
-import { useContextImageContext } from "../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -20,8 +19,6 @@ interface Props {
 const HomeIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
-
-  const images = useContextImageContext();
 
   const headProps: HeadProps = {
     title: "Home",
@@ -36,22 +33,22 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
           <div className={style.contents}>
             <HomeContent
               linkProps={{ href: "/profile" }}
-              imgProps={{ src: images.profileImage.url, alt: "Profile" }}
+              imgProps={{ src: "/profile.png", alt: "Profile" }}
               name="Profile"
             />
             <HomeContent
               linkProps={{ href: "/portfolio" }}
-              imgProps={{ src: images.portfolioImage.url, alt: "Portfolio" }}
+              imgProps={{ src: "/portfolio.png", alt: "Portfolio" }}
               name="Portfolio"
             />
             <HomeContent
               linkProps={{ href: "/blogs" }}
-              imgProps={{ src: images.blogImage.url, alt: "Blogs" }}
+              imgProps={{ src: "/blog.png", alt: "Blogs" }}
               name="Blogs"
             />
             <HomeContent
               linkProps={{ href: "/contact" }}
-              imgProps={{ src: images.contactImage.url, alt: "Contact" }}
+              imgProps={{ src: "/contact.png", alt: "Contact" }}
               name="Contact"
             />
           </div>
@@ -77,11 +74,7 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
               </div>
             </div>
             <div className={style.iconArea}>
-              <Avatar
-                className={style.icon}
-                src={images.iconImage.url}
-                alt="ロゴ画像"
-              />
+              <Avatar className={style.icon} src={"/icon.png"} alt="ロゴ画像" />
             </div>
           </div>
         </div>

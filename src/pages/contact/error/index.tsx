@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
 import DevClient from "../../api/DevClient";
 import SNS from "../../../models/SNS";
-import { useContextImageContext } from "../../../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -20,13 +19,11 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
 
-  const images = useContextImageContext();
-
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: images.contactImage.url, alt: "Contact" },
+    imgProps: { src: "/contact.png", alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {

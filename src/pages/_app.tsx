@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../components/theme";
-import App, { AppProps } from "next/app";
+import { AppProps } from "next/app";
 import "ress";
 import "../../styles.scss";
 import "highlightjs/styles/monokai.css";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import DevClient from "./api/DevClient";
-import { AppContextType } from "next/dist/next-server/lib/utils";
 import { Router } from "next/router";
 
 const MyApp = (props: AppProps): JSX.Element => {
@@ -31,13 +29,6 @@ const MyApp = (props: AppProps): JSX.Element => {
       <Component {...pageProps} />
     </ThemeProvider>
   );
-};
-
-MyApp.getInitialProps = async (appContext: AppContextType<Router>) => {
-  const devClient = new DevClient();
-  const appProps = await App.getInitialProps(appContext);
-  const images = await devClient.getImages();
-  return { ...appProps, images };
 };
 
 export default MyApp;

@@ -9,7 +9,6 @@ import Portfolio from "../../models/Portfolio";
 import ArrayList from "../../models/Array";
 import SNS from "../../models/SNS";
 import Blog from "../../models/Blog";
-import Images from "../../models/Images";
 
 class DevClient {
   private axios = Axios.create({
@@ -103,10 +102,6 @@ class DevClient {
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
     return this.get<Blog>("blogs/" + id + `?draftKey=${draftKey}`);
-  }
-
-  public getImages(id = "ojjtr1l48"): Promise<Images> {
-    return this.get<Images>("images/" + id);
   }
 }
 export default DevClient;
