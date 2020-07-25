@@ -11,7 +11,7 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
   return (
     <Head>
       <title>{`${title} | ${defaultTitle}`}</title>
-      <meta name="Description" content={description} />
+      <meta name="Description" content={description ?? defaultDescription} />
       <meta
         property="og:url"
         content={url ?? process.env.NEXT_PUBLIC_BASE_URL}
