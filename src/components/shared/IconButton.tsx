@@ -10,10 +10,11 @@ interface Props {
   iconButtonType: IconButtonType;
   //TODO:本当はbuttonPropsを送りたいが型がわからんかった
   href: string;
+  ariaLabel: string;
 }
 
 const GitHubButton: React.FC<Props> = (props: Props) => {
-  const { href, iconButtonType } = props;
+  const { href, iconButtonType, ariaLabel } = props;
 
   const renderButton = () => {
     switch (iconButtonType) {
@@ -25,6 +26,7 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
             href={href}
             target="_blank"
             rel="noreferrer"
+            aria-label={ariaLabel}
           >
             <GitHubIcon />
           </Button>

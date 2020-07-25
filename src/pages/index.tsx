@@ -69,12 +69,12 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
                 <IconButton
                   iconButtonType={IconButtonType.twitter}
                   href={sns.twitterUrl}
-                  aria-label="twitterのリンク"
+                  ariaLabel="twitterのリンク"
                 />
                 <IconButton
                   iconButtonType={IconButtonType.gitHub}
                   href={sns.gitHubUrl}
-                  aria-label="twitterのリンク"
+                  ariaLabel="gitHubのリンク"
                 />
               </div>
             </div>
