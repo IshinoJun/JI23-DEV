@@ -68,7 +68,11 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
                     <AccessTimeIcon />
                     <span>{formatEndMonth(new Date(portfolio.date))}</span>
                   </p>
-                  <Tags tags={portfolio.tags} tagsPosition="left" />
+                  <Tags
+                    tags={portfolio.tags}
+                    tagsPosition="left"
+                    styleProps={{ marginBottom: 10 }}
+                  />
                   {portfolio.introduction.split("\n").map((intro, index) => (
                     <p key={index}>{intro}</p>
                   ))}

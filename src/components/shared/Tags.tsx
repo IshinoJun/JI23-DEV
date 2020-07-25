@@ -5,12 +5,16 @@ import style from "./Tags.module.scss";
 interface Props {
   tags?: Tag[];
   tagsPosition: "center" | "left" | "right";
+  styleProps?: React.CSSProperties;
 }
 const Tags: React.FC<Props> = (props: Props) => {
-  const { tags, tagsPosition } = props;
+  const { tags, tagsPosition, styleProps } = props;
 
   return (
-    <div style={{ textAlign: tagsPosition }} className={style.tags}>
+    <div
+      style={{ textAlign: tagsPosition, ...styleProps }}
+      className={style.tags}
+    >
       {tags?.map((tag, index) => (
         <p key={index} className={style.tag}>
           <span>{tag.name}</span>
