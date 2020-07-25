@@ -12,7 +12,7 @@ function formatEndMonth(value: Date): string {
 
 function formatOgpSetting(
   url: string,
-  text: string,
+  text = "",
   textPad = 40,
   txtSize = 60,
   width = 1200,

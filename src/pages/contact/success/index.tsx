@@ -10,6 +10,7 @@ import useMedia from "../../../hooks/useMedia";
 import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
 import { useContextImageContext } from "../../../context/ImageContext";
+import { formatOgpSetting } from "../../../utils/FormatUtils";
 
 const SuccessIndex: NextPage = () => {
   const isTab = useMedia("tab");
@@ -29,7 +30,7 @@ const SuccessIndex: NextPage = () => {
     title: "Contact",
     type: "article",
     description: "JI23-DEVの問い合わせのページになります。",
-    image: images.contactImage.url,
+    image: formatOgpSetting(images.contactImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

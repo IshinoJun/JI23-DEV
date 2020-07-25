@@ -8,7 +8,7 @@ import Portfolio from "../../models/Portfolio";
 import DevClient from "../../pages/api/DevClient";
 import ArrayList from "../../models/Array";
 
-import { formatEndMonth } from "../../utils/FormatUtils";
+import { formatEndMonth, formatOgpSetting } from "../../utils/FormatUtils";
 import IconButton from "../../components/shared/IconButton";
 import IconButtonType from "../../enums/IconButtonType";
 import { useRouter } from "next/router";
@@ -38,7 +38,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
     title: "Portfolio",
     type: "article",
     description: "JI23-DEVのポートフォリオのページになります。",
-    image: images.portfolioImage.url,
+    image: formatOgpSetting(images.portfolioImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

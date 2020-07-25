@@ -9,6 +9,7 @@ import Layout from "../../components/shared/Layout";
 import HeadProps from "../../models/HeadProps";
 import { useRouter } from "next/router";
 import { useContextImageContext } from "../../context/ImageContext";
+import { formatOgpSetting } from "../../utils/FormatUtils";
 
 interface Props {
   profile: Profile;
@@ -31,7 +32,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
     title: "Profile",
     type: "article",
     description: "JI23-DEVのプロフィールのページになります。",
-    image: images.profileImage.url,
+    image: formatOgpSetting(images.profileImage.url),
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
