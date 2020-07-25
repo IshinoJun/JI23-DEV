@@ -1,9 +1,9 @@
 import React from "react";
 import DevClient from "../pages/api/DevClient";
 
-const DevClientContext = React.createContext<DevClient | null>(null);
+const DevClientContext = React.createContext<DevClient>({} as DevClient);
 
-const useContextDevClient = (): DevClient | null => {
+const useContextDevClient = (): DevClient => {
   return React.useContext(DevClientContext);
 };
 

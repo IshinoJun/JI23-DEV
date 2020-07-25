@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
 import DevClient from "../../api/DevClient";
 import SNS from "../../../models/SNS";
+import { useContextImageContext } from "../../../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -19,18 +20,20 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
 
+  const images = useContextImageContext();
+
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: "/contact.png", alt: "Contact" },
+    imgProps: { src: images.contactImage.url, alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {
     title: "Contact",
     type: "article",
     description: "JI23-DEVの問い合わせのページになります。",
-    image: "/contact.png",
+    image: images.contactImage.url,
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

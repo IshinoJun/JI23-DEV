@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import HeadProps from "../../models/HeadProps";
 import Tags from "../../components/shared/Tags";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   portfolioAry: ArrayList<Portfolio>;
@@ -24,18 +25,20 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const { portfolioAry } = props;
   const router = useRouter();
 
+  const images = useContextImageContext();
+
   const headerProps: HeaderProps = {
     title: "Portfolio",
     subTitle: "ポートフォリオ",
     linkProps: { href: "/" },
-    imgProps: { src: "/portfolio.png", alt: "Portfolio" },
+    imgProps: { src: images.portfolioImage.url, alt: "Portfolio" },
   } as const;
 
   const headProps: HeadProps = {
     title: "Portfolio",
     type: "article",
     description: "JI23-DEVのポートフォリオのページになります。",
-    image: "/portfolio.png",
+    image: images.portfolioImage.url,
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

@@ -1,11 +1,10 @@
-interface Home {
-  name: string;
-  profession: string;
+interface Images {
+  logoImage: { url: string };
   iconImage: { url: string };
   profileImage: { url: string };
   portfolioImage: { url: string };
-  blogsImage: { url: string };
+  blogImage: { url: string };
   contactImage: { url: string };
 }
 
-export default Home;
+export default Images;

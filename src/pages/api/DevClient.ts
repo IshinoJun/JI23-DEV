@@ -9,7 +9,7 @@ import Portfolio from "../../models/Portfolio";
 import ArrayList from "../../models/Array";
 import SNS from "../../models/SNS";
 import Blog from "../../models/Blog";
-import Home from "../../models/Home";
+import Images from "../../models/Images";
 
 class DevClient {
   private axios = Axios.create({
@@ -88,10 +88,6 @@ class DevClient {
     return this.get<ArrayList<Portfolio>>("portfolio");
   }
 
-  public getHome(id = "mugn6h-wl"): Promise<Home> {
-    return this.get<Home>("home/" + id);
-  }
-
   public getSNS(id = "guy_hqnt8"): Promise<SNS> {
     return this.get<SNS>("sns/" + id);
   }
@@ -106,6 +102,10 @@ class DevClient {
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
     return this.get<Blog>("blogs/" + id + `?draftKey=${draftKey}`);
+  }
+
+  public getImages(id = "ojjtr1l48"): Promise<Images> {
+    return this.get<Images>("images/" + id);
   }
 }
 export default DevClient;

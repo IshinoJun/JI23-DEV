@@ -9,24 +9,27 @@ import HeaderProps from "../../../models/HeaderProps";
 import useMedia from "../../../hooks/useMedia";
 import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
+import { useContextImageContext } from "../../../context/ImageContext";
 
 const SuccessIndex: NextPage = () => {
   const isTab = useMedia("tab");
 
   const router = useRouter();
 
+  const images = useContextImageContext();
+
   const headerProps: HeaderProps = {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: "/contact.png", alt: "Contact" },
+    imgProps: { src: images.contactImage.url, alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {
     title: "Contact",
     type: "article",
     description: "JI23-DEVの問い合わせのページになります。",
-    image: "/contact.png",
+    image: images.contactImage.url,
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 

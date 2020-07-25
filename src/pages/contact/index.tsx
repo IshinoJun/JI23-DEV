@@ -12,6 +12,7 @@ import SNS from "../../models/SNS";
 import DevClient from "../../pages/api/DevClient";
 import HeadProps from "../../models/HeadProps";
 import ContactForm from "../../components/shared/ContactForm";
+import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   sns: SNS;
@@ -21,6 +22,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
   const devClient = useContextDevClient();
+  const images = useContextImageContext();
 
   const router = useRouter();
 
@@ -28,14 +30,14 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     title: "Contact",
     subTitle: "お問い合わせ",
     linkProps: { href: "/" },
-    imgProps: { src: "/contact.png", alt: "Contact" },
+    imgProps: { src: images.contactImage.url, alt: "Contact" },
   } as const;
 
   const headProps: HeadProps = {
     title: "Contact",
     type: "article",
     description: "JI23-DEVの問い合わせのページになります。",
-    image: "/contact.png",
+    image: images.contactImage.url,
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
@@ -48,8 +50,6 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   });
 
   const handleSubmit = (contact: Contact) => {
-    if (!devClient) return;
-
     void (async (): Promise<void> => {
       try {
         await devClient.createContact(contact);

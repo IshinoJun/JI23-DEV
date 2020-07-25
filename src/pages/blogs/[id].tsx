@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   blog: Blog | null;
@@ -29,11 +30,13 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog, blogs } = props;
   const router = useRouter();
 
+  const images = useContextImageContext();
+
   const headerProps: HeaderProps = {
     title: "Blog",
     subTitle: "ブログ",
     linkProps: { href: "/blogs" },
-    imgProps: { src: "/blog.png", alt: "Blogs" },
+    imgProps: { src: images.blogImage.url, alt: "Blogs" },
   } as const;
 
   const headProps: HeadProps = {

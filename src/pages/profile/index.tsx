@@ -8,6 +8,7 @@ import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 import HeadProps from "../../models/HeadProps";
 import { useRouter } from "next/router";
+import { useContextImageContext } from "../../context/ImageContext";
 
 interface Props {
   profile: Profile;
@@ -17,18 +18,20 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   const { profile } = props;
   const router = useRouter();
 
+  const images = useContextImageContext();
+
   const headerProps: HeaderProps = {
     title: "Profile",
     subTitle: "プロフィール",
     linkProps: { href: "/" },
-    imgProps: { src: "/profile.png", alt: "Profile" },
+    imgProps: { src: images.profileImage.url, alt: "Profile" },
   } as const;
 
   const headProps: HeadProps = {
     title: "Profile",
     type: "article",
     description: "JI23-DEVのプロフィールのページになります。",
-    image: "/profile.png",
+    image: images.profileImage.url,
     url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
   } as const;
 
