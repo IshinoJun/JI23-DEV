@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             </div>
             <div>
               <h2>{title}</h2>
-              <h4 style={{ fontWeight: "normal" }}>{subTitle}</h4>
+              <h3 style={{ fontWeight: "normal" }}>{subTitle}</h3>
             </div>
           </div>
           <Link {...linkProps}>
