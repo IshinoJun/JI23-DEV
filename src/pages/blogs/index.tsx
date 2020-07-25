@@ -52,6 +52,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
                     <a>
                       <img
                         src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
+                        alt="ブログ画像"
                       />
                     </a>
                   </Link>

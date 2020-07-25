@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       <div className={style.logo}>
         <Link href="/" as={`/`}>
           <a>
-            <img src={images.logoImage.url} />
+            <img src={images.logoImage.url} alt="ロゴ画像" />
           </a>
         </Link>
       </div>
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <div className={style.row}>
           <div className={style.titleArea}>
             <div className={style.icon}>
-              <img {...imgProps} />
+              <img {...imgProps} alt="ヘッダー画像" />
             </div>
             <div>
               <h2>{title}</h2>

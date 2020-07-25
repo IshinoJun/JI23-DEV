@@ -29,7 +29,7 @@ const Layout: React.FC<Props> = (props: Props) => {
           <header className={style.logo}>
             <Link href="/" as={`/`}>
               <a>
-                <img src={images.logoImage.url} />
+                <img src={images.logoImage.url} alt="ロゴ画像" />
               </a>
             </Link>
           </header>

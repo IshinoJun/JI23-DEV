@@ -60,7 +60,10 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
               <div className={style.wrapper}>
                 <div className={style.contact}>
                   <div className={style.blog}>
-                    <img src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)} />
+                    <img
+                      src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
+                      alt="ブログ画像"
+                    />
                     <header className={style.entryHeader}>
                       <div className={style.date}>
                         <AccessTimeIcon />

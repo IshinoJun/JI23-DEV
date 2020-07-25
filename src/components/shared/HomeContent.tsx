@@ -18,7 +18,7 @@ const HomeContent: React.FC<Props> = (props: Props) => {
     <Link {...linkProps}>
       <a className={style.content}>
         <div className={style.before}>
-          <img {...imgProps} />
+          <img {...imgProps} alt="ヘッダーの画像" />
         </div>
         <span className={style.after}>{name}</span>
       </a>

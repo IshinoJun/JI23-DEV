@@ -50,7 +50,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
             <div className={style.content} key={index}>
               <div className={style.portfolio}>
                 <div className={style.photo}>
-                  <img src={portfolio.image.url} alt={portfolio.name} />
+                  <img src={portfolio.image.url} alt="ポートフォリオの画像" />
                   <div className={style.linkArea}>
                     <IconButton
                       iconButtonType={IconButtonType.siteLink}
