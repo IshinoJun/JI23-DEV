@@ -32,7 +32,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             </div>
           </div>
           <Link {...linkProps}>
-            <IconButton size="medium" className={style.close}>
+            <IconButton
+              size="medium"
+              className={style.close}
+              aria-label="閉じる"
+            >
               <CloseIcon />
             </IconButton>
           </Link>

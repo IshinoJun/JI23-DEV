@@ -51,7 +51,12 @@ const SuccessIndex: NextPage = () => {
               <p>ご記入頂いた情報は無事に送信されました</p>
               <p>数日中にご返信致しますので少々お待ちください</p>
             </div>
-            <Button type="button" variant="contained" className={style.back}>
+            <Button
+              type="button"
+              variant="contained"
+              className={style.back}
+              aria-label="ホームに戻る"
+            >
               <Link href="/">
                 <a>ホームに戻る</a>
               </Link>

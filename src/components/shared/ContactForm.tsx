@@ -96,7 +96,12 @@ const ContactForm: React.FC<Props> = (props: Props) => {
           {errors.body && <p className={style.error}>{errors.body.message}</p>}
         </Grid>
       </Grid>
-      <Button type="submit" variant="contained" className={style.send}>
+      <Button
+        type="submit"
+        variant="contained"
+        className={style.send}
+        aria-label="送信"
+      >
         送信
       </Button>
     </form>

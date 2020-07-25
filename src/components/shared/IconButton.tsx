@@ -41,6 +41,7 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
             href={href}
             target="_blank"
             rel="noreferrer"
+            aria-label={ariaLabel}
           >
             <TwitterIcon />
           </Button>
@@ -54,6 +55,7 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
             href={href}
             target="_blank"
             rel="noreferrer"
+            aria-label={ariaLabel}
           >
             <LinkIcon />
           </Button>

@@ -71,6 +71,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
                     type="button"
                     variant="contained"
                     className={style.read}
+                    aria-label="記事を読む"
                   >
                     <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                       <a>記事を読む</a>

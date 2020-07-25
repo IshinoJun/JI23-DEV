@@ -61,7 +61,12 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
                 でDMをお願い致します。
               </p>
             </div>
-            <Button type="button" variant="contained" className={style.back}>
+            <Button
+              type="button"
+              variant="contained"
+              className={style.back}
+              aria-label="ホームに戻る"
+            >
               <Link href="/" as={`/`}>
                 <a>ホームに戻る</a>
               </Link>
