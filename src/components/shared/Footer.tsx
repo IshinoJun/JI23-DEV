@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer className={style.footer}>
       <div className="container">
         <div className={style.footerContent}>
-          <span>&copy; {new Date().getFullYear()} Jun Ishino</span>
+          <span>&copy; {new Date().getFullYear()} JI23-DEV</span>
         </div>
       </div>
     </footer>
