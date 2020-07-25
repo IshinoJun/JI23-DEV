@@ -1,8 +1,10 @@
 # JI23-DEV
 
-JI23-DEVのポートフォリオサイト兼ブログです。
+JI23-DEVのブログ兼ポートフォリオサイトです。
 
 ## 機能
+
+主な機能は以下になります。
 
 - プロフィール
 - ポートフォリオ
@@ -11,25 +13,13 @@ JI23-DEVのポートフォリオサイト兼ブログです。
 
 ## 構成
 
-- React / Next.js / TypeScript / Vercel / microCMSでjamstackなCMS構築
+- React / Next.js / TypeScript / Vercel / microCMSでJAMstackなCMS構築
 - UIライブラリはMaterial UI
 
 ## ビルド環境
 
 - [Node.JS](https://nodejs.org) >= 12.18.0
 - [Yarn](https://yarnpkg.com) >= 1.16.0
-
-## 環境変数
-
-ビルド時に指定可能な環境変数の一覧です。
-
-| 変数名                      | 説明                                                         |
-| --------------------------- | ------------------------------------------------------------ |
-| NEXT_PUBLIC_X_API_KEY|microCMSのGET APIリクエストの際に必要な認証キー|
-| NEXT_PUBLIC_X_WRITE_API_KEY|microCMSのPOST, PUT, PATCH, DELETE APIリクエストの際に必要な認証キー|
-| NEXT_PUBLIC_SECRET_KEY            | ブログ記事のプレビュー時に利用するセキュリティーkey|
-| NEXT_PUBLIC_END_POINT             | microCMSのエンドポイント                 |
-| NEXT_PUBLIC_BASE_URL           | webページのBASE_URL             |
 
 ## スクリプト
 
