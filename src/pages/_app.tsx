@@ -8,6 +8,7 @@ import "highlightjs/styles/monokai.css";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Router } from "next/router";
+import * as gtag from "../lib/gtag";
 
 const MyApp = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
@@ -17,6 +18,17 @@ const MyApp = (props: AppProps): JSX.Element => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles && jssStyles.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
+    }
+
+    if (gtag.GA_ID) {
+      const handleRouteChange = (path: string) => {
+        gtag.pageView(path);
+      };
+
+      Router.events.on("routeChangeComplete", handleRouteChange);
+      return () => {
+        Router.events.off("routeChangeComplete", handleRouteChange);
+      };
     }
   }, []);
 
