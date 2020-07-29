@@ -10,6 +10,11 @@ import "nprogress/nprogress.css";
 import { Router } from "next/router";
 import * as gtag from "../lib/gtag";
 
+//Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 const MyApp = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
 
@@ -30,11 +35,6 @@ const MyApp = (props: AppProps): JSX.Element => {
         Router.events.off("routeChangeComplete", handleRouteChange);
       };
     }
-
-    //Binding events.
-    Router.events.on("routeChangeStart", () => NProgress.start());
-    Router.events.on("routeChangeComplete", () => NProgress.done());
-    Router.events.on("routeChangeError", () => NProgress.done());
   }, []);
 
   return (
