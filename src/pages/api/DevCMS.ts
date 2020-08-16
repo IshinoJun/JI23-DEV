@@ -10,7 +10,7 @@ import ArrayList from "../../models/Array";
 import SNS from "../../models/SNS";
 import Blog from "../../models/Blog";
 
-class DevClient {
+class DevCMS {
   private axios = Axios.create({
     baseURL: process.env.END_POINT,
     headers: {
@@ -79,7 +79,6 @@ class DevClient {
     return this.get<Profile>("profile/" + id);
   }
 
-  //TODO:レスポンスの型を整備する
   public createContact(contact: Contact): Promise<string> {
     return this.post("contacts", contact);
   }
@@ -104,4 +103,4 @@ class DevClient {
     return this.get<Blog>("blogs/" + id + `?draftKey=${draftKey}`);
   }
 }
-export default DevClient;
+export default DevCMS;

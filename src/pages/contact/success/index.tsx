@@ -25,7 +25,7 @@ const SuccessIndex: NextPage = () => {
   const headProps: HeadProps = {
     title: "Success",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   return (

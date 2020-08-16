@@ -8,7 +8,7 @@ import Layout from "../components/shared/Layout";
 import IconButton from "../components/shared/IconButton";
 import IconButtonType from "../enums/IconButtonType";
 import SNS from "../models/SNS";
-import DevClient from "../pages/api/DevClient";
+import DevCMS from "./api/DevCMS";
 import HeadProps from "../models/HeadProps";
 import { useRouter } from "next/router";
 
@@ -16,14 +16,14 @@ interface Props {
   sns: SNS;
 }
 
-const HomeIndex: NextPage<Props> = (props: Props) => {
+const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
 
   const headProps: HeadProps = {
     title: "Home",
     type: "website",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   return (
@@ -86,9 +86,9 @@ const HomeIndex: NextPage<Props> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const sns = await devClient.getSNS();
+  const sns = await devCMS.getSNS();
 
   return {
     props: {
@@ -97,4 +97,4 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   };
 };
 
-export default HomeIndex;
+export default Home;

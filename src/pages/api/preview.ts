@@ -1,12 +1,12 @@
 import { NextApiResponse, NextApiRequest } from "next";
-import DevClient from "./DevClient";
+import DevCMS from "./DevCMS";
 
 const preview = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   const SECRET_KEY = process.env.SECRET_KEY ?? "";
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
   const { id, draftKey, secret } = req.query;
 
@@ -20,7 +20,7 @@ const preview = async (
     });
   }
 
-  const post = await devClient.getBlogPreview(id, draftKey);
+  const post = await devCMS.getBlogPreview(id, draftKey);
 
   if (!post) return res.status(401).json({ message: "Invalid draft key" });
 

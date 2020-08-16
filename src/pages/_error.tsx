@@ -15,7 +15,7 @@ const Error: NextPage<Props> = ({ statusCode }) => {
   const headProps: HeadProps = {
     title: "Error",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   return (

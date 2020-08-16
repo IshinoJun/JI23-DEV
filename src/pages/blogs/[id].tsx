@@ -2,7 +2,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Error from "../_error";
 import * as React from "react";
 import Blog from "../../models/Blog";
-import DevClient from "../../pages/api/DevClient";
+import DevCMS from "../api/DevCMS";
 import { isPreviewData } from "../../utils/TypeGuardUtils";
 import Layout from "../../components/shared/Layout";
 import HeaderProps from "../../models/HeaderProps";
@@ -41,7 +41,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
     type: "article",
     description: blog?.introduction ?? "",
     image: formatOgpSetting(blog?.ogp.url ?? "", blog?.ogpTitle ?? ""),
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? "");
@@ -162,8 +162,8 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const devClient = new DevClient();
-  const res = await devClient.getBlogs();
+  const devCMS = new DevCMS();
+  const res = await devCMS.getBlogs();
   const paths = res.contents.map((item) => `/blogs/${item.id}`);
 
   return { paths, fallback: false };
@@ -176,19 +176,19 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
   let blog: Blog | null = null;
   const paramsId = params?.id?.toString() ?? "";
 
   // 下書きは draftKey を含む必要があるのでプレビューの時は追加
   if (preview && isPreviewData(previewData)) {
-    blog = await devClient.getBlogPreview(paramsId, previewData.draftKey);
+    blog = await devCMS.getBlogPreview(paramsId, previewData.draftKey);
   } else {
-    blog = await devClient.getBlog(paramsId);
+    blog = await devCMS.getBlog(paramsId);
   }
 
-  const blogs = await devClient.getBlogs();
+  const blogs = await devCMS.getBlogs();
 
   return {
     props: { blog, blogs },

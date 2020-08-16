@@ -8,9 +8,10 @@ import * as Yup from "yup";
 import Contact from "../../models/Contact";
 import { useRouter } from "next/router";
 import SNS from "../../models/SNS";
-import DevClient from "../../pages/api/DevClient";
+import DevCMS from "../api/DevCMS";
 import HeadProps from "../../models/HeadProps";
 import ContactForm from "../../components/shared/ContactForm";
+import { fetchWrapper } from "../../utils/FetchUtils";
 
 interface Props {
   sns: SNS;
@@ -31,7 +32,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Contact",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   const validationSchema = Yup.object().shape({
@@ -42,21 +43,13 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
     body: Yup.string().required("お問い合わせ内容は必須です。"),
   });
 
-  const handleSubmit = (contact: Contact) => {
-    void (async (): Promise<void> => {
-      try {
-        await fetch(
-          `${
-            process.env.NEXT_PUBLIC_BASE_URL as string
-          }/api/contact?contact=${JSON.stringify(contact)}`
-        );
-      } catch (err) {
-        void router.push("/contact/error");
-        return;
-      }
-
+  const handleSubmit = async (contact: Contact): Promise<void> => {
+    try {
+      await fetchWrapper.post("/api/contact", contact);
       void router.push("/contact/success");
-    })();
+    } catch (err) {
+      void router.push("/contact/error");
+    }
   };
 
   return (
@@ -84,9 +77,9 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const sns = await devClient.getSNS();
+  const sns = await devCMS.getSNS();
 
   return {
     props: {

@@ -5,7 +5,7 @@ import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
 import Portfolio from "../../models/Portfolio";
-import DevClient from "../../pages/api/DevClient";
+import DevCMS from "../api/DevCMS";
 import ArrayList from "../../models/Array";
 
 import { formatEndMonth } from "../../utils/FormatUtils";
@@ -34,7 +34,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Portfolio",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   return (
@@ -86,9 +86,9 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const portfolioAry = await devClient.getPortfolio();
+  const portfolioAry = await devCMS.getPortfolio();
 
   return {
     props: {

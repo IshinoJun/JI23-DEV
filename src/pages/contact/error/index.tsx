@@ -8,7 +8,7 @@ import Link from "next/link";
 import HeaderProps from "../../../models/HeaderProps";
 import { useRouter } from "next/router";
 import HeadProps from "../../../models/HeadProps";
-import DevClient from "../../api/DevClient";
+import DevCMS from "../../api/DevCMS";
 import SNS from "../../../models/SNS";
 
 interface Props {
@@ -29,7 +29,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Error",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   return (
@@ -76,9 +76,9 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const sns = await devClient.getSNS();
+  const sns = await devCMS.getSNS();
 
   return {
     props: {

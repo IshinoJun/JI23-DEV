@@ -2,7 +2,7 @@ import React from "react";
 import style from "./index.module.scss";
 
 import { NextPage, GetStaticProps } from "next";
-import DevClient from "../api/DevClient";
+import DevCMS from "../api/DevCMS";
 import Profile from "../../models/Profile";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
@@ -27,7 +27,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Profile",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    url: `${router.asPath}`,
   } as const;
 
   const getAge = (year = 1992, month = 11, day = 23): number => {
@@ -112,9 +112,9 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const profile = await devClient.getProfile();
+  const profile = await devCMS.getProfile();
 
   return {
     props: {

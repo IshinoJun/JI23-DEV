@@ -4,7 +4,7 @@ import style from "./index.module.scss";
 import { NextPage, GetStaticProps } from "next";
 import HeaderProps from "../../models/HeaderProps";
 import Layout from "../../components/shared/Layout";
-import DevClient from "../../pages/api/DevClient";
+import DevCMS from "../api/DevCMS";
 import Blog from "../../models/Blog";
 import ArrayList from "../../models/Array";
 import Link from "next/link";
@@ -14,13 +14,15 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Tags from "../../components/shared/Tags";
 import { Button } from "@material-ui/core";
 import HeadProps from "../../models/HeadProps";
+import { useRouter } from "next/router";
 
 interface Props {
   blogs: ArrayList<Blog>;
 }
 
-const BlogIndex: NextPage<Props> = (props: Props) => {
+const Blogs: NextPage<Props> = (props: Props) => {
   const { blogs } = props;
+  const router = useRouter();
 
   const headerProps: HeaderProps = {
     title: "Blogs",
@@ -32,7 +34,7 @@ const BlogIndex: NextPage<Props> = (props: Props) => {
   const headProps: HeadProps = {
     title: "Blogs",
     type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/blogs`,
+    url: `${router.asPath}`,
   } as const;
 
   return (
@@ -88,14 +90,14 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
-  const res = await devClient.getBlogs();
+  const devCMS = new DevCMS();
+  const res = await devCMS.getBlogs();
 
   // プレビュー時は draft のコンテンツを追加
   if (preview && isPreviewData(previewData)) {
     const previewDataId = previewData.id;
     const draftKey = previewData.draftKey;
-    const draftRes = await devClient.getBlogPreview(previewDataId, draftKey);
+    const draftRes = await devCMS.getBlogPreview(previewDataId, draftKey);
     res.contents.unshift(draftRes);
   }
 
@@ -106,4 +108,4 @@ export const getStaticProps: GetStaticProps = async ({
   };
 };
 
-export default BlogIndex;
+export default Blogs;
