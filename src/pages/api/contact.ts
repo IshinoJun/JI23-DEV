@@ -10,16 +10,14 @@ const contact = async (
 
   // クエリのチェック
   if (!isContact(req.body)) {
-    return res.status(400).json({ statusCode: 400, message: "Bad Request" });
+    return res.status(404).end();
   }
 
   const resCMS = await devCMS.createContact(req.body);
 
   // CMS側で正しく作成されたかチェック
   if (resCMS !== "Created") {
-    return res
-      .status(500)
-      .json({ statusCode: 500, message: "500 Internal Server Error" });
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   res.status(200).json({ statusCode: 200, message: "OK" });

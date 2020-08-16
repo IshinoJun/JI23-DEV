@@ -130,12 +130,6 @@
     padding: em(16, 15);
   }
 
-  h3 {
-    font-size: fz(26);
-    line-height: em(26, 48);
-    margin-top: em(26, 12);
-  }
-
   .blog {
     @include tab {
       margin: 0 auto;
@@ -143,6 +137,12 @@
 
     .entryHeader {
       margin-bottom: em(14, 28);
+
+      h3 {
+        font-size: fz(26);
+        line-height: em(26, 48);
+        margin-top: em(26, 12);
+      }
     }
   }
 }

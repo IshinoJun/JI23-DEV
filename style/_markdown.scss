@@ -97,7 +97,6 @@
   border-style: none;
 }
 
-.markdown-body code,
 .markdown-body kbd,
 .markdown-body pre {
   font-family: monospace,monospace;
@@ -274,7 +273,6 @@
   margin-left: 0;
 }
 
-.markdown-body code,
 .markdown-body pre {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   font-size: 12px;
@@ -786,26 +784,8 @@
   padding-right: 20px;
 }
 
-.markdown-body code {
-  padding: .2em .4em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(27,31,35,.05);
-  border-radius: 3px;
-}
-
 .markdown-body pre {
   word-wrap: normal;
-}
-
-.markdown-body pre>code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
 }
 
 .markdown-body .highlight {
@@ -819,24 +799,11 @@
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-  padding: 16px;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 3px;
-}
-
-.markdown-body pre code {
-  display: inline;
-  max-width: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: initial;
-  border: 0;
 }
 
 .markdown-body .commit-tease-sha {
