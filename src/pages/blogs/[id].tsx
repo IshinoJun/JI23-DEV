@@ -37,7 +37,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
-    title: blog?.ogpTitle ?? "",
+    title: blog?.title ?? "",
     type: "article",
     description: blog?.introduction ?? "",
     image: formatOgpSetting(blog?.ogp.url ?? "", blog?.ogpTitle ?? ""),
