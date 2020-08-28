@@ -59,7 +59,7 @@ const Home: NextPage<Props> = (props: Props) => {
           <div className={style.profile}>
             <div className={style.titleArea}>
               <h1 className={style.title}>Jun Ishino</h1>
-              <h2>Web Developer</h2>
+              <h2 className={style.muscle}>Mascle Developer</h2>
               <div className={style.linkArea}>
                 <IconButton
                   iconButtonType={IconButtonType.twitter}

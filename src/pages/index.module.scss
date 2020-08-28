@@ -126,3 +126,14 @@
     };
   }
 }
+
+.muscle {
+  animation: name 5s infinite linear;
+  color: inherit;
+}
+
+@keyframes name {
+  50% {
+    color: #8ad8f4;
+  }
+}
