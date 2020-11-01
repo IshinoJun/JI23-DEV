@@ -13,12 +13,7 @@ const contact = async (
     return res.status(404).end();
   }
 
-  const resCMS = await devCMS.createContact(req.body);
-
-  // CMS側で正しく作成されたかチェック
-  if (resCMS !== 'Created') {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
+  await devCMS.createContact(req.body);
 
   res.status(200).json({ statusCode: 200, message: 'OK' });
 
