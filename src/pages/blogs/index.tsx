@@ -1,20 +1,20 @@
-import React from "react";
-import style from "./index.module.scss";
+import React from 'react';
+import { NextPage, GetStaticProps } from 'next';
+import Link from 'next/link';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { Button } from '@material-ui/core';
+import { useRouter } from 'next/router';
+import style from './index.module.scss';
 
-import { NextPage, GetStaticProps } from "next";
-import HeaderProps from "../../models/HeaderProps";
-import Layout from "../../components/shared/Layout";
-import DevCMS from "../api/DevCMS";
-import Blog from "../../models/Blog";
-import ArrayList from "../../models/Array";
-import Link from "next/link";
-import { isPreviewData } from "../../utils/TypeGuardUtils";
-import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import Tags from "../../components/shared/Tags";
-import { Button } from "@material-ui/core";
-import HeadProps from "../../models/HeadProps";
-import { useRouter } from "next/router";
+import HeaderProps from '../../models/HeaderProps';
+import Layout from '../../components/shared/Layout';
+import DevCMS from '../api/DevCMS';
+import Blog from '../../models/Blog';
+import ArrayList from '../../models/Array';
+import { isPreviewData } from '../../utils/TypeGuardUtils';
+import { formatDate, formatOgpSetting } from '../../utils/FormatUtils';
+import Tags from '../../components/shared/Tags';
+import HeadProps from '../../models/HeadProps';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -25,15 +25,15 @@ const Blogs: NextPage<Props> = (props: Props) => {
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Blogs",
-    subTitle: "ブログ一覧",
-    linkProps: { href: "/" },
-    imgProps: { src: "/blog.png", alt: "Blogs" },
+    title: 'Blogs',
+    subTitle: 'ブログ一覧',
+    linkProps: { href: '/' },
+    imgProps: { src: '/blog.png', alt: 'Blogs' },
   } as const;
 
   const headProps: HeadProps = {
-    title: "Blogs",
-    type: "article",
+    title: 'Blogs',
+    type: 'article',
     url: `${router.asPath}`,
   } as const;
 
@@ -42,8 +42,8 @@ const Blogs: NextPage<Props> = (props: Props) => {
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.wrapper}>
-            {blogs.contents.map((blog, index) => (
-              <div key={index} className={style.content}>
+            {blogs.contents.map((blog) => (
+              <div key={blog.id} className={style.content}>
                 <div className={style.blog}>
                   <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                     <a>
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({
   // プレビュー時は draft のコンテンツを追加
   if (preview && isPreviewData(previewData)) {
     const previewDataId = previewData.id;
-    const draftKey = previewData.draftKey;
+    const { draftKey } = previewData;
     const draftRes = await devCMS.getBlogPreview(previewDataId, draftKey);
     res.contents.unshift(draftRes);
   }

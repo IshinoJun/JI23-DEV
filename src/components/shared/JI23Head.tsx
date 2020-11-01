@@ -1,13 +1,13 @@
-import * as React from "react";
-import Head from "next/head";
-import HeadProps from "../../models/HeadProps";
+import * as React from 'react';
+import Head from 'next/head';
+import HeadProps from '../../models/HeadProps';
 
 const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
   const { title, description, image, url, type } = props;
 
-  const defaultTitle = "JI23-DEV";
-  const defaultDescription = "技術的なことをゆる〜く書くブログ兼ポートフォリオ";
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+  const defaultTitle = 'JI23-DEV';
+  const defaultDescription = '技術的なことをゆる〜く書くブログ兼ポートフォリオ';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   return (
     <Head>

@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./Header.module.scss";
-import Link from "next/link";
-import { IconButton } from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import HeaderProps from "../../models/HeaderProps";
+import React from 'react';
+import Link from 'next/link';
+import { IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import style from './Header.module.scss';
+import HeaderProps from '../../models/HeaderProps';
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const { title, subTitle, linkProps, imgProps } = props;
@@ -11,8 +11,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <header className={style.head}>
       <div className={style.logo}>
-        <Link href="/" as={`/`}>
-          <a>
+        <Link href="/" as="/">
+          <a href="/">
             <img src="/logo.png" alt="ロゴ画像" />
           </a>
         </Link>
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             </div>
             <div>
               <h2>{title}</h2>
-              <h3 style={{ fontWeight: "normal" }}>{subTitle}</h3>
+              <h3 style={{ fontWeight: 'normal' }}>{subTitle}</h3>
             </div>
           </div>
           <Link {...linkProps}>

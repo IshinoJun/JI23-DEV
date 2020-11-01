@@ -1,13 +1,13 @@
-import React from "react";
-import style from "./index.module.scss";
+import React from 'react';
+import { NextPage, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import style from './index.module.scss';
 
-import { NextPage, GetStaticProps } from "next";
-import DevCMS from "../api/DevCMS";
-import Profile from "../../models/Profile";
-import HeaderProps from "../../models/HeaderProps";
-import Layout from "../../components/shared/Layout";
-import HeadProps from "../../models/HeadProps";
-import { useRouter } from "next/router";
+import DevCMS from '../api/DevCMS';
+import Profile from '../../models/Profile';
+import HeaderProps from '../../models/HeaderProps';
+import Layout from '../../components/shared/Layout';
+import HeadProps from '../../models/HeadProps';
 
 interface Props {
   profile: Profile;
@@ -18,15 +18,15 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Profile",
-    subTitle: "プロフィール",
-    linkProps: { href: "/" },
-    imgProps: { src: "/profile.png", alt: "Profile" },
+    title: 'Profile',
+    subTitle: 'プロフィール',
+    linkProps: { href: '/' },
+    imgProps: { src: '/profile.png', alt: 'Profile' },
   } as const;
 
   const headProps: HeadProps = {
-    title: "Profile",
-    type: "article",
+    title: 'Profile',
+    type: 'article',
     url: `${router.asPath}`,
   } as const;
 
@@ -39,10 +39,10 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
     const currentYearDate = new Date(
       todayDate.getFullYear(),
       birthdayDate.getMonth(),
-      birthdayDate.getDate()
+      birthdayDate.getDate(),
     );
 
-    if (currentYearDate > todayDate) age = age - 1;
+    if (currentYearDate > todayDate) age -= 1;
 
     return age;
   };
@@ -54,7 +54,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
           <div className={style.content}>
             <div className={style.title}>
               <h3>About me</h3>
-              {profile.introduction.split("\n").map((intro, index) => (
+              {profile.introduction.split('\n').map((intro, index) => (
                 <p key={index}>{intro}</p>
               ))}
             </div>
@@ -74,8 +74,8 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
                   <dt>技術スタック</dt>
                   <dd>
                     <ul>
-                      {profile.skills.map((skill, index) => (
-                        <li key={index}>{skill.name}</li>
+                      {profile.skills.map((skill) => (
+                        <li key={skill.id}>{skill.name}</li>
                       ))}
                     </ul>
                   </dd>
@@ -84,8 +84,8 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
                   <dt>資格・認定</dt>
                   <dd>
                     <ul>
-                      {profile.qualifications.map((qualification, index) => (
-                        <li key={index}>{qualification.name}</li>
+                      {profile.qualifications.map((qualification) => (
+                        <li key={qualification.id}>{qualification.name}</li>
                       ))}
                     </ul>
                   </dd>
@@ -96,7 +96,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
                     {profile.hobbies.map(
                       (hobby, index) =>
                         hobby.name +
-                        (profile.hobbies.length !== index + 1 ? "、　" : "")
+                        (profile.hobbies.length !== index + 1 ? '、　' : ''),
                     )}
                   </dd>
                 </dl>

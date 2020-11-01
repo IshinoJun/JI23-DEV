@@ -1,15 +1,15 @@
-import React from "react";
-import style from "./index.module.scss";
+import React from 'react';
 
-import { NextPage, GetStaticProps } from "next";
-import Layout from "../../../components/shared/Layout";
-import { Button } from "@material-ui/core";
-import Link from "next/link";
-import HeaderProps from "../../../models/HeaderProps";
-import { useRouter } from "next/router";
-import HeadProps from "../../../models/HeadProps";
-import DevCMS from "../../api/DevCMS";
-import SNS from "../../../models/SNS";
+import { NextPage, GetStaticProps } from 'next';
+import { Button } from '@material-ui/core';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import HeaderProps from '../../../models/HeaderProps';
+import Layout from '../../../components/shared/Layout';
+import style from './index.module.scss';
+import HeadProps from '../../../models/HeadProps';
+import DevCMS from '../../api/DevCMS';
+import SNS from '../../../models/SNS';
 
 interface Props {
   sns: SNS;
@@ -20,15 +20,15 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Contact",
-    subTitle: "お問い合わせ",
-    linkProps: { href: "/" },
-    imgProps: { src: "/contact.png", alt: "Contact" },
+    title: 'Contact',
+    subTitle: 'お問い合わせ',
+    linkProps: { href: '/' },
+    imgProps: { src: '/contact.png', alt: 'Contact' },
   } as const;
 
   const headProps: HeadProps = {
-    title: "Error",
-    type: "article",
+    title: 'Error',
+    type: 'article',
     url: `${router.asPath}`,
   } as const;
 
@@ -41,7 +41,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
               <h2>大変申し訳ありません、送信に失敗しました。</h2>
               <p>
                 改めて、
-                <Link href="/contact" as={`/contact`}>
+                <Link href="/contact" as="/contact">
                   <a className={style.formText}>問い合わせフォーム</a>
                 </Link>
                 からご連絡頂くか、
@@ -62,7 +62,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
               className={style.back}
               aria-label="ホームに戻る"
             >
-              <Link href="/" as={`/`}>
+              <Link href="/" as="/">
                 <a>ホームに戻る</a>
               </Link>
             </Button>

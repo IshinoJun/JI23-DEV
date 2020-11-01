@@ -1,20 +1,21 @@
-import React from "react";
-import style from "./index.module.scss";
+import React from 'react';
+import { NextPage, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import style from './index.module.scss';
 
-import { NextPage, GetStaticProps } from "next";
-import HeaderProps from "../../models/HeaderProps";
-import Layout from "../../components/shared/Layout";
-import Portfolio from "../../models/Portfolio";
-import DevCMS from "../api/DevCMS";
-import ArrayList from "../../models/Array";
+import HeaderProps from '../../models/HeaderProps';
+import Layout from '../../components/shared/Layout';
+import Portfolio from '../../models/Portfolio';
+import DevCMS from '../api/DevCMS';
+import ArrayList from '../../models/Array';
 
-import { formatEndMonth } from "../../utils/FormatUtils";
-import IconButton from "../../components/shared/IconButton";
-import IconButtonType from "../../enums/IconButtonType";
-import { useRouter } from "next/router";
-import HeadProps from "../../models/HeadProps";
-import Tags from "../../components/shared/Tags";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import { formatEndMonth } from '../../utils/FormatUtils';
+import IconButton from '../../components/shared/IconButton';
+import IconButtonType from '../../enums/IconButtonType';
+
+import HeadProps from '../../models/HeadProps';
+import Tags from '../../components/shared/Tags';
 
 interface Props {
   portfolioAry: ArrayList<Portfolio>;
@@ -25,15 +26,15 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Portfolio",
-    subTitle: "ポートフォリオ",
-    linkProps: { href: "/" },
-    imgProps: { src: "/portfolio.png", alt: "Portfolio" },
+    title: 'Portfolio',
+    subTitle: 'ポートフォリオ',
+    linkProps: { href: '/' },
+    imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
   } as const;
 
   const headProps: HeadProps = {
-    title: "Portfolio",
-    type: "article",
+    title: 'Portfolio',
+    type: 'article',
     url: `${router.asPath}`,
   } as const;
 
@@ -41,8 +42,8 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
     <Layout headProps={headProps} headerProps={headerProps}>
       <section className="padding-block border-bottom">
         <div className="container">
-          {portfolioAry.contents.map((portfolio, index) => (
-            <div className={style.content} key={index}>
+          {portfolioAry.contents.map((portfolio) => (
+            <div className={style.content} key={portfolio.id}>
               <div className={style.portfolio}>
                 <div className={style.photo}>
                   <img src={portfolio.image.url} alt="ポートフォリオの画像" />
@@ -70,7 +71,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
                     tagsPosition="left"
                     styleProps={{ marginBottom: 10 }}
                   />
-                  {portfolio.introduction.split("\n").map((intro, index) => (
+                  {portfolio.introduction.split('\n').map((intro, index) => (
                     <p key={index}>{intro}</p>
                   ))}
                 </div>

@@ -1,6 +1,6 @@
-import Model from "./Model";
-import CmsImage from "./CmsImage";
-import Tag from "./Tag";
+import Model from './Model';
+import CmsImage from './CmsImage';
+import Tag from './Tag';
 
 interface Portfolio extends Model {
   name: string;

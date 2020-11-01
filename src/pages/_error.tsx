@@ -1,10 +1,10 @@
-import React from "react";
-import { NextPage } from "next";
-import Layout from "../components/shared/Layout";
-import HeadProps from "../models/HeadProps";
-import { useRouter } from "next/router";
-import style from "./_error.module.scss";
-import Link from "next/link";
+import React from 'react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Layout from '../components/shared/Layout';
+import HeadProps from '../models/HeadProps';
+import style from './_error.module.scss';
 
 interface Props {
   statusCode: number;
@@ -13,8 +13,8 @@ const Error: NextPage<Props> = ({ statusCode }) => {
   const router = useRouter();
 
   const headProps: HeadProps = {
-    title: "Error",
-    type: "article",
+    title: 'Error',
+    type: 'article',
     url: `${router.asPath}`,
   } as const;
 
@@ -26,8 +26,8 @@ const Error: NextPage<Props> = ({ statusCode }) => {
             <div className={style.content}>
               <h1>{statusCode}</h1>
               <p>申し訳ありませんが、お探しのページは見つかりませんでした</p>
-              <Link href="/" as={`/`}>
-                <a>
+              <Link href="/" as="/">
+                <a href="/">
                   <p>トップページへ</p>
                 </a>
               </Link>
@@ -41,6 +41,7 @@ const Error: NextPage<Props> = ({ statusCode }) => {
 
 Error.getInitialProps = ({ res, err }): Props => {
   const statusCode = res ? res.statusCode : err?.statusCode ?? 404;
+
   return { statusCode };
 };
 

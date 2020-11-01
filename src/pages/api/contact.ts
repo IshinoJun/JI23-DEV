@@ -1,10 +1,10 @@
-import { NextApiResponse, NextApiRequest } from "next";
-import DevCMS from "./DevCMS";
-import { isContact } from "../../utils/TypeGuardUtils";
+import { NextApiResponse, NextApiRequest } from 'next';
+import DevCMS from './DevCMS';
+import { isContact } from '../../utils/TypeGuardUtils';
 
 const contact = async (
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> => {
   const devCMS = new DevCMS();
 
@@ -16,13 +16,13 @@ const contact = async (
   const resCMS = await devCMS.createContact(req.body);
 
   // CMS側で正しく作成されたかチェック
-  if (resCMS !== "Created") {
-    return res.status(401).json({ message: "Unauthorized" });
+  if (resCMS !== 'Created') {
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  res.status(200).json({ statusCode: 200, message: "OK" });
+  res.status(200).json({ statusCode: 200, message: 'OK' });
 
-  res.end("Contact enabled");
+  return res.end('Contact enabled');
 };
 
 export default contact;

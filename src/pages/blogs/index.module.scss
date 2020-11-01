@@ -10,10 +10,10 @@
   }
 
   .content {
+    padding: em(14, 48) 0;
     border-bottom-color: $color-hight-gray;
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    padding: em(14, 48) 0;
 
     @include tab {
       padding: em(16, 48) 0;
@@ -24,9 +24,9 @@
     }
 
     h3 {
-      font-size: fz(26);
-      margin-bottom: em(26, 12);
       margin-top: em(26, 12);
+      margin-bottom: em(26, 12);
+      font-size: fz(26);
     }
 
     .photo {
@@ -36,13 +36,13 @@
 
     .blog {
       @include tab {
-        margin: 0 auto;
         width: 50%;
+        margin: 0 auto;
       }
 
       .date {
-        align-items: center;
         display: flex;
+        align-items: center;
         margin-top: em(14, 10);
 
         @include tab {
@@ -50,9 +50,9 @@
         }
 
         svg {
-          color: $color-right-blue;
-          font-size: fz(13);
           margin-right: em(13, 5);
+          font-size: fz(13);
+          color: $color-right-blue;
         }
 
         span {
@@ -62,9 +62,8 @@
     }
 
     .read {
-      background-color: $color-dark-blue !important;
       color: $color-white;
+      background-color: $color-dark-blue !important;
     }
   }
 }
-

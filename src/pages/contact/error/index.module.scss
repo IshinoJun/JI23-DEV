@@ -3,23 +3,23 @@
 @import 'style/settings';
 
 .contact {
+  padding: em(14, 16) em(14, 32);
+  text-align: center;
   background-color: $color-white;
   border-radius: 8px;
   box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  padding: em(14, 16) em(14, 32);
-  text-align: center;
 
   @include tab {
     padding: em(16, 16) em(16, 32);
   }
 
   h2 {
-    padding-bottom: em(21, 42);
     padding-top: em(21, 42);
+    padding-bottom: em(21, 42);
 
     @include tab {
-      padding-bottom: em(24, 42);
       padding-top: em(24, 42);
+      padding-bottom: em(24, 42);
     }
   }
 
@@ -32,14 +32,14 @@
   }
 
   .back {
-    background-color: $color-dark-blue !important;
-    color: $color-white;
-    margin-top: em(14, 36);
     width: em(14, 150);
+    margin-top: em(14, 36);
+    color: $color-white;
+    background-color: $color-dark-blue !important;
 
     @include tab {
-      margin-top: em(16, 36);
       width: em(16, 150);
+      margin-top: em(16, 36);
     }
   }
 }

@@ -1,6 +1,6 @@
 interface HeadProps {
   title: string;
-  type: "website" | "article";
+  type: 'website' | 'article';
   description?: string;
   image?: string;
   url: string;

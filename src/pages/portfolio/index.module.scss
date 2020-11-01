@@ -3,12 +3,12 @@
 @import 'style/settings';
 
 .content {
-  padding-left: em(14, 15);
   padding-right: em(14, 15);
+  padding-left: em(14, 15);
 
   @include tab {
-    padding-left: em(16, 15);
     padding-right: em(16, 15);
+    padding-left: em(16, 15);
   }
 
   &:not(:last-child) {
@@ -20,10 +20,10 @@
   }
 
   .portfolio {
+    padding: em(14, 16);
     background-color: $color-white;
     border-radius: 8px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-    padding: em(14, 16);
 
     @include tab {
       display: flex;
@@ -51,7 +51,7 @@
           @include tab {
             margin-left: em(16, 20);
           }
-        };
+        }
       }
 
       img {
@@ -64,18 +64,18 @@
 
       @include tab {
         flex: 1;
-        margin-left: em(16, 20);
         margin-top: em(16, 20);
+        margin-left: em(16, 20);
       }
 
       .date {
-        align-items: center;
         display: flex;
+        align-items: center;
 
         svg {
-          color: $color-right-blue;
-          font-size: fz(13);
           margin-right: em(13, 5);
+          font-size: fz(13);
+          color: $color-right-blue;
         }
 
         span {
@@ -84,13 +84,13 @@
       }
 
       h2 {
-        font-size: fz(26);
         padding-top: em(26, 5);
+        font-size: fz(26);
       }
 
       p {
-        padding-bottom: em(14, 5);
         padding-top: em(14, 5);
+        padding-bottom: em(14, 5);
       }
     }
   }

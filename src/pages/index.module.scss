@@ -21,10 +21,10 @@
 }
 
 .nav {
+  padding-top: em(14, 32);
   border-bottom-color: $color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding-top: em(14, 32);
 
   @include tab {
     padding-top: em(16, 32);
@@ -52,69 +52,69 @@
   .iconArea {
     display: flex;
     justify-content: center;
-    margin-bottom: em(14, 30);
-    padding-left: em(14, 15);
     padding-right: em(14, 15);
+    padding-left: em(14, 15);
+    margin-bottom: em(14, 30);
     text-align: center;
 
     @include tab {
-      margin-bottom: em(16, 30);
-      padding-left: em(16, 15);
-      padding-right: em(16, 15);
       width: 40%;
+      padding-right: em(16, 15);
+      padding-left: em(16, 15);
+      margin-bottom: em(16, 30);
     }
 
     .icon {
+      width: em(20, 238);
+      height: em(20, 238);
       background-color: $color-gray;
       border: 1px solid $color-black;
-      height: em(20, 238);
-      width: em(20, 238);
 
       img {
+        width: auto;
+        max-width: 100%;
         height: auto;
         max-height: 100%;
-        max-width: 100%;
-        width: auto;
       }
     }
   }
 
-  .titleArea {    
+  .titleArea {
+    padding-right: em(14, 15);
+    padding-left: em(14, 15);
+    margin-bottom: em(14, 30);
+    text-align: center;
     border-right-color: $color-hight-gray;
     border-right-style: solid;
     border-right-width: 1px;
-    margin-bottom: em(14, 30);
-    padding-left: em(14, 15);
-    padding-right: em(14, 15);
-    text-align: center;
 
     @include tab {
-      margin-bottom: em(16, 30);
-      padding-left: em(16, 15);
-      padding-right: em(16, 15);
       width: 60%;
+      padding-right: em(16, 15);
+      padding-left: em(16, 15);
+      margin-bottom: em(16, 30);
     }
 
     .title {
+      margin-top: em(36, 48);
       font-size: fz(36);
       line-height: em(36, 40);
-      margin-top: em(36, 48);
 
       @include tab {
+        margin-top: em(66, 48);
         font-size: fz(66);
         line-height: em(66, 72);
-        margin-top: em(66, 48);
       }
     }
   }
 
   .linkArea {
-    margin-bottom: em(14, 12);
     margin-top: em(14, 12);
+    margin-bottom: em(14, 12);
 
     @include tab {
-      margin-bottom: em(16, 12);
       margin-top: em(16, 12);
+      margin-bottom: em(16, 12);
     }
 
     a:not(:nth-child(1)) {
@@ -123,6 +123,6 @@
       @include tab {
         margin-left: em(16, 20);
       }
-    };
+    }
   }
 }

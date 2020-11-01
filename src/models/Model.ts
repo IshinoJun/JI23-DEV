@@ -1,8 +1,8 @@
 interface Model {
+  id?: string;
   createdAt?: string;
-  createdBy?: string;
   updatedAt?: string;
-  updatedBy?: string;
+  publishedAt?: string;
 }
 
 export default Model;

@@ -1,7 +1,7 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import * as React from "react";
-import { ServerStyleSheets } from "@material-ui/styles";
-import { GA_ID } from "../lib/gtag";
+import { ServerStyleSheets } from '@material-ui/core';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import * as React from 'react';
+import { GA_ID } from '../lib/gtag';
 
 class CustomDocument extends Document {
   render(): JSX.Element {
@@ -16,6 +16,7 @@ class CustomDocument extends Document {
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
               />
               <script
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: `
                   window.dataLayer = window.dataLayer || [];

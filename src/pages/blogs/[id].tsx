@@ -1,23 +1,23 @@
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import Error from "../_error";
-import * as React from "react";
-import Blog from "../../models/Blog";
-import DevCMS from "../api/DevCMS";
-import { isPreviewData } from "../../utils/TypeGuardUtils";
-import Layout from "../../components/shared/Layout";
-import HeaderProps from "../../models/HeaderProps";
-import style from "./id.module.scss";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
-import Tags from "../../components/shared/Tags";
-import Highlight from "react-highlight";
-import Link from "next/link";
-import ArrayList from "../../models/Array";
-import HeadProps from "../../models/HeadProps";
-import { useRouter } from "next/router";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import LocalOfferIcon from "@material-ui/icons/LocalOffer";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
+import * as React from 'react';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import Highlight from 'react-highlight';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Error from '../_error';
+import Blog from '../../models/Blog';
+import DevCMS from '../api/DevCMS';
+import { isPreviewData } from '../../utils/TypeGuardUtils';
+import Layout from '../../components/shared/Layout';
+import HeaderProps from '../../models/HeaderProps';
+import style from './id.module.scss';
+import { formatDate, formatOgpSetting } from '../../utils/FormatUtils';
+import Tags from '../../components/shared/Tags';
+import ArrayList from '../../models/Array';
+import HeadProps from '../../models/HeadProps';
 
 interface Props {
   blog: Blog | null;
@@ -30,21 +30,21 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Blog",
-    subTitle: "ブログ",
-    linkProps: { href: "/blogs" },
-    imgProps: { src: "/blog.png", alt: "Blogs" },
+    title: 'Blog',
+    subTitle: 'ブログ',
+    linkProps: { href: '/blogs' },
+    imgProps: { src: '/blog.png', alt: 'Blogs' },
   } as const;
 
   const headProps: HeadProps = {
-    title: blog?.title ?? "",
-    type: "article",
-    description: blog?.introduction ?? "",
-    image: formatOgpSetting(blog?.ogp.url ?? "", blog?.ogpTitle ?? ""),
+    title: blog?.title ?? '',
+    type: 'article',
+    description: blog?.introduction ?? '',
+    image: formatOgpSetting(blog?.ogp.url ?? '', blog?.ogpTitle ?? ''),
     url: `${router.asPath}`,
   } as const;
 
-  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? "");
+  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
   const nextBlog = blogs.contents[blogIndex - 1];
   const prevBlog = blogs.contents[blogIndex + 1];
 
@@ -95,13 +95,13 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                                 <span key={index}>
                                   {tag.name}
                                   {index + 1 !== prevBlog.tags?.length
-                                    ? ", "
-                                    : ""}
+                                    ? ', '
+                                    : ''}
                                 </span>
                               ))}
                             </p>
                             <p
-                              className={[style.text, style.ellipsis].join(" ")}
+                              className={[style.text, style.ellipsis].join(' ')}
                             >
                               {prevBlog.title}
                             </p>
@@ -125,13 +125,13 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                                 <span key={index}>
                                   {tag.name}
                                   {index + 1 !== nextBlog.tags?.length
-                                    ? ", "
-                                    : ""}
+                                    ? ', '
+                                    : ''}
                                 </span>
                               ))}
                             </p>
                             <p
-                              className={[style.text, style.ellipsis].join(" ")}
+                              className={[style.text, style.ellipsis].join(' ')}
                             >
                               {nextBlog.title}
                             </p>
@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps = async ({
   const devCMS = new DevCMS();
 
   let blog: Blog | null = null;
-  const paramsId = params?.id?.toString() ?? "";
+  const paramsId = params?.id?.toString() ?? '';
 
   // 下書きは draftKey を含む必要があるのでプレビューの時は追加
   if (preview && isPreviewData(previewData)) {

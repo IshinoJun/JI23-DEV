@@ -1,14 +1,14 @@
-import React from "react";
-import style from "./IconButton.module.scss";
-import { Button } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import IconButtonType from "../../enums/IconButtonType";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkIcon from "@material-ui/icons/Link";
+import React from 'react';
+import { Button } from '@material-ui/core';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkIcon from '@material-ui/icons/Link';
+import IconButtonType from '../../enums/IconButtonType';
+import style from './IconButton.module.scss';
 
 interface Props {
   iconButtonType: IconButtonType;
-  //TODO:本当はbuttonPropsを送りたいが型がわからんかった
+  // TODO:本当はbuttonPropsを送りたいが型がわからんかった
   href: string;
   ariaLabel: string;
 }

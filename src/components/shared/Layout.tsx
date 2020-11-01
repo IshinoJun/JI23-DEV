@@ -1,11 +1,11 @@
-import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import HeaderProps from "../../models/HeaderProps";
-import HeadProps from "../../models/HeadProps";
-import JI23Head from "./JI23Head";
-import Link from "next/link";
-import style from "./Layout.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import Header from './Header';
+import Footer from './Footer';
+import HeaderProps from '../../models/HeaderProps';
+import HeadProps from '../../models/HeadProps';
+import JI23Head from './JI23Head';
+import style from './Layout.module.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ const Layout: React.FC<Props> = (props: Props) => {
           <Header {...headerProps} />
         ) : (
           <header className={style.logo}>
-            <Link href="/" as={`/`}>
+            <Link href="/" as="/">
               <a>
                 <img src="/logo.png" alt="ロゴ画像" />
               </a>

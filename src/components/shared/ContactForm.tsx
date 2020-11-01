@@ -1,11 +1,11 @@
-import React from "react";
-import style from "./ContactForm.module.scss";
-import { Grid, TextField, Button } from "@material-ui/core";
-import * as Yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers";
-import Contact from "../../models/Contact";
-import SNS from "../../models/SNS";
+import { Grid, TextField, Button } from '@material-ui/core';
+import * as Yup from 'yup';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+import * as React from 'react';
+import style from './ContactForm.module.scss';
+import Contact from '../../models/Contact';
+import SNS from '../../models/SNS';
 
 interface Props {
   sns: SNS;
@@ -27,7 +27,7 @@ const ContactForm: React.FC<Props> = (props: Props) => {
   const { sns, validationSchema, onSubmit } = props;
 
   const { control, handleSubmit, errors } = useForm<Contact>({
-    mode: "onBlur",
+    mode: 'onBlur',
     resolver: yupResolver(validationSchema),
   });
 
