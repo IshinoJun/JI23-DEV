@@ -1,21 +1,19 @@
-import * as React from "react";
-import Head from "next/head";
-import HeadProps from "../../models/HeadProps";
+import * as React from 'react';
+import Head from 'next/head';
+import HeadProps from '../../models/HeadProps';
 
 const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
-  const { title, description, image, url, type } = props;
+  const { title, description, url, type, id } = props;
 
-  const defaultTitle = "JI23-DEV";
-  const defaultDescription = "技術的なことをゆる〜く書くブログ兼ポートフォリオ";
+  const defaultTitle = 'JI23-DEV';
+  const defaultDescription = '技術的なことをゆる〜く書くブログ兼ポートフォリオ';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   return (
     <Head>
       <title>{`${title} | ${defaultTitle}`}</title>
       <meta name="Description" content={description ?? defaultDescription} />
-      <meta
-        property="og:url"
-        content={url ?? process.env.NEXT_PUBLIC_BASE_URL}
-      />
+      <meta property="og:url" content={baseUrl + url} />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={`${title} | ${defaultTitle}`} />
       <meta
@@ -25,17 +23,11 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       <meta property="og:site_name" content={defaultTitle} />
       <meta
         property="og:image"
-        content={
-          image ??
-          `${process.env.NEXT_PUBLIC_BASE_URL as string}/defaultOgpImage.png`
-        }
+        content={id ? `/api/blogs/${id}/ogp` : `${baseUrl}/defaultOgpImage.png`}
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@JJ_1123_I" />
-      <meta
-        name="twitter:url"
-        content={url ?? process.env.NEXT_PUBLIC_BASE_URL}
-      />
+      <meta name="twitter:url" content={baseUrl + url} />
       <meta name="twitter:title" content={`${title} | ${defaultTitle}`} />
       <meta
         name="twitter:description"
@@ -44,11 +36,12 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       <meta
         name="twitter:image"
         content={
-          image ??
-          `${process.env.NEXT_PUBLIC_BASE_URL as string}/defaultOgpImage.png`
+          id
+            ? `${baseUrl}/api/blogs/${id}/ogp`
+            : `${baseUrl}/defaultOgpImage.png`
         }
       />
-      <link rel="canonical" href={url ?? process.env.NEXT_PUBLIC_BASE_URL} />
+      <link rel="canonical" href={baseUrl + url} />
     </Head>
   );
 };

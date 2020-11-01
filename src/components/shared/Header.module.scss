@@ -3,16 +3,16 @@
 @import 'style/settings';
 
 .head {
+  padding-top: em(14, 22);
+  padding-bottom: em(14, 30);
   border-bottom-color: $color-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding-bottom: em(14, 30);
-  padding-top: em(14, 22);
 
   @include tab {
-    padding-bottom: em(16, 30);
-    padding-top: em(16, 24);
     position: relative;
+    padding-top: em(16, 24);
+    padding-bottom: em(16, 30);
   }
 
   .logo {
@@ -23,25 +23,25 @@
       width: 300px;
 
       @include tab {
-        left: 50%;
         position: absolute;
         top: 50%;
-        transform: translate(-50%, -50%);
+        left: 50%;
         width: 350px;
+        transform: translate(-50%, -50%);
       }
     }
   }
 
   .row {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding-left: em(14, 15);
     padding-right: em(14, 15);
+    padding-left: em(14, 15);
 
     @include tab {
-      padding-left: em(16, 15);
       padding-right: em(16, 15);
+      padding-left: em(16, 15);
     }
   }
 
@@ -50,36 +50,36 @@
   }
 
   .icon {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    width: em(14, 70);
+    height: em(14, 70);
+    margin-right: em(14, 20);
     background-color: $color-hight-blue;
     border-color: $color-gray;
-    border-radius: 2px;
     border-style: solid;
     border-width: 1px;
-    display: flex;
-    height: em(14, 70);
-    justify-content: center;
-    margin-right: em(14, 20);
-    width: em(14, 70);
+    border-radius: 2px;
 
     @include tab {
       margin-right: em(16, 20);
     }
 
     img {
-      height: em(14, 64);
       width: em(14, 50);
+      height: em(14, 64);
 
       @include tab {
-        height: em(16, 64);
         width: em(16, 50);
+        height: em(16, 64);
       }
     }
   }
 
   .close {
     padding: 0 !important;
-  
+
     svg {
       font-size: fz(54);
     }

@@ -11,13 +11,13 @@
   }
 
   .message {
-    padding-bottom: em(14, 29);
     padding-top: em(14, 15);
+    padding-bottom: em(14, 29);
     text-align: start;
-  
+
     @include tab {
-      padding-bottom: em(16, 31);
       padding-top: em(16, 15);
+      padding-bottom: em(16, 31);
     }
 
     a {
@@ -26,26 +26,26 @@
   }
 
   .send {
-    background-color: $color-dark-blue !important;
-    color: $color-white;
-    margin-top: em(14, 36);
     width: em(14, 200);
+    margin-top: em(14, 36);
+    color: $color-white;
+    background-color: $color-dark-blue !important;
 
     @include tab {
-      margin-top: em(16, 36);
       width: em(16, 200);
+      margin-top: em(16, 36);
     }
   }
 
   .error {
-    color: $color-red;
+    margin-top: em(12, 3);
+    margin-right: em(12, 14);
+    margin-left: em(12, 14);
     font-size: fz(12);
     font-weight: 400;
-    letter-spacing: 0.03333em;
     line-height: 1.66;
-    margin-left: em(12, 14);
-    margin-right: em(12, 14);
-    margin-top: em(12, 3);
+    color: $color-red;
     text-align: left;
+    letter-spacing: 0.03333em;
   }
 }

@@ -2,21 +2,21 @@ import Axios, {
   CancelTokenSource,
   AxiosRequestConfig,
   AxiosPromise,
-} from "axios";
-import Profile from "../../models/Profile";
-import Contact from "../../models/Contact";
-import Portfolio from "../../models/Portfolio";
-import ArrayList from "../../models/Array";
-import SNS from "../../models/SNS";
-import Blog from "../../models/Blog";
+} from 'axios';
+import Profile from '../../models/Profile';
+import Contact from '../../models/Contact';
+import Portfolio from '../../models/Portfolio';
+import ArrayList from '../../models/Array';
+import SNS from '../../models/SNS';
+import Blog from '../../models/Blog';
 
-class DevClient {
+class DevCMS {
   private axios = Axios.create({
     baseURL: process.env.END_POINT,
     headers: {
-      "Content-Type": "application/json",
-      "X-API-KEY": process.env.API_KEY,
-      "X-WRITE-API-KEY": process.env.WRITE_API_KEY,
+      'Content-Type': 'application/json',
+      'X-API-KEY': process.env.API_KEY,
+      'X-WRITE-API-KEY': process.env.WRITE_API_KEY,
     },
   });
 
@@ -33,7 +33,7 @@ class DevClient {
     return config;
   };
 
-  private resolvePromise<T>(promise: AxiosPromise<T>) {
+  private resolvePromise = <T>(promise: AxiosPromise<T>) => {
     return new Promise<T>((resolve, reject) => {
       promise
         .then((response) => {
@@ -51,7 +51,7 @@ class DevClient {
           reject(error);
         });
     });
-  }
+  };
 
   private get<T>(url: string) {
     return this.resolvePromise(this.axios.get<T>(url, this.resolveConfig()));
@@ -60,14 +60,14 @@ class DevClient {
   // eslint-disable-next-line @typescript-eslint/ban-types
   private post<T>(url: string, data?: object) {
     return this.resolvePromise(
-      this.axios.post<T>(url, data, this.resolveConfig())
+      this.axios.post<T>(url, data, this.resolveConfig()),
     );
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   private put<T>(url: string, data?: object) {
     return this.resolvePromise(
-      this.axios.put<T>(url, data, this.resolveConfig())
+      this.axios.put<T>(url, data, this.resolveConfig()),
     );
   }
 
@@ -75,33 +75,32 @@ class DevClient {
     return this.resolvePromise<T>(this.axios.delete(url, this.resolveConfig()));
   }
 
-  public getProfile(id = "ujoo8cbvf"): Promise<Profile> {
-    return this.get<Profile>("profile/" + id);
+  public getProfile(id = 'ujoo8cbvf'): Promise<Profile> {
+    return this.get<Profile>(`profile/${id}`);
   }
 
-  //TODO:レスポンスの型を整備する
   public createContact(contact: Contact): Promise<string> {
-    return this.post("contacts", contact);
+    return this.post('contacts', contact);
   }
 
   public getPortfolio(): Promise<ArrayList<Portfolio>> {
-    return this.get<ArrayList<Portfolio>>("portfolio");
+    return this.get<ArrayList<Portfolio>>('portfolio');
   }
 
-  public getSNS(id = "guy_hqnt8"): Promise<SNS> {
-    return this.get<SNS>("sns/" + id);
+  public getSNS(id = 'guy_hqnt8'): Promise<SNS> {
+    return this.get<SNS>(`sns/${id}`);
   }
 
   public getBlog(id: string): Promise<Blog> {
-    return this.get<Blog>("blogs/" + id);
+    return this.get<Blog>(`blogs/${id}`);
   }
 
   public getBlogs(): Promise<ArrayList<Blog>> {
-    return this.get<ArrayList<Blog>>("blogs");
+    return this.get<ArrayList<Blog>>('blogs');
   }
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
-    return this.get<Blog>("blogs/" + id + `?draftKey=${draftKey}`);
+    return this.get<Blog>(`blogs/${id}?draftKey=${draftKey}`);
   }
 }
-export default DevClient;
+export default DevCMS;

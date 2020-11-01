@@ -1,6 +1,6 @@
-import React from "react";
-import style from "./HomeContent.module.scss";
-import Link, { LinkProps } from "next/link";
+import React from 'react';
+import Link, { LinkProps } from 'next/link';
+import style from './HomeContent.module.scss';
 
 interface Props {
   linkProps: LinkProps;

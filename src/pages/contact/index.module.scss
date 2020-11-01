@@ -3,44 +3,43 @@
 @import 'style/settings';
 
 .content {
-  padding-left: em(14, 15);
   padding-right: em(14, 15);
+  padding-left: em(14, 15);
 
   @include tab {
-    padding-left: em(16, 15);
     padding-right: em(16, 15);
+    padding-left: em(16, 15);
   }
 
   .contact {
+    text-align: center;
     background-color: $color-white;
     border-radius: 8px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    
+
     @include tab {
-      margin: 0 auto;
-      min-width: 530px;
       width: 50%;
+      min-width: 530px;
+      margin: 0 auto;
     }
 
     .title {
+      position: relative;
+      bottom: 15px;
+      width: 80%;
+      min-width: 280px;
+      margin: 0 auto;
+      color: $color-white;
+      text-align: center;
       background: $color-dark-blue;
       border-radius: 8px;
-      bottom: 15px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-      color: $color-white;
-      margin: 0 auto;
-      min-width: 280px;
-      position: relative;
-      text-align: center;
-      width: 80%;
 
       h2 {
-        font-size: fz(20);
         padding: em(20, 18) 0;
+        font-size: fz(20);
         text-align: center;
       }
     }
   }
 }
-

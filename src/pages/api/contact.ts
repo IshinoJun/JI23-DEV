@@ -1,26 +1,23 @@
-import { NextApiResponse, NextApiRequest } from "next";
-import DevClient from "./DevClient";
-import { isContact } from "../../utils/TypeGuardUtils";
+import { NextApiResponse, NextApiRequest } from 'next';
+import DevCMS from './DevCMS';
+import { isContact } from '../../utils/TypeGuardUtils';
 
-const preview = async (
+const contact = async (
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ): Promise<void> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
-  const { contact } = req.query;
-
-  if (typeof contact !== "string" || !isContact(JSON.parse(contact))) {
-    return res.status(401).json({ message: `Invalid query` });
+  // クエリのチェック
+  if (!isContact(req.body)) {
+    return res.status(404).end();
   }
 
-  const post = await devClient.createContact(JSON.parse(contact));
+  await devCMS.createContact(req.body);
 
-  if (!post) return res.status(401).json({ message: "Invalid contact" });
+  res.status(200).json({ statusCode: 200, message: 'OK' });
 
-  res.writeHead(307, { Location: `/contact/success` });
-
-  res.end("Contact enabled");
+  return res.end('Contact enabled');
 };
 
-export default preview;
+export default contact;

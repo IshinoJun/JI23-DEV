@@ -3,28 +3,47 @@
 @import 'style/settings';
 
 .blogContainer {
-  font-size: fz(14);
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: fz(14);
 
   @include tab {
+    width: 50%;
     font-size: fz(16);
-    width: 70%;
   }
 
   .wrapper {
     padding: 0 em(14, 15);
-  
+
     @include tab {
       padding: 0 em(16, 15);
     }
   }
 }
 
+.date {
+  display: flex;
+  align-items: center;
+  margin-top: em(14, 10);
+
+  @include tab {
+    margin-top: em(16, 10);
+  }
+
+  svg {
+    font-size: fz(13);
+    color: $color-right-blue;
+  }
+
+  span {
+    font-size: fz(13);
+  }
+}
+
 .linkArea {
-  list-style: none;
   margin-top: em(14, 60);
+  list-style: none;
 
   @include tab {
     margin-top: em(14, 60);
@@ -39,12 +58,12 @@
   }
 
   a {
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
     display: flex;
+    align-items: center;
     height: 150px;
     padding: em(14, 4) em(14, 12);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
 
     @include tab {
@@ -56,19 +75,19 @@
     }
 
     .arrow {
+      color: $color-white;
       background-color: $color-dark-blue;
       border-radius: 8px;
-      color: $color-white;
     }
   }
 
   .tag {
-    align-items: center;
-    color: $color-dark-blue;
     display: flex;
-    font-size: fz(12);
+    align-items: center;
     justify-content: flex-start;
     padding-top: em(14, 8);
+    font-size: fz(12);
+    color: $color-dark-blue;
     transition: all 0.2s ease-in-out;
 
     @include tab {
@@ -83,57 +102,32 @@
   /* fallback for IE */
   .text {
     display: block;
+    height: 63px;
+    padding: em(18, 5) em(18, 8);
+    overflow: hidden;
     font-size: fz(18);
     font-weight: bold;
-    height: 63px;
     line-height: 20px;
-    overflow: hidden;
-    padding: em(18, 5) em(18, 8);
   }
 
   @supports (-webkit-line-clamp: 3) {
     .ellipsis {
-      -webkit-box-orient: vertical;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
       overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
     }
   }
 }
 
-.date {
-  align-items: center;
-  display: flex;
-  margin-top: em(14, 10);
-
-  @include tab {
-    margin-top: em(16, 10);
-  }
-
-  svg {
-    color: $color-right-blue;
-    font-size: fz(13);
-  }
-
-  span {
-    font-size: fz(13);
-  }
-}
-
 .contact {
+  padding-bottom: em(14, 15);
   border-bottom-color: $color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  padding-bottom: em(14, 15);
 
   @include tab {
     padding: em(16, 15);
-  }
-
-  h3 {
-    font-size: fz(26);
-    line-height: em(26, 48);
-    margin-top: em(26, 12);
   }
 
   .blog {
@@ -143,6 +137,12 @@
 
     .entryHeader {
       margin-bottom: em(14, 28);
+
+      h3 {
+        margin-top: em(26, 12);
+        font-size: fz(26);
+        line-height: em(26, 48);
+      }
     }
   }
 }

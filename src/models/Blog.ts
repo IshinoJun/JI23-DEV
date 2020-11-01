@@ -1,13 +1,11 @@
-import Tag from "./Tag";
+import Model from './Model';
+import Tag from './Tag';
 
-interface Blog {
-  id: string;
+interface Blog extends Model {
   title: string;
   introduction: string;
   date: string;
   tags?: Tag[];
-  ogp: { url: string };
-  ogpTitle: string;
   content: string;
 }
 

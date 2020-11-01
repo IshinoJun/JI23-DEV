@@ -1,31 +1,31 @@
-import React from "react";
-import style from "./index.module.scss";
+import React from 'react';
+import { NextPage } from 'next';
+import { Button } from '@material-ui/core';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import style from './index.module.scss';
 
-import { NextPage } from "next";
-import Layout from "../../../components/shared/Layout";
-import { Button } from "@material-ui/core";
-import Link from "next/link";
-import HeaderProps from "../../../models/HeaderProps";
-import useMedia from "../../../hooks/useMedia";
-import { useRouter } from "next/router";
-import HeadProps from "../../../models/HeadProps";
+import Layout from '../../../components/shared/Layout';
+import HeaderProps from '../../../models/HeaderProps';
+import useMedia from '../../../hooks/useMedia';
+import HeadProps from '../../../models/HeadProps';
 
 const SuccessIndex: NextPage = () => {
-  const isTab = useMedia("tab");
+  const isTab = useMedia('tab');
 
   const router = useRouter();
 
   const headerProps: HeaderProps = {
-    title: "Contact",
-    subTitle: "お問い合わせ",
-    linkProps: { href: "/" },
-    imgProps: { src: "/contact.png", alt: "Contact" },
+    title: 'Contact',
+    subTitle: 'お問い合わせ',
+    linkProps: { href: '/' },
+    imgProps: { src: '/contact.png', alt: 'Contact' },
   } as const;
 
   const headProps: HeadProps = {
-    title: "Success",
-    type: "article",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    title: 'Success',
+    type: 'article',
+    url: `${router.asPath}`,
   } as const;
 
   return (
@@ -53,7 +53,7 @@ const SuccessIndex: NextPage = () => {
               aria-label="ホームに戻る"
             >
               <Link href="/">
-                <a>ホームに戻る</a>
+                <a href="/">ホームに戻る</a>
               </Link>
             </Button>
           </div>

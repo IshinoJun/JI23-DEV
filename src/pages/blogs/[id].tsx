@@ -1,23 +1,23 @@
-import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import Error from "../_error";
-import * as React from "react";
-import Blog from "../../models/Blog";
-import DevClient from "../../pages/api/DevClient";
-import { isPreviewData } from "../../utils/TypeGuardUtils";
-import Layout from "../../components/shared/Layout";
-import HeaderProps from "../../models/HeaderProps";
-import style from "./id.module.scss";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { formatDate, formatOgpSetting } from "../../utils/FormatUtils";
-import Tags from "../../components/shared/Tags";
-import Highlight from "react-highlight";
-import Link from "next/link";
-import ArrayList from "../../models/Array";
-import HeadProps from "../../models/HeadProps";
-import { useRouter } from "next/router";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import LocalOfferIcon from "@material-ui/icons/LocalOffer";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
+import * as React from 'react';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import Highlight from 'react-highlight';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Error from '../_error';
+import Blog from '../../models/Blog';
+import DevCMS from '../api/DevCMS';
+import { isPreviewData } from '../../utils/TypeGuardUtils';
+import Layout from '../../components/shared/Layout';
+import HeaderProps from '../../models/HeaderProps';
+import style from './id.module.scss';
+import { formatDate } from '../../utils/FormatUtils';
+import Tags from '../../components/shared/Tags';
+import ArrayList from '../../models/Array';
+import HeadProps from '../../models/HeadProps';
 
 interface Props {
   blog: Blog | null;
@@ -28,29 +28,30 @@ interface Props {
 const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog, blogs } = props;
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   const headerProps: HeaderProps = {
-    title: "Blog",
-    subTitle: "ブログ",
-    linkProps: { href: "/blogs" },
-    imgProps: { src: "/blog.png", alt: "Blogs" },
+    title: 'Blog',
+    subTitle: 'ブログ',
+    linkProps: { href: '/blogs' },
+    imgProps: { src: '/blog.png', alt: 'Blogs' },
   } as const;
 
   const headProps: HeadProps = {
-    title: blog?.ogpTitle ?? "",
-    type: "article",
-    description: blog?.introduction ?? "",
-    image: formatOgpSetting(blog?.ogp.url ?? "", blog?.ogpTitle ?? ""),
-    url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}${router.asPath}`,
+    id: blog?.id,
+    title: blog?.title ?? '',
+    type: 'article',
+    description: blog?.introduction ?? '',
+    url: `${router.asPath}`,
   } as const;
 
-  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? "");
+  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
   const nextBlog = blogs.contents[blogIndex - 1];
   const prevBlog = blogs.contents[blogIndex + 1];
 
   return (
     <>
-      {blog ? (
+      {blog && blog.id ? (
         <Layout headProps={headProps} headerProps={headerProps}>
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
@@ -58,7 +59,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                 <div className={style.contact}>
                   <div className={style.blog}>
                     <img
-                      src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
+                      src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
                       alt="ブログ画像"
                     />
                     <header className={style.entryHeader}>
@@ -80,7 +81,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                 </div>
                 <ul className={style.linkArea}>
                   <li>
-                    {prevBlog && (
+                    {prevBlog && prevBlog.id && (
                       <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
                         <a>
                           <ArrowBackIcon
@@ -95,13 +96,13 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                                 <span key={index}>
                                   {tag.name}
                                   {index + 1 !== prevBlog.tags?.length
-                                    ? ", "
-                                    : ""}
+                                    ? ', '
+                                    : ''}
                                 </span>
                               ))}
                             </p>
                             <p
-                              className={[style.text, style.ellipsis].join(" ")}
+                              className={[style.text, style.ellipsis].join(' ')}
                             >
                               {prevBlog.title}
                             </p>
@@ -115,7 +116,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                     )}
                   </li>
                   <li>
-                    {nextBlog && (
+                    {nextBlog && nextBlog.id && (
                       <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
                         <a>
                           <div style={{ marginLeft: 55 }}>
@@ -125,13 +126,13 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                                 <span key={index}>
                                   {tag.name}
                                   {index + 1 !== nextBlog.tags?.length
-                                    ? ", "
-                                    : ""}
+                                    ? ', '
+                                    : ''}
                                 </span>
                               ))}
                             </p>
                             <p
-                              className={[style.text, style.ellipsis].join(" ")}
+                              className={[style.text, style.ellipsis].join(' ')}
                             >
                               {nextBlog.title}
                             </p>
@@ -162,9 +163,9 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const devClient = new DevClient();
-  const res = await devClient.getBlogs();
-  const paths = res.contents.map((item) => `/blogs/${item.id}`);
+  const devCMS = new DevCMS();
+  const res = await devCMS.getBlogs();
+  const paths = res.contents.map((item) => `/blogs/${item.id ?? ''}`);
 
   return { paths, fallback: false };
 };
@@ -176,19 +177,19 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<{
   props: Props;
 }> => {
-  const devClient = new DevClient();
+  const devCMS = new DevCMS();
 
   let blog: Blog | null = null;
-  const paramsId = params?.id?.toString() ?? "";
+  const paramsId = params?.id?.toString() ?? '';
 
   // 下書きは draftKey を含む必要があるのでプレビューの時は追加
   if (preview && isPreviewData(previewData)) {
-    blog = await devClient.getBlogPreview(paramsId, previewData.draftKey);
+    blog = await devCMS.getBlogPreview(paramsId, previewData.draftKey);
   } else {
-    blog = await devClient.getBlog(paramsId);
+    blog = await devCMS.getBlog(paramsId);
   }
 
-  const blogs = await devClient.getBlogs();
+  const blogs = await devCMS.getBlogs();
 
   return {
     props: { blog, blogs },

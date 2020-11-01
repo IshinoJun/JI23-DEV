@@ -1,19 +1,18 @@
-import Model from "./Model";
+import Model from './Model';
 
-interface Skill {
+interface Skill extends Model {
   name: string;
 }
 
-interface Hobby {
+interface Hobby extends Model {
   name: string;
 }
 
-interface Qualification {
+interface Qualification extends Model {
   name: string;
 }
 
 interface Profile extends Model {
-  id?: number;
   name: string;
   profession: string;
   introduction: string;

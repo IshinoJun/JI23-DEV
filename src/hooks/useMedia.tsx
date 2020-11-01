@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
 const size = {
   tab: 768,
@@ -7,7 +7,7 @@ const size = {
 } as const;
 
 const isMediaWindowSize = (key: keyof typeof size) => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     if (window.matchMedia(`(min-width: ${size[key]}px)`).matches) {
       return true;
     }
@@ -16,7 +16,7 @@ const isMediaWindowSize = (key: keyof typeof size) => {
   return false;
 };
 
-const useMedia = (key: keyof typeof size) => {
+const useMedia = (key: keyof typeof size): boolean => {
   const [isMedia, setIsMedia] = useState(isMediaWindowSize(key));
 
   const resizeEvent = useCallback(() => {
@@ -24,10 +24,10 @@ const useMedia = (key: keyof typeof size) => {
   }, [key]);
 
   useEffect(() => {
-    window.addEventListener("resize", resizeEvent);
+    window.addEventListener('resize', resizeEvent);
 
     return () => {
-      window.removeEventListener("resize", resizeEvent);
+      window.removeEventListener('resize', resizeEvent);
     };
   }, [resizeEvent]);
 

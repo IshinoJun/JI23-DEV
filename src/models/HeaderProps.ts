@@ -1,4 +1,4 @@
-import { LinkProps } from "next/link";
+import { LinkProps } from 'next/link';
 
 interface HeaderProps {
   title: string;

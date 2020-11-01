@@ -1,10 +1,11 @@
-import { Event } from "../models/Event";
+import { Event } from '../models/Event';
 
 const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
 const pageView = (path: string): void => {
   if (GA_ID) {
-    window.gtag("config", GA_ID, {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    window.gtag('config', GA_ID, {
       page_path: path,
     });
   }
@@ -12,7 +13,8 @@ const pageView = (path: string): void => {
 
 const event = ({ action, category, label }: Event): void => {
   if (GA_ID) {
-    window.gtag("event", action, {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    window.gtag('event', action, {
       event_category: category,
       event_label: JSON.stringify(label),
     });
