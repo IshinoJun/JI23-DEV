@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
+import { createCanvas, registerFont, Canvas } from 'canvas';
 import * as path from 'path';
 import DevCMS from '../../DevCMS';
 
@@ -59,11 +59,11 @@ const createGcp = async (
     family: 'robotoBlack',
   });
 
-  const backgroundImage = await loadImage(
-    path.resolve('./public/ogpBackground.png'),
-  );
+  // const backgroundImage = await loadImage(
+  //   path.resolve('./images/ogpBackground.png'),
+  // );
 
-  context.drawImage(backgroundImage, 0, 0, width, height);
+  // context.drawImage(backgroundImage, 0, 0, width, height);
   context.font = '30px ipagp';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
