@@ -14,7 +14,7 @@ import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Layout from '../../components/shared/Layout';
 import HeaderProps from '../../models/HeaderProps';
 import style from './id.module.scss';
-import { formatDate, formatOgpSetting } from '../../utils/FormatUtils';
+import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
 import ArrayList from '../../models/Array';
 import HeadProps from '../../models/HeadProps';
@@ -28,6 +28,7 @@ interface Props {
 const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog, blogs } = props;
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   const headerProps: HeaderProps = {
     title: 'Blog',
@@ -37,10 +38,10 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   } as const;
 
   const headProps: HeadProps = {
+    id: blog?.id,
     title: blog?.title ?? '',
     type: 'article',
     description: blog?.introduction ?? '',
-    image: formatOgpSetting(blog?.ogp.url ?? '', blog?.ogpTitle ?? ''),
     url: `${router.asPath}`,
   } as const;
 
@@ -50,7 +51,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 
   return (
     <>
-      {blog ? (
+      {blog && blog.id ? (
         <Layout headProps={headProps} headerProps={headerProps}>
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
@@ -58,7 +59,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                 <div className={style.contact}>
                   <div className={style.blog}>
                     <img
-                      src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
+                      src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
                       alt="ブログ画像"
                     />
                     <header className={style.entryHeader}>
@@ -80,7 +81,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                 </div>
                 <ul className={style.linkArea}>
                   <li>
-                    {prevBlog && (
+                    {prevBlog && prevBlog.id && (
                       <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
                         <a>
                           <ArrowBackIcon
@@ -115,7 +116,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                     )}
                   </li>
                   <li>
-                    {nextBlog && (
+                    {nextBlog && nextBlog.id && (
                       <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
                         <a>
                           <div style={{ marginLeft: 55 }}>
@@ -164,7 +165,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
   const res = await devCMS.getBlogs();
-  const paths = res.contents.map((item) => `/blogs/${item.id}`);
+  const paths = res.contents.map((item) => `/blogs/${item.id ?? ''}`);
 
   return { paths, fallback: false };
 };

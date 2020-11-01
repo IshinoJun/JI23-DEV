@@ -1,4 +1,6 @@
-interface SNS {
+import Model from './Model';
+
+interface SNS extends Model {
   gitHubUrl: string;
   twitterUrl: string;
 }

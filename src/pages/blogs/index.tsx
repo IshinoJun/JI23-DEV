@@ -12,7 +12,7 @@ import DevCMS from '../api/DevCMS';
 import Blog from '../../models/Blog';
 import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
-import { formatDate, formatOgpSetting } from '../../utils/FormatUtils';
+import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
 import HeadProps from '../../models/HeadProps';
 
@@ -23,6 +23,7 @@ interface Props {
 const Blogs: NextPage<Props> = (props: Props) => {
   const { blogs } = props;
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   const headerProps: HeaderProps = {
     title: 'Blogs',
@@ -42,41 +43,44 @@ const Blogs: NextPage<Props> = (props: Props) => {
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.wrapper}>
-            {blogs.contents.map((blog) => (
-              <div key={blog.id} className={style.content}>
-                <div className={style.blog}>
-                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                    <a>
-                      <img
-                        src={formatOgpSetting(blog.ogp.url, blog.ogpTitle)}
-                        alt="ブログ画像"
-                      />
-                    </a>
-                  </Link>
-                  <div className={style.date}>
-                    <AccessTimeIcon />
-                    <span>{formatDate(new Date(blog.date))}</span>
+            {blogs.contents.map(
+              (blog) =>
+                blog.id && (
+                  <div key={blog.id} className={style.content}>
+                    <div className={style.blog}>
+                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                        <a>
+                          <img
+                            src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
+                            alt="ブログ画像"
+                          />
+                        </a>
+                      </Link>
+                      <div className={style.date}>
+                        <AccessTimeIcon />
+                        <span>{formatDate(new Date(blog.date))}</span>
+                      </div>
+                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                        <a>
+                          <h3>{blog.title}</h3>
+                        </a>
+                      </Link>
+                      <Tags tags={blog.tags} tagsPosition="left" />
+                      <Button
+                        style={{ marginTop: 20 }}
+                        type="button"
+                        variant="contained"
+                        className={style.read}
+                        aria-label="記事を読む"
+                      >
+                        <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                          <a>記事を読む</a>
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
-                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                    <a>
-                      <h3>{blog.title}</h3>
-                    </a>
-                  </Link>
-                  <Tags tags={blog.tags} tagsPosition="left" />
-                  <Button
-                    style={{ marginTop: 20 }}
-                    type="button"
-                    variant="contained"
-                    className={style.read}
-                    aria-label="記事を読む"
-                  >
-                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                      <a>記事を読む</a>
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            ))}
+                ),
+            )}
           </div>
         </div>
       </section>
