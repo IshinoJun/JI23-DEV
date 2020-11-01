@@ -30,6 +30,7 @@
     "@types/sass": "^1.16.0",
     "@types/yup": "^0.29.7",
     "axios": "^0.20.0",
+    "canvas": "^2.6.1",
     "date-fns": "^2.16.1",
     "highlightjs": "^9.16.2",
     "lodash": "^4.17.20",
