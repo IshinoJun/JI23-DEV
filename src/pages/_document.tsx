@@ -29,10 +29,6 @@ class CustomDocument extends Document {
               />
             </>
           )}
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
           <link rel="icon" href="/icon.png" />
           <link rel="apple-touch-icon" href="/icon.png" />
         </Head>

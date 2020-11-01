@@ -7,6 +7,7 @@ import 'highlightjs/styles/monokai.css';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Router } from 'next/router';
+import Head from 'next/head';
 import * as gtag from '../lib/gtag';
 import theme from '../components/theme';
 
@@ -41,9 +42,14 @@ const MyApp = (props: AppProps): JSX.Element => {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   );
 };
 
