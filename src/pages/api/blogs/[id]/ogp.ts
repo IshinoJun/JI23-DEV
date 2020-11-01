@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createCanvas, Canvas } from 'canvas';
+import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
+import * as path from 'path';
 import DevCMS from '../../DevCMS';
 
 interface SeparatedText {
@@ -54,15 +55,15 @@ const createGcp = async (
   const canvas = createCanvas(width, height);
   const context = canvas.getContext('2d');
 
-  // registerFont(path.resolve('./fonts/robotoBlack.ttf'), {
-  //   family: 'robotoBlack',
-  // });
+  registerFont(path.resolve('./fonts/robotoBlack.ttf'), {
+    family: 'robotoBlack',
+  });
 
-  // const backgroundImage = await loadImage(
-  //   path.resolve('./images/ogpBackground.png'),
-  // );
+  const backgroundImage = await loadImage(
+    path.resolve('./public/ogpBackground.png'),
+  );
 
-  // context.drawImage(backgroundImage, 0, 0, width, height);
+  context.drawImage(backgroundImage, 0, 0, width, height);
   context.font = '30px ipagp';
   context.textAlign = 'center';
   context.textBaseline = 'middle';

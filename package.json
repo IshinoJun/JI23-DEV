@@ -13,7 +13,8 @@
     "lint:style": "stylelint 'src/**/*.{css,scss}'",
     "lint:style:fix": "stylelint --fix 'src/**/*.{css,scss}'",
     "lint:conflict": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "postinstall": "typesync"
+    "postinstall": "typesync",
+    "now-build": "cp canvas_lib64/*so.1 node_modules/canvas/build/Release/ && yarn build"
   },
   "dependencies": {
     "@hookform/resolvers": "^0.0.6",
