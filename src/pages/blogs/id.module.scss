@@ -135,9 +135,14 @@
       margin-bottom: em(14, 28);
 
       h3 {
-        margin-top: em(26, 12);
-        font-size: fz(26);
-        line-height: em(26, 48);
+        margin: em(26, 12) 0;
+        font-size: fz(20);
+        line-height: em(26, 36);
+
+        @include tab {
+          font-size: fz(26);
+          line-height: em(26, 48);
+        }
       }
     }
   }
