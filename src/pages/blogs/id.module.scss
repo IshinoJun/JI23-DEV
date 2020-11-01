@@ -126,10 +126,6 @@
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
-  @include tab {
-    padding: em(16, 15);
-  }
-
   .blog {
     @include tab {
       margin: 0 auto;

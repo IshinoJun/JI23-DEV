@@ -60,8 +60,9 @@ const createGcp = async (
   });
 
   const backgroundImage = await loadImage(
-    path.resolve('src/pages/api/blogs/[id]/images/ogp_background.png'),
+    path.resolve('public/ogpBackground.png'),
   );
+
   context.drawImage(backgroundImage, 0, 0, width, height);
   context.font = '30px ipagp';
   context.textAlign = 'center';
