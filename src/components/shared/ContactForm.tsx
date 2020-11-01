@@ -1,7 +1,7 @@
 import { Grid, TextField, Button } from '@material-ui/core';
 import * as Yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as React from 'react';
 import style from './ContactForm.module.scss';
 import Contact from '../../models/Contact';
