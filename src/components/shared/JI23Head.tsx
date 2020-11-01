@@ -3,7 +3,7 @@ import Head from 'next/head';
 import HeadProps from '../../models/HeadProps';
 
 const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
-  const { title, description, url, type, id } = props;
+  const { title, description, image, url, type } = props;
 
   const defaultTitle = 'JI23-DEV';
   const defaultDescription = '技術的なことをゆる〜く書くブログ兼ポートフォリオ';
@@ -23,7 +23,7 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       <meta property="og:site_name" content={defaultTitle} />
       <meta
         property="og:image"
-        content={id ? `/api/blogs/${id}/ogp` : `${baseUrl}/defaultOgpImage.png`}
+        content={image ?? `${baseUrl}/defaultOgpImage.png`}
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@JJ_1123_I" />
@@ -35,11 +35,7 @@ const JI23Head: React.FC<HeadProps> = (props: HeadProps) => {
       />
       <meta
         name="twitter:image"
-        content={
-          id
-            ? `${baseUrl}/api/blogs/${id}/ogp`
-            : `${baseUrl}/defaultOgpImage.png`
-        }
+        content={image ?? `${baseUrl}/defaultOgpImage.png`}
       />
       <link rel="canonical" href={baseUrl + url} />
     </Head>
