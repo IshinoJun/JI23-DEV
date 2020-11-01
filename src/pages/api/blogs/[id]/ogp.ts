@@ -60,7 +60,7 @@ const createGcp = async (
   });
 
   const backgroundImage = await loadImage(
-    path.resolve('./images/ogpBackground.png'),
+    path.resolve('./public/ogpBackground.png'),
   );
 
   context.drawImage(backgroundImage, 0, 0, width, height);
