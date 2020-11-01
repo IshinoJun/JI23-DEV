@@ -59,7 +59,9 @@ const createGcp = async (
     family: 'robotoBlack',
   });
 
-  const backgroundImage = await loadImage(path.resolve('ogpBackground.png'));
+  const backgroundImage = await loadImage(
+    path.resolve('./images/ogpBackground.png'),
+  );
 
   context.drawImage(backgroundImage, 0, 0, width, height);
   context.font = '30px ipagp';
