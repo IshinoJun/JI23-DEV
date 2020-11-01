@@ -55,8 +55,8 @@ const createGcp = async (
   const canvas = createCanvas(width, height);
   const context = canvas.getContext('2d');
 
-  registerFont(path.resolve('./fonts/robotoBlack.ttf'), {
-    family: 'robotoBlack',
+  registerFont(path.resolve('./fonts/ipagp.ttf'), {
+    family: 'ipagp',
   });
 
   const backgroundImage = await loadImage(
