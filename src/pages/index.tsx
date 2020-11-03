@@ -26,6 +26,9 @@ const Home: NextPage<Props> = (props: Props) => {
     url: `${router.asPath}`,
   } as const;
 
+  const IMAGE_WIDTH = 100 as const;
+  const IMAGE_HEIGHT = 120 as const;
+
   return (
     <Layout headProps={headProps}>
       <nav className={style.nav}>
@@ -33,22 +36,42 @@ const Home: NextPage<Props> = (props: Props) => {
           <div className={style.contents}>
             <HomeContent
               linkProps={{ href: '/profile' }}
-              imgProps={{ src: '/profile.png', alt: 'Profile' }}
+              imgProps={{
+                src: '/profile.png',
+                alt: 'Profile',
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+              }}
               name="Profile"
             />
             <HomeContent
               linkProps={{ href: '/portfolio' }}
-              imgProps={{ src: '/portfolio.png', alt: 'Portfolio' }}
+              imgProps={{
+                src: '/portfolio.png',
+                alt: 'Portfolio',
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+              }}
               name="Portfolio"
             />
             <HomeContent
               linkProps={{ href: '/blogs' }}
-              imgProps={{ src: '/blog.png', alt: 'Blogs' }}
+              imgProps={{
+                src: '/blog.png',
+                alt: 'Blogs',
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+              }}
               name="Blogs"
             />
             <HomeContent
               linkProps={{ href: '/contact' }}
-              imgProps={{ src: '/contact.png', alt: 'Contact' }}
+              imgProps={{
+                src: '/contact.png',
+                alt: 'Contact',
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+              }}
               name="Contact"
             />
           </div>
