@@ -9,3 +9,4 @@ public/
 .next
 jest.config.js
 next-env.d.ts
+next-sitemap.js
