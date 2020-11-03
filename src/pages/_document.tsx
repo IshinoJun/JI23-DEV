@@ -29,6 +29,10 @@ class CustomDocument extends Document {
               />
             </>
           )}
+          <meta
+            name="google-site-verification"
+            content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_ID}
+          />
           <link rel="icon" href="/icon.png" />
           <link rel="apple-touch-icon" href="/icon.png" />
         </Head>
