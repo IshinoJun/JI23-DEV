@@ -62,18 +62,14 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                       src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
                       alt="ブログ画像"
                     />
-                    <header className={style.entryHeader}>
+                    <div className={style.entryHeader}>
                       <div className={style.date}>
                         <AccessTimeIcon />
                         <span>{formatDate(new Date(blog.date))}</span>
                       </div>
-                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                        <a>
-                          <h3>{blog.title}</h3>
-                        </a>
-                      </Link>
+                      <h1>{blog.title}</h1>
                       <Tags tags={blog.tags} tagsPosition="left" />
-                    </header>
+                    </div>
                     <Highlight innerHTML className="markdown-body">
                       {blog.content}
                     </Highlight>

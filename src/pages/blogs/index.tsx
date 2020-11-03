@@ -62,7 +62,7 @@ const Blogs: NextPage<Props> = (props: Props) => {
                       </div>
                       <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                         <a>
-                          <h3>{blog.title}</h3>
+                          <h2>{blog.title}</h2>
                         </a>
                       </Link>
                       <Tags tags={blog.tags} tagsPosition="left" />
