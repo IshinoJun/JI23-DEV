@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import 'ress';
 import '../../styles.scss';
-import 'highlightjs/styles/monokai.css';
+import 'highlightjs/styles/vs2015.css';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Router } from 'next/router';

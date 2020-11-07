@@ -32,7 +32,7 @@ const renderBreadcrumbs = (router: NextRouter) => {
 
     links.push(
       pathNames.length !== i ? (
-        <Link href="/" key={target.title}>
+        <Link href={pathnameHistory} key={target.title}>
           {target.title}
         </Link>
       ) : (
