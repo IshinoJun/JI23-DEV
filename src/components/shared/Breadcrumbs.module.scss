@@ -1,0 +1,9 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: em(16, 20);
+}

@@ -11,6 +11,7 @@ import Head from 'next/head';
 import * as gtag from '../lib/gtag';
 import theme from '../components/theme';
 import Layout from '../components/shared/Layout';
+import Breadcrumbs from '../components/shared/Breadcrumbs';
 
 // Binding events.
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -49,6 +50,7 @@ const MyApp = (props: AppProps): JSX.Element => {
       </Head>
       <ThemeProvider theme={theme}>
         <Layout>
+          <Breadcrumbs />
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
