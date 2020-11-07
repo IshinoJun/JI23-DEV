@@ -6,7 +6,6 @@ import Link from 'next/link';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import Head from 'next/head';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -15,6 +14,7 @@ import style from './id.module.scss';
 import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
 import ArrayList from '../../models/Array';
+import BlogHead from '../../components/shared/BlogHead';
 
 interface Props {
   blog: Blog | null;
@@ -25,7 +25,6 @@ interface Props {
 const BlogDetail: NextPage<Props> = (props: Props) => {
   const { blog, blogs } = props;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
-  const defaultTitle = 'JI23-DEV';
 
   const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
   const nextBlog = blogs.contents[blogIndex - 1];
@@ -35,22 +34,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
     <>
       {blog && blog.id ? (
         <>
-          <Head>
-            <title>{`${blog.title} | ${defaultTitle}`}</title>
-            <meta name="Description" content={blog.introduction} />
-            <meta property="og:title" content={blog.title} />
-            <meta property="og:description" content={blog.introduction} />
-            <meta property="og:image" content={`/api/blogs/${blog.id}/ogp`} />
-            <meta
-              name="twitter:title"
-              content={`${blog.title} | ${defaultTitle}`}
-            />
-            <meta name="twitter:description" content={blog.introduction} />
-            <meta
-              name="twitter:image"
-              content={`${baseUrl}/api/blogs/${blog.id}/ogp`}
-            />
-          </Head>
+          <BlogHead blog={blog} />
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
               <div className={style.wrapper}>
