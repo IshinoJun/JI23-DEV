@@ -15,6 +15,7 @@ import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
 import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
+import TwitterShareButton from '../../components/shared/TwitterShareButton';
 
 interface Props {
   blog: Blog | null;
@@ -56,6 +57,12 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                       {blog.content}
                     </Highlight>
                   </div>
+                </div>
+                <div className={style.shareArea}>
+                  <TwitterShareButton
+                    url={`${baseUrl}/blogs/${blog.id}`}
+                    text={blog.introduction}
+                  />
                 </div>
                 <ul className={style.linkArea}>
                   <li>
