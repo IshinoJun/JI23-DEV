@@ -3,17 +3,14 @@ import { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Button } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
-import Layout from '../../components/shared/Layout';
 import DevCMS from '../api/DevCMS';
 import Blog from '../../models/Blog';
 import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
-import HeadProps from '../../models/HeadProps';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -21,62 +18,53 @@ interface Props {
 
 const Blogs: NextPage<Props> = (props: Props) => {
   const { blogs } = props;
-  const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
-  const headProps: HeadProps = {
-    title: 'Blogs',
-    type: 'article',
-    url: `${router.asPath}`,
-  } as const;
-
   return (
-    <Layout headProps={headProps}>
-      <section className="padding-block border-bottom">
-        <div className="container">
-          <div className={style.wrapper}>
-            {blogs.contents.map(
-              (blog) =>
-                blog.id && (
-                  <div key={blog.id} className={style.content}>
-                    <div className={style.blog}>
-                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                        <a>
-                          <img
-                            src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
-                            alt="ブログ画像"
-                          />
-                        </a>
-                      </Link>
-                      <div className={style.date}>
-                        <AccessTimeIcon />
-                        <span>{formatDate(new Date(blog.date))}</span>
-                      </div>
-                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                        <a>
-                          <h2>{blog.title}</h2>
-                        </a>
-                      </Link>
-                      <Tags tags={blog.tags} tagsPosition="left" />
-                      <Button
-                        style={{ marginTop: 20 }}
-                        type="button"
-                        variant="contained"
-                        className={style.read}
-                        aria-label="記事を読む"
-                      >
-                        <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                          <a>記事を読む</a>
-                        </Link>
-                      </Button>
+    <section className="padding-block border-bottom">
+      <div className="container">
+        <div className={style.wrapper}>
+          {blogs.contents.map(
+            (blog) =>
+              blog.id && (
+                <div key={blog.id} className={style.content}>
+                  <div className={style.blog}>
+                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                      <a>
+                        <img
+                          src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
+                          alt="ブログ画像"
+                        />
+                      </a>
+                    </Link>
+                    <div className={style.date}>
+                      <AccessTimeIcon />
+                      <span>{formatDate(new Date(blog.date))}</span>
                     </div>
+                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                      <a>
+                        <h2>{blog.title}</h2>
+                      </a>
+                    </Link>
+                    <Tags tags={blog.tags} tagsPosition="left" />
+                    <Button
+                      style={{ marginTop: 20 }}
+                      type="button"
+                      variant="contained"
+                      className={style.read}
+                      aria-label="記事を読む"
+                    >
+                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                        <a>記事を読む</a>
+                      </Link>
+                    </Button>
                   </div>
-                ),
-            )}
-          </div>
+                </div>
+              ),
+          )}
         </div>
-      </section>
-    </Layout>
+      </div>
+    </section>
   );
 };
 

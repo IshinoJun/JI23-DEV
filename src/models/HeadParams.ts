@@ -1,9 +1,9 @@
-interface HeadProps {
+interface HeadParams {
   id?: string;
-  title: string;
+  title?: string;
   type: 'website' | 'article';
   description?: string;
   url: string;
 }
 
-export default HeadProps;
+export default HeadParams;

@@ -1,16 +1,13 @@
 import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { Avatar } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
 import HomeContent from '../components/shared/HomeContent';
-import Layout from '../components/shared/Layout';
 import IconButton from '../components/shared/IconButton';
 import IconButtonType from '../enums/IconButtonType';
 import SNS from '../models/SNS';
 import DevCMS from './api/DevCMS';
-import HeadProps from '../models/HeadProps';
 
 interface Props {
   sns: SNS;
@@ -18,19 +15,12 @@ interface Props {
 
 const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
-  const router = useRouter();
-
-  const headProps: HeadProps = {
-    title: 'Home',
-    type: 'website',
-    url: `${router.asPath}`,
-  } as const;
 
   const IMAGE_WIDTH = 100 as const;
   const IMAGE_HEIGHT = 120 as const;
 
   return (
-    <Layout headProps={headProps}>
+    <>
       <nav className={style.nav}>
         <div className="container">
           <div className={style.contents}>
@@ -102,7 +92,7 @@ const Home: NextPage<Props> = (props: Props) => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

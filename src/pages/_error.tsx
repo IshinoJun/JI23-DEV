@@ -1,41 +1,28 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Layout from '../components/shared/Layout';
-import HeadProps from '../models/HeadProps';
 import style from './_error.module.scss';
 
 interface Props {
   statusCode: number;
 }
 const Error: NextPage<Props> = ({ statusCode }) => {
-  const router = useRouter();
-
-  const headProps: HeadProps = {
-    title: 'Error',
-    type: 'article',
-    url: `${router.asPath}`,
-  } as const;
-
   return (
-    <Layout headProps={headProps}>
-      <div className={style.wrapper}>
-        <section className="section">
-          <div className="container">
-            <div className={style.content}>
-              <h1>{statusCode}</h1>
-              <p>申し訳ありませんが、お探しのページは見つかりませんでした</p>
-              <Link href="/" as="/">
-                <a href="/">
-                  <p>トップページへ</p>
-                </a>
-              </Link>
-            </div>
+    <div className={style.wrapper}>
+      <section className="section">
+        <div className="container">
+          <div className={style.content}>
+            <h1>{statusCode}</h1>
+            <p>申し訳ありませんが、お探しのページは見つかりませんでした</p>
+            <Link href="/" as="/">
+              <a href="/">
+                <p>トップページへ</p>
+              </a>
+            </Link>
           </div>
-        </section>
-      </div>
-    </Layout>
+        </div>
+      </section>
+    </div>
   );
 };
 

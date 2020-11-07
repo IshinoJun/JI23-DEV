@@ -1,5 +1,6 @@
 import { NextRouter } from 'next/router';
 import HeaderParams from '../models/HeaderParams';
+import HeadParams from '../models/HeadParams';
 
 const generateHeaderParams = (router: NextRouter): HeaderParams => {
   const { pathname } = router;
@@ -34,6 +35,8 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         imgProps: { src: '/blog.png', alt: 'Blogs' },
       };
     case '/contact':
+    case '/contact/success':
+    case '/contact/error':
       return {
         title: 'Contact',
         subTitle: 'お問い合わせ',
@@ -51,5 +54,65 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { generateHeaderParams };
+const generateHeadParams = (router: NextRouter): HeadParams => {
+  const { pathname } = router;
+
+  switch (pathname) {
+    case '/':
+      return {
+        title: 'Home',
+        type: 'website',
+        url: `${router.asPath}`,
+      };
+    case '/profile':
+      return {
+        title: 'Portfolio',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/portfolio':
+      return {
+        title: 'Portfolio',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/blogs':
+      return {
+        title: 'Blogs',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/blogs/[id]':
+      return {
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/contact':
+      return {
+        title: 'Contact',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/contact/success':
+      return {
+        title: 'Success',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/contact/error':
+      return {
+        title: 'Error',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    default: {
+      return {
+        title: 'JI23-DEV',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    }
+  }
+};
+
+export { generateHeaderParams, generateHeadParams };

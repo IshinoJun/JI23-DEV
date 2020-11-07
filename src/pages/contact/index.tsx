@@ -4,11 +4,9 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
-import Layout from '../../components/shared/Layout';
 import Contact from '../../models/Contact';
 import SNS from '../../models/SNS';
 import DevCMS from '../api/DevCMS';
-import HeadProps from '../../models/HeadProps';
 import ContactForm from '../../components/shared/ContactForm';
 import fetchWrapper from '../../utils/FetchUtils';
 
@@ -18,14 +16,7 @@ interface Props {
 
 const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
-
   const router = useRouter();
-
-  const headProps: HeadProps = {
-    title: 'Contact',
-    type: 'article',
-    url: `${router.asPath}`,
-  } as const;
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('名前は必須項目です'),
@@ -45,24 +36,22 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout headProps={headProps}>
-      <section className="padding-block border-bottom">
-        <div className="container">
-          <div className={style.content}>
-            <div className={style.contact}>
-              <div className={style.title}>
-                <h2>お問い合わせフォーム</h2>
-              </div>
-              <ContactForm
-                onSubmit={handleSubmit}
-                validationSchema={validationSchema}
-                sns={sns}
-              />
+    <section className="padding-block border-bottom">
+      <div className="container">
+        <div className={style.content}>
+          <div className={style.contact}>
+            <div className={style.title}>
+              <h2>お問い合わせフォーム</h2>
             </div>
+            <ContactForm
+              onSubmit={handleSubmit}
+              validationSchema={validationSchema}
+              sns={sns}
+            />
           </div>
         </div>
-      </section>
-    </Layout>
+      </div>
+    </section>
   );
 };
 
