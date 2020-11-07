@@ -26,7 +26,7 @@ const TwitterShareButton: React.FC<Props> = (props) => {
         height="24"
         alt="ツイッターのアイコン"
       />
-      <span>シェア</span>
+      <span>Share</span>
     </a>
   );
 };
