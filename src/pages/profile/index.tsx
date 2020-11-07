@@ -5,7 +5,6 @@ import style from './index.module.scss';
 
 import DevCMS from '../api/DevCMS';
 import Profile from '../../models/Profile';
-import HeaderProps from '../../models/HeaderProps';
 import Layout from '../../components/shared/Layout';
 import HeadProps from '../../models/HeadProps';
 
@@ -16,13 +15,6 @@ interface Props {
 const ProfileIndex: NextPage<Props> = (props: Props) => {
   const { profile } = props;
   const router = useRouter();
-
-  const headerProps: HeaderProps = {
-    title: 'Profile',
-    subTitle: 'プロフィール',
-    linkProps: { href: '/' },
-    imgProps: { src: '/profile.png', alt: 'Profile' },
-  } as const;
 
   const headProps: HeadProps = {
     title: 'Profile',
@@ -48,7 +40,7 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>

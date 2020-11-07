@@ -4,7 +4,6 @@ import { NextPage, GetStaticProps } from 'next';
 import { Button } from '@material-ui/core';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import HeaderProps from '../../../models/HeaderProps';
 import Layout from '../../../components/shared/Layout';
 import style from './index.module.scss';
 import HeadProps from '../../../models/HeadProps';
@@ -19,13 +18,6 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
   const router = useRouter();
 
-  const headerProps: HeaderProps = {
-    title: 'Contact',
-    subTitle: 'お問い合わせ',
-    linkProps: { href: '/' },
-    imgProps: { src: '/contact.png', alt: 'Contact' },
-  } as const;
-
   const headProps: HeadProps = {
     title: 'Error',
     type: 'article',
@@ -33,7 +25,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.contact}>

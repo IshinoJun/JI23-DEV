@@ -6,7 +6,6 @@ import { Button } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
-import HeaderProps from '../../models/HeaderProps';
 import Layout from '../../components/shared/Layout';
 import DevCMS from '../api/DevCMS';
 import Blog from '../../models/Blog';
@@ -25,13 +24,6 @@ const Blogs: NextPage<Props> = (props: Props) => {
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
-  const headerProps: HeaderProps = {
-    title: 'Blogs',
-    subTitle: 'ブログ一覧',
-    linkProps: { href: '/' },
-    imgProps: { src: '/blog.png', alt: 'Blogs' },
-  } as const;
-
   const headProps: HeadProps = {
     title: 'Blogs',
     type: 'article',
@@ -39,7 +31,7 @@ const Blogs: NextPage<Props> = (props: Props) => {
   } as const;
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.wrapper}>

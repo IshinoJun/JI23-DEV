@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
 import Layout from '../../../components/shared/Layout';
-import HeaderProps from '../../../models/HeaderProps';
 import useMedia from '../../../hooks/useMedia';
 import HeadProps from '../../../models/HeadProps';
 
@@ -15,13 +14,6 @@ const SuccessIndex: NextPage = () => {
 
   const router = useRouter();
 
-  const headerProps: HeaderProps = {
-    title: 'Contact',
-    subTitle: 'お問い合わせ',
-    linkProps: { href: '/' },
-    imgProps: { src: '/contact.png', alt: 'Contact' },
-  } as const;
-
   const headProps: HeadProps = {
     title: 'Success',
     type: 'article',
@@ -29,7 +21,7 @@ const SuccessIndex: NextPage = () => {
   } as const;
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.contact}>

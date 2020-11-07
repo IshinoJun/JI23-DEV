@@ -1,6 +1,6 @@
 import { LinkProps } from 'next/link';
 
-interface HeaderProps {
+interface HeaderParams {
   title: string;
   subTitle: string;
   linkProps: LinkProps;
@@ -10,4 +10,4 @@ interface HeaderProps {
   >;
 }
 
-export default HeaderProps;
+export default HeaderParams;

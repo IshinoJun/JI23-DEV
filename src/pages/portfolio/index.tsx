@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import style from './index.module.scss';
 
-import HeaderProps from '../../models/HeaderProps';
 import Layout from '../../components/shared/Layout';
 import Portfolio from '../../models/Portfolio';
 import DevCMS from '../api/DevCMS';
@@ -25,13 +24,6 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   const { portfolioAry } = props;
   const router = useRouter();
 
-  const headerProps: HeaderProps = {
-    title: 'Portfolio',
-    subTitle: 'ポートフォリオ',
-    linkProps: { href: '/' },
-    imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
-  } as const;
-
   const headProps: HeadProps = {
     title: 'Portfolio',
     type: 'article',
@@ -39,7 +31,7 @@ const PortfolioIndex: NextPage<Props> = (props: Props) => {
   } as const;
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           {portfolioAry.contents.map((portfolio) => (

@@ -2,11 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import { useRouter } from 'next/router';
 import style from './Header.module.scss';
-import HeaderProps from '../../models/HeaderProps';
+import { generateHeaderParams } from '../../utils/GenerateUtils';
 
-const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
-  const { title, subTitle, linkProps, imgProps } = props;
+const Header: React.FC = () => {
+  const router = useRouter();
+  const headerParams = generateHeaderParams(router);
+
+  const { title, subTitle, linkProps, imgProps } = headerParams;
 
   return (
     <header className={style.head}>

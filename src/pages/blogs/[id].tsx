@@ -12,7 +12,6 @@ import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Layout from '../../components/shared/Layout';
-import HeaderProps from '../../models/HeaderProps';
 import style from './id.module.scss';
 import { formatDate } from '../../utils/FormatUtils';
 import Tags from '../../components/shared/Tags';
@@ -30,13 +29,6 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
-  const headerProps: HeaderProps = {
-    title: 'Blog',
-    subTitle: 'ブログ',
-    linkProps: { href: '/blogs' },
-    imgProps: { src: '/blog.png', alt: 'Blogs' },
-  } as const;
-
   const headProps: HeadProps = {
     id: blog?.id,
     title: blog?.title ?? '',
@@ -52,7 +44,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
   return (
     <>
       {blog && blog.id ? (
-        <Layout headProps={headProps} headerProps={headerProps}>
+        <Layout headProps={headProps}>
           <section className="padding-block border-bottom">
             <div className={style.blogContainer}>
               <div className={style.wrapper}>

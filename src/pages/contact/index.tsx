@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
-import HeaderProps from '../../models/HeaderProps';
 import Layout from '../../components/shared/Layout';
 import Contact from '../../models/Contact';
 import SNS from '../../models/SNS';
@@ -21,13 +20,6 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
   const router = useRouter();
-
-  const headerProps: HeaderProps = {
-    title: 'Contact',
-    subTitle: 'お問い合わせ',
-    linkProps: { href: '/' },
-    imgProps: { src: '/contact.png', alt: 'Contact' },
-  } as const;
 
   const headProps: HeadProps = {
     title: 'Contact',
@@ -53,7 +45,7 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <Layout headProps={headProps} headerProps={headerProps}>
+    <Layout headProps={headProps}>
       <section className="padding-block border-bottom">
         <div className="container">
           <div className={style.content}>
