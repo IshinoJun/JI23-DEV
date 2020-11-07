@@ -43,6 +43,13 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         linkProps: { href: '/' },
         imgProps: { src: '/contact.png', alt: 'Contact' },
       };
+    case '/404':
+      return {
+        title: 'Error',
+        subTitle: 'エラー',
+        linkProps: { href: '/' },
+        imgProps: { src: '/icon.png', alt: 'エラー' },
+      };
     default: {
       return {
         title: '',
@@ -100,6 +107,7 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
         url: `${router.asPath}`,
       };
     case '/contact/error':
+    case '/404':
       return {
         title: 'Error',
         type: 'article',

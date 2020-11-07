@@ -17,6 +17,7 @@ const renderBreadcrumbs = (router: NextRouter) => {
     '/contact': { title: '問い合わせ' },
     '/contact/success': { title: '問い合わせ成功' },
     '/contact/error': { title: '問い合わせ失敗' },
+    '/404': { title: 'エラー' },
   };
 
   const pathNames = router.pathname.split('/').filter((e) => e.length > 0);
