@@ -23,12 +23,15 @@ const JI23Head: React.FC = () => {
           <meta property="og:description" content={defaultDescription} />
           <meta name="twitter:title" content={`${title} | ${defaultTitle}`} />
           <meta name="twitter:description" content={defaultDescription} />
+          <meta
+            property="og:image"
+            content={`${baseUrl}/defaultOgpImage.png`}
+          />
         </>
       )}
       <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:url" content={baseUrl + url} />
       <meta property="og:type" content={type} />
-      <meta property="og:image" content={`${baseUrl}/defaultOgpImage.png`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@JJ_1123_I" />
       <meta name="twitter:url" content={baseUrl + url} />

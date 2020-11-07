@@ -17,7 +17,10 @@ const BlogHead: React.FC<Props> = (props: Props) => {
       <meta name="Description" content={blog.introduction} />
       <meta property="og:title" content={blog.title} />
       <meta property="og:description" content={blog.introduction} />
-      <meta property="og:image" content={`/api/blogs/${blog.id}/ogp`} />
+      <meta
+        property="og:image"
+        content={`${baseUrl}/api/blogs/${blog.id}/ogp`}
+      />
       <meta name="twitter:title" content={`${blog.title} | ${defaultTitle}`} />
       <meta name="twitter:description" content={blog.introduction} />
       <meta
