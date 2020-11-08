@@ -27,6 +27,10 @@ const JI23Head: React.FC = () => {
             property="og:image"
             content={`${baseUrl}/defaultOgpImage.png`}
           />
+          <meta
+            name="twitter:image"
+            content={`${baseUrl}/defaultOgpImage.png`}
+          />
         </>
       )}
       <meta property="og:site_name" content={defaultTitle} />
@@ -35,7 +39,6 @@ const JI23Head: React.FC = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@JJ_1123_I" />
       <meta name="twitter:url" content={baseUrl + url} />
-      <meta name="twitter:image" content={`${baseUrl}/defaultOgpImage.png`} />
       <link rel="canonical" href={baseUrl + url} />
     </Head>
   );
