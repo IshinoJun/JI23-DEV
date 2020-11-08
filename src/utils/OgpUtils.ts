@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
 import * as path from 'path';
 import fs from 'fs';
-import DevCMS from '../../DevCMS';
+import Blog from '../models/Blog';
 
 interface SeparatedText {
   line: string;
@@ -43,20 +42,13 @@ const createTextLines = (canvas: Canvas, text: string): string[] => {
   return lines;
 };
 
-const createGcp = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
-): Promise<void> => {
-  const devCMS = new DevCMS();
-
-  const id = req.query.id as string;
+const createOgp = async (blog: Blog): Promise<void> => {
+  const id = blog.id as string;
 
   const width = 600;
   const height = 315;
   const canvas = createCanvas(width, height);
   const context = canvas.getContext('2d');
-
-  console.log('hoge');
 
   registerFont(path.resolve('./fonts/ipagp.ttf'), {
     family: 'ipagp',
@@ -71,8 +63,6 @@ const createGcp = async (
   context.textAlign = 'center';
   context.textBaseline = 'middle';
 
-  const blog = await devCMS.getBlog(id);
-
   const lines = createTextLines(canvas, blog.title);
   lines.forEach((line, index) => {
     const y = 157 + 40 * (index - (lines.length - 1) / 2);
@@ -81,13 +71,8 @@ const createGcp = async (
 
   const buffer = canvas.toBuffer();
 
-  fs.writeFileSync(path.resolve(`./public/ogp/${id}.png`), canvas.toBuffer());
-
-  res.writeHead(200, {
-    'Content-Type': 'image/png',
-    'Content-Length': buffer.length,
-  });
-  res.end(buffer, 'binary');
+  fs.writeFileSync(path.resolve(`./public/ogp/${id}.png`), buffer);
 };
 
-export default createGcp;
+// eslint-disable-next-line import/prefer-default-export
+export { createOgp };

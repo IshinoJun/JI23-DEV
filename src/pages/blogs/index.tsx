@@ -3,6 +3,7 @@ import { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Button } from '@material-ui/core';
+import Image from 'next/image';
 import style from './index.module.scss';
 
 import DevCMS from '../api/DevCMS';
@@ -18,7 +19,6 @@ interface Props {
 
 const Blogs: NextPage<Props> = (props: Props) => {
   const { blogs } = props;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   return (
     <section className="padding-block border-bottom">
@@ -31,9 +31,10 @@ const Blogs: NextPage<Props> = (props: Props) => {
                   <div className={style.blog}>
                     <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                       <a>
-                        <img
-                          src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
+                        <Image
+                          src={`/ogp/${blog.id}.png`}
                           alt="ブログ画像"
+                          unsized
                         />
                       </a>
                     </Link>

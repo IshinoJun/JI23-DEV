@@ -6,6 +6,7 @@ import Link from 'next/link';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Image from 'next/image';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -16,6 +17,7 @@ import Tags from '../../components/shared/Tags';
 import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
 import TwitterShareButton from '../../components/shared/TwitterShareButton';
+import { createOgp } from '../../utils/OgpUtils';
 
 interface Props {
   blog: Blog | null;
@@ -41,9 +43,10 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
               <div className={style.wrapper}>
                 <div className={style.contact}>
                   <div className={style.blog}>
-                    <img
-                      src={`${baseUrl}/api/blogs/${blog.id}/ogp`}
+                    <Image
+                      src={`/ogp/${blog.id}.png`}
                       alt="ブログ画像"
+                      unsized
                     />
                     <div className={style.entryHeader}>
                       <div className={style.date}>
@@ -150,7 +153,8 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
   const res = await devCMS.getBlogs();
-  const paths = res.contents.map((item) => `/blogs/${item.id ?? ''}`);
+  const paths = res.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
+  res.contents.forEach((blog) => void createOgp(blog));
 
   return { paths, fallback: false };
 };
