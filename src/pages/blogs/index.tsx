@@ -41,7 +41,7 @@ const Blogs: NextPage<Props> = (props: Props) => {
                     </Link>
                     <div className={style.date}>
                       <AccessTimeIcon />
-                      <span>{formatDate(new Date(blog.date))}</span>
+                      <time>{formatDate(new Date(blog.date))}</time>
                     </div>
                     <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                       <a>

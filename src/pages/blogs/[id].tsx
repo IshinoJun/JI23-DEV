@@ -52,7 +52,7 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                     <div className={style.entryHeader}>
                       <div className={style.date}>
                         <AccessTimeIcon />
-                        <span>{formatDate(new Date(blog.date))}</span>
+                        <time>{formatDate(new Date(blog.date))}</time>
                       </div>
                       <h1>{blog.title}</h1>
                       <Tags tags={blog.tags} tagsPosition="left" />
