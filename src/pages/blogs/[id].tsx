@@ -57,7 +57,9 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                       <h1>{blog.title}</h1>
                       <Tags tags={blog.tags} tagsPosition="left" />
                     </div>
-                    <Highlight innerHTML>{blog.content}</Highlight>
+                    <Highlight innerHTML className="markdown-body">
+                      {blog.content}
+                    </Highlight>
                   </div>
                 </div>
                 <div className={style.shareArea}>
