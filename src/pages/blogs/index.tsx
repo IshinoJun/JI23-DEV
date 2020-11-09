@@ -34,7 +34,8 @@ const Blogs: NextPage<Props> = (props: Props) => {
                         <Image
                           src={`/ogp/${blog.id}.png`}
                           alt="ブログ画像"
-                          unsized
+                          width={600}
+                          height={315}
                         />
                       </a>
                     </Link>

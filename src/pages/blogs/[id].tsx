@@ -46,7 +46,8 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
                     <Image
                       src={`/ogp/${blog.id}.png`}
                       alt="ブログ画像"
-                      unsized
+                      width={600}
+                      height={315}
                     />
                     <div className={style.entryHeader}>
                       <div className={style.date}>
