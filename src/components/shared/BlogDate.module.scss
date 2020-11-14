@@ -16,6 +16,10 @@
     color: $color-right-blue;
   }
 
+  svg:nth-of-type(2) {
+    margin-left: em(13, 10);
+  }
+
   time {
     font-size: fz(13);
   }

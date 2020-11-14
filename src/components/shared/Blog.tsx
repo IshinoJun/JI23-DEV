@@ -45,7 +45,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           <div className={style.shareArea}>
             <TwitterShareButton
               url={`${baseUrl}/blogs/${blog.id}`}
-              text={blog.introduction}
+              text={blog.title}
             />
           </div>
           <div className={style.linkArea}>
