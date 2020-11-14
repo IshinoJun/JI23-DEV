@@ -6,9 +6,7 @@
   width: 100%;
   padding: em(14, 30);
   margin-bottom: em(14, 48);
-  border-color: $color-hight-gray;
-  border-style: solid;
-  border-width: 1px;
+  border: $color-hight-gray solid 1px;
 
   @include tab {
     padding: em(16, 30);
@@ -40,7 +38,7 @@
     line-height: 1.5;
     list-style-type: none !important;
     background: whitesmoke;
-    border-bottom: solid 2px $color-gray;
+    border-bottom: solid 2px #ddd;
     border-left: solid 6px $color-right-blue;
   }
 

@@ -14,7 +14,7 @@
   .contact {
     text-align: center;
     background-color: $color-white;
-    border-radius: 8px;
+    border-radius: 2px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
     @include tab {
@@ -32,7 +32,7 @@
       color: $color-white;
       text-align: center;
       background: $color-dark-blue;
-      border-radius: 8px;
+      border-radius: 2px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
       h2 {
