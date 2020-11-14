@@ -3,10 +3,9 @@ import Link from 'next/link';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { formatDate } from '../../utils/FormatUtils';
 import Blog from '../../models/Blog';
 import style from './BlogLink.module.scss';
+import BlogDate from './BlogDate';
 
 interface Props {
   nextBlog: Blog;
@@ -40,10 +39,7 @@ const BlogLink: React.FC<Props> = (props: Props) => {
                 <p className={[style.text, style.ellipsis].join(' ')}>
                   {prevBlog.title}
                 </p>
-                <p className={style.date}>
-                  <AccessTimeIcon />
-                  <span>{formatDate(new Date(prevBlog.date))}</span>
-                </p>
+                <BlogDate blog={prevBlog} />
               </div>
             </a>
           </Link>
@@ -66,10 +62,7 @@ const BlogLink: React.FC<Props> = (props: Props) => {
                 <p className={[style.text, style.ellipsis].join(' ')}>
                   {nextBlog.title}
                 </p>
-                <p className={style.date}>
-                  <AccessTimeIcon />
-                  <span>{formatDate(new Date(nextBlog.date))}</span>
-                </p>
+                <BlogDate blog={nextBlog} />
               </div>
               <ArrowForwardIcon
                 fontSize="large"
