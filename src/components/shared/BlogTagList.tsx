@@ -13,7 +13,7 @@ const BlogTagList: React.FC<Props> = (props) => {
 
   return (
     <aside className={style.tagWrapper}>
-      <h3>タグ一覧</h3>
+      <h2>Tags</h2>
       <ul>
         {tags.contents.map((tag) => (
           <li key={tag.id}>

@@ -15,18 +15,11 @@
     margin-bottom: em(16, 48);
   }
 
-  h3 {
-    margin: 0;
-    margin-bottom: em(14, 15);
-    font-size: fz(14);
-    font-weight: 500;
-    line-height: em(14, 24);
-
-    @include tab {
-      margin-bottom: em(16, 15);
-      font-size: fz(16);
-      line-height: em(16, 24);
-    }
+  h2 {
+    padding-bottom: em(16, 20);
+    font-size: fz(16);
+    color: $color-dark-blue;
+    text-align: center;
   }
 
   a {

@@ -1,6 +1,7 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
 
+import { useEffect, useState } from 'react';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -12,6 +13,7 @@ import { createOgp } from '../../utils/OgpUtils';
 import BlogComponent from '../../components/shared/Blog';
 import BlogTagList from '../../components/shared/BlogTagList';
 import Tag from '../../models/Tag';
+import BlogContents from '../../components/shared/BlogContents';
 
 interface Props {
   blog: Blog | null;
@@ -23,6 +25,16 @@ interface Props {
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
   const { blog, blogs, tags } = props;
 
+  const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
+
+  useEffect(() => {
+    const e = document.getElementById('blog');
+    if (e) {
+      const es = Array.from(e.getElementsByTagName('h2'));
+      setContents(es);
+    }
+  }, []);
+
   return (
     <>
       {blog && blog.id ? (
@@ -30,11 +42,14 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
           <BlogHead blog={blog} />
           <section className="padding-block border-bottom">
             <div className={`${String(style.blogsContainer)} container`}>
-              <div className={style.mainWrapper}>
+              <div className={style.mainWrapper} id="blog">
                 <BlogComponent blog={blog} blogs={blogs} />
               </div>
               <div className={style.sideWrapper}>
                 <BlogTagList tags={tags} />
+                <div className={style.sideFlow}>
+                  <BlogContents contents={contents} />
+                </div>
               </div>
             </div>
           </section>

@@ -1,0 +1,74 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+.contents {
+  &::before {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 100%;
+    height: 2em;
+    content: '';
+    background: radial-gradient($color-white 10px, transparent 7px) repeat-x;
+    background-size: 30px 30px;
+  }
+
+  .list {
+    max-height: calc(100vh - 11em);
+    overflow-y: scroll;
+  }
+
+  padding: em(14, 48) em(14, 30) em(14, 30) em(14, 30);
+  background-color: $color-hight-blue;
+  border-color: $color-hight-gray;
+  border-style: solid;
+  border-width: 1px;
+
+  @include tab {
+    padding: em(16, 48) em(16, 30) em(16, 30) em(16, 30);
+  }
+
+  .tocList {
+    counter-reset: li;
+
+    > li {
+      position: relative;
+      padding-left: 2.25em;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &::before {
+        content: none;
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        font-size: fz(16);
+        color: $color-dark-blue;
+        letter-spacing: -1px;
+        content: '0' counter(li) ' |';
+        counter-increment: li;
+        background: none;
+      }
+    }
+  }
+
+  ol {
+    line-height: 1.8;
+    list-style: none;
+  }
+
+  h2 {
+    padding-bottom: em(16, 20);
+    font-size: fz(16);
+    color: $color-dark-blue;
+    text-align: center;
+  }
+}
