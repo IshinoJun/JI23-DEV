@@ -1,0 +1,142 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.tagNameWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: em(14, 50);
+
+  @include tab {
+    margin-bottom: em(16, 50);
+  }
+}
+
+.content {
+  padding: em(14, 48) 0;
+  border-bottom-color: $color-hight-gray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+  @include tab {
+    padding: em(16, 48) 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  h2 {
+    margin: em(26, 12) 0;
+    font-size: fz(20);
+    line-height: em(26, 36);
+
+    @include tab {
+      font-size: fz(26);
+      line-height: em(26, 48);
+    }
+  }
+
+  .photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .blog {
+    @include tab {
+      margin: 0 auto;
+    }
+
+    .date {
+      display: flex;
+      align-items: center;
+      margin-top: em(14, 10);
+
+      @include tab {
+        margin-top: em(16, 10);
+      }
+
+      svg {
+        margin-right: em(13, 5);
+        font-size: fz(13);
+        color: $color-right-blue;
+      }
+
+      span {
+        font-size: fz(13);
+      }
+    }
+  }
+
+  .read {
+    color: $color-white;
+    background-color: $color-dark-blue !important;
+  }
+}
+
+.sideWrapper {
+  padding: 0 em(14, 15);
+
+  @include pc {
+    width: 33%;
+  }
+
+  @include tab {
+    padding: 0 em(16, 15);
+  }
+
+  .tagWrapper {
+    width: 100%;
+    padding: em(14, 30);
+    margin-bottom: em(14, 48);
+    border-color: #ededed;
+    border-style: solid;
+    border-width: 1px;
+
+    @include tab {
+      padding: em(16, 30);
+      margin-bottom: em(16, 48);
+    }
+
+    h3 {
+      margin: 0;
+      margin-bottom: em(14, 15);
+      font-size: fz(14);
+      font-weight: 500;
+      line-height: em(14, 24);
+
+      @include tab {
+        margin-bottom: em(16, 15);
+        font-size: fz(16);
+        line-height: em(16, 24);
+      }
+    }
+
+    a {
+      display: block;
+      font-size: fz(12);
+      font-weight: 500;
+
+      @include tab {
+        font-size: fz(14);
+      }
+    }
+
+    ul li,
+    ol li {
+      padding: em(14, 10);
+      margin-bottom: 5px;
+      font-weight: bold;
+      line-height: 1.5;
+      color: #404040;
+      list-style-type: none !important;
+      background: whitesmoke;
+      border-bottom: solid 2px #dadada;
+      border-left: solid 6px #8ad9f5;
+    }
+
+    @include tab {
+      font-size: em(16, 7);
+    }
+  }
+}

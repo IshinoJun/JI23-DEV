@@ -1,0 +1,57 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.tagWrapper {
+  width: 100%;
+  padding: em(14, 30);
+  margin-bottom: em(14, 48);
+  border-color: $color-hight-gray;
+  border-style: solid;
+  border-width: 1px;
+
+  @include tab {
+    padding: em(16, 30);
+    margin-bottom: em(16, 48);
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: em(14, 15);
+    font-size: fz(14);
+    font-weight: 500;
+    line-height: em(14, 24);
+
+    @include tab {
+      margin-bottom: em(16, 15);
+      font-size: fz(16);
+      line-height: em(16, 24);
+    }
+  }
+
+  a {
+    display: block;
+    font-size: fz(12);
+    font-weight: 500;
+
+    @include tab {
+      font-size: fz(14);
+    }
+  }
+
+  ul li,
+  ol li {
+    padding: em(14, 10);
+    margin-bottom: 5px;
+    font-weight: bold;
+    line-height: 1.5;
+    list-style-type: none !important;
+    background: whitesmoke;
+    border-bottom: solid 2px $color-gray;
+    border-left: solid 6px $color-right-blue;
+  }
+
+  @include tab {
+    font-size: em(16, 7);
+  }
+}

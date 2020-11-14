@@ -9,6 +9,9 @@ import Portfolio from '../../models/Portfolio';
 import ArrayList from '../../models/Array';
 import SNS from '../../models/SNS';
 import Blog from '../../models/Blog';
+import Tag from '../../models/Tag';
+import BlogsQuery from '../../models/BlogsQuery';
+import { generateBlogsUrl } from '../../utils/GenerateUtils';
 
 class DevCMS {
   private axios = Axios.create({
@@ -95,12 +98,22 @@ class DevCMS {
     return this.get<Blog>(`blogs/${id}`);
   }
 
-  public getBlogs(): Promise<ArrayList<Blog>> {
-    return this.get<ArrayList<Blog>>('blogs');
+  public getBlogs(query?: BlogsQuery): Promise<ArrayList<Blog>> {
+    const url = (query && generateBlogsUrl(query)) ?? 'blogs';
+
+    return this.get<ArrayList<Blog>>(url);
   }
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
     return this.get<Blog>(`blogs/${id}?draftKey=${draftKey}`);
+  }
+
+  public getTags(): Promise<ArrayList<Tag>> {
+    return this.get<ArrayList<Tag>>(`tag`);
+  }
+
+  public getTag(id: string): Promise<Tag> {
+    return this.get<Tag>(`tag/${id}`);
   }
 }
 export default DevCMS;

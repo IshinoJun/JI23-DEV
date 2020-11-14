@@ -2,73 +2,34 @@
 @import 'style/function';
 @import 'style/settings';
 
-.wrapper {
-  padding: 0 em(14, 15);
-
-  @include tab {
-    padding: 0 em(16, 15);
+.blogsContainer {
+  @include pc {
+    display: flex;
   }
 
-  .content {
-    padding: em(14, 48) 0;
-    border-bottom-color: $color-hight-gray;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
+  .mainWrapper {
+    padding: 0 em(14, 15);
+
+    @include pc {
+      width: 66%;
+    }
 
     @include tab {
-      padding: em(16, 48) 0;
+      padding: 0 em(16, 15);
+    }
+  }
+
+  .sideWrapper {
+    padding: 0 em(14, 15);
+    margin-top: em(14, 48);
+
+    @include pc {
+      width: 33%;
+      margin-top: em(14, 0);
     }
 
-    &:first-child {
-      padding-top: 0;
-    }
-
-    h2 {
-      margin: em(26, 12) 0;
-      font-size: fz(20);
-      line-height: em(26, 36);
-
-      @include tab {
-        font-size: fz(26);
-        line-height: em(26, 48);
-      }
-    }
-
-    .photo {
-      display: flex;
-      justify-content: center;
-    }
-
-    .blog {
-      @include tab {
-        width: 50%;
-        margin: 0 auto;
-      }
-
-      .date {
-        display: flex;
-        align-items: center;
-        margin-top: em(14, 10);
-
-        @include tab {
-          margin-top: em(16, 10);
-        }
-
-        svg {
-          margin-right: em(13, 5);
-          font-size: fz(13);
-          color: $color-right-blue;
-        }
-
-        span {
-          font-size: fz(13);
-        }
-      }
-    }
-
-    .read {
-      color: $color-white;
-      background-color: $color-dark-blue !important;
+    @include tab {
+      padding: 0 em(16, 15);
     }
   }
 }

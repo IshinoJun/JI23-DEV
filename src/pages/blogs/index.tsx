@@ -1,69 +1,31 @@
 import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
-import Link from 'next/link';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { Button } from '@material-ui/core';
-import Image from 'next/image';
 import style from './index.module.scss';
 
 import DevCMS from '../api/DevCMS';
 import Blog from '../../models/Blog';
 import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
-import { formatDate } from '../../utils/FormatUtils';
-import Tags from '../../components/shared/Tags';
+import Tag from '../../models/Tag';
+import Blogs from '../../components/shared/Blogs';
+import BlogTagList from '../../components/shared/BlogTagList';
 
 interface Props {
   blogs: ArrayList<Blog>;
+  tags: ArrayList<Tag>;
 }
 
-const Blogs: NextPage<Props> = (props: Props) => {
-  const { blogs } = props;
+const BlogsPage: NextPage<Props> = (props: Props) => {
+  const { blogs, tags } = props;
 
   return (
     <section className="padding-block border-bottom">
-      <div className="container">
-        <div className={style.wrapper}>
-          {blogs.contents.map(
-            (blog) =>
-              blog.id && (
-                <div key={blog.id} className={style.content}>
-                  <div className={style.blog}>
-                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                      <a>
-                        <Image
-                          src={`/ogp/${blog.id}.png`}
-                          alt="ブログ画像"
-                          width={600}
-                          height={315}
-                        />
-                      </a>
-                    </Link>
-                    <div className={style.date}>
-                      <AccessTimeIcon />
-                      <time>{formatDate(new Date(blog.date))}</time>
-                    </div>
-                    <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                      <a>
-                        <h2>{blog.title}</h2>
-                      </a>
-                    </Link>
-                    <Tags tags={blog.tags} tagsPosition="left" />
-                    <Button
-                      style={{ marginTop: 20 }}
-                      type="button"
-                      variant="contained"
-                      className={style.read}
-                      aria-label="記事を読む"
-                    >
-                      <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                        <a>記事を読む</a>
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              ),
-          )}
+      <div className={`${String(style.blogsContainer)} container`}>
+        <div className={style.mainWrapper}>
+          <Blogs blogs={blogs} />
+        </div>
+        <div className={style.sideWrapper}>
+          <BlogTagList tags={tags} />
         </div>
       </div>
     </section>
@@ -77,21 +39,23 @@ export const getStaticProps: GetStaticProps = async ({
   props: Props;
 }> => {
   const devCMS = new DevCMS();
-  const res = await devCMS.getBlogs();
+  const blogs = await devCMS.getBlogs();
+  const tags = await devCMS.getTags();
 
   // プレビュー時は draft のコンテンツを追加
   if (preview && isPreviewData(previewData)) {
     const previewDataId = previewData.id;
     const { draftKey } = previewData;
     const draftRes = await devCMS.getBlogPreview(previewDataId, draftKey);
-    res.contents.unshift(draftRes);
+    blogs.contents.unshift(draftRes);
   }
 
   return {
     props: {
-      blogs: res,
+      blogs,
+      tags,
     },
   };
 };
 
-export default Blogs;
+export default BlogsPage;

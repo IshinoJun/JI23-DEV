@@ -1,4 +1,5 @@
 import { NextRouter } from 'next/router';
+import BlogsQuery from '../models/BlogsQuery';
 import HeaderParams from '../models/HeaderParams';
 import HeadParams from '../models/HeadParams';
 
@@ -25,6 +26,13 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         title: 'Blogs',
         subTitle: 'ブログ一覧',
         linkProps: { href: '/' },
+        imgProps: { src: '/blog.png', alt: 'Blogs' },
+      };
+    case '/blogs/tags/[id]':
+      return {
+        title: 'Blogs',
+        subTitle: 'ブログ一覧',
+        linkProps: { href: '/blogs' },
         imgProps: { src: '/blog.png', alt: 'Blogs' },
       };
     case '/blogs/[id]':
@@ -94,6 +102,11 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
         type: 'article',
         url: `${router.asPath}`,
       };
+    case '/blogs/tags/[id]':
+      return {
+        type: 'article',
+        url: `${router.asPath}`,
+      };
     case '/contact':
       return {
         title: 'Contact',
@@ -123,4 +136,15 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
   }
 };
 
-export { generateHeaderParams, generateHeadParams };
+// TODO:項目が増えたらちゃんと考える
+const generateBlogsUrl = (query: BlogsQuery): string | null => {
+  const tagUrl = query.tagId ? `?filters=tags[contains]${query.tagId}` : null;
+
+  if (tagUrl) {
+    return `blogs${tagUrl}`;
+  }
+
+  return null;
+};
+
+export { generateHeaderParams, generateHeadParams, generateBlogsUrl };

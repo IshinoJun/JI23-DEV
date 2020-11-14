@@ -1,0 +1,22 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.date {
+  display: flex;
+  align-items: center;
+  margin-top: em(14, 10);
+
+  @include tab {
+    margin-top: em(16, 10);
+  }
+
+  svg {
+    font-size: fz(13);
+    color: $color-right-blue;
+  }
+
+  time {
+    font-size: fz(13);
+  }
+}

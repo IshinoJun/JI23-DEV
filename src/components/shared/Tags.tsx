@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import Tag from '../../models/Tag';
 import style from './Tags.module.scss';
@@ -10,18 +11,20 @@ interface Props {
 const Tags: React.FC<Props> = (props: Props) => {
   const { tags, tagsPosition, styleProps } = props;
 
-  return (
+  return tags ? (
     <div
       style={{ textAlign: tagsPosition, ...styleProps }}
       className={style.tags}
     >
-      {tags?.map((tag) => (
-        <p key={tag.name} className={style.tag}>
-          <span>{tag.name}</span>
-        </p>
+      {tags.map((tag) => (
+        <Link href={`/blogs/tags/${tag.id}`} key={tag.id}>
+          <a className={style.tag}>
+            <span>{tag.name}</span>
+          </a>
+        </Link>
       ))}
     </div>
-  );
+  ) : null;
 };
 
 export default Tags;

@@ -1,37 +1,27 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import Highlight from 'react-highlight';
-import Link from 'next/link';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import Image from 'next/image';
+
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import style from './id.module.scss';
-import { formatDate } from '../../utils/FormatUtils';
-import Tags from '../../components/shared/Tags';
 import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
-import TwitterShareButton from '../../components/shared/TwitterShareButton';
 import { createOgp } from '../../utils/OgpUtils';
+import BlogComponent from '../../components/shared/Blog';
+import BlogTagList from '../../components/shared/BlogTagList';
+import Tag from '../../models/Tag';
 
 interface Props {
   blog: Blog | null;
   blogs: ArrayList<Blog>;
   errors?: string;
+  tags: ArrayList<Tag>;
 }
 
-const BlogDetail: NextPage<Props> = (props: Props) => {
-  const { blog, blogs } = props;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
-
-  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
-  const nextBlog = blogs.contents[blogIndex - 1];
-  const prevBlog = blogs.contents[blogIndex + 1];
+const BlogDetailPage: NextPage<Props> = (props: Props) => {
+  const { blog, blogs, tags } = props;
 
   return (
     <>
@@ -39,107 +29,12 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
         <>
           <BlogHead blog={blog} />
           <section className="padding-block border-bottom">
-            <div className={style.blogContainer}>
-              <div className={style.wrapper}>
-                <div className={style.contact}>
-                  <div className={style.blog}>
-                    <Image
-                      src={`/ogp/${blog.id}.png`}
-                      alt="ブログ画像"
-                      width={600}
-                      height={315}
-                    />
-                    <div className={style.entryHeader}>
-                      <div className={style.date}>
-                        <AccessTimeIcon />
-                        <time>{formatDate(new Date(blog.date))}</time>
-                      </div>
-                      <h1>{blog.title}</h1>
-                      <Tags tags={blog.tags} tagsPosition="left" />
-                    </div>
-                    <Highlight innerHTML className="markdown-body">
-                      {blog.content}
-                    </Highlight>
-                  </div>
-                </div>
-                <div className={style.shareArea}>
-                  <TwitterShareButton
-                    url={`${baseUrl}/blogs/${blog.id}`}
-                    text={blog.introduction}
-                  />
-                </div>
-                <ul className={style.linkArea}>
-                  <li>
-                    {prevBlog && prevBlog.id && (
-                      <Link href="/blogs/[id]" as={`/blogs/${prevBlog.id}`}>
-                        <a>
-                          <ArrowBackIcon
-                            fontSize="large"
-                            className={style.arrow}
-                            style={{ marginRight: 20 }}
-                          />
-                          <div>
-                            <p className={style.tag}>
-                              <LocalOfferIcon />
-                              {prevBlog.tags?.map((tag, index) => (
-                                <span key={index}>
-                                  {tag.name}
-                                  {index + 1 !== prevBlog.tags?.length
-                                    ? ', '
-                                    : ''}
-                                </span>
-                              ))}
-                            </p>
-                            <p
-                              className={[style.text, style.ellipsis].join(' ')}
-                            >
-                              {prevBlog.title}
-                            </p>
-                            <p className={style.date}>
-                              <AccessTimeIcon />
-                              <span>{formatDate(new Date(prevBlog.date))}</span>
-                            </p>
-                          </div>
-                        </a>
-                      </Link>
-                    )}
-                  </li>
-                  <li>
-                    {nextBlog && nextBlog.id && (
-                      <Link href="/blogs/[id]" as={`/blogs/${nextBlog.id}`}>
-                        <a>
-                          <div style={{ marginLeft: 55 }}>
-                            <p className={style.tag}>
-                              <LocalOfferIcon />
-                              {nextBlog.tags?.map((tag, index) => (
-                                <span key={index}>
-                                  {tag.name}
-                                  {index + 1 !== nextBlog.tags?.length
-                                    ? ', '
-                                    : ''}
-                                </span>
-                              ))}
-                            </p>
-                            <p
-                              className={[style.text, style.ellipsis].join(' ')}
-                            >
-                              {nextBlog.title}
-                            </p>
-                            <p className={style.date}>
-                              <AccessTimeIcon />
-                              <span>{formatDate(new Date(nextBlog.date))}</span>
-                            </p>
-                          </div>
-                          <ArrowForwardIcon
-                            fontSize="large"
-                            className={style.arrow}
-                            style={{ marginLeft: 20 }}
-                          />
-                        </a>
-                      </Link>
-                    )}
-                  </li>
-                </ul>
+            <div className={`${String(style.blogsContainer)} container`}>
+              <div className={style.mainWrapper}>
+                <BlogComponent blog={blog} blogs={blogs} />
+              </div>
+              <div className={style.sideWrapper}>
+                <BlogTagList tags={tags} />
               </div>
             </div>
           </section>
@@ -153,9 +48,9 @@ const BlogDetail: NextPage<Props> = (props: Props) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
-  const res = await devCMS.getBlogs();
-  const paths = res.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
-  res.contents.forEach((blog) => void createOgp(blog));
+  const blogs = await devCMS.getBlogs();
+  const paths = blogs.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
+  blogs.contents.forEach((blog) => void createOgp(blog));
 
   return { paths, fallback: false };
 };
@@ -180,10 +75,11 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const blogs = await devCMS.getBlogs();
+  const tags = await devCMS.getTags();
 
   return {
-    props: { blog, blogs },
+    props: { blog, blogs, tags },
   };
 };
 
-export default BlogDetail;
+export default BlogDetailPage;

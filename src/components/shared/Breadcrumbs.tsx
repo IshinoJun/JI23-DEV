@@ -14,6 +14,7 @@ const renderBreadcrumbs = (router: NextRouter) => {
     '/portfolio': { title: 'ポートフォリオ' },
     '/blogs': { title: 'ブログ一覧' },
     '/blogs/[id]': { title: 'ブログ' },
+    '/blogs/tags/[id]': { title: 'タグ検索' },
     '/contact': { title: '問い合わせ' },
     '/contact/success': { title: '問い合わせ成功' },
     '/contact/error': { title: '問い合わせ失敗' },
@@ -28,19 +29,25 @@ const renderBreadcrumbs = (router: NextRouter) => {
   let pathnameHistory: keyof typeof routing = '/';
 
   for (let i = 0; i <= pathNames.length; i += 1) {
-    const target = routing[pathnameHistory as keyof typeof routing];
+    // TODO:いい感じの型にする必要がある
+    const target = routing[pathnameHistory as keyof typeof routing] as
+      | { title: string }
+      | undefined;
 
-    links.push(
-      pathNames.length !== i ? (
-        <Link href={pathnameHistory} key={target.title}>
-          {target.title}
-        </Link>
-      ) : (
-        <Typography color="textPrimary" key={target.title}>
-          {target.title}
-        </Typography>
-      ),
-    );
+    if (typeof target !== 'undefined') {
+      links.push(
+        pathNames.length !== i ? (
+          <Link href={pathnameHistory} key={target.title}>
+            {target.title}
+          </Link>
+        ) : (
+          <Typography color="textPrimary" key={target.title}>
+            {target.title}
+          </Typography>
+        ),
+      );
+    }
+
     pathnameHistory += pathnameHistory.endsWith('/')
       ? pathNames[i]
       : `/${pathNames[i]}`;
