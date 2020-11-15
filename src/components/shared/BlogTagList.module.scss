@@ -1,14 +1,15 @@
 @import 'style/mixin';
 @import 'style/function';
 @import 'style/settings';
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
 .tagWrapper {
   width: 100%;
-  padding: em(14, 30);
+  padding: em(14, 48) em(14, 30) em(14, 30) em(14, 30);
   border: $color-hight-gray solid 1px;
 
   @include tab {
-    padding: em(16, 30);
+    padding: em(16, 48) em(16, 30) em(16, 30) em(16, 30);
     margin-bottom: em(16, 48);
   }
 
@@ -33,6 +34,7 @@
   ol li {
     padding: em(14, 10);
     margin-bottom: 5px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bold;
     line-height: 1.5;
     list-style-type: none !important;

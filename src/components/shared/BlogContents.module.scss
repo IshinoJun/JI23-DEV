@@ -50,19 +50,28 @@
         top: 0;
         left: 0;
         font-family: 'M PLUS Rounded 1c', sans-serif;
-        font-size: fz(16);
+        font-size: fz(12);
         color: $color-dark-blue;
         letter-spacing: -1px;
         content: '0' counter(li) ' |';
         counter-increment: li;
         background: none;
+
+        @include tab {
+          font-size: fz(14);
+        }
       }
     }
   }
 
   ol {
+    font-size: fz(12);
     line-height: 1.8;
     list-style: none;
+
+    @include tab {
+      font-size: fz(14);
+    }
   }
 
   h2 {
