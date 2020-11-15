@@ -2,6 +2,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -14,6 +15,7 @@ import BlogComponent from '../../components/shared/Blog';
 import BlogTagList from '../../components/shared/BlogTagList';
 import Tag from '../../models/Tag';
 import BlogContents from '../../components/shared/BlogContents';
+import SearchInput from '../../components/shared/SearchInput';
 
 interface Props {
   blog: Blog | null;
@@ -26,6 +28,20 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
   const { blog, blogs, tags } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
+  const [keyword, setKeyword] = useState<string>('');
+  const router = useRouter();
+
+  const handleClickSearchButton = () => {
+    void router.push(`/blogs/search/?keyword=${keyword}`);
+  };
+
+  const handleKeyDownSearch = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    if (e.key === 'Enter') {
+      void router.push(`/blogs/search/?keyword=${keyword}`);
+    }
+  };
 
   useEffect(() => {
     const e = document.getElementById('blog');
@@ -46,6 +62,14 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                 <BlogComponent blog={blog} blogs={blogs} />
               </div>
               <div className={style.sideWrapper}>
+                <div className={style.searchInputWrapper}>
+                  <SearchInput
+                    keyword={keyword}
+                    setKeyword={setKeyword}
+                    onClickSearchButton={handleClickSearchButton}
+                    onKeyDownSearch={handleKeyDownSearch}
+                  />
+                </div>
                 <BlogTagList tags={tags} />
                 <div className={style.sideFlow}>
                   <BlogContents contents={contents} />

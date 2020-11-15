@@ -1,3 +1,4 @@
+import BlogsQuery from '../models/BlogsQuery';
 import Contact from '../models/Contact';
 
 interface PreviewData {
@@ -34,4 +35,17 @@ const isContact = (item: unknown): item is Contact => {
   );
 };
 
-export { isPreviewData, isContact };
+const isBlogs = (item: unknown): item is BlogsQuery => {
+  const target = item as BlogsQuery;
+
+  return (
+    ('tagId' in target &&
+      (typeof target.tagId === 'string' ||
+        typeof target.tagId === 'undefined')) ||
+    ('keyword' in target &&
+      (typeof target.keyword === 'string' ||
+        typeof target.keyword === 'undefined'))
+  );
+};
+
+export { isPreviewData, isContact, isBlogs };

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import style from './index.module.scss';
 
 import DevCMS from '../api/DevCMS';
@@ -9,6 +10,7 @@ import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Tag from '../../models/Tag';
 import Blogs from '../../components/shared/Blogs';
 import BlogTagList from '../../components/shared/BlogTagList';
+import SearchInput from '../../components/shared/SearchInput';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -17,6 +19,20 @@ interface Props {
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
   const { blogs, tags } = props;
+  const [keyword, setKeyword] = useState<string>('');
+  const router = useRouter();
+
+  const handleClickSearchButton = () => {
+    void router.push(`/blogs/search/?keyword=${keyword}`);
+  };
+
+  const handleKeyDownSearch = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    if (e.key === 'Enter') {
+      void router.push(`/blogs/search/?keyword=${keyword}`);
+    }
+  };
 
   return (
     <section className="padding-block border-bottom">
@@ -25,6 +41,14 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
           <Blogs blogs={blogs} />
         </div>
         <div className={style.sideWrapper}>
+          <div className={style.searchInputWrapper}>
+            <SearchInput
+              keyword={keyword}
+              setKeyword={setKeyword}
+              onClickSearchButton={handleClickSearchButton}
+              onKeyDownSearch={handleKeyDownSearch}
+            />
+          </div>
           <BlogTagList tags={tags} />
         </div>
       </div>

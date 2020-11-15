@@ -1,7 +1,18 @@
 @import 'style/mixin';
 @import 'style/function';
 @import 'style/settings';
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+.searchContainer {
+  margin-bottom: em(14, 48);
+
+  @include tab {
+    margin-bottom: em(16, 48);
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
 
 .blogsContainer {
   @include pc {
@@ -40,16 +51,5 @@
         margin-bottom: 0 em(16, 20);
       }
     }
-  }
-}
-
-.sideFlow {
-  position: relative;
-  margin-top: em(14, 15);
-
-  @include tab {
-    position: sticky;
-    top: em(14, 15);
-    margin-top: em(16, 15);
   }
 }

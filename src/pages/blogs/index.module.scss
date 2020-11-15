@@ -31,5 +31,13 @@
     @include tab {
       padding: 0 em(16, 15);
     }
+
+    .searchInputWrapper {
+      margin-bottom: em(14, 20);
+
+      @include tab {
+        margin-bottom: 0 em(16, 20);
+      }
+    }
   }
 }

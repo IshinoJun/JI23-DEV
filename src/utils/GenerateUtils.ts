@@ -28,6 +28,7 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         linkProps: { href: '/' },
         imgProps: { src: '/blog.png', alt: 'Blogs' },
       };
+    case '/blogs/search':
     case '/blogs/tags/[id]':
       return {
         title: 'Blogs',
@@ -92,17 +93,14 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
         url: `${router.asPath}`,
       };
     case '/blogs':
+    case '/blogs/search':
+    case '/blogs/tags/[id]':
       return {
         title: 'Blogs',
         type: 'article',
         url: `${router.asPath}`,
       };
     case '/blogs/[id]':
-      return {
-        type: 'article',
-        url: `${router.asPath}`,
-      };
-    case '/blogs/tags/[id]':
       return {
         type: 'article',
         url: `${router.asPath}`,
@@ -138,10 +136,14 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
 
 // TODO:項目が増えたらちゃんと考える
 const generateBlogsUrl = (query: BlogsQuery): string | null => {
-  const tagUrl = query.tagId ? `?filters=tags[contains]${query.tagId}` : null;
-
-  if (tagUrl) {
-    return `blogs${tagUrl}`;
+  if (query.keyword && query.tagId) {
+    return `blogs?filters=title[contains]${query.keyword}[or]content[contains]${query.keyword}[or]tags[contains]${query.tagId}`;
+  }
+  if (query.keyword) {
+    return `blogs?q=${encodeURI(query.keyword)}`;
+  }
+  if (query.tagId) {
+    return `blogs?filters=tags[contains]${query.tagId}`;
   }
 
   return null;

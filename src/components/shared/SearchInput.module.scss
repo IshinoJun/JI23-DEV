@@ -1,0 +1,22 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.search {
+  display: flex;
+  padding-left: em(16, 15);
+  border: $color-hight-gray solid 1px;
+
+  @include tab {
+    padding-left: em(14, 15);
+  }
+
+  .searchIcon {
+    background-color: $color-hight-blue;
+    border-radius: 2px;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+}

@@ -14,6 +14,7 @@ const renderBreadcrumbs = (router: NextRouter) => {
     '/portfolio': { title: 'ポートフォリオ' },
     '/blogs': { title: 'ブログ一覧' },
     '/blogs/[id]': { title: 'ブログ' },
+    '/blogs/search': { title: '検索結果' },
     '/blogs/tags/[id]': { title: 'タグ検索' },
     '/contact': { title: '問い合わせ' },
     '/contact/success': { title: '問い合わせ成功' },
