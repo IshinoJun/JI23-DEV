@@ -4,7 +4,6 @@ import Highlight from 'react-highlight';
 import Blog from '../../models/Blog';
 import style from './Blog.module.scss';
 import Tags from './Tags';
-import TwitterShareButton from './TwitterShareButton';
 import ArrayList from '../../models/Array';
 import BlogDate from './BlogDate';
 import BlogLink from './BlogLink';
@@ -16,7 +15,6 @@ interface Props {
 
 const BlogComponent: React.FC<Props> = (props: Props) => {
   const { blog, blogs } = props;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
   const nextBlog = blogs.contents[blogIndex - 1];
@@ -41,12 +39,6 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
             <Highlight innerHTML className="markdown-body">
               {blog.content}
             </Highlight>
-          </div>
-          <div className={style.shareArea}>
-            <TwitterShareButton
-              url={`${baseUrl}/blogs/${blog.id}`}
-              text={blog.title}
-            />
           </div>
           <div className={style.linkArea}>
             <BlogLink prevBlog={prevBlog} nextBlog={nextBlog} />

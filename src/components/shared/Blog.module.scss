@@ -30,14 +30,6 @@
     }
   }
 
-  .shareArea {
-    padding-top: em(14, 30);
-
-    @include tab {
-      padding-top: em(16, 30);
-    }
-  }
-
   .linkArea {
     padding-top: em(14, 30);
 

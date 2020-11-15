@@ -67,6 +67,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                   onKeyDownSearch={handleKeyDownSearch}
                   setKeyword={setKeyword}
                   contents={contents}
+                  blog={blog}
                 />
               </div>
             </div>

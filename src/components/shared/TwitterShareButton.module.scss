@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
 .button {
   display: flex;
   align-items: center;
@@ -7,4 +9,9 @@
   color: #fafafa;
   background: #1da1f2;
   border-radius: 2px;
+
+  span {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bold;
+  }
 }

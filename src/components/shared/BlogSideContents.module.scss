@@ -18,13 +18,29 @@
   }
 }
 
-.contentsWrapper {
+.sideFlow {
   position: relative;
-  margin-top: em(14, 15);
+  margin-bottom: em(14, 15);
 
   @include tab {
     position: sticky;
     top: em(14, 15);
-    margin-top: em(16, 15);
+    margin-bottom: em(16, 15);
+  }
+
+  .contentsWrapper {
+    margin-bottom: em(14, 15);
+
+    @include tab {
+      margin-bottom: em(16, 15);
+    }
+  }
+
+  .shareArea {
+    margin-bottom: em(14, 20);
+
+    @include tab {
+      margin-bottom: 0 em(16, 20);
+    }
   }
 }
