@@ -26,6 +26,12 @@ const Header: React.FC<Props> = (props) => {
 
   const globalNav: GlobalNav[] = [
     {
+      title: 'Home',
+      subTitle: 'ホーム',
+      linkProps: { href: '/' },
+      imgProps: { src: '/icon.png', alt: 'Home' },
+    },
+    {
       title: 'Profile',
       subTitle: 'プロフィール',
       linkProps: { href: '/profile' },
