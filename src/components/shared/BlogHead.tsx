@@ -27,7 +27,7 @@ const BlogHead: React.FC<Props> = (props: Props) => {
     <Head>
       <title>{`${blog.title} | ${defaultTitle}`}</title>
       <meta name="Description" content={description} />
-      <meta property="og:title" content={blog.title} />
+      <meta property="og:title" content={`${blog.title} | ${defaultTitle}`} />
       <meta property="og:description" content={description} />
       <meta
         property="og:image"

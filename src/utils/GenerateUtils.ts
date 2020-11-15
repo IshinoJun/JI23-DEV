@@ -93,10 +93,22 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
         url: `${router.asPath}`,
       };
     case '/blogs':
-    case '/blogs/search':
-    case '/blogs/tags/[id]':
       return {
         title: 'Blogs',
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    case '/blogs/search': {
+      const urlQuery = router.query as BlogsQuery;
+
+      return {
+        title: `「${urlQuery.keyword ?? ''}」の検索結果`,
+        type: 'article',
+        url: `${router.asPath}`,
+      };
+    }
+    case '/blogs/tags/[id]':
+      return {
         type: 'article',
         url: `${router.asPath}`,
       };

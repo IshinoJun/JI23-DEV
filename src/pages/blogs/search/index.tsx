@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import qs from 'qs';
 import { CircularProgress } from '@material-ui/core';
+import { isEmpty } from 'lodash';
 import style from './index.module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -30,7 +30,6 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
 
   const handleClickSearchButton = () => {
     void router.push(`/blogs/search/?keyword=${keyword}`);
-    setBlogsQuery({ keyword });
   };
 
   const handleKeyDownSearch = (
@@ -38,17 +37,14 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   ) => {
     if (e.key === 'Enter') {
       void router.push(`/blogs/search/?keyword=${keyword}`);
-      setBlogsQuery({ keyword });
     }
   };
 
   useEffect(() => {
-    const urlQuery = qs.parse(
-      window.location.search.substring(1),
-    ) as BlogsQuery;
+    const urlQuery = router.query as BlogsQuery;
 
-    setBlogsQuery(urlQuery);
-  }, []);
+    if (!isEmpty(urlQuery)) setBlogsQuery(urlQuery);
+  }, [router.query]);
 
   useEffect(() => {
     if (blogsQuery) {
