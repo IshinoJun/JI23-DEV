@@ -1,0 +1,33 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: em(14, 50);
+  height: em(14, 50);
+  margin-right: em(14, 20);
+  background-color: $color-hight-blue;
+  border-color: $color-gray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+
+  @include tab {
+    width: em(16, 50);
+    height: em(16, 50);
+    margin-right: em(16, 20);
+  }
+
+  img {
+    width: em(14, 30);
+    height: em(14, 40);
+
+    @include tab {
+      width: em(16, 30);
+      height: em(16, 40);
+    }
+  }
+}

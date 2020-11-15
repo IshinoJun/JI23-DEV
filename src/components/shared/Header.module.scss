@@ -1,47 +1,40 @@
 @import 'style/mixin';
 @import 'style/function';
 @import 'style/settings';
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
 .head {
-  padding-top: em(14, 22);
-  padding-bottom: em(14, 30);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: em(14, 7) 0;
+  background-color: #fafafa;
   border-bottom-color: $color-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
   @include tab {
-    position: relative;
-    padding-top: em(16, 24);
-    padding-bottom: em(16, 30);
-  }
-
-  .logo {
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 300px;
-
-      @include tab {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 350px;
-        transform: translate(-50%, -50%);
-      }
-    }
+    padding: em(16, 7) 0;
   }
 
   .row {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding-right: em(14, 15);
-    padding-left: em(14, 15);
+    margin: 0 em(16, 20);
 
     @include tab {
-      padding-right: em(16, 15);
-      padding-left: em(16, 15);
+      margin: 0;
+    }
+
+    .title {
+      h2 {
+        font-size: fz(16);
+      }
+
+      h3 {
+        font-size: fz(14);
+        font-weight: normal;
+      }
     }
   }
 
@@ -53,8 +46,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: em(14, 70);
-    height: em(14, 70);
+    width: em(14, 50);
+    height: em(14, 50);
     margin-right: em(14, 20);
     background-color: $color-hight-blue;
     border-color: $color-gray;
@@ -63,16 +56,18 @@
     border-radius: 2px;
 
     @include tab {
+      width: em(16, 50);
+      height: em(16, 50);
       margin-right: em(16, 20);
     }
 
     img {
-      width: em(14, 50);
-      height: em(14, 64);
+      width: em(14, 30);
+      height: em(14, 40);
 
       @include tab {
-        width: em(16, 50);
-        height: em(16, 64);
+        width: em(16, 30);
+        height: em(16, 40);
       }
     }
   }
@@ -82,6 +77,44 @@
 
     svg {
       font-size: fz(54);
+    }
+  }
+}
+
+.logo {
+  width: 300px;
+  padding-top: em(14, 20);
+  margin: 0 auto;
+
+  @include tab {
+    width: 50%;
+    max-width: 400px;
+    padding-top: em(16, 20);
+  }
+}
+
+.globalNav {
+  line-height: em(14, 50);
+
+  @include tab {
+    line-height: em(16, 50);
+  }
+
+  ul {
+    display: flex;
+    width: 100%;
+
+    :not(:last-child) {
+      margin-right: em(14, 10);
+    }
+
+    li {
+      list-style: none;
+
+      a {
+        padding: em(14, 5);
+        text-transform: uppercase;
+      }
     }
   }
 }

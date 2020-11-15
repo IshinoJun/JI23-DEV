@@ -15,6 +15,8 @@ const Layout: React.FC<Props> = (props: Props) => {
   const { children } = props;
   const router = useRouter();
   const [isHidden, setHidden] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
   const isTop = router.pathname === '/';
 
   const handleClickScrollTopButton = (): void => {
@@ -32,6 +34,14 @@ const Layout: React.FC<Props> = (props: Props) => {
     }
   }, []);
 
+  const handleClickDrawer = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
@@ -45,7 +55,7 @@ const Layout: React.FC<Props> = (props: Props) => {
       <JI23Head />
       <main className="wrapper">
         {!isTop ? (
-          <Header />
+          <Header onClickDrawer={handleClickDrawer} isOpen={isOpen} />
         ) : (
           <header className={style.logo}>
             <Link href="/" as="/">
