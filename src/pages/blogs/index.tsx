@@ -9,8 +9,7 @@ import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Tag from '../../models/Tag';
 import Blogs from '../../components/shared/Blogs';
-import BlogTagList from '../../components/shared/BlogTagList';
-import SearchInput from '../../components/shared/SearchInput';
+import BlogSideContents from '../../components/shared/BlogSideContents';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -41,15 +40,13 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
           <Blogs blogs={blogs} />
         </div>
         <div className={style.sideWrapper}>
-          <div className={style.searchInputWrapper}>
-            <SearchInput
-              keyword={keyword}
-              setKeyword={setKeyword}
-              onClickSearchButton={handleClickSearchButton}
-              onKeyDownSearch={handleKeyDownSearch}
-            />
-          </div>
-          <BlogTagList tags={tags} />
+          <BlogSideContents
+            keyword={keyword}
+            tags={tags}
+            onClickSearchButton={handleClickSearchButton}
+            onKeyDownSearch={handleKeyDownSearch}
+            setKeyword={setKeyword}
+          />
         </div>
       </div>
     </section>

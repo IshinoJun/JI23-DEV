@@ -12,10 +12,8 @@ import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
 import { createOgp } from '../../utils/OgpUtils';
 import BlogComponent from '../../components/shared/Blog';
-import BlogTagList from '../../components/shared/BlogTagList';
 import Tag from '../../models/Tag';
-import BlogContents from '../../components/shared/BlogContents';
-import SearchInput from '../../components/shared/SearchInput';
+import BlogSideContents from '../../components/shared/BlogSideContents';
 
 interface Props {
   blog: Blog | null;
@@ -62,18 +60,14 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                 <BlogComponent blog={blog} blogs={blogs} />
               </div>
               <div className={style.sideWrapper}>
-                <div className={style.searchInputWrapper}>
-                  <SearchInput
-                    keyword={keyword}
-                    setKeyword={setKeyword}
-                    onClickSearchButton={handleClickSearchButton}
-                    onKeyDownSearch={handleKeyDownSearch}
-                  />
-                </div>
-                <BlogTagList tags={tags} />
-                <div className={style.sideFlow}>
-                  <BlogContents contents={contents} />
-                </div>
+                <BlogSideContents
+                  keyword={keyword}
+                  tags={tags}
+                  onClickSearchButton={handleClickSearchButton}
+                  onKeyDownSearch={handleKeyDownSearch}
+                  setKeyword={setKeyword}
+                  contents={contents}
+                />
               </div>
             </div>
           </section>
