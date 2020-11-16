@@ -3,10 +3,14 @@
 @import 'style/settings';
 
 .contact {
-  padding-bottom: em(14, 15);
+  padding-bottom: em(14, 42);
   border-bottom-color: $color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+
+  @include tab {
+    padding-bottom: em(16, 42);
+  }
 
   .blog {
     @include tab {
@@ -27,14 +31,6 @@
           line-height: em(20, 48);
         }
       }
-    }
-  }
-
-  .linkArea {
-    padding-top: em(14, 30);
-
-    @include tab {
-      padding-top: em(16, 30);
     }
   }
 }

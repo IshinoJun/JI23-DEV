@@ -56,8 +56,6 @@ const createGcp = async (
   const canvas = createCanvas(width, height);
   const context = canvas.getContext('2d');
 
-  console.log('hoge');
-
   registerFont(path.resolve('./fonts/ipagp.ttf'), {
     family: 'ipagp',
   });

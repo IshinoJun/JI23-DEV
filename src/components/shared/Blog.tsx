@@ -4,21 +4,14 @@ import Highlight from 'react-highlight';
 import Blog from '../../models/Blog';
 import style from './Blog.module.scss';
 import Tags from './Tags';
-import ArrayList from '../../models/Array';
 import BlogDate from './BlogDate';
-import BlogLink from './BlogLink';
 
 interface Props {
   blog: Blog;
-  blogs: ArrayList<Blog>;
 }
 
 const BlogComponent: React.FC<Props> = (props: Props) => {
-  const { blog, blogs } = props;
-
-  const blogIndex = blogs.contents.map((c) => c.id).indexOf(blog?.id ?? '');
-  const nextBlog = blogs.contents[blogIndex - 1];
-  const prevBlog = blogs.contents[blogIndex + 1];
+  const { blog } = props;
 
   return (
     <>
@@ -39,9 +32,6 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
             <Highlight innerHTML className="markdown-body">
               {blog.content}
             </Highlight>
-          </div>
-          <div className={style.linkArea}>
-            <BlogLink prevBlog={prevBlog} nextBlog={nextBlog} />
           </div>
         </main>
       )}
