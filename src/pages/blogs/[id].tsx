@@ -17,13 +17,12 @@ import BlogSideContents from '../../components/shared/BlogSideContents';
 
 interface Props {
   blog: Blog | null;
-  blogs: ArrayList<Blog>;
   errors?: string;
   tags: ArrayList<Tag>;
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, blogs, tags } = props;
+  const { blog, tags } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const [keyword, setKeyword] = useState<string>('');
@@ -57,7 +56,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
           <section className="padding-block border-bottom">
             <div className={`${String(style.blogsContainer)} container`}>
               <div className={style.mainWrapper} id="blog">
-                <BlogComponent blog={blog} blogs={blogs} />
+                <BlogComponent blog={blog} />
               </div>
               <div className={style.sideWrapper}>
                 <BlogSideContents
@@ -108,11 +107,10 @@ export const getStaticProps: GetStaticProps = async ({
     blog = await devCMS.getBlog(paramsId);
   }
 
-  const blogs = await devCMS.getBlogs();
   const tags = await devCMS.getTags();
 
   return {
-    props: { blog, blogs, tags },
+    props: { blog, tags },
   };
 };
 
