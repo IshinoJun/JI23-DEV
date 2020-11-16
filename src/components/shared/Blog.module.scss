@@ -4,9 +4,7 @@
 
 .contact {
   padding-bottom: em(14, 42);
-  border-bottom-color: $color-hight-gray;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-bottom: $color-hight-gray solid 1px;
 
   @include tab {
     padding-bottom: em(16, 42);
@@ -30,6 +28,13 @@
           font-size: fz(20);
           line-height: em(20, 48);
         }
+      }
+    }
+
+    .pre {
+      pre {
+        background-color: #e5f5fa;
+        border: $color-hight-gray solid 1px;
       }
     }
   }
