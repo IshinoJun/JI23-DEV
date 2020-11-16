@@ -61,7 +61,7 @@ const HeaderDrawer: React.FC<Props> = (props) => {
       }}
     >
       <div className={classes.drawerHeader}>
-        <IconButton onClick={onClickDrawer}>
+        <IconButton onClick={onClickDrawer} aria-label="ChevronIcon">
           {theme.direction === 'rtl' ? (
             <ChevronLeftIcon />
           ) : (

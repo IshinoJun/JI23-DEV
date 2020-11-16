@@ -13,6 +13,7 @@ const TopScrollButton: React.FC<Props> = (props) => {
     <IconButton
       onClick={onClickScrollTopButton}
       type="button"
+      aria-label="ArrowButton"
       style={{
         position: 'fixed',
         background: '#454b72',

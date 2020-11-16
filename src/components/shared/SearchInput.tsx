@@ -32,7 +32,11 @@ const SearchInput: React.FC<Props> = (props: Props) => {
         onChange={handleChangeKeyword}
         onKeyDown={onKeyDownSearch}
       />
-      <IconButton className={style.searchIcon} onClick={onClickSearchButton}>
+      <IconButton
+        className={style.searchIcon}
+        onClick={onClickSearchButton}
+        aria-label="Search"
+      >
         <SearchIcon />
       </IconButton>
     </div>
