@@ -17,10 +17,10 @@
   }
 
   svg:nth-of-type(2) {
-    padding-left: em(13, 5);
+    margin-left: em(13, 5);
 
     @include tab {
-      padding-left: em(13, 8);
+      margin-left: em(13, 8);
     }
   }
 
