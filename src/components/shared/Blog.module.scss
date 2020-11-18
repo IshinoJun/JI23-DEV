@@ -32,9 +32,8 @@
     }
 
     .pre {
-      pre {
-        background-color: #e5f5fa;
-        border: $color-hight-gray solid 1px;
+      code {
+        letter-spacing: none;
       }
     }
   }
