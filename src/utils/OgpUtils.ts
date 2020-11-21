@@ -10,12 +10,12 @@ interface SeparatedText {
 
 const createTextLine = (canvas: Canvas, text: string): SeparatedText => {
   const context = canvas.getContext('2d');
-  const maxWidth = 1000;
+  const MAX_WIDTH = 1000 as const;
 
   for (let i = 0; i < text.length; i += 1) {
     const line = text.substring(0, i + 1);
 
-    if (context.measureText(line).width > maxWidth) {
+    if (context.measureText(line).width > MAX_WIDTH) {
       return {
         line,
         remaining: text.substring(i + 1),
@@ -45,9 +45,11 @@ const createTextLines = (canvas: Canvas, text: string): string[] => {
 const createOgp = async (blog: Blog): Promise<void> => {
   const id = blog.id as string;
 
-  const width = 1200;
-  const height = 630;
-  const canvas = createCanvas(width, height);
+  const WIDTH = 1200 as const;
+  const HEIGHT = 630 as const;
+  const DX = 0 as const;
+  const DY = 0 as const;
+  const canvas = createCanvas(WIDTH, HEIGHT);
   const context = canvas.getContext('2d');
 
   registerFont(path.resolve('./fonts/ipagp.ttf'), {
@@ -58,7 +60,7 @@ const createOgp = async (blog: Blog): Promise<void> => {
     path.resolve('./public/ogpBackground.png'),
   );
 
-  context.drawImage(backgroundImage, 0, 0, width, height);
+  context.drawImage(backgroundImage, DX, DY, WIDTH, HEIGHT);
   context.font = '60px ipagp';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
