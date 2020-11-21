@@ -1,5 +1,7 @@
+import Blog from '../models/Blog';
 import BlogsQuery from '../models/BlogsQuery';
 import Contact from '../models/Contact';
+import Tag from '../models/Tag';
 
 interface PreviewData {
   draftKey: string;
@@ -35,7 +37,7 @@ const isContact = (item: unknown): item is Contact => {
   );
 };
 
-const isBlogs = (item: unknown): item is BlogsQuery => {
+const isBlogsQuery = (item: unknown): item is BlogsQuery => {
   const target = item as BlogsQuery;
 
   return (
@@ -48,4 +50,38 @@ const isBlogs = (item: unknown): item is BlogsQuery => {
   );
 };
 
-export { isPreviewData, isContact, isBlogs };
+const isTag = (item: unknown): item is Tag => {
+  const target = item as Tag;
+
+  return (
+    'id' in target &&
+    typeof target.id === 'string' &&
+    'name' in target &&
+    typeof target.name === 'string'
+  );
+};
+
+const isTags = (item: unknown): item is Tag[] => {
+  const target = item as Tag[];
+
+  return target.some((t) => isTag(t));
+};
+
+const isBlog = (item: unknown): item is Blog => {
+  const target = item as Blog;
+
+  return (
+    ('title' in target &&
+      typeof target.title === 'string' &&
+      'content' in target &&
+      typeof target.content === 'string') ||
+    ('title' in target &&
+      typeof target.title === 'string' &&
+      'content' in target &&
+      typeof target.content === 'string' &&
+      'tags' in target &&
+      isTags(target.tags))
+  );
+};
+
+export { isPreviewData, isContact, isBlogsQuery, isBlog, isTags, isTag };

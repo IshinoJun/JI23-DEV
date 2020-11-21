@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
 import * as path from 'path';
 import fs from 'fs';
-import DevCMS from '../../DevCMS';
+import { isBlog } from '../../../../utils/TypeGuardUtils';
 
 interface SeparatedText {
   line: string;
@@ -11,12 +11,12 @@ interface SeparatedText {
 
 const createTextLine = (canvas: Canvas, text: string): SeparatedText => {
   const context = canvas.getContext('2d');
-  const maxWidth = 500;
+  const MAX_WIDTH = 1000 as const;
 
   for (let i = 0; i < text.length; i += 1) {
     const line = text.substring(0, i + 1);
 
-    if (context.measureText(line).width > maxWidth) {
+    if (context.measureText(line).width > MAX_WIDTH) {
       return {
         line,
         remaining: text.substring(i + 1),
@@ -47,13 +47,19 @@ const createGcp = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
-  const devCMS = new DevCMS();
+  // クエリのチェック
+  if (!isBlog(req.body) || typeof req.query.id !== 'string') {
+    return res.status(404).end();
+  }
 
-  const id = req.query.id as string;
+  const { id } = req.query;
+  const blog = req.body;
 
-  const width = 600;
-  const height = 315;
-  const canvas = createCanvas(width, height);
+  const WIDTH = 1200 as const;
+  const HEIGHT = 630 as const;
+  const DX = 0 as const;
+  const DY = 0 as const;
+  const canvas = createCanvas(WIDTH, HEIGHT);
   const context = canvas.getContext('2d');
 
   registerFont(path.resolve('./fonts/ipagp.ttf'), {
@@ -64,28 +70,20 @@ const createGcp = async (
     path.resolve('./public/ogpBackground.png'),
   );
 
-  context.drawImage(backgroundImage, 0, 0, width, height);
-  context.font = '30px ipagp';
+  context.drawImage(backgroundImage, DX, DY, WIDTH, HEIGHT);
+  context.font = '60px ipagp';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
 
-  const blog = await devCMS.getBlog(id);
-
   const lines = createTextLines(canvas, blog.title);
   lines.forEach((line, index) => {
-    const y = 157 + 40 * (index - (lines.length - 1) / 2);
-    context.fillText(line, 300, y);
+    const y = 314 + 80 * (index - (lines.length - 1) / 2);
+    context.fillText(line, 600, y);
   });
-
   const buffer = canvas.toBuffer();
+  fs.writeFileSync(path.resolve(`./public/ogp/${id}.png`), buffer);
 
-  fs.writeFileSync(path.resolve(`./public/ogp/${id}.png`), canvas.toBuffer());
-
-  res.writeHead(200, {
-    'Content-Type': 'image/png',
-    'Content-Length': buffer.length,
-  });
-  res.end(buffer, 'binary');
+  return res.status(200).json({ statusCode: 200, message: 'OK' });
 };
 
 export default createGcp;

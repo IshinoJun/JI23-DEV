@@ -3,7 +3,6 @@ import Tag from './Tag';
 
 interface Blog extends Model {
   title: string;
-  introduction: string;
   tags?: Tag[];
   content: string;
 }

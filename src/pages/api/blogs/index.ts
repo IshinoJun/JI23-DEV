@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from 'next';
-import { isBlogs } from '../../../utils/TypeGuardUtils';
+import { isBlogsQuery } from '../../../utils/TypeGuardUtils';
 import DevCMS from '../DevCMS';
 
 const contact = async (
@@ -9,7 +9,7 @@ const contact = async (
   const devCMS = new DevCMS();
 
   // クエリのチェック
-  if (!isBlogs(req.body)) {
+  if (!isBlogsQuery(req.body)) {
     return res.status(404).end();
   }
 

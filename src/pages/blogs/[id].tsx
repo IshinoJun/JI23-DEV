@@ -10,7 +10,6 @@ import { isPreviewData } from '../../utils/TypeGuardUtils';
 import style from './id.module.scss';
 import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
-import { createOgp } from '../../utils/OgpUtils';
 import BlogComponent from '../../components/shared/Blog';
 import Tag from '../../models/Tag';
 import BlogSideContents from '../../components/shared/BlogSideContents';
@@ -83,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs();
   const paths = blogs.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
-  blogs.contents.forEach((blog) => void createOgp(blog));
+  // blogs.contents.forEach((blog) => void createOgp(blog));
 
   return { paths, fallback: false };
 };
