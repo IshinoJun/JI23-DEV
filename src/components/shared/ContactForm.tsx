@@ -43,6 +43,7 @@ const ContactForm: React.FC<Props> = (props: Props) => {
         </p>
       </div>
       <Grid container spacing={2}>
+        <input type="text" name="_gotcha" style={{ display: 'none' }} />
         <Grid item xs={12}>
           <Controller
             as={TextField}
