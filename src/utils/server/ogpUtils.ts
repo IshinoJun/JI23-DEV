@@ -42,7 +42,7 @@ const createTextLines = (canvas: Canvas, text: string): string[] => {
   return lines;
 };
 
-const createGcp = async (blog: Blog): Promise<void> => {
+const createOgp = async (blog: Blog): Promise<void> => {
   if (typeof blog.id !== 'string') return;
 
   const WIDTH = 1200 as const;
@@ -74,4 +74,4 @@ const createGcp = async (blog: Blog): Promise<void> => {
   fs.writeFileSync(path.resolve(`./public/ogp/${blog.id}.png`), buffer);
 };
 
-export default createGcp;
+export default createOgp;

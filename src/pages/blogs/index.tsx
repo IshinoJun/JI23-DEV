@@ -10,7 +10,7 @@ import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Tag from '../../models/Tag';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
-import createGcp from '../../utils/server/ogpUtils';
+import createOgp from '../../utils/server/ogpUtils';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({
   const tags = await devCMS.getTags();
 
   blogs.contents.forEach((blog) => {
-    void createGcp(blog);
+    void createOgp(blog);
   });
 
   // プレビュー時は draft のコンテンツを追加
