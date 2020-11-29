@@ -10,7 +10,7 @@ import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Tag from '../../models/Tag';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
-import fetchWrapper from '../../utils/FetchUtils';
+import createGcp from '../../utils/server/ogpUtils';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -65,8 +65,7 @@ export const getStaticProps: GetStaticProps = async ({
   const tags = await devCMS.getTags();
 
   blogs.contents.forEach((blog) => {
-    if (typeof blog.id === 'undefined') return;
-    void fetchWrapper.post(`/api/blogs/${blog.id}/ogp`, blog);
+    void createGcp(blog);
   });
 
   // プレビュー時は draft のコンテンツを追加

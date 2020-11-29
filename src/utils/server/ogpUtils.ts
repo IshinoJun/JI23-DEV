@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
 import * as path from 'path';
 import fs from 'fs';
-import { isBlog } from '../../../../utils/TypeGuardUtils';
+import Blog from '../../models/Blog';
 
 interface SeparatedText {
   line: string;
@@ -43,17 +42,8 @@ const createTextLines = (canvas: Canvas, text: string): string[] => {
   return lines;
 };
 
-const createGcp = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
-): Promise<void> => {
-  // クエリのチェック
-  if (!isBlog(req.body) || typeof req.query.id !== 'string') {
-    return res.status(404).end();
-  }
-
-  const { id } = req.query;
-  const blog = req.body;
+const createGcp = async (blog: Blog): Promise<void> => {
+  if (typeof blog.id !== 'string') return;
 
   const WIDTH = 1200 as const;
   const HEIGHT = 630 as const;
@@ -81,9 +71,7 @@ const createGcp = async (
     context.fillText(line, 600, y);
   });
   const buffer = canvas.toBuffer();
-  fs.writeFileSync(path.resolve(`./public/ogp/${id}.png`), buffer);
-
-  return res.status(200).json({ statusCode: 200, message: 'OK' });
+  fs.writeFileSync(path.resolve(`./public/ogp/${blog.id}.png`), buffer);
 };
 
 export default createGcp;
