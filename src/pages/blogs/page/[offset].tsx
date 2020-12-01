@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { NextPage, GetStaticProps } from 'next';
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import style from './index.module.scss';
+import style from './[offset].module.scss';
 
-import DevCMS from '../api/DevCMS';
-import Blog from '../../models/Blog';
-import ArrayList from '../../models/Array';
-import { isPreviewData } from '../../utils/TypeGuardUtils';
-import Tag from '../../models/Tag';
-import Blogs from '../../components/shared/Blogs';
-import BlogSideContents from '../../components/shared/BlogSideContents';
-import createOgp from '../../utils/server/ogpUtils';
-import BlogsQuery from '../../models/BlogsQuery';
+import DevCMS from '../../api/DevCMS';
+import Blog from '../../../models/Blog';
+import ArrayList from '../../../models/Array';
+import Tag from '../../../models/Tag';
+import Blogs from '../../../components/shared/Blogs';
+import BlogSideContents from '../../../components/shared/BlogSideContents';
+import createOgp from '../../../utils/server/ogpUtils';
+import BlogsQuery from '../../../models/BlogsQuery';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -55,13 +54,22 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
   );
 };
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  const devCMS = new DevCMS();
+  const blogs = await devCMS.getBlogs();
+  const paths = [...Array(blogs.offset + 1)]
+    .map((_, i) => i + 1)
+    .map((offset) => `/blogs/page/${offset}`);
+
+  return { paths, fallback: false };
+};
+
 export const getStaticProps: GetStaticProps = async ({
-  preview,
-  previewData,
+  params,
 }): Promise<{
   props: Props;
 }> => {
-  const query: BlogsQuery = { offset: '0', limit: '10' };
+  const query: BlogsQuery = { offset: String(params?.offset), limit: '10' };
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
   const tags = await devCMS.getTags();
@@ -69,14 +77,6 @@ export const getStaticProps: GetStaticProps = async ({
   blogs.contents.forEach((blog) => {
     void createOgp(blog);
   });
-
-  // プレビュー時は draft のコンテンツを追加
-  if (preview && isPreviewData(previewData)) {
-    const previewDataId = previewData.id;
-    const { draftKey } = previewData;
-    const draftRes = await devCMS.getBlogPreview(previewDataId, draftKey);
-    blogs.contents.unshift(draftRes);
-  }
 
   return {
     props: {

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
 import { Button } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
+import { useRouter } from 'next/router';
 import ArrayList from '../../models/Array';
 import Blog from '../../models/Blog';
 import style from './Blogs.module.scss';
@@ -14,6 +16,14 @@ interface Props {
 
 const Blogs: React.FC<Props> = (props: Props) => {
   const { blogs } = props;
+  const router = useRouter();
+  const offset = router.query.offset
+    ? Number.parseInt(String(router.query.offset), 10)
+    : 1;
+
+  const handleChangePage = (e: React.ChangeEvent<unknown>, page: number) => {
+    void router.push(`/blogs/page/${page}`);
+  };
 
   return (
     <main>
@@ -54,6 +64,16 @@ const Blogs: React.FC<Props> = (props: Props) => {
             </div>
           ),
       )}
+      <div className={style.paginationWrapper}>
+        <Pagination
+          count={Math.ceil(blogs.totalCount / blogs.limit)}
+          variant="outlined"
+          shape="rounded"
+          color="secondary"
+          page={offset}
+          onChange={handleChangePage}
+        />
+      </div>
     </main>
   );
 };

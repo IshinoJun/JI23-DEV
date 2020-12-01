@@ -22,6 +22,7 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
       };
     case '/blogs':
+    case '/blogs/page/[offset]':
       return {
         title: 'Blogs',
         subTitle: 'ブログ一覧',
@@ -82,7 +83,7 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
       };
     case '/profile':
       return {
-        title: 'Portfolio',
+        title: 'profile',
         type: 'article',
         url: `${router.asPath}`,
       };
@@ -107,12 +108,9 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
         url: `${router.asPath}`,
       };
     }
-    case '/blogs/tags/[id]':
-      return {
-        type: 'article',
-        url: `${router.asPath}`,
-      };
     case '/blogs/[id]':
+    case '/blogs/page/[offset]':
+    case '/blogs/tags/[id]':
       return {
         type: 'article',
         url: `${router.asPath}`,
@@ -156,6 +154,10 @@ const generateBlogsUrl = (query: BlogsQuery): string | null => {
   }
   if (query.tagId) {
     return `blogs?filters=tags[contains]${query.tagId}`;
+  }
+
+  if (query.limit && query.offset) {
+    return `blogs?offset=${query.offset}&limit=${query.limit}`;
   }
 
   return null;

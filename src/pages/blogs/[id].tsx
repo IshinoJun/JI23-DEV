@@ -82,7 +82,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs();
   const paths = blogs.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
-  // blogs.contents.forEach((blog) => void createOgp(blog));
 
   return { paths, fallback: false };
 };

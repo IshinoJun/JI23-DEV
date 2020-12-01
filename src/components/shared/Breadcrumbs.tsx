@@ -13,6 +13,7 @@ const renderBreadcrumbs = (router: NextRouter) => {
     '/profile': { title: 'プロフィール' },
     '/portfolio': { title: 'ポートフォリオ' },
     '/blogs': { title: 'ブログ一覧' },
+    '/blogs/page/[offset]': { title: `ページ${String(router.query.offset)}` },
     '/blogs/[id]': { title: 'ブログ' },
     '/blogs/search': { title: '検索結果' },
     '/blogs/tags/[id]': { title: 'タグ検索' },

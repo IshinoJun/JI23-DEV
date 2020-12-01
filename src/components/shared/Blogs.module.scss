@@ -2,16 +2,6 @@
 @import 'style/function';
 @import 'style/settings';
 
-.tagNameWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: em(14, 50);
-
-  @include tab {
-    margin-bottom: em(16, 50);
-  }
-}
-
 .content {
   padding: em(14, 48) 0;
   border-bottom-color: $color-hight-gray;
@@ -76,69 +66,12 @@
   }
 }
 
-.sideWrapper {
-  padding: 0 em(14, 15);
-
-  @include pc {
-    width: 33%;
-  }
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: em(14, 20);
 
   @include tab {
-    padding: 0 em(16, 15);
-  }
-
-  .tagWrapper {
-    width: 100%;
-    padding: em(14, 30);
-    margin-bottom: em(14, 48);
-    border-color: #ededed;
-    border-style: solid;
-    border-width: 1px;
-
-    @include tab {
-      padding: em(16, 30);
-      margin-bottom: em(16, 48);
-    }
-
-    h3 {
-      margin: 0;
-      margin-bottom: em(14, 15);
-      font-size: fz(14);
-      font-weight: 500;
-      line-height: em(14, 24);
-
-      @include tab {
-        margin-bottom: em(16, 15);
-        font-size: fz(16);
-        line-height: em(16, 24);
-      }
-    }
-
-    a {
-      display: block;
-      font-size: fz(12);
-      font-weight: 500;
-
-      @include tab {
-        font-size: fz(14);
-      }
-    }
-
-    ul li,
-    ol li {
-      padding: em(14, 10);
-      margin-bottom: 5px;
-      font-weight: bold;
-      line-height: 1.5;
-      color: #404040;
-      list-style-type: none !important;
-      background: whitesmoke;
-      border-bottom: solid 2px #dadada;
-      border-left: solid 6px #8ad9f5;
-    }
-
-    @include tab {
-      font-size: em(16, 7);
-    }
+    margin-top: em(16, 20);
   }
 }

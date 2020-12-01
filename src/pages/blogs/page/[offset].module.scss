@@ -1,0 +1,43 @@
+@import 'style/mixin';
+@import 'style/function';
+@import 'style/settings';
+
+.blogsContainer {
+  @include pc {
+    display: flex;
+  }
+
+  .mainWrapper {
+    padding: 0 em(14, 15);
+
+    @include pc {
+      width: 66%;
+    }
+
+    @include tab {
+      padding: 0 em(16, 15);
+    }
+  }
+
+  .sideWrapper {
+    padding: 0 em(14, 15);
+    margin-top: em(14, 48);
+
+    @include pc {
+      width: 33%;
+      margin-top: em(14, 0);
+    }
+
+    @include tab {
+      padding: 0 em(16, 15);
+    }
+
+    .searchInputWrapper {
+      margin-bottom: em(14, 20);
+
+      @include tab {
+        margin-bottom: 0 em(16, 20);
+      }
+    }
+  }
+}
