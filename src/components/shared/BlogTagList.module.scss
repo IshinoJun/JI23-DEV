@@ -1,49 +1,48 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .tagWrapper {
   width: 100%;
-  padding: em(14, 48) em(14, 30) em(14, 30) em(14, 30);
-  border: $color-hight-gray solid 1px;
+  padding: function.em(14, 48) function.em(14, 30) function.em(14, 30) function.em(14, 30);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  border: settings.$color-hight-gray solid 1px;
 
-  @include tab {
-    padding: em(16, 48) em(16, 30) em(16, 30) em(16, 30);
-    margin-bottom: em(16, 48);
+  @include mixin.tab {
+    padding: function.em(16, 48) function.em(16, 30) function.em(16, 30) function.em(16, 30);
+    margin-bottom: function.em(16, 48);
   }
 
   h2 {
-    padding-bottom: em(16, 20);
-    font-size: fz(16);
-    color: $color-dark-blue;
+    padding-bottom: function.em(16, 20);
+    font-size: function.fz(16);
+    color: settings.$color-dark-blue;
     text-align: center;
   }
 
   a {
     display: block;
-    font-size: fz(12);
+    font-size: function.fz(12);
     font-weight: 500;
 
-    @include tab {
-      font-size: fz(14);
+    @include mixin.tab {
+      font-size: function.fz(14);
     }
   }
 
   ul li,
   ol li {
-    padding: em(14, 10);
+    padding: function.em(14, 10);
     margin-bottom: 5px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bold;
     line-height: 1.5;
     list-style-type: none !important;
     background: whitesmoke;
     border-bottom: solid 2px #ddd;
-    border-left: solid 6px $color-right-blue;
+    border-left: solid 6px settings.$color-right-blue;
   }
 
-  @include tab {
-    font-size: em(16, 7);
+  @include mixin.tab {
+    font-size: function.em(16, 7);
   }
 }

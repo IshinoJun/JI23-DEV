@@ -40,6 +40,10 @@ const JI23Head: React.FC = () => {
       <meta name="twitter:site" content="@JJ_1123_I" />
       <meta name="twitter:url" content={baseUrl + url} />
       <link rel="canonical" href={baseUrl + url} />
+      <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap"
+        rel="stylesheet"
+      />
     </Head>
   );
 };

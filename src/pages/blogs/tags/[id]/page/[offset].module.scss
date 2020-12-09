@@ -1,45 +1,44 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
 
 .tagNameWrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: em(14, 50);
+  margin-bottom: function.em(14, 50);
 
-  @include tab {
-    margin-bottom: em(16, 50);
+  @include mixin.tab {
+    margin-bottom: function.em(16, 50);
   }
 }
 
 .blogsContainer {
-  @include pc {
+  @include mixin.pc {
     display: flex;
   }
 
   .mainWrapper {
-    padding: 0 em(14, 15);
+    padding: 0 function.em(14, 15);
 
-    @include pc {
+    @include mixin.pc {
       width: 66%;
     }
 
-    @include tab {
-      padding: 0 em(16, 15);
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
     }
   }
 
   .sideWrapper {
-    padding: 0 em(14, 15);
-    margin-top: em(14, 48);
+    padding: 0 function.em(14, 15);
+    margin-top: function.em(14, 48);
 
-    @include pc {
+    @include mixin.pc {
       width: 33%;
-      margin-top: em(14, 0);
+      margin-top: function.em(14, 0);
     }
 
-    @include tab {
-      padding: 0 em(16, 15);
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
     }
   }
 }

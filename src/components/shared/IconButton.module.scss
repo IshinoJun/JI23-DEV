@@ -1,13 +1,11 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/settings';
 
 .twitter {
-  color: $color-white !important;
-  background-color: $color-twitter !important;
+  color: settings.$color-white !important;
+  background-color: settings.$color-twitter !important;
 }
 
 .github {
-  color: $color-white !important;
-  background-color: $color-black !important;
+  color: settings.$color-white !important;
+  background-color: settings.$color-black !important;
 }

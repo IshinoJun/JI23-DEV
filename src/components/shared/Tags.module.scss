@@ -1,6 +1,5 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/function';
+@use 'style/settings';
 
 .tags {
   a:first-child {
@@ -9,11 +8,11 @@
 
   .tag {
     display: inline-block;
-    padding: em(14, 4) em(14, 16);
-    margin: 0 0 em(14, 8) em(14, 16);
-    font-size: fz(12);
-    color: $color-white;
-    background-color: $color-hight-green;
+    padding: function.em(14, 4) function.em(14, 16);
+    margin: 0 0 function.em(14, 8) function.em(14, 16);
+    font-size: function.fz(12);
+    color: settings.$color-white;
+    background-color: settings.$color-hight-green;
     border-radius: 2px;
   }
 }

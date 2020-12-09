@@ -1,40 +1,40 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .logo {
   display: flex;
   justify-content: center;
-  padding-top: em(14, 21);
+  padding-top: function.em(14, 21);
 
-  @include tab {
-    padding-top: em(16, 24);
+  @include mixin.tab {
+    padding-top: function.em(16, 24);
   }
 
   img {
     width: 300px;
 
-    @include tab {
+    @include mixin.tab {
       width: 350px;
     }
   }
 }
 
 .nav {
-  padding-top: em(14, 32);
-  border-bottom-color: $color-hight-gray;
+  padding-top: function.em(14, 32);
+  border-bottom-color: settings.$color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
-  @include tab {
-    padding-top: em(16, 32);
+  @include mixin.tab {
+    padding-top: function.em(16, 32);
   }
 
-  @include lap {
-    padding-bottom: em(16, 48);
+  @include mixin.lap {
+    padding-bottom: function.em(16, 48);
   }
 
-  @include pc {
+  @include mixin.pc {
     text-align: initial;
   }
 
@@ -44,7 +44,7 @@
 }
 
 .profile {
-  @include tab {
+  @include mixin.tab {
     display: flex;
     justify-content: center;
   }
@@ -52,22 +52,22 @@
   .iconArea {
     display: flex;
     justify-content: center;
-    padding-right: em(14, 15);
-    padding-left: em(14, 15);
-    margin-bottom: em(14, 30);
+    padding-right: function.em(14, 15);
+    padding-left: function.em(14, 15);
+    margin-bottom: function.em(14, 30);
     text-align: center;
 
-    @include tab {
+    @include mixin.tab {
       width: 40%;
-      padding-right: em(16, 15);
-      padding-left: em(16, 15);
-      margin-bottom: em(16, 30);
+      padding-right: function.em(16, 15);
+      padding-left: function.em(16, 15);
+      margin-bottom: function.em(16, 30);
     }
 
     .icon {
-      width: em(20, 238);
-      height: em(20, 238);
-      border: 3px solid $color-black;
+      width: function.em(20, 238);
+      height: function.em(20, 238);
+      border: 3px solid settings.$color-black;
 
       img {
         width: auto;
@@ -79,48 +79,48 @@
   }
 
   .titleArea {
-    padding-right: em(14, 15);
-    padding-left: em(14, 15);
-    margin-bottom: em(14, 30);
+    padding-right: function.em(14, 15);
+    padding-left: function.em(14, 15);
+    margin-bottom: function.em(14, 30);
     text-align: center;
-    border-right-color: $color-hight-gray;
+    border-right-color: settings.$color-hight-gray;
     border-right-style: solid;
     border-right-width: 1px;
 
-    @include tab {
+    @include mixin.tab {
       width: 60%;
-      padding-right: em(16, 15);
-      padding-left: em(16, 15);
-      margin-bottom: em(16, 30);
+      padding-right: function.em(16, 15);
+      padding-left: function.em(16, 15);
+      margin-bottom: function.em(16, 30);
     }
 
     .title {
-      margin-top: em(36, 48);
-      font-size: fz(36);
-      line-height: em(36, 40);
+      margin-top: function.em(36, 48);
+      font-size: function.fz(36);
+      line-height: function.em(36, 40);
 
-      @include tab {
-        margin-top: em(66, 48);
-        font-size: fz(66);
-        line-height: em(66, 72);
+      @include mixin.tab {
+        margin-top: function.em(66, 48);
+        font-size: function.fz(66);
+        line-height: function.em(66, 72);
       }
     }
   }
 
   .linkArea {
-    margin-top: em(14, 12);
-    margin-bottom: em(14, 12);
+    margin-top: function.em(14, 12);
+    margin-bottom: function.em(14, 12);
 
-    @include tab {
-      margin-top: em(16, 12);
-      margin-bottom: em(16, 12);
+    @include mixin.tab {
+      margin-top: function.em(16, 12);
+      margin-bottom: function.em(16, 12);
     }
 
     a:not(:nth-child(1)) {
-      margin-left: em(14, 20);
+      margin-left: function.em(14, 20);
 
-      @include tab {
-        margin-left: em(16, 20);
+      @include mixin.tab {
+        margin-left: function.em(16, 20);
       }
     }
   }

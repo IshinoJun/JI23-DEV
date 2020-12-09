@@ -1,12 +1,11 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
 
 .searchContainer {
-  margin-bottom: em(14, 48);
+  margin-bottom: function.em(14, 48);
 
-  @include tab {
-    margin-bottom: em(16, 48);
+  @include mixin.tab {
+    margin-bottom: function.em(16, 48);
   }
 
   h1 {
@@ -15,40 +14,40 @@
 }
 
 .blogsContainer {
-  @include pc {
+  @include mixin.pc {
     display: flex;
   }
 
   .mainWrapper {
-    padding: 0 em(14, 15);
+    padding: 0 function.em(14, 15);
 
-    @include pc {
+    @include mixin.pc {
       width: 66%;
     }
 
-    @include tab {
-      padding: 0 em(16, 15);
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
     }
   }
 
   .sideWrapper {
-    padding: 0 em(14, 15);
-    margin-top: em(14, 48);
+    padding: 0 function.em(14, 15);
+    margin-top: function.em(14, 48);
 
-    @include pc {
+    @include mixin.pc {
       width: 33%;
-      margin-top: em(14, 0);
+      margin-top: function.em(14, 0);
     }
 
-    @include tab {
-      padding: 0 em(16, 15);
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
     }
 
     .searchInputWrapper {
-      margin-bottom: em(14, 20);
+      margin-bottom: function.em(14, 20);
 
-      @include tab {
-        margin-bottom: 0 em(16, 20);
+      @include mixin.tab {
+        margin-bottom: 0 function.em(16, 20);
       }
     }
   }

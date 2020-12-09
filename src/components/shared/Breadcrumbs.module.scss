@@ -1,9 +1,7 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/function';
 
 .wrapper {
   display: flex;
   justify-content: center;
-  padding-top: em(16, 20);
+  padding-top: function.em(16, 20);
 }

@@ -1,55 +1,55 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .content {
-  padding-right: em(14, 15);
-  padding-left: em(14, 15);
+  padding-right: function.em(14, 15);
+  padding-left: function.em(14, 15);
 
-  @include tab {
-    padding-right: em(16, 15);
-    padding-left: em(16, 15);
+  @include mixin.tab {
+    padding-right: function.em(16, 15);
+    padding-left: function.em(16, 15);
   }
 
   &:not(:last-child) {
-    margin-bottom: em(14, 30);
+    margin-bottom: function.em(14, 30);
 
-    @include tab {
-      margin-bottom: em(16, 30);
+    @include mixin.tab {
+      margin-bottom: function.em(16, 30);
     }
   }
 
   .portfolio {
-    padding: em(14, 16);
-    background-color: $color-white;
+    padding: function.em(14, 16);
+    background-color: settings.$color-white;
     border-radius: 2px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
-    @include tab {
+    @include mixin.tab {
       display: flex;
-      padding: em(16, 16) em(16, 32);
+      padding: function.em(16, 16) function.em(16, 32);
     }
 
     .photo {
       text-align: center;
 
-      @include tab {
+      @include mixin.tab {
         flex: 1;
       }
 
       .linkArea {
-        margin-top: em(14, 20);
+        margin-top: function.em(14, 20);
 
-        @include tab {
+        @include mixin.tab {
           flex: 1;
-          margin-top: em(16, 20);
+          margin-top: function.em(16, 20);
         }
 
         a:not(:nth-child(1)) {
-          margin-left: em(14, 20);
+          margin-left: function.em(14, 20);
 
-          @include tab {
-            margin-left: em(16, 20);
+          @include mixin.tab {
+            margin-left: function.em(16, 20);
           }
         }
       }
@@ -60,12 +60,12 @@
     }
 
     .detail {
-      margin-top: em(14, 20);
+      margin-top: function.em(14, 20);
 
-      @include tab {
+      @include mixin.tab {
         flex: 1;
-        margin-top: em(16, 20);
-        margin-left: em(16, 20);
+        margin-top: function.em(16, 20);
+        margin-left: function.em(16, 20);
       }
 
       .date {
@@ -73,24 +73,24 @@
         align-items: center;
 
         svg {
-          margin-right: em(13, 5);
-          font-size: fz(13);
-          color: $color-right-blue;
+          margin-right: function.em(13, 5);
+          font-size: function.fz(13);
+          color: settings.$color-right-blue;
         }
 
         span {
-          font-size: fz(13);
+          font-size: function.fz(13);
         }
       }
 
       h2 {
-        padding-top: em(26, 5);
-        font-size: fz(26);
+        padding-top: function.em(26, 5);
+        font-size: function.fz(26);
       }
 
       p {
-        padding-top: em(14, 5);
-        padding-bottom: em(14, 5);
+        padding-top: function.em(14, 5);
+        padding-bottom: function.em(14, 5);
       }
     }
   }

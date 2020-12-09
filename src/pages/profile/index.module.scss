@@ -1,94 +1,94 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .content {
-  padding-right: em(14, 15);
-  padding-left: em(14, 15);
+  padding-right: function.em(14, 15);
+  padding-left: function.em(14, 15);
 
-  @include tab {
+  @include mixin.tab {
     display: flex;
-    padding-right: em(16, 15);
-    padding-left: em(16, 15);
+    padding-right: function.em(16, 15);
+    padding-left: function.em(16, 15);
   }
 
   .title {
-    margin-bottom: em(14, 64);
+    margin-bottom: function.em(14, 64);
 
-    @include tab {
+    @include mixin.tab {
       flex: 1;
-      margin-right: em(16, 30);
-      margin-bottom: em(16, 16);
+      margin-right: function.em(16, 30);
+      margin-bottom: function.em(16, 16);
     }
 
     h3 {
-      margin-bottom: em(26, 16);
-      font-size: fz(26);
-      line-height: em(26, 26);
+      margin-bottom: function.em(26, 16);
+      font-size: function.fz(26);
+      line-height: function.em(26, 26);
     }
 
     p {
-      margin-top: em(14, 12);
-      margin-bottom: em(14, 12);
+      margin-top: function.em(14, 12);
+      margin-bottom: function.em(14, 12);
 
-      @include tab {
-        margin-top: em(16, 12);
-        margin-bottom: em(16, 12);
+      @include mixin.tab {
+        margin-top: function.em(16, 12);
+        margin-bottom: function.em(16, 12);
       }
     }
   }
 
   .about {
-    padding: 0 em(14, 16) em(14, 16) em(14, 16);
-    background-color: $color-white;
+    padding: 0 function.em(14, 16) function.em(14, 16) function.em(14, 16);
+    background-color: settings.$color-white;
     border-radius: 2px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
-    @include tab {
+    @include mixin.tab {
       flex: 2;
-      padding: 0 em(16, 32) em(16, 16) em(16, 32);
+      padding: 0 function.em(16, 32) function.em(16, 16) function.em(16, 32);
     }
 
     .name {
       position: relative;
       bottom: 15px;
-      padding: em(14, 16);
-      margin: 0 0 em(14, 32);
-      color: $color-white;
+      padding: function.em(14, 16);
+      margin: 0 0 function.em(14, 32);
+      color: settings.$color-white;
       text-align: center;
-      background: $color-dark-blue;
+      background: settings.$color-dark-blue;
       border-radius: 2px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
-      @include tab {
-        padding: em(16, 16);
-        margin: 0 0 em(16, 32);
+      @include mixin.tab {
+        padding: function.em(16, 16);
+        margin: 0 0 function.em(16, 32);
       }
     }
 
     dl {
-      margin-bottom: em(14, 16);
+      margin-bottom: function.em(14, 16);
 
-      @include tab {
-        margin-bottom: em(16, 16);
+      @include mixin.tab {
+        margin-bottom: function.em(16, 16);
       }
 
       dd {
-        padding-top: em(14, 4);
-        margin-left: em(14, 20);
+        padding-top: function.em(14, 4);
+        margin-left: function.em(14, 20);
 
-        @include tab {
-          margin-bottom: em(16, 16);
-          margin-left: em(16, 40);
+        @include mixin.tab {
+          margin-bottom: function.em(16, 16);
+          margin-left: function.em(16, 40);
         }
 
         li {
           position: relative;
-          padding-left: em(14, 20);
+          padding-left: function.em(14, 20);
           list-style: none;
 
-          @include tab {
-            padding-left: em(16, 20);
+          @include mixin.tab {
+            padding-left: function.em(16, 20);
           }
         }
 
@@ -103,7 +103,7 @@
           border-top: 6px solid transparent;
           border-right: 7px solid transparent;
           border-bottom: 6px solid transparent;
-          border-left: 9px solid $color-gray;
+          border-left: 9px solid settings.$color-gray;
           box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2) inset;
         }
       }

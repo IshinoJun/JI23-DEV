@@ -1,53 +1,53 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .contact {
-  padding: em(14, 16) em(14, 32);
+  padding: function.em(14, 16) function.em(14, 32);
   text-align: center;
-  background-color: $color-white;
+  background-color: settings.$color-white;
   border-radius: 2px;
   box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
-  @include tab {
-    padding: em(16, 16) em(16, 32);
+  @include mixin.tab {
+    padding: function.em(16, 16) function.em(16, 32);
   }
 
   h2 {
-    padding-top: em(21, 42);
-    padding-bottom: em(21, 42);
+    padding-top: function.em(21, 42);
+    padding-bottom: function.em(21, 42);
 
-    @include tab {
-      padding-top: em(24, 42);
-      padding-bottom: em(24, 42);
+    @include mixin.tab {
+      padding-top: function.em(24, 42);
+      padding-bottom: function.em(24, 42);
     }
   }
 
   p {
-    padding-bottom: em(14, 14);
+    padding-bottom: function.em(14, 14);
 
-    @include tab {
-      padding-bottom: em(16, 14);
+    @include mixin.tab {
+      padding-bottom: function.em(16, 14);
     }
   }
 
   .back {
-    width: em(14, 150);
-    margin-top: em(14, 36);
-    color: $color-white;
-    background-color: $color-dark-blue !important;
+    width: function.em(14, 150);
+    margin-top: function.em(14, 36);
+    color: settings.$color-white;
+    background-color: settings.$color-dark-blue !important;
 
-    @include tab {
-      width: em(16, 150);
-      margin-top: em(16, 36);
+    @include mixin.tab {
+      width: function.em(16, 150);
+      margin-top: function.em(16, 36);
     }
   }
 }
 
 .formText {
-  color: $color-dark-blue;
+  color: settings.$color-dark-blue;
 }
 
 .twitterText {
-  color: $color-twitter;
+  color: settings.$color-twitter;
 }

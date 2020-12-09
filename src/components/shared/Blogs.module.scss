@@ -1,15 +1,15 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .content {
-  padding: em(14, 48) 0;
-  border-bottom-color: $color-hight-gray;
+  padding: function.em(14, 48) 0;
+  border-bottom-color: settings.$color-hight-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
-  @include tab {
-    padding: em(16, 48) 0;
+  @include mixin.tab {
+    padding: function.em(16, 48) 0;
   }
 
   &:first-child {
@@ -17,14 +17,14 @@
   }
 
   h2 {
-    margin: em(18, 12) 0;
-    font-size: fz(18);
-    line-height: em(18, 36);
+    margin: function.em(18, 12) 0;
+    font-size: function.fz(18);
+    line-height: function.em(18, 36);
 
-    @include tab {
-      margin: em(20, 12) 0;
-      font-size: fz(20);
-      line-height: em(20, 48);
+    @include mixin.tab {
+      margin: function.em(20, 12) 0;
+      font-size: function.fz(20);
+      line-height: function.em(20, 48);
     }
   }
 
@@ -34,34 +34,34 @@
   }
 
   .blog {
-    @include tab {
+    @include mixin.tab {
       margin: 0 auto;
     }
 
     .date {
       display: flex;
       align-items: center;
-      margin-top: em(14, 10);
+      margin-top: function.em(14, 10);
 
-      @include tab {
-        margin-top: em(16, 10);
+      @include mixin.tab {
+        margin-top: function.em(16, 10);
       }
 
       svg {
-        margin-right: em(13, 5);
-        font-size: fz(13);
-        color: $color-right-blue;
+        margin-right: function.em(13, 5);
+        font-size: function.fz(13);
+        color: settings.$color-right-blue;
       }
 
       span {
-        font-size: fz(13);
+        font-size: function.fz(13);
       }
     }
   }
 
   .read {
-    color: $color-white;
-    background-color: $color-dark-blue !important;
+    color: settings.$color-white;
+    background-color: settings.$color-dark-blue !important;
     border-radius: 2px;
   }
 }
@@ -69,9 +69,9 @@
 .paginationWrapper {
   display: flex;
   justify-content: center;
-  margin-top: em(14, 20);
+  margin-top: function.em(14, 20);
 
-  @include tab {
-    margin-top: em(16, 20);
+  @include mixin.tab {
+    margin-top: function.em(16, 20);
   }
 }

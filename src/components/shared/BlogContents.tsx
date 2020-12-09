@@ -13,8 +13,8 @@ const BlogContents: React.FC<Props> = (props) => {
       <h2>Contents</h2>
       <div className={style.list}>
         <ol className={style.tocList}>
-          {contents.map((content) => (
-            <li key={content.id}>
+          {contents.map((content, i) => (
+            <li key={content.id} className={i + 1 >= 10 ? style.noZero : ''}>
               <a href={`#${content.id}`}>{content.innerText}</a>
             </li>
           ))}

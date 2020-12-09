@@ -1,11 +1,11 @@
-@import 'style/settings';
-@import 'style/mixin';
-@import 'style/function';
+@use 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
 
 html {
   box-sizing: border-box;
   height: 100%;
-  font-family: $fontFamily-primary;
+  font-family: settings.$fontFamily-primary;
   font-size: medium;
   line-height: 1.5;
   letter-spacing: 0.1em;
@@ -21,8 +21,8 @@ html {
 body {
   min-width: 320px;
   height: 100%;
-  color: $color-text-primary;
-  background-color: $color-body-background;
+  color: settings.$color-text-primary;
+  background-color: settings.$color-body-background;
   font-feature-settings: 'palt';
 }
 
@@ -58,20 +58,20 @@ code {
 
 .wrapper {
   width: 100%;
-  margin: em(14, 50) auto;
+  margin: function.em(14, 50) auto;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: fz(14);
-  background-color: $color-white;
-  border-color: $color-gray;
+  font-size: function.fz(14);
+  background-color: settings.$color-white;
+  border-color: settings.$color-gray;
   border-style: solid;
   border-width: 1px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 
-  @include pc {
-    width: em(16, 1230);
-    margin: em(16, 50) auto;
-    font-size: fz(16);
+  @include mixin.pc {
+    width: function.em(16, 1230);
+    margin: function.em(16, 50) auto;
+    font-size: function.fz(16);
   }
 }
 
@@ -79,38 +79,38 @@ code {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  font-size: fz(14);
+  font-size: function.fz(14);
 
-  @include tab {
+  @include mixin.tab {
     width: 90%;
-    font-size: fz(16);
+    font-size: function.fz(16);
   }
 }
 
 .section {
-  padding-bottom: em(14, 48);
+  padding-bottom: function.em(14, 48);
   text-align: center;
-  border-bottom-color: $color-gray;
+  border-bottom-color: settings.$color-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
-  @include tab {
-    padding-top: em(16, 48);
-    padding-bottom: em(16, 48);
+  @include mixin.tab {
+    padding-top: function.em(16, 48);
+    padding-bottom: function.em(16, 48);
   }
 
-  @include pc {
+  @include mixin.pc {
     text-align: initial;
   }
 }
 
 .padding-block {
-  padding-top: em(16, 48);
-  padding-bottom: em(16, 48);
+  padding-top: function.em(16, 48);
+  padding-bottom: function.em(16, 48);
 }
 
 .border-bottom {
-  border-bottom-color: $color-gray;
+  border-bottom-color: settings.$color-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 }

@@ -1,32 +1,32 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .contact {
-  padding-bottom: em(14, 42);
-  border-bottom: $color-hight-gray solid 1px;
+  padding-bottom: function.em(14, 42);
+  border-bottom: settings.$color-hight-gray solid 1px;
 
-  @include tab {
-    padding-bottom: em(16, 42);
+  @include mixin.tab {
+    padding-bottom: function.em(16, 42);
   }
 
   .blog {
-    @include tab {
+    @include mixin.tab {
       margin: 0 auto;
     }
 
     .entryHeader {
-      margin-bottom: em(14, 28);
+      margin-bottom: function.em(14, 28);
 
       h1 {
-        margin: em(18, 12) 0;
-        font-size: fz(18);
-        line-height: em(18, 36);
+        margin: function.em(18, 12) 0;
+        font-size: function.fz(18);
+        line-height: function.em(18, 36);
 
-        @include tab {
-          margin: em(20, 12) 0;
-          font-size: fz(20);
-          line-height: em(20, 48);
+        @include mixin.tab {
+          margin: function.em(20, 12) 0;
+          font-size: function.fz(20);
+          line-height: function.em(20, 48);
         }
       }
     }

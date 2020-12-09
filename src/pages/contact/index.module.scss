@@ -1,23 +1,23 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .content {
-  padding-right: em(14, 15);
-  padding-left: em(14, 15);
+  padding-right: function.em(14, 15);
+  padding-left: function.em(14, 15);
 
-  @include tab {
-    padding-right: em(16, 15);
-    padding-left: em(16, 15);
+  @include mixin.tab {
+    padding-right: function.em(16, 15);
+    padding-left: function.em(16, 15);
   }
 
   .contact {
     text-align: center;
-    background-color: $color-white;
+    background-color: settings.$color-white;
     border-radius: 2px;
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
-    @include tab {
+    @include mixin.tab {
       width: 50%;
       min-width: 530px;
       margin: 0 auto;
@@ -29,15 +29,15 @@
       width: 80%;
       min-width: 280px;
       margin: 0 auto;
-      color: $color-white;
+      color: settings.$color-white;
       text-align: center;
-      background: $color-dark-blue;
+      background: settings.$color-dark-blue;
       border-radius: 2px;
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
 
       h2 {
-        padding: em(20, 18) 0;
-        font-size: fz(20);
+        padding: function.em(20, 18) 0;
+        font-size: function.fz(20);
         text-align: center;
       }
     }

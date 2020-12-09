@@ -10,7 +10,7 @@ module.exports = {
     'string-quotes': 'single',
     'at-rule-no-unknown': [
       true,
-      { ignoreAtRules: ['include', 'mixin', 'function', 'return'] },
+      { ignoreAtRules: ['include', 'mixin', 'function', 'return', 'use'] },
     ],
   },
 };

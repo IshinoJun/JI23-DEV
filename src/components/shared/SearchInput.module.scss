@@ -1,18 +1,18 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .search {
   display: flex;
-  padding-left: em(16, 15);
-  border: $color-hight-gray solid 1px;
+  padding-left: function.em(16, 15);
+  border: settings.$color-hight-gray solid 1px;
 
-  @include tab {
-    padding-left: em(14, 15);
+  @include mixin.tab {
+    padding-left: function.em(14, 15);
   }
 
   .searchIcon {
-    background-color: $color-hight-blue;
+    background-color: settings.$color-hight-blue;
     border-radius: 2px;
   }
 

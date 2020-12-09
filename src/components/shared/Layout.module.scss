@@ -1,20 +1,19 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
+@use 'style/mixin';
+@use 'style/function';
 
 .logo {
   display: flex;
   justify-content: center;
-  padding-top: em(14, 21);
+  padding-top: function.em(14, 21);
 
-  @include tab {
-    padding-top: em(16, 24);
+  @include mixin.tab {
+    padding-top: function.em(16, 24);
   }
 
   img {
     width: 300px;
 
-    @include tab {
+    @include mixin.tab {
       width: 350px;
     }
   }

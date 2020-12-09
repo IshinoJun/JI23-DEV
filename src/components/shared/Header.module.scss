@@ -1,38 +1,37 @@
-@import 'style/mixin';
-@import 'style/function';
-@import 'style/settings';
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
 
 .head {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: em(14, 7) 0;
-  background-color: $color-white;
-  border-bottom-color: $color-gray;
+  padding: function.em(14, 7) 0;
+  background-color: settings.$color-white;
+  border-bottom-color: settings.$color-gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 
-  @include tab {
-    padding: em(16, 7) 0;
+  @include mixin.tab {
+    padding: function.em(16, 7) 0;
   }
 
   .row {
     display: flex;
     justify-content: space-between;
-    margin: 0 em(16, 20);
+    margin: 0 function.em(16, 20);
 
-    @include tab {
+    @include mixin.tab {
       margin: 0;
     }
 
     .title {
       h2 {
-        font-size: fz(16);
+        font-size: function.fz(16);
       }
 
       h3 {
-        font-size: fz(14);
+        font-size: function.fz(14);
         font-weight: normal;
       }
     }
@@ -46,28 +45,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: em(14, 50);
-    height: em(14, 50);
-    margin-right: em(14, 20);
-    background-color: $color-hight-blue;
-    border-color: $color-gray;
+    width: function.em(14, 50);
+    height: function.em(14, 50);
+    margin-right: function.em(14, 20);
+    background-color: settings.$color-hight-blue;
+    border-color: settings.$color-gray;
     border-style: solid;
     border-width: 1px;
     border-radius: 2px;
 
-    @include tab {
-      width: em(16, 50);
-      height: em(16, 50);
-      margin-right: em(16, 20);
+    @include mixin.tab {
+      width: function.em(16, 50);
+      height: function.em(16, 50);
+      margin-right: function.em(16, 20);
     }
 
     img {
-      width: em(14, 30);
-      height: em(14, 40);
+      width: function.em(14, 30);
+      height: function.em(14, 40);
 
-      @include tab {
-        width: em(16, 30);
-        height: em(16, 40);
+      @include mixin.tab {
+        width: function.em(16, 30);
+        height: function.em(16, 40);
       }
     }
   }
@@ -76,28 +75,28 @@
     padding: 0 !important;
 
     svg {
-      font-size: fz(54);
+      font-size: function.fz(54);
     }
   }
 }
 
 .logo {
   width: 300px;
-  padding-top: em(14, 20);
+  padding-top: function.em(14, 20);
   margin: 0 auto;
 
-  @include tab {
+  @include mixin.tab {
     width: 50%;
     max-width: 400px;
-    padding-top: em(16, 20);
+    padding-top: function.em(16, 20);
   }
 }
 
 .globalNav {
-  line-height: em(14, 50);
+  line-height: function.em(14, 50);
 
-  @include tab {
-    line-height: em(16, 50);
+  @include mixin.tab {
+    line-height: function.em(16, 50);
   }
 
   ul {
@@ -105,14 +104,14 @@
     width: 100%;
 
     :not(:last-child) {
-      margin-right: em(14, 10);
+      margin-right: function.em(14, 10);
     }
 
     li {
       list-style: none;
 
       a {
-        padding: em(14, 5);
+        padding: function.em(14, 5);
         text-transform: uppercase;
       }
     }

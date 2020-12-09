@@ -1,7 +1,7 @@
-@import 'style/function';
+@use 'style/function';
 
 .footer {
-  padding: em(16, 17);
+  padding: function.em(16, 17);
 
   .footerContent {
     text-align: center;
