@@ -31,6 +31,7 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
       };
     case '/blogs/search':
     case '/blogs/tags/[id]':
+    case '/blogs/tags/[id]/page/[offset]':
       return {
         title: 'Blogs',
         subTitle: 'ブログ一覧',

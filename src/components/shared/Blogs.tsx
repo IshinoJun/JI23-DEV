@@ -12,17 +12,24 @@ import BlogDate from './BlogDate';
 
 interface Props {
   blogs: ArrayList<Blog>;
+  showPagination?: boolean;
 }
 
 const Blogs: React.FC<Props> = (props: Props) => {
-  const { blogs } = props;
+  const { blogs, showPagination } = props;
   const router = useRouter();
   const offset = router.query.offset
     ? Number.parseInt(String(router.query.offset), 10)
     : 1;
 
-  const handleChangePage = (e: React.ChangeEvent<unknown>, page: number) => {
-    void router.push(`/blogs/page/${page}`);
+  const handleChangePage = (_: React.ChangeEvent<unknown>, page: number) => {
+    const id = router.query.id ? String(router.query.id) : null;
+
+    if (id) {
+      void router.push(`/blogs/tags/${id}/page/${page}`);
+    } else {
+      void router.push(`/blogs/page/${page}`);
+    }
   };
 
   return (
@@ -64,16 +71,18 @@ const Blogs: React.FC<Props> = (props: Props) => {
             </div>
           ),
       )}
-      <div className={style.paginationWrapper}>
-        <Pagination
-          count={Math.ceil(blogs.totalCount / blogs.limit)}
-          variant="outlined"
-          shape="rounded"
-          color="secondary"
-          page={offset}
-          onChange={handleChangePage}
-        />
-      </div>
+      {showPagination && (
+        <div className={style.paginationWrapper}>
+          <Pagination
+            count={Math.ceil(blogs.totalCount / blogs.limit)}
+            variant="outlined"
+            shape="rounded"
+            color="secondary"
+            page={offset}
+            onChange={handleChangePage}
+          />
+        </div>
+      )}
     </main>
   );
 };

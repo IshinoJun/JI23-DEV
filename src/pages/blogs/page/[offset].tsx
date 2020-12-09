@@ -38,7 +38,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
     <section className="padding-block border-bottom">
       <div className={`${String(style.blogsContainer)} container`}>
         <div className={style.mainWrapper}>
-          <Blogs blogs={blogs} />
+          <Blogs blogs={blogs} showPagination />
         </div>
         <div className={style.sideWrapper}>
           <BlogSideContents

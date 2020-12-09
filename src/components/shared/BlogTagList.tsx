@@ -17,7 +17,7 @@ const BlogTagList: React.FC<Props> = (props) => {
       <ul>
         {tags.contents.map((tag) => (
           <li key={tag.id}>
-            <Link href={`/blogs/tags/${tag.id}`}>{tag.name}</Link>
+            <Link href={`/blogs/tags/${tag.id}/page/1`}>{tag.name}</Link>
           </li>
         ))}
       </ul>

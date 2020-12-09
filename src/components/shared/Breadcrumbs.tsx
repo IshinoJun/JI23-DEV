@@ -15,8 +15,12 @@ const renderBreadcrumbs = (router: NextRouter) => {
     '/blogs': { title: 'ブログ一覧' },
     '/blogs/page/[offset]': { title: `ページ${String(router.query.offset)}` },
     '/blogs/[id]': { title: 'ブログ' },
-    '/blogs/search': { title: '検索結果' },
-    '/blogs/tags/[id]': { title: 'タグ検索' },
+    '/blogs/search': { title: `${String(router.query.keyword)} の検索結果` },
+    '/blogs/tags/[id]/page/[offset]': {
+      title: `${String(router.query.id)} - ページ${String(
+        router.query.offset,
+      )}`,
+    },
     '/contact': { title: '問い合わせ' },
     '/contact/success': { title: '問い合わせ成功' },
     '/contact/error': { title: '問い合わせ失敗' },
