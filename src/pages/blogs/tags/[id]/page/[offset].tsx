@@ -74,7 +74,9 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
 
 const createPath = (tags: ArrayList<Tag>, blogs: ArrayList<Blog>[]) => {
   return tags.contents.reduce((paths: string[], tag: Tag, i: number) => {
-    const nextPaths = [...Array(blogs[i].offset + 1)]
+    const nextPaths = [
+      ...Array(Math.ceil(blogs[i].totalCount / blogs[i].limit)),
+    ]
       .map((_, i2) => i2 + 1)
       .map((offset) => `/blogs/tags/${tag.id ?? ''}/page/${offset}`);
 
@@ -86,7 +88,7 @@ const getPaths = async (tags: ArrayList<Tag>) => {
   const devCMS = new DevCMS();
   const res: Promise<ArrayList<Blog>>[] = [];
   tags.contents.forEach((tag) => {
-    const query: BlogsQuery = { tagId: tag.id };
+    const query: BlogsQuery = { tagId: tag.id, limit: '3', offset: '0' };
     const blogs = devCMS.getBlogs(query);
     res.push(blogs);
   });
@@ -109,8 +111,12 @@ export const getStaticProps: GetStaticProps = async ({
 }> => {
   const devCMS = new DevCMS();
   const tagId = params?.id?.toString() ?? '';
-  const offset = params?.offset?.toString() ?? '';
-  const query: BlogsQuery = { tagId, offset };
+  const offset = params?.offset ? String(params?.offset) : '0';
+  const query: BlogsQuery = {
+    tagId,
+    offset: String((Number.parseInt(offset, 10) - 1) * 3),
+    limit: '3',
+  };
   const blogs = await devCMS.getBlogs(query);
   const tags = await devCMS.getTags();
   const targetTag = await devCMS.getTag(tagId);

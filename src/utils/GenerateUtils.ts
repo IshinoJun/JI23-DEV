@@ -147,6 +147,9 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
 
 // TODO:項目が増えたらちゃんと考える
 const generateBlogsUrl = (query: BlogsQuery): string | null => {
+  if (query.limit && query.offset && query.tagId) {
+    return `blogs?filters=tags[contains]${query.tagId}&offset=${query.offset}&limit=${query.limit}`;
+  }
   if (query.keyword && query.tagId) {
     return `blogs?filters=title[contains]${query.keyword}[or]content[contains]${query.keyword}[or]tags[contains]${query.tagId}`;
   }

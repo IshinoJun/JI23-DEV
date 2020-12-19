@@ -9,7 +9,6 @@ import ArrayList from '../../../models/Array';
 import Tag from '../../../models/Tag';
 import Blogs from '../../../components/shared/Blogs';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
-import createOgp from '../../../utils/server/ogpUtils';
 import BlogsQuery from '../../../models/BlogsQuery';
 
 interface Props {
@@ -55,9 +54,11 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const query: BlogsQuery = { offset: '0', limit: '3' };
+
   const devCMS = new DevCMS();
-  const blogs = await devCMS.getBlogs();
-  const paths = [...Array(blogs.offset + 1)]
+  const blogs = await devCMS.getBlogs(query);
+  const paths = [...Array(blogs.totalCount / blogs.limit)]
     .map((_, i) => i + 1)
     .map((offset) => `/blogs/page/${offset}`);
 
@@ -69,14 +70,14 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<{
   props: Props;
 }> => {
-  const query: BlogsQuery = { offset: String(params?.offset), limit: '10' };
+  const offset = params?.offset ? String(params?.offset) : '0';
+  const query: BlogsQuery = {
+    offset: String(Math.ceil(Number.parseInt(offset, 10) - 1) * 3),
+    limit: '3',
+  };
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
   const tags = await devCMS.getTags();
-
-  blogs.contents.forEach((blog) => {
-    void createOgp(blog);
-  });
 
   return {
     props: {
