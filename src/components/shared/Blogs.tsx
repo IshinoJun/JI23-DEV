@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Button } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import ArrayList from '../../models/Array';
 import Blog from '../../models/Blog';
 import style from './Blogs.module.scss';
@@ -29,19 +30,22 @@ const Blogs: React.FC<Props> = (props: Props) => {
     ? Number.parseInt(String(router.query.offset), 10)
     : 1;
 
-  const handleChangePage = (_: React.ChangeEvent<unknown>, page: number) => {
-    const id = router.query.id ? String(router.query.id) : null;
-    const path = router.asPath;
-    if (id) {
-      if (path.includes('tags')) {
-        void router.push(`/blogs/tags/${id}/page/${page}`);
-      } else if (path.includes('categories')) {
-        void router.push(`/blogs/categories/${id}/page/${page}`);
+  const handleChangePage = useCallback(
+    (_: React.ChangeEvent<unknown>, page: number) => {
+      const id = router.query.id ? String(router.query.id) : null;
+      const path = router.asPath;
+      if (id) {
+        if (path.includes('tags')) {
+          void router.push(`/blogs/tags/${id}/page/${page}`);
+        } else if (path.includes('categories')) {
+          void router.push(`/blogs/categories/${id}/page/${page}`);
+        }
+      } else {
+        void router.push(`/blogs/page/${page}`);
       }
-    } else {
-      void router.push(`/blogs/page/${page}`);
-    }
-  };
+    },
+    [router],
+  );
 
   return (
     <main>

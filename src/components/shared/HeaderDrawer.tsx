@@ -56,6 +56,7 @@ const HeaderDrawer: React.FC<Props> = (props) => {
       className={classes.drawer}
       anchor="right"
       open={isOpen}
+      onClose={onClickDrawer}
       classes={{
         paper: classes.drawerPaper,
       }}

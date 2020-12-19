@@ -19,9 +19,9 @@ const Layout: React.FC<Props> = (props: Props) => {
 
   const isTop = router.pathname === '/';
 
-  const handleClickScrollTopButton = (): void => {
+  const handleClickScrollTopButton = useCallback((): void => {
     document.scrollingElement?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   const handleScroll = useCallback(() => {
     const posY = window.scrollY;
@@ -34,13 +34,13 @@ const Layout: React.FC<Props> = (props: Props) => {
     }
   }, []);
 
-  const handleClickDrawer = () => {
+  const handleClickDrawer = useCallback(() => {
     if (isOpen) {
       setIsOpen(false);
     } else {
       setIsOpen(true);
     }
-  };
+  }, [isOpen]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);

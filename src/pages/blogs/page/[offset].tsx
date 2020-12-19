@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import style from './[offset].module.scss';
@@ -23,17 +23,18 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
 
-  const handleClickSearchButton = () => {
+  const handleClickSearchButton = useCallback(() => {
     void router.push(`/blogs/search/?keyword=${keyword}`);
-  };
+  }, [keyword, router]);
 
-  const handleKeyDownSearch = (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    if (e.key === 'Enter') {
-      void router.push(`/blogs/search/?keyword=${keyword}`);
-    }
-  };
+  const handleKeyDownSearch = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') {
+        void router.push(`/blogs/search/?keyword=${keyword}`);
+      }
+    },
+    [keyword, router],
+  );
 
   return (
     <section className="padding-block border-bottom">

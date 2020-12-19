@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { IconButton, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import style from './SearchInput.module.scss';
@@ -14,7 +14,7 @@ interface Props {
 const SearchInput: React.FC<Props> = (props: Props) => {
   const { keyword, setKeyword, onClickSearchButton, onKeyDownSearch } = props;
 
-  const handleChangeKeyword = React.useCallback(
+  const handleChangeKeyword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { value } = e.currentTarget;
       setKeyword(value);

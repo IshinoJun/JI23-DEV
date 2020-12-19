@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@material-ui/core';
@@ -29,17 +29,18 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   const router = useRouter();
   const { isLoading, doHidden, doLoading } = useLoading(false);
 
-  const handleClickSearchButton = () => {
+  const handleClickSearchButton = useCallback(() => {
     void router.push(`/blogs/search/?keyword=${keyword}`);
-  };
+  }, [keyword, router]);
 
-  const handleKeyDownSearch = (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    if (e.key === 'Enter') {
-      void router.push(`/blogs/search/?keyword=${keyword}`);
-    }
-  };
+  const handleKeyDownSearch = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') {
+        void router.push(`/blogs/search/?keyword=${keyword}`);
+      }
+    },
+    [keyword, router],
+  );
 
   useEffect(() => {
     const urlQuery = router.query as BlogsQuery;
