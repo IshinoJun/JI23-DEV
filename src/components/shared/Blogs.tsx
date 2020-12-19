@@ -9,14 +9,21 @@ import Blog from '../../models/Blog';
 import style from './Blogs.module.scss';
 import Tags from './Tags';
 import BlogDate from './BlogDate';
+import BlogBreadcrumbs from './BlogBreadcrumbs';
+import Category from '../../models/Category';
+import Tag from '../../models/Tag';
+import BlogCategory from './BlogCategory';
 
 interface Props {
   blogs: ArrayList<Blog>;
   showPagination?: boolean;
+  tag?: Tag;
+  category?: Category;
+  keyword?: string;
 }
 
 const Blogs: React.FC<Props> = (props: Props) => {
-  const { blogs, showPagination } = props;
+  const { blogs, showPagination, category, tag, keyword } = props;
   const router = useRouter();
   const offset = router.query.offset
     ? Number.parseInt(String(router.query.offset), 10)
@@ -34,6 +41,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
 
   return (
     <main>
+      <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
       {blogs.contents.map(
         (blog) =>
           blog.id && (
@@ -55,6 +63,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
                     <h2>{blog.title}</h2>
                   </a>
                 </Link>
+                <BlogCategory category={blog.category} />
                 <Tags tags={blog.tags} tagsPosition="left" />
                 <Button
                   style={{ marginTop: 20 }}

@@ -23,6 +23,7 @@ interface Props {
 const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   const { tags } = props;
   const [blogsQuery, setBlogsQuery] = useState<BlogsQuery | null>(null);
+
   const [keyword, setKeyword] = useState<string>('');
   const [blogs, setBlogs] = useState<ArrayList<Blog> | null>(null);
   const router = useRouter();
@@ -80,7 +81,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
         <div className={style.mainWrapper}>
           {!isLoading ? (
             blogs && blogs.contents.length ? (
-              <Blogs blogs={blogs} />
+              <Blogs blogs={blogs} keyword={blogsQuery?.keyword} />
             ) : (
               '投稿がありません'
             )

@@ -1,0 +1,13 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.category {
+  display: block;
+  margin-bottom: function.em(12, 5);
+  font-size: function.fz(12);
+
+  a {
+    color: rgba(0, 0, 0, 0.54);
+  }
+}

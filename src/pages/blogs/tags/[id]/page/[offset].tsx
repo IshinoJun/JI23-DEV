@@ -57,7 +57,7 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
         </div>
         <div className={`${String(style.blogsContainer)} container`}>
           <div className={style.mainWrapper}>
-            <Blogs blogs={blogs} showPagination />
+            <Blogs blogs={blogs} showPagination tag={targetTag} />
           </div>
           <div className={style.sideWrapper}>
             <BlogSideContents
