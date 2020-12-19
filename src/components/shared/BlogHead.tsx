@@ -26,7 +26,7 @@ const BlogHead: React.FC<Props> = (props: Props) => {
   return blog.id ? (
     <Head>
       <title>{`${blog.title} | ${defaultTitle}`}</title>
-      <meta name="Description" content={description} />
+      <meta name="description" content={description} />
       <meta property="og:title" content={`${blog.title} | ${defaultTitle}`} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={`${baseUrl}/ogp/${blog.id}.png`} />

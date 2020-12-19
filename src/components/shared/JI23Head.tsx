@@ -18,7 +18,7 @@ const JI23Head: React.FC = () => {
       {!isBlog && title && (
         <>
           <title>{`${title} | ${defaultTitle}`}</title>
-          <meta name="Description" content={defaultDescription} />
+          <meta name="description" content={defaultDescription} />
           <meta property="og:title" content={`${title} | ${defaultTitle}`} />
           <meta property="og:description" content={defaultDescription} />
           <meta name="twitter:title" content={`${title} | ${defaultTitle}`} />

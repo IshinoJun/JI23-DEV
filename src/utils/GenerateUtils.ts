@@ -101,7 +101,8 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
     }
     case '/blogs/[id]':
     case '/blogs/page/[offset]':
-    case '/blogs/tags/[id]':
+    case '/blogs/tags/[id]/page[offset]':
+    case '/blogs/categories/[id]/page[offset]':
       return {
         type: 'article',
         url: `${router.asPath}`,
