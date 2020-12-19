@@ -31,9 +31,14 @@ const Blogs: React.FC<Props> = (props: Props) => {
 
   const handleChangePage = (_: React.ChangeEvent<unknown>, page: number) => {
     const id = router.query.id ? String(router.query.id) : null;
+    const path = router.asPath;
 
     if (id) {
-      void router.push(`/blogs/tags/${id}/page/${page}`);
+      if (path.includes('tags')) {
+        void router.push(`/blogs/tags/${id}/page/${page}`);
+      } else if (path.includes('categories')) {
+        void router.push(`/blogs/categories/${id}/page/${page}`);
+      }
     } else {
       void router.push(`/blogs/page/${page}`);
     }
