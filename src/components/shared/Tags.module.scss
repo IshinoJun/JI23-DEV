@@ -11,8 +11,9 @@
     padding: function.em(14, 4) function.em(14, 16);
     margin: 0 0 function.em(14, 8) function.em(14, 16);
     font-size: function.fz(12);
-    color: settings.$color-white;
-    background-color: settings.$color-hight-green;
+    color: settings.$color-blue;
+    background-color: settings.$color-white;
+    border: 1px solid settings.$color-blue;
     border-radius: 2px;
   }
 }
