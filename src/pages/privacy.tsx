@@ -15,7 +15,7 @@ const privacyPage: NextPage = () => {
       </Head>
       <section className="padding-block border-bottom">
         <div className="container">
-          <h1>プライバシーポリシー</h1>
+          <h1 className={style.title}>プライバシーポリシー</h1>
           <div className={style.wrapper}>
             <h2>個人情報の利用目的</h2>
             <p>

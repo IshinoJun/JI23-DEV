@@ -17,7 +17,7 @@ const Tags: React.FC<Props> = (props: Props) => {
       className={style.tags}
     >
       {tags.map((tag) => (
-        <Link href={`/blogs/tags/${tag.id}`} key={tag.id}>
+        <Link href={`/blogs/tags/${tag.id}/page/1`} key={tag.id}>
           <a className={style.tag}>
             <span>{tag.name}</span>
           </a>

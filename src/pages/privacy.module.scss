@@ -2,6 +2,10 @@
 @use 'style/function';
 @use 'style/settings';
 
+.title {
+  padding: 0 function.em(20, 12);
+}
+
 .wrapper {
   margin-top: function.em(14, 30);
 
