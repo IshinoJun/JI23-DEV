@@ -17,21 +17,29 @@
   .footerContent {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     margin-top: function.em(14, 10);
 
     @include mixin.tab {
+      align-items: center;
+      justify-content: center;
       margin-top: function.em(16, 10);
     }
 
     li {
-      font-size: function.fz(14);
+      font-size: function.fz(12);
       white-space: nowrap;
 
+      @include mixin.tab {
+        font-size: function.fz(14);
+      }
+
       &::after {
-        margin: 0 function.em(14, 20);
+        margin: 0 function.em(12, 20);
         content: '|';
+
+        @include mixin.tab {
+          margin: 0 function.em(14, 20);
+        }
       }
 
       &:last-child::after {
