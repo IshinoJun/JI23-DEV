@@ -23,12 +23,12 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
         <meta name="twitter:title" content={title} />
       </Head>
       <section className="padding-block border-bottom">
-        <main className="container">
+        <main className={`${String(style.container)} container`}>
           <h1>Sitemap</h1>
           <div className={style.wrapper}>
             {categories.contents.map((category) => (
               <ul key={category.id}>
-                <li>
+                <li className={style.category}>
                   <Link href="/category/[id]" as={`/category/${category.id}`}>
                     <a>{category.name}</a>
                   </Link>

@@ -2,37 +2,45 @@
 @use 'style/function';
 @use 'style/settings';
 
-.wrapper {
-  margin-top: function.em(14, 30);
+.container {
+  padding: 0 function.em(14, 20);
 
-  @include mixin.tab {
-    margin-top: function.em(16, 30);
-  }
-
-  ul {
-    margin-bottom: function.em(14, 20);
+  .wrapper {
+    margin-top: function.em(14, 30);
 
     @include mixin.tab {
-      margin-top: function.em(14, 20);
+      margin-top: function.em(16, 30);
     }
-
-    a {
-      color: settings.$color-blue;
-    }
-  }
-
-  .postList {
-    list-style: none;
 
     ul {
-      margin-left: function.em(14, 20);
+      margin-bottom: function.em(14, 20);
 
       @include mixin.tab {
         margin-top: function.em(14, 20);
       }
 
-      li {
-        line-height: 200%;
+      a {
+        color: settings.$color-blue;
+      }
+    }
+
+    .category {
+      list-style: none;
+    }
+
+    .postList {
+      list-style: none;
+
+      ul {
+        margin-left: function.em(14, 20);
+
+        @include mixin.tab {
+          margin-top: function.em(14, 20);
+        }
+
+        li {
+          line-height: 200%;
+        }
       }
     }
   }
