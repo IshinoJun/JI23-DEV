@@ -18,7 +18,7 @@ const BlogCategoryList: React.FC<Props> = (props) => {
         {categories.contents.map((category) => (
           <li key={category.id}>
             <Link href={`/blogs/categories/${category.id}/page/1`}>
-              {category.name}
+              {`${category.name}(${category.posts.length})`}
             </Link>
           </li>
         ))}

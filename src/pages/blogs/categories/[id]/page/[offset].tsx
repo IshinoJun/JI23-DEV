@@ -79,8 +79,6 @@ const createPath = (
   categories: ArrayList<Category>,
   blogs: ArrayList<Blog>[],
 ) => {
-  console.log(blogs);
-
   return categories.contents.reduce(
     (paths: string[], category: Category, i: number) => {
       const nextPaths = [
