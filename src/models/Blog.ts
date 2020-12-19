@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import Category from './Category';
 import Model from './Model';
 import Tag from './Tag';

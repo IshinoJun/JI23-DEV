@@ -21,9 +21,9 @@ const BlogDate: React.FC<Props> = (props) => {
         </time>
       )}
       <UpdateIcon />
-      {blog.updatedAt && (
+      {blog.revisedAt && (
         <time itemProp="dateModified">
-          {formatDate(new Date(blog.updatedAt))}
+          {formatDate(new Date(blog.revisedAt))}
         </time>
       )}
     </div>
