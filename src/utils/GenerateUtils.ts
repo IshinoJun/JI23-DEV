@@ -11,24 +11,18 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
       return {
         title: 'Profile',
         subTitle: 'プロフィール',
-        linkProps: { href: '/' },
         imgProps: { src: '/profile.png', alt: 'Profile' },
       };
     case '/portfolio':
       return {
         title: 'Portfolio',
         subTitle: 'ポートフォリオ',
-        linkProps: { href: '/' },
         imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
       };
     case '/blogs':
+    case '/blogs/[id]':
     case '/blogs/page/[offset]':
-      return {
-        title: 'Blogs',
-        subTitle: 'ブログ一覧',
-        linkProps: { href: '/' },
-        imgProps: { src: '/blog.png', alt: 'Blogs' },
-      };
+    case '/blogs/sitemap':
     case '/blogs/search':
     case '/blogs/tags/[id]':
     case '/blogs/tags/[id]/page/[offset]':
@@ -36,14 +30,6 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
       return {
         title: 'Blogs',
         subTitle: 'ブログ一覧',
-        linkProps: { href: '/blogs' },
-        imgProps: { src: '/blog.png', alt: 'Blogs' },
-      };
-    case '/blogs/[id]':
-      return {
-        title: 'Blog',
-        subTitle: 'ブログ',
-        linkProps: { href: '/blogs' },
         imgProps: { src: '/blog.png', alt: 'Blogs' },
       };
     case '/contact':
@@ -52,21 +38,18 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
       return {
         title: 'Contact',
         subTitle: 'お問い合わせ',
-        linkProps: { href: '/' },
         imgProps: { src: '/contact.png', alt: 'Contact' },
       };
     case '/404':
       return {
         title: 'Error',
         subTitle: 'エラー',
-        linkProps: { href: '/' },
         imgProps: { src: '/icon.png', alt: 'エラー' },
       };
     default: {
       return {
         title: '',
         subTitle: '',
-        linkProps: { href: '/' },
         imgProps: { src: '/', alt: '' },
       };
     }

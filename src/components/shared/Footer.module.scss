@@ -3,7 +3,38 @@
 .footer {
   padding: function.em(16, 17);
 
+  ol,
+  ul {
+    list-style: none;
+  }
+
   .footerContent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+    li {
+      font-size: 14px;
+      white-space: nowrap;
+
+      &::after {
+        margin: 0 20px;
+        content: '|';
+      }
+
+      &:last-child::after {
+        margin: 0;
+        content: '';
+      }
+    }
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #616269;
     text-align: center;
   }
 }

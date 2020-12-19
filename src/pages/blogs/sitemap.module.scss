@@ -1,0 +1,39 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.wrapper {
+  margin-top: function.em(14, 30);
+
+  @include mixin.tab {
+    margin-top: function.em(16, 30);
+  }
+
+  ul {
+    margin-bottom: function.em(14, 20);
+
+    @include mixin.tab {
+      margin-top: function.em(14, 20);
+    }
+
+    a {
+      color: settings.$color-blue;
+    }
+  }
+
+  .postList {
+    list-style: none;
+
+    ul {
+      margin-left: function.em(14, 20);
+
+      @include mixin.tab {
+        margin-top: function.em(14, 20);
+      }
+
+      li {
+        line-height: 200%;
+      }
+    }
+  }
+}

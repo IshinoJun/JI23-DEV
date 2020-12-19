@@ -26,6 +26,7 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
       >
+        <Link href="/">ホーム</Link>
         <Link href="/blogs">ブログ一覧</Link>
         {tag && <Link href={`/blogs/tags/${tag.id}/page/1`}>{tag.name}</Link>}
         {category && (
