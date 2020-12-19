@@ -1,0 +1,44 @@
+@use 'style/mixin';
+@use 'style/function';
+
+.tagNameWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: function.em(14, 50);
+
+  @include mixin.tab {
+    margin-bottom: function.em(16, 50);
+  }
+}
+
+.blogsContainer {
+  @include mixin.pc {
+    display: flex;
+  }
+
+  .mainWrapper {
+    padding: 0 function.em(14, 15);
+
+    @include mixin.pc {
+      width: 66%;
+    }
+
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
+    }
+  }
+
+  .sideWrapper {
+    padding: 0 function.em(14, 15);
+    margin-top: function.em(14, 48);
+
+    @include mixin.pc {
+      width: 33%;
+      margin-top: function.em(14, 0);
+    }
+
+    @include mixin.tab {
+      padding: 0 function.em(16, 15);
+    }
+  }
+}

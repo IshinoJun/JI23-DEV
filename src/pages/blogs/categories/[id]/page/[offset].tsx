@@ -16,12 +16,12 @@ import Category from '../../../../../models/Category';
 interface Props {
   blogs: ArrayList<Blog>;
   tags: ArrayList<Tag>;
-  targetTag: Tag;
+  targetCategory: Category;
   categories: ArrayList<Category>;
 }
 
-const TagBlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, targetTag, categories } = props;
+const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
+  const { blogs, tags, targetCategory, categories } = props;
   const defaultTitle = 'JI23-DEV';
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
@@ -41,19 +41,19 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Head>
-        <title>{`${targetTag.name} | ${defaultTitle}`}</title>
+        <title>{`${targetCategory.name} | ${defaultTitle}`}</title>
         <meta
           property="og:title"
-          content={`${targetTag.name} | ${defaultTitle}`}
+          content={`${targetCategory.name} | ${defaultTitle}`}
         />
         <meta
           name="twitter:title"
-          content={`${targetTag.name}  | ${defaultTitle}`}
+          content={`${targetCategory.name}  | ${defaultTitle}`}
         />
       </Head>
       <section className="padding-block border-bottom">
         <div className={style.tagNameWrapper}>
-          <h1>{targetTag.name}</h1>
+          <h1>{targetCategory.name}</h1>
         </div>
         <div className={`${String(style.blogsContainer)} container`}>
           <div className={style.mainWrapper}>
@@ -75,34 +75,48 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
   );
 };
 
-const createPath = (tags: ArrayList<Tag>, blogs: ArrayList<Blog>[]) => {
-  return tags.contents.reduce((paths: string[], tag: Tag, i: number) => {
-    const nextPaths = [
-      ...Array(Math.ceil(blogs[i].totalCount / blogs[i].limit)),
-    ]
-      .map((_, i2) => i2 + 1)
-      .map((offset) => `/blogs/tags/${tag.id ?? ''}/page/${offset}`);
+const createPath = (
+  categories: ArrayList<Category>,
+  blogs: ArrayList<Blog>[],
+) => {
+  console.log(blogs);
 
-    return [...paths, ...nextPaths];
-  }, []);
+  return categories.contents.reduce(
+    (paths: string[], category: Category, i: number) => {
+      const nextPaths = [
+        ...Array(Math.ceil(blogs[i].totalCount / blogs[i].limit)),
+      ]
+        .map((_, i2) => i2 + 1)
+        .map(
+          (offset) => `/blogs/categories/${category.id ?? ''}/page/${offset}`,
+        );
+
+      return [...paths, ...nextPaths];
+    },
+    [],
+  );
 };
 
-const getPaths = async (tags: ArrayList<Tag>) => {
+const getPaths = async (categories: ArrayList<Category>) => {
   const devCMS = new DevCMS();
   const res: Promise<ArrayList<Blog>>[] = [];
-  tags.contents.forEach((tag) => {
-    const query: BlogsQuery = { tagId: tag.id, limit: '3', offset: '0' };
+  categories.contents.forEach((category) => {
+    const query: BlogsQuery = {
+      categoryId: category.id,
+      limit: '3',
+      offset: '0',
+    };
     const blogs = devCMS.getBlogs(query);
     res.push(blogs);
   });
 
-  return createPath(tags, await Promise.all(res));
+  return createPath(categories, await Promise.all(res));
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
-  const tags = await devCMS.getTags();
-  const paths = await getPaths(tags);
+  const categories = await devCMS.getCategories();
+  const paths = await getPaths(categories);
 
   return { paths, fallback: false };
 };
@@ -113,26 +127,26 @@ export const getStaticProps: GetStaticProps = async ({
   props: Props;
 }> => {
   const devCMS = new DevCMS();
-  const tagId = params?.id?.toString() ?? '';
+  const categoryId = params?.id?.toString() ?? '';
   const offset = params?.offset ? String(params?.offset) : '0';
   const query: BlogsQuery = {
-    tagId,
+    categoryId,
     offset: String((Number.parseInt(offset, 10) - 1) * 3),
     limit: '3',
   };
   const blogs = await devCMS.getBlogs(query);
   const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
-  const targetTag = await devCMS.getTag(tagId);
+  const targetCategory = await devCMS.getCategory(categoryId);
 
   return {
     props: {
       blogs,
       tags,
-      targetTag,
+      targetCategory,
       categories,
     },
   };
 };
 
-export default TagBlogsPage;
+export default CategoryBlogsPage;

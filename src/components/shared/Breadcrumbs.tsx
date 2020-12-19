@@ -21,6 +21,11 @@ const renderBreadcrumbs = (router: NextRouter) => {
         router.query.offset,
       )}`,
     },
+    '/blogs/categories/[id]/page/[offset]': {
+      title: `${String(router.query.id)} - ページ${String(
+        router.query.offset,
+      )}`,
+    },
     '/contact': { title: '問い合わせ' },
     '/contact/success': { title: '問い合わせ成功' },
     '/contact/error': { title: '問い合わせ失敗' },

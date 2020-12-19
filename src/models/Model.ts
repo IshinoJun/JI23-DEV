@@ -1,5 +1,5 @@
 interface Model {
-  id?: string;
+  id: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;

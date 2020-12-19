@@ -12,6 +12,7 @@ import Blog from '../../models/Blog';
 import Tag from '../../models/Tag';
 import BlogsQuery from '../../models/BlogsQuery';
 import { generateBlogsUrl } from '../../utils/GenerateUtils';
+import Category from '../../models/Category';
 
 class DevCMS {
   private axios = Axios.create({
@@ -106,6 +107,14 @@ class DevCMS {
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
     return this.get<Blog>(`blogs/${id}?draftKey=${draftKey}`);
+  }
+
+  public getCategories(): Promise<ArrayList<Category>> {
+    return this.get<ArrayList<Category>>(`category`);
+  }
+
+  public getCategory(id: string): Promise<Category> {
+    return this.get<Category>(`category/${id}`);
   }
 
   public getTags(): Promise<ArrayList<Tag>> {

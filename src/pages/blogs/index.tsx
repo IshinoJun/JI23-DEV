@@ -12,14 +12,16 @@ import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
 import createOgp from '../../utils/server/ogpUtils';
 import BlogsQuery from '../../models/BlogsQuery';
+import Category from '../../models/Category';
 
 interface Props {
   blogs: ArrayList<Blog>;
   tags: ArrayList<Tag>;
+  categories: ArrayList<Category>;
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags } = props;
+  const { blogs, tags, categories } = props;
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
 
@@ -44,6 +46,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
         <div className={style.sideWrapper}>
           <BlogSideContents
             keyword={keyword}
+            categories={categories}
             tags={tags}
             onClickSearchButton={handleClickSearchButton}
             onKeyDownSearch={handleKeyDownSearch}
@@ -65,6 +68,7 @@ export const getStaticProps: GetStaticProps = async ({
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
   const tags = await devCMS.getTags();
+  const categories = await devCMS.getCategories();
 
   blogs.contents.forEach((blog) => {
     void createOgp(blog);
@@ -82,6 +86,7 @@ export const getStaticProps: GetStaticProps = async ({
     props: {
       blogs,
       tags,
+      categories,
     },
   };
 };

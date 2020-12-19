@@ -13,15 +13,17 @@ import BlogHead from '../../components/shared/BlogHead';
 import BlogComponent from '../../components/shared/Blog';
 import Tag from '../../models/Tag';
 import BlogSideContents from '../../components/shared/BlogSideContents';
+import Category from '../../models/Category';
 
 interface Props {
   blog: Blog | null;
   errors?: string;
   tags: ArrayList<Tag>;
+  categories: ArrayList<Category>;
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, tags } = props;
+  const { blog, tags, categories } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const [keyword, setKeyword] = useState<string>('');
@@ -60,6 +62,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
               <div className={style.sideWrapper}>
                 <BlogSideContents
                   keyword={keyword}
+                  categories={categories}
                   tags={tags}
                   onClickSearchButton={handleClickSearchButton}
                   onKeyDownSearch={handleKeyDownSearch}
@@ -106,9 +109,10 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const tags = await devCMS.getTags();
+  const categories = await devCMS.getCategories();
 
   return {
-    props: { blog, tags },
+    props: { blog, tags, categories },
   };
 };
 

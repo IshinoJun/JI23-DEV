@@ -150,6 +150,9 @@ const generateBlogsUrl = (query: BlogsQuery): string | null => {
   if (query.limit && query.offset && query.tagId) {
     return `blogs?filters=tags[contains]${query.tagId}&offset=${query.offset}&limit=${query.limit}`;
   }
+  if (query.limit && query.offset && query.categoryId) {
+    return `blogs?filters=category[equals]${query.categoryId}&offset=${query.offset}&limit=${query.limit}`;
+  }
   if (query.keyword && query.tagId) {
     return `blogs?filters=title[contains]${query.keyword}[or]content[contains]${query.keyword}[or]tags[contains]${query.tagId}`;
   }
@@ -159,7 +162,9 @@ const generateBlogsUrl = (query: BlogsQuery): string | null => {
   if (query.tagId) {
     return `blogs?filters=tags[contains]${query.tagId}`;
   }
-
+  if (query.categoryId) {
+    return `blogs?filters=tags[contains]${query.categoryId}`;
+  }
   if (query.limit && query.offset) {
     return `blogs?offset=${query.offset}&limit=${query.limit}`;
   }

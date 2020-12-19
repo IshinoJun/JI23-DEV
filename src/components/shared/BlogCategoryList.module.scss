@@ -1,0 +1,48 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.tagWrapper {
+  width: 100%;
+  padding: function.em(14, 48) function.em(14, 30) function.em(14, 30) function.em(14, 30);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  border: settings.$color-hight-gray solid 1px;
+
+  @include mixin.tab {
+    padding: function.em(16, 48) function.em(16, 30) function.em(16, 30) function.em(16, 30);
+    margin-bottom: function.em(16, 48);
+  }
+
+  h2 {
+    padding-bottom: function.em(16, 20);
+    font-size: function.fz(16);
+    color: settings.$color-dark-blue;
+    text-align: center;
+  }
+
+  a {
+    display: block;
+    font-size: function.fz(12);
+    font-weight: 500;
+
+    @include mixin.tab {
+      font-size: function.fz(14);
+    }
+  }
+
+  ul li,
+  ol li {
+    padding: function.em(14, 10);
+    margin-bottom: 5px;
+    font-weight: bold;
+    line-height: 1.5;
+    list-style-type: none !important;
+    background: whitesmoke;
+    border-bottom: solid 2px #ddd;
+    border-left: solid 6px settings.$color-right-blue;
+  }
+
+  @include mixin.tab {
+    font-size: function.em(16, 7);
+  }
+}

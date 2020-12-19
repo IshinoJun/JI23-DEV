@@ -7,8 +7,11 @@ import SearchInput from './SearchInput';
 import style from './BlogSideContents.module.scss';
 import TwitterShareButton from './TwitterShareButton';
 import Blog from '../../models/Blog';
+import BlogCategoryList from './BlogCategoryList';
+import Category from '../../models/Category';
 
 interface Props {
+  categories: ArrayList<Category>;
   tags: ArrayList<Tag>;
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
@@ -22,6 +25,7 @@ interface Props {
 
 const BlogSideContents: React.FC<Props> = (props) => {
   const {
+    categories,
     keyword,
     setKeyword,
     onClickSearchButton,
@@ -41,6 +45,9 @@ const BlogSideContents: React.FC<Props> = (props) => {
           onClickSearchButton={onClickSearchButton}
           onKeyDownSearch={onKeyDownSearch}
         />
+      </div>
+      <div className={style.tagsWrapper}>
+        <BlogCategoryList categories={categories} />
       </div>
       <div className={style.tagsWrapper}>
         <BlogTagList tags={tags} />
