@@ -17,6 +17,9 @@ const Footer: React.FC = () => {
             <Link href="/blogs/sitemap">ブログサイトマップ</Link>
           </li>
           <li>
+            <Link href="/privacy">プライバシーポリシー</Link>
+          </li>
+          <li>
             <Link href="/contact">お問い合わせ</Link>
           </li>
         </ul>

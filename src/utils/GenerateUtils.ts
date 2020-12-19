@@ -40,6 +40,12 @@ const generateHeaderParams = (router: NextRouter): HeaderParams => {
         subTitle: 'お問い合わせ',
         imgProps: { src: '/contact.png', alt: 'Contact' },
       };
+    case '/privacy':
+      return {
+        title: 'Privacy Policy',
+        subTitle: 'プライバシーポリシー',
+        imgProps: { src: '/icon.png', alt: 'プライバシーポリシー' },
+      };
     case '/404':
       return {
         title: 'Error',

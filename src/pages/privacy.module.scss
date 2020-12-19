@@ -1,0 +1,23 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.wrapper {
+  margin-top: function.em(14, 30);
+
+  @include mixin.tab {
+    margin-top: function.em(16, 30);
+  }
+
+  h2 {
+    padding: function.em(20, 6) function.em(20, 6) function.em(20, 6) function.em(20, 12);
+    margin: function.em(20, 32) 0 function.em(20, 16);
+    font-size: function.fz(20);
+  }
+
+  p {
+    padding: function.em(16, 12) function.em(16, 12) function.em(16, 12) function.em(16, 24);
+    margin-bottom: function.em(16, 16);
+    font-size: function.fz(16);
+  }
+}

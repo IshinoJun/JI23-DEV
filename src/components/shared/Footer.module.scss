@@ -1,7 +1,13 @@
+@use 'style/mixin';
 @use 'style/function';
+@use 'style/settings';
 
 .footer {
-  padding: function.em(16, 17);
+  padding: function.em(14, 17);
+
+  @include mixin.tab {
+    padding: function.em(16, 17);
+  }
 
   ol,
   ul {
@@ -13,14 +19,18 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: function.em(14, 10);
+
+    @include mixin.tab {
+      margin-top: function.em(16, 10);
+    }
 
     li {
-      font-size: 14px;
+      font-size: function.fz(14);
       white-space: nowrap;
 
       &::after {
-        margin: 0 20px;
+        margin: 0 function.em(14, 20);
         content: '|';
       }
 
@@ -32,9 +42,8 @@
   }
 
   .title {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #616269;
+    margin-top: function.em(14, 20);
+    font-size: function.fz(14);
     text-align: center;
   }
 }
