@@ -11,6 +11,7 @@ import Head from 'next/head';
 import * as gtag from '../lib/gtag';
 import theme from '../components/theme';
 import Layout from '../components/shared/Layout';
+import useRouterScroll from '../hooks/useRouterScroll';
 
 // Binding events.
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -19,6 +20,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 const MyApp = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
+  useRouterScroll();
 
   useEffect(() => {
     // Remove the server-side injected CSS.
