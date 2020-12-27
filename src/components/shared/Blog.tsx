@@ -35,7 +35,10 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           <BlogCategory category={blog.category} />
           <Tags tags={blog.tags} tagsPosition="left" />
         </div>
-        <Highlight innerHTML className={[style.pre, 'markdown-body'].join(' ')}>
+        <Highlight
+          innerHTML
+          className={[style.content, style.pre, 'markdown-body'].join(' ')}
+        >
           {blog.content}
         </Highlight>
       </div>

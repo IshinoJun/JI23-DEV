@@ -71,9 +71,11 @@ export const getStaticProps: GetStaticProps = async ({
   const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
 
-  blogs.contents.forEach((blog) => {
-    void createOgp(blog);
-  });
+  if (process.env.BUILD_OGP === 'true') {
+    blogs.contents.forEach((blog) => {
+      void createOgp(blog);
+    });
+  }
 
   // プレビュー時は draft のコンテンツを追加
   if (preview && isPreviewData(previewData)) {
