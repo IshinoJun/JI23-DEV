@@ -51,6 +51,10 @@ const MyApp = (props: AppProps): JSX.Element => {
           href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap"
           rel="stylesheet"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>

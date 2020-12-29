@@ -35,10 +35,6 @@ class CustomDocument extends Document {
           />
           <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
           <link rel="icon" type="image/png" href="/icon.png" sizes="192x192" />
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"
-          />
         </Head>
         <body>
           <Main />
