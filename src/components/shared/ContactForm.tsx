@@ -10,23 +10,20 @@ import SNS from '../../models/SNS';
 interface Props {
   sns: SNS;
   onSubmit: (contact: Contact) => void;
-  validationSchema: Yup.ObjectSchema<
-    Yup.Shape<
-      // eslint-disable-next-line @typescript-eslint/ban-types
-      object | undefined,
-      {
-        name: string;
-        email: string;
-        body: string;
-      }
-    >
-  >;
 }
 
-const ContactForm: React.FC<Props> = (props: Props) => {
-  const { sns, validationSchema, onSubmit } = props;
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required('名前は必須項目です'),
+  email: Yup.string()
+    .email('正しいメールアドレスではありません')
+    .required('メールアドレスは必須です'),
+  body: Yup.string().required('お問い合わせ内容は必須です。'),
+});
 
-  const { control, handleSubmit, errors } = useForm<Contact>({
+const ContactForm: React.FC<Props> = (props: Props) => {
+  const { sns, onSubmit } = props;
+
+  const { control, handleSubmit, errors } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
   });
