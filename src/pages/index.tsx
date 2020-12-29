@@ -84,6 +84,11 @@ const Home: NextPage<Props> = (props: Props) => {
                   href={sns.gitHubUrl}
                   ariaLabel="gitHubのリンク"
                 />
+                <IconButton
+                  iconButtonType={IconButtonType.zenn}
+                  href={sns.zennUrl}
+                  ariaLabel="zennのリンク"
+                />
               </div>
             </div>
             <div className={style.iconArea}>
