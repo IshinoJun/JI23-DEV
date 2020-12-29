@@ -47,6 +47,10 @@ const MyApp = (props: AppProps): JSX.Element => {
   return (
     <>
       <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap"
+          rel="stylesheet"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
