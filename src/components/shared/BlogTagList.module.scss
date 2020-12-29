@@ -23,7 +23,7 @@
   a {
     display: block;
     font-size: function.fz(12);
-    font-weight: 500;
+    font-weight: 400;
 
     @include mixin.tab {
       font-size: function.fz(14);
