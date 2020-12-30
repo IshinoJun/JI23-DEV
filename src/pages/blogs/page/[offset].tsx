@@ -62,7 +62,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
-  const paths = [...Array(blogs.totalCount / blogs.limit)]
+
+  const paths = [...Array(Math.ceil(blogs.totalCount / blogs.limit))]
     .map((_, i) => i + 1)
     .map((offset) => `/blogs/page/${offset}`);
 
