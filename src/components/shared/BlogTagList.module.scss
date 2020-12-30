@@ -5,7 +5,6 @@
 .tagWrapper {
   width: 100%;
   padding: function.em(14, 48) function.em(14, 30) function.em(14, 30) function.em(14, 30);
-  font-family: 'M PLUS Rounded 1c', sans-serif;
   border: settings.$color-hight-gray solid 1px;
 
   @include mixin.tab {

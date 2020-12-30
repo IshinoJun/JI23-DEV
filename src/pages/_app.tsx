@@ -47,11 +47,6 @@ const MyApp = (props: AppProps): JSX.Element => {
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;400&display=swap"
-          rel="stylesheet"
-        />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"
