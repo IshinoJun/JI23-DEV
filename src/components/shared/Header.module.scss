@@ -45,30 +45,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: function.em(14, 50);
-    height: function.em(14, 50);
-    margin-right: function.em(14, 20);
-    background-color: settings.$color-hight-blue;
-    border-color: settings.$color-gray;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 2px;
-
-    @include mixin.tab {
-      width: function.em(16, 50);
-      height: function.em(16, 50);
-      margin-right: function.em(16, 20);
-    }
-
-    img {
-      width: function.em(14, 30);
-      height: function.em(14, 40);
-
-      @include mixin.tab {
-        width: function.em(16, 30);
-        height: function.em(16, 40);
-      }
-    }
   }
 
   .close {
@@ -77,18 +53,6 @@
     svg {
       font-size: function.fz(54);
     }
-  }
-}
-
-.logo {
-  width: 300px;
-  padding-top: function.em(14, 20);
-  margin: 0 auto;
-
-  @include mixin.tab {
-    width: 50%;
-    max-width: 400px;
-    padding-top: function.em(16, 20);
   }
 }
 

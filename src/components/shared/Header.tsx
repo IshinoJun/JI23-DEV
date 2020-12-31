@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { IconButton } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { generateHeaderParams } from '../../utils/GenerateUtils';
+import Image from 'next/image';
 import style from './Header.module.scss';
 import HeaderDrawer from './HeaderDrawer';
 import useMedia from '../../hooks/useMedia';
@@ -17,12 +16,8 @@ interface Props {
 
 const Header: React.FC<Props> = (props) => {
   const { isOpen, onClickDrawer } = props;
-  const router = useRouter();
   const [hasMounted, setHasMounted] = React.useState(false);
   const isPc = useMedia('pc');
-  const headerParams = generateHeaderParams(router);
-
-  const { title, subTitle, imgProps } = headerParams;
 
   const globalNav: GlobalNav[] = [
     {
@@ -73,11 +68,7 @@ const Header: React.FC<Props> = (props) => {
           <div className={style.row}>
             <div className={style.titleArea}>
               <div className={style.icon}>
-                <img {...imgProps} alt="ヘッダー画像" />
-              </div>
-              <div className={style.title}>
-                <h2>{title}</h2>
-                <h3>{subTitle}</h3>
+                <Image src="/logo.png" alt="ロゴ画像" width={192} height={48} />
               </div>
             </div>
             {isPc ? (
@@ -103,13 +94,6 @@ const Header: React.FC<Props> = (props) => {
           </div>
         </div>
       </header>
-      <div className={style.logo}>
-        <Link href="/" as="/">
-          <a href="/">
-            <img src="/logo.png" alt="ロゴ画像" />
-          </a>
-        </Link>
-      </div>
       <HeaderDrawer
         isOpen={isOpen}
         onClickDrawer={onClickDrawer}

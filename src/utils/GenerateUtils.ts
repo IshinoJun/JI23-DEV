@@ -1,66 +1,6 @@
 import { NextRouter } from 'next/router';
 import BlogsQuery from '../models/BlogsQuery';
-import HeaderParams from '../models/HeaderParams';
 import HeadParams from '../models/HeadParams';
-
-const generateHeaderParams = (router: NextRouter): HeaderParams => {
-  const { pathname } = router;
-
-  switch (pathname) {
-    case '/profile':
-      return {
-        title: 'Profile',
-        subTitle: 'プロフィール',
-        imgProps: { src: '/profile.png', alt: 'Profile' },
-      };
-    case '/portfolio':
-      return {
-        title: 'Portfolio',
-        subTitle: 'ポートフォリオ',
-        imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
-      };
-    case '/blogs':
-    case '/blogs/[id]':
-    case '/blogs/page/[offset]':
-    case '/blogs/sitemap':
-    case '/blogs/search':
-    case '/blogs/tags/[id]':
-    case '/blogs/tags/[id]/page/[offset]':
-    case '/blogs/categories/[id]/page/[offset]':
-      return {
-        title: 'Blogs',
-        subTitle: 'ブログ一覧',
-        imgProps: { src: '/blog.png', alt: 'Blogs' },
-      };
-    case '/contact':
-    case '/contact/success':
-    case '/contact/error':
-      return {
-        title: 'Contact',
-        subTitle: 'お問い合わせ',
-        imgProps: { src: '/contact.png', alt: 'Contact' },
-      };
-    case '/privacy':
-      return {
-        title: 'Privacy Policy',
-        subTitle: 'プライバシーポリシー',
-        imgProps: { src: '/icon.png', alt: 'プライバシーポリシー' },
-      };
-    case '/404':
-      return {
-        title: 'Error',
-        subTitle: 'エラー',
-        imgProps: { src: '/icon.png', alt: 'エラー' },
-      };
-    default: {
-      return {
-        title: '',
-        subTitle: '',
-        imgProps: { src: '/', alt: '' },
-      };
-    }
-  }
-};
 
 const generateHeadParams = (router: NextRouter): HeadParams => {
   const { pathname } = router;
@@ -163,4 +103,4 @@ const generateBlogsUrl = (query: BlogsQuery): string | null => {
   return null;
 };
 
-export { generateHeaderParams, generateHeadParams, generateBlogsUrl };
+export { generateHeadParams, generateBlogsUrl };
