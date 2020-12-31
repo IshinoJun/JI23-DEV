@@ -68,7 +68,16 @@ const Header: React.FC<Props> = (props) => {
           <div className={style.row}>
             <div className={style.titleArea}>
               <div className={style.icon}>
-                <Image src="/logo.png" alt="ロゴ画像" width={192} height={48} />
+                <Link href="/">
+                  <a>
+                    <Image
+                      src="/logo.png"
+                      alt="ロゴ画像"
+                      width={192}
+                      height={48}
+                    />
+                  </a>
+                </Link>
               </div>
             </div>
             {isPc ? (
