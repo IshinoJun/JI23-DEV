@@ -9,6 +9,7 @@ import TwitterShareButton from './TwitterShareButton';
 import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
+import BlogTopArticleList from './BlogTopArticleList';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -21,6 +22,7 @@ interface Props {
   ) => void;
   contents?: HTMLHeadingElement[];
   blog?: Blog;
+  topArticleBlogs: ArrayList<Blog>;
 }
 
 const BlogSideContents: React.FC<Props> = (props) => {
@@ -33,12 +35,13 @@ const BlogSideContents: React.FC<Props> = (props) => {
     tags,
     contents,
     blog,
+    topArticleBlogs,
   } = props;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
   return (
     <>
-      <div className={style.searchInputWrapper}>
+      <div className={style.wrapper}>
         <SearchInput
           keyword={keyword}
           setKeyword={setKeyword}
@@ -46,11 +49,14 @@ const BlogSideContents: React.FC<Props> = (props) => {
           onKeyDownSearch={onKeyDownSearch}
         />
       </div>
-      <div className={style.tagsWrapper}>
+      <div className={style.wrapper}>
         <BlogCategoryList categories={categories} />
       </div>
-      <div className={style.tagsWrapper}>
+      <div className={style.wrapper}>
         <BlogTagList tags={tags} />
+      </div>
+      <div className={style.wrapper}>
+        <BlogTopArticleList blogs={topArticleBlogs} />
       </div>
       <div className={style.sideFlow}>
         {contents && (

@@ -100,6 +100,12 @@ const generateBlogsUrl = (query: BlogsQuery): string | null => {
     return `blogs?offset=${query.offset}&limit=${query.limit}`;
   }
 
+  if (query.ids) {
+    const str = query.ids.join(',');
+
+    return `blogs?ids=${str}`;
+  }
+
   return null;
 };
 

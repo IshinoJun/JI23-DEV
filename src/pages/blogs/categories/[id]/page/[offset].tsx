@@ -12,16 +12,18 @@ import Tag from '../../../../../models/Tag';
 import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
+import { getTopArticlePaths } from '../../../../../utils/server/analyisUtils';
 
 interface Props {
   blogs: ArrayList<Blog>;
   tags: ArrayList<Tag>;
   targetCategory: Category;
   categories: ArrayList<Category>;
+  topArticleBlogs: ArrayList<Blog>;
 }
 
 const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, targetCategory, categories } = props;
+  const { blogs, tags, targetCategory, categories, topArticleBlogs } = props;
   const defaultTitle = 'JI23-DEV';
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
@@ -68,6 +70,7 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
               onClickSearchButton={handleClickSearchButton}
               onKeyDownSearch={handleKeyDownSearch}
               setKeyword={setKeyword}
+              topArticleBlogs={topArticleBlogs}
             />
           </div>
         </div>
@@ -138,12 +141,16 @@ export const getStaticProps: GetStaticProps = async ({
   const categories = await devCMS.getCategories();
   const targetCategory = await devCMS.getCategory(categoryId);
 
+  const ids = await getTopArticlePaths();
+  const topArticleBlogs = await devCMS.getBlogs({ ids });
+
   return {
     props: {
       blogs,
       tags,
       targetCategory,
       categories,
+      topArticleBlogs,
     },
   };
 };

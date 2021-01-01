@@ -11,15 +11,17 @@ import Blogs from '../../../components/shared/Blogs';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
 import BlogsQuery from '../../../models/BlogsQuery';
 import Category from '../../../models/Category';
+import { getTopArticlePaths } from '../../../utils/server/analyisUtils';
 
 interface Props {
   blogs: ArrayList<Blog>;
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
+  topArticleBlogs: ArrayList<Blog>;
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, categories } = props;
+  const { blogs, tags, categories, topArticleBlogs } = props;
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
 
@@ -50,6 +52,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
             onClickSearchButton={handleClickSearchButton}
             onKeyDownSearch={handleKeyDownSearch}
             setKeyword={setKeyword}
+            topArticleBlogs={topArticleBlogs}
           />
         </div>
       </div>
@@ -85,11 +88,15 @@ export const getStaticProps: GetStaticProps = async ({
   const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
 
+  const ids = await getTopArticlePaths();
+  const topArticleBlogs = await devCMS.getBlogs({ ids });
+
   return {
     props: {
       blogs,
       tags,
       categories,
+      topArticleBlogs,
     },
   };
 };

@@ -4,6 +4,7 @@ interface BlogsQuery {
   keyword?: string;
   limit?: string;
   offset?: string;
+  ids?: string[];
 }
 
 export default BlogsQuery;

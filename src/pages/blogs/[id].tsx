@@ -14,16 +14,18 @@ import BlogComponent from '../../components/shared/Blog';
 import Tag from '../../models/Tag';
 import BlogSideContents from '../../components/shared/BlogSideContents';
 import Category from '../../models/Category';
+import { getTopArticlePaths } from '../../utils/server/analyisUtils';
 
 interface Props {
   blog: Blog | null;
   errors?: string;
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
+  topArticleBlogs: ArrayList<Blog>;
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, tags, categories } = props;
+  const { blog, tags, categories, topArticleBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const [keyword, setKeyword] = useState<string>('');
@@ -70,6 +72,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                   setKeyword={setKeyword}
                   contents={contents}
                   blog={blog}
+                  topArticleBlogs={topArticleBlogs}
                 />
               </div>
             </div>
@@ -112,8 +115,11 @@ export const getStaticProps: GetStaticProps = async ({
   const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
 
+  const ids = await getTopArticlePaths();
+  const topArticleBlogs = await devCMS.getBlogs({ ids });
+
   return {
-    props: { blog, tags, categories },
+    props: { blog, tags, categories, topArticleBlogs },
   };
 };
 
