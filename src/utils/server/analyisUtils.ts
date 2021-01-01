@@ -2,7 +2,6 @@ import { google } from 'googleapis';
 import { isEmpty } from 'lodash';
 
 const getTopArticle = async () => {
-  console.log(process.env.GOOGLE_APPLICATION_PRIVATE_KEY);
   const client = await google.auth.getClient({
     scopes: 'https://www.googleapis.com/auth/analytics.readonly',
     credentials: {
