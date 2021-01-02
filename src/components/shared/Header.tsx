@@ -16,6 +16,7 @@ interface Props {
 
 const Header: React.FC<Props> = (props) => {
   const { isOpen, onClickDrawer } = props;
+  const [hasMounted, setHasMounted] = React.useState(false);
   const isPc = useMedia('pc');
 
   const globalNav: GlobalNav[] = [
@@ -50,6 +51,15 @@ const Header: React.FC<Props> = (props) => {
       imgProps: { src: '/contact.png', alt: 'Contact' },
     },
   ];
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // FIXME: マウント後にやらないとSSRのエラーが出るのでその対策
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
