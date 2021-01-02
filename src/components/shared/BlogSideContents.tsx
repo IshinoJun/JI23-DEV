@@ -22,7 +22,7 @@ interface Props {
   ) => void;
   contents?: HTMLHeadingElement[];
   blog?: Blog;
-  topArticleBlogs: ArrayList<Blog>;
+  topArticleBlogs: Blog[];
 }
 
 const BlogSideContents: React.FC<Props> = (props) => {

@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { compact } from 'lodash';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -21,7 +22,7 @@ interface Props {
   errors?: string;
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
-  topArticleBlogs: ArrayList<Blog>;
+  topArticleBlogs: Blog[];
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
@@ -116,7 +117,11 @@ export const getStaticProps: GetStaticProps = async ({
   const categories = await devCMS.getCategories();
 
   const ids = await getTopArticlePaths();
-  const topArticleBlogs = await devCMS.getBlogs({ ids });
+  const topBlogs = await devCMS.getBlogs({ ids });
+  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
+  const topArticleBlogs = compact(
+    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
+  );
 
   return {
     props: { blog, tags, categories, topArticleBlogs },

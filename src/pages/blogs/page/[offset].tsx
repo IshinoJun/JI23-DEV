@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
+import { compact } from 'lodash';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -17,7 +18,7 @@ interface Props {
   blogs: ArrayList<Blog>;
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
-  topArticleBlogs: ArrayList<Blog>;
+  topArticleBlogs: Blog[];
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
@@ -89,7 +90,11 @@ export const getStaticProps: GetStaticProps = async ({
   const categories = await devCMS.getCategories();
 
   const ids = await getTopArticlePaths();
-  const topArticleBlogs = await devCMS.getBlogs({ ids });
+  const topBlogs = await devCMS.getBlogs({ ids });
+  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
+  const topArticleBlogs = compact(
+    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
+  );
 
   return {
     props: {
