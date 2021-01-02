@@ -16,7 +16,6 @@ interface Props {
 
 const Header: React.FC<Props> = (props) => {
   const { isOpen, onClickDrawer } = props;
-  const [hasMounted, setHasMounted] = React.useState(false);
   const isPc = useMedia('pc');
 
   const globalNav: GlobalNav[] = [
@@ -52,15 +51,6 @@ const Header: React.FC<Props> = (props) => {
     },
   ];
 
-  React.useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  // FIXME: マウント後にやらないとSSRのエラーが出るのでその対策
-  if (!hasMounted) {
-    return null;
-  }
-
   return (
     <>
       <header className={style.head}>
@@ -69,7 +59,7 @@ const Header: React.FC<Props> = (props) => {
             <div className={style.titleArea}>
               <div className={style.icon}>
                 <Link href="/">
-                  <a>
+                  <a className={style.link}>
                     <Image
                       src="/logo.png"
                       alt="ロゴ画像"
