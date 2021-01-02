@@ -10,6 +10,7 @@ import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
 import BlogTopArticleList from './BlogTopArticleList';
+import BlogNewList from './BlogNewList';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -23,6 +24,7 @@ interface Props {
   contents?: HTMLHeadingElement[];
   blog?: Blog;
   topArticleBlogs: Blog[];
+  newBlogs: Blog[];
 }
 
 const BlogSideContents: React.FC<Props> = (props) => {
@@ -36,6 +38,7 @@ const BlogSideContents: React.FC<Props> = (props) => {
     contents,
     blog,
     topArticleBlogs,
+    newBlogs,
   } = props;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
@@ -57,6 +60,9 @@ const BlogSideContents: React.FC<Props> = (props) => {
       </div>
       <div className={style.wrapper}>
         <BlogTopArticleList blogs={topArticleBlogs} />
+      </div>
+      <div className={style.wrapper}>
+        <BlogNewList blogs={newBlogs} />
       </div>
       <div className={style.sideFlow}>
         {contents && (

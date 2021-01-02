@@ -21,10 +21,11 @@ interface Props {
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
+  newBlogs: Blog[];
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, categories, topArticleBlogs } = props;
+  const { blogs, tags, categories, topArticleBlogs, newBlogs } = props;
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
 
@@ -56,6 +57,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
             onKeyDownSearch={handleKeyDownSearch}
             setKeyword={setKeyword}
             topArticleBlogs={topArticleBlogs}
+            newBlogs={newBlogs}
           />
         </div>
       </div>
@@ -96,12 +98,15 @@ export const getStaticProps: GetStaticProps = async ({
     ids.map((id) => topBlogs.contents.find((blog) => blog.id === id)),
   );
 
+  const newBlogs = await devCMS.getBlogs();
+
   return {
     props: {
       blogs,
       tags,
       categories,
       topArticleBlogs,
+      newBlogs: newBlogs.contents,
     },
   };
 };

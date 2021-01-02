@@ -1,0 +1,45 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.title {
+  padding: function.em(20, 6) function.em(20, 10);
+  font-size: function.fz(20);
+  font-weight: 700;
+  background-color: settings.$color-hight-gray;
+  border-radius: 5px;
+}
+
+.list {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    display: block;
+    padding: function.em(14, 10);
+
+    @include mixin.tab {
+      display: flex;
+      padding: function.em(16, 10);
+    }
+
+    @include mixin.pc {
+      display: inherit;
+      padding: function.em(16, 10);
+    }
+  }
+
+  img {
+    @include mixin.tab {
+      width: function.em(16, 140);
+    }
+
+    @include mixin.pc {
+      width: inherit;
+    }
+  }
+}

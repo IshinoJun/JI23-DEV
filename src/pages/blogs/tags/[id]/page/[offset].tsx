@@ -21,10 +21,18 @@ interface Props {
   targetTag: Tag;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
+  newBlogs: Blog[];
 }
 
 const TagBlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, targetTag, categories, topArticleBlogs } = props;
+  const {
+    blogs,
+    tags,
+    targetTag,
+    categories,
+    topArticleBlogs,
+    newBlogs,
+  } = props;
   const defaultTitle = 'JI23-DEV';
   const [keyword, setKeyword] = useState<string>('');
   const router = useRouter();
@@ -72,6 +80,7 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
               onKeyDownSearch={handleKeyDownSearch}
               setKeyword={setKeyword}
               topArticleBlogs={topArticleBlogs}
+              newBlogs={newBlogs}
             />
           </div>
         </div>
@@ -136,6 +145,7 @@ export const getStaticProps: GetStaticProps = async ({
   const topArticleBlogs = compact(
     ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
   );
+  const newBlogs = await devCMS.getBlogs();
 
   return {
     props: {
@@ -144,6 +154,7 @@ export const getStaticProps: GetStaticProps = async ({
       targetTag,
       categories,
       topArticleBlogs,
+      newBlogs: newBlogs.contents,
     },
   };
 };

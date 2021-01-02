@@ -23,10 +23,11 @@ interface Props {
   tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
+  newBlogs: Blog[];
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, tags, categories, topArticleBlogs } = props;
+  const { blog, tags, categories, topArticleBlogs, newBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const [keyword, setKeyword] = useState<string>('');
@@ -74,6 +75,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                   contents={contents}
                   blog={blog}
                   topArticleBlogs={topArticleBlogs}
+                  newBlogs={newBlogs}
                 />
               </div>
             </div>
@@ -122,9 +124,16 @@ export const getStaticProps: GetStaticProps = async ({
   const topArticleBlogs = compact(
     ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
   );
+  const newBlogs = await devCMS.getBlogs();
 
   return {
-    props: { blog, tags, categories, topArticleBlogs },
+    props: {
+      blog,
+      tags,
+      categories,
+      topArticleBlogs,
+      newBlogs: newBlogs.contents,
+    },
   };
 };
 
