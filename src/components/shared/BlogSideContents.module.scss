@@ -34,5 +34,13 @@
     @include mixin.tab {
       margin-bottom: 0 function.em(16, 20);
     }
+
+    button {
+      margin-right: 5px;
+    }
+
+    button:last-child {
+      margin-right: 0;
+    }
   }
 }

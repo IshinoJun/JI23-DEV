@@ -1,11 +1,18 @@
 import React from 'react';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  HatenaIcon,
+  HatenaShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from 'react-share';
 import ArrayList from '../../models/Array';
 import Tag from '../../models/Tag';
 import BlogContents from './BlogContents';
 import BlogTagList from './BlogTagList';
 import SearchInput from './SearchInput';
 import style from './BlogSideContents.module.scss';
-import TwitterShareButton from './TwitterShareButton';
 import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
@@ -74,8 +81,22 @@ const BlogSideContents: React.FC<Props> = (props) => {
           <div className={style.shareArea}>
             <TwitterShareButton
               url={`${baseUrl}/blogs/${blog.id}`}
-              text={blog.title}
-            />
+              title={blog.title}
+            >
+              <TwitterIcon round size={45} />
+            </TwitterShareButton>
+            <FacebookShareButton
+              url={`${baseUrl}/blogs/${blog.id}`}
+              title={blog.title}
+            >
+              <FacebookIcon round size={45} />
+            </FacebookShareButton>
+            <HatenaShareButton
+              url={`${baseUrl}/blogs/${blog.id}`}
+              title={blog.title}
+            >
+              <HatenaIcon round size={45} />
+            </HatenaShareButton>
           </div>
         )}
       </div>
