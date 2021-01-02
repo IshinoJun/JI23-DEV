@@ -1,7 +1,9 @@
-import { google } from 'googleapis';
+// eslint-disable-next-line camelcase
+import { analyticsreporting_v4, google } from 'googleapis';
 import { isEmpty } from 'lodash';
 
-const getTopArticle = async () => {
+// eslint-disable-next-line camelcase
+const getTopArticle = async (): Promise<analyticsreporting_v4.Schema$GetReportsResponse> => {
   const client = await google.auth.getClient({
     scopes: 'https://www.googleapis.com/auth/analytics.readonly',
     credentials: {
