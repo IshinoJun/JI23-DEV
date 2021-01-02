@@ -24,7 +24,7 @@ const getTopArticle = async (): Promise<analyticsreporting_v4.Schema$GetReportsR
     requestBody: {
       reportRequests: [
         {
-          viewId: '224793094',
+          viewId: process.env.GOOGLE_ANALYTICS_VIEW_ID,
           dateRanges: [
             {
               startDate: '30daysAgo',
