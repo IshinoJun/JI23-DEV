@@ -52,7 +52,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
       const es = Array.from(e.getElementsByTagName('h2'));
       setContents(es);
     }
-  }, []);
+  }, [router]);
 
   return (
     <>
