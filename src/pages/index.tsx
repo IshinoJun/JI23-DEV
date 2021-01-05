@@ -46,8 +46,8 @@ const Home: NextPage<Props> = (props: Props) => {
               imgProps={{
                 src: '/blog.png',
                 alt: 'Blogs',
-                width: 109,
-                height: 128,
+                width: 129,
+                height: 124,
               }}
               name="Blogs"
             />
