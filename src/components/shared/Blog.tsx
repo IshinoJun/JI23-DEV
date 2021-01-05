@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import * as React from 'react';
-import Highlight from 'react-highlight';
 import Blog from '../../models/Blog';
 import style from './Blog.module.scss';
 import Tags from './Tags';
@@ -35,12 +34,10 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           <BlogCategory category={blog.category} />
           <Tags tags={blog.tags} tagsPosition="left" />
         </div>
-        <Highlight
-          innerHTML
+        <div
+          dangerouslySetInnerHTML={{ __html: blog.content }}
           className={[style.content, style.pre, 'markdown-body'].join(' ')}
-        >
-          {blog.content}
-        </Highlight>
+        />
       </div>
     </main>
   );
