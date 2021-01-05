@@ -34,6 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: function.em(14, 128);
     overflow: hidden;
 
     @include mixin.pc {
@@ -42,11 +43,6 @@
       width: function.em(16, 170);
       height: function.em(16, 170);
       transition: all 0.5s ease-in-out;
-    }
-
-    img {
-      width: function.em(16, 100);
-      height: function.em(16, 120);
     }
   }
 

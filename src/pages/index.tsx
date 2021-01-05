@@ -16,9 +16,6 @@ interface Props {
 const Home: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
-  const IMAGE_WIDTH = 100 as const;
-  const IMAGE_HEIGHT = 120 as const;
-
   return (
     <>
       <nav className={style.nav}>
@@ -29,8 +26,8 @@ const Home: NextPage<Props> = (props: Props) => {
               imgProps={{
                 src: '/profile.png',
                 alt: 'Profile',
-                width: IMAGE_WIDTH,
-                height: IMAGE_HEIGHT,
+                width: 109,
+                height: 128,
               }}
               name="Profile"
             />
@@ -39,8 +36,8 @@ const Home: NextPage<Props> = (props: Props) => {
               imgProps={{
                 src: '/portfolio.png',
                 alt: 'Portfolio',
-                width: IMAGE_WIDTH,
-                height: IMAGE_HEIGHT,
+                width: 128,
+                height: 107,
               }}
               name="Portfolio"
             />
@@ -49,8 +46,8 @@ const Home: NextPage<Props> = (props: Props) => {
               imgProps={{
                 src: '/blog.png',
                 alt: 'Blogs',
-                width: IMAGE_WIDTH,
-                height: IMAGE_HEIGHT,
+                width: 109,
+                height: 128,
               }}
               name="Blogs"
             />
@@ -59,8 +56,8 @@ const Home: NextPage<Props> = (props: Props) => {
               imgProps={{
                 src: '/contact.png',
                 alt: 'Contact',
-                width: IMAGE_WIDTH,
-                height: IMAGE_HEIGHT,
+                width: 93,
+                height: 128,
               }}
               name="Contact"
             />
