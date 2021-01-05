@@ -15,36 +15,41 @@
   }
 
   .footerContent {
-    display: flex;
-    flex-wrap: wrap;
+    display: list-item;
     margin-top: function.em(14, 10);
+    text-align: center;
 
     @include mixin.tab {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       margin-top: function.em(16, 10);
+      text-align: inherit;
     }
 
     li {
+      padding-bottom: function.em(12, 24);
       font-size: function.fz(12);
       white-space: nowrap;
 
       @include mixin.tab {
+        padding-bottom: function.em(14, 24);
         font-size: function.fz(14);
-      }
 
-      &::after {
-        margin: 0 function.em(12, 20);
-        content: '|';
+        &::after {
+          margin: 0 function.em(12, 24);
+          content: '|';
 
-        @include mixin.tab {
-          margin: 0 function.em(14, 20);
+          @include mixin.tab {
+            margin: 0 function.em(14, 24);
+          }
         }
-      }
 
-      &:last-child::after {
-        margin: 0;
-        content: '';
+        &:last-child::after {
+          margin: 0;
+          content: '';
+        }
       }
     }
   }
