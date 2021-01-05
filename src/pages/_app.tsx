@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import 'ress';
 import '../../styles.scss';
-import 'highlightjs/styles/github.css';
+import 'highlight.js/styles/github.css';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Router } from 'next/router';
