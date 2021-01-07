@@ -51,27 +51,27 @@ const BlogSideContents: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className={style.wrapper}>
+      <aside className={style.wrapper}>
         <SearchInput
           keyword={keyword}
           setKeyword={setKeyword}
           onClickSearchButton={onClickSearchButton}
           onKeyDownSearch={onKeyDownSearch}
         />
-      </div>
-      <div className={style.wrapper}>
+      </aside>
+      <aside className={style.wrapper}>
         <BlogCategoryList categories={categories} />
-      </div>
-      <div className={style.wrapper}>
+      </aside>
+      <aside className={style.wrapper}>
         <BlogTagList tags={tags} />
-      </div>
-      <div className={style.wrapper}>
+      </aside>
+      <aside className={style.wrapper}>
         <BlogTopArticleList blogs={topArticleBlogs} />
-      </div>
-      <div className={style.wrapper}>
+      </aside>
+      <aside className={style.wrapper}>
         <BlogNewList blogs={newBlogs} />
-      </div>
-      <div className={style.sideFlow}>
+      </aside>
+      <aside className={style.sideFlow}>
         {contents && (
           <div className={style.contentsWrapper}>
             <BlogContents contents={contents} />
@@ -99,7 +99,7 @@ const BlogSideContents: React.FC<Props> = (props) => {
             </HatenaShareButton>
           </div>
         )}
-      </div>
+      </aside>
     </>
   );
 };

@@ -53,7 +53,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <JI23Head />
-      <main className="wrapper">
+      <div className="wrapper">
         {!isTop ? (
           <Header onClickDrawer={handleClickDrawer} isOpen={isOpen} />
         ) : (
@@ -73,7 +73,7 @@ const Layout: React.FC<Props> = (props: Props) => {
             isHidden={isHidden}
           />
         </div>
-      </main>
+      </div>
     </>
   );
 };

@@ -11,7 +11,7 @@ const BlogNewList: React.FC<Props> = (props) => {
   const { blogs } = props;
 
   return (
-    <aside>
+    <div>
       <h1 className={style.title}>最新の記事</h1>
       <ul>
         {blogs.map((blog) => (
@@ -22,7 +22,7 @@ const BlogNewList: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 };
 

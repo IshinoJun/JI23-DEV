@@ -23,7 +23,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
         <meta name="twitter:title" content={title} />
       </Head>
       <section className="padding-block border-bottom">
-        <main className={`${String(style.container)} container`}>
+        <div className={`${String(style.container)} container`}>
           <h1>Sitemap</h1>
           <div className={style.wrapper}>
             {categories.contents.map((category) => (
@@ -47,7 +47,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
               </ul>
             ))}
           </div>
-        </main>
+        </div>
       </section>
     </>
   );

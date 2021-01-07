@@ -59,27 +59,29 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
       {blog && blog.id ? (
         <>
           <BlogHead blog={blog} />
-          <section className="padding-block border-bottom">
-            <div className={`${String(style.blogsContainer)} container`}>
-              <div className={style.mainWrapper} id="blog">
-                <BlogComponent blog={blog} />
-              </div>
-              <div className={style.sideWrapper}>
-                <BlogSideContents
-                  keyword={keyword}
-                  categories={categories}
-                  tags={tags}
-                  onClickSearchButton={handleClickSearchButton}
-                  onKeyDownSearch={handleKeyDownSearch}
-                  setKeyword={setKeyword}
-                  contents={contents}
-                  blog={blog}
-                  topArticleBlogs={topArticleBlogs}
-                  newBlogs={newBlogs}
-                />
-              </div>
+          <div
+            className={`${String(
+              style.blogsContainer,
+            )} container padding-block border-bottom`}
+          >
+            <main className={style.mainWrapper} id="blog">
+              <BlogComponent blog={blog} />
+            </main>
+            <div className={style.sideWrapper}>
+              <BlogSideContents
+                keyword={keyword}
+                categories={categories}
+                tags={tags}
+                onClickSearchButton={handleClickSearchButton}
+                onKeyDownSearch={handleKeyDownSearch}
+                setKeyword={setKeyword}
+                contents={contents}
+                blog={blog}
+                topArticleBlogs={topArticleBlogs}
+                newBlogs={newBlogs}
+              />
             </div>
-          </section>
+          </div>
         </>
       ) : (
         <Error statusCode={404} />

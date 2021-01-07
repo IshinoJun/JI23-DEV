@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@material-ui/core';
-import { isEmpty } from 'lodash';
+import { compact, isEmpty } from 'lodash';
 import style from './index.module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -10,18 +10,22 @@ import Blog from '../../../models/Blog';
 import ArrayList from '../../../models/Array';
 import Tag from '../../../models/Tag';
 import Blogs from '../../../components/shared/Blogs';
-import BlogTagList from '../../../components/shared/BlogTagList';
-import SearchInput from '../../../components/shared/SearchInput';
 import fetchWrapper from '../../../utils/FetchUtils';
 import BlogsQuery from '../../../models/BlogsQuery';
 import useLoading from '../../../hooks/useLoading';
+import BlogSideContents from '../../../components/shared/BlogSideContents';
+import { getTopArticlePaths } from '../../../utils/server/analyisUtils';
+import Category from '../../../models/Category';
 
 interface Props {
   tags: ArrayList<Tag>;
+  categories: ArrayList<Category>;
+  topArticleBlogs: Blog[];
+  newBlogs: Blog[];
 }
 
 const BlogsSearchPage: NextPage<Props> = (props: Props) => {
-  const { tags } = props;
+  const { tags, categories, topArticleBlogs, newBlogs } = props;
   const [blogsQuery, setBlogsQuery] = useState<BlogsQuery | null>(null);
 
   const [keyword, setKeyword] = useState<string>('');
@@ -68,7 +72,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   }, [blogsQuery, doLoading, doHidden]);
 
   return (
-    <section className="padding-block border-bottom">
+    <div className="padding-block border-bottom">
       <div className={style.searchContainer}>
         <h1>
           {!isLoading ? (
@@ -79,7 +83,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
         </h1>
       </div>
       <div className={`${String(style.blogsContainer)} container`}>
-        <div className={style.mainWrapper}>
+        <main className={style.mainWrapper}>
           {!isLoading ? (
             blogs && blogs.contents.length ? (
               <Blogs blogs={blogs} keyword={blogsQuery?.keyword} />
@@ -89,20 +93,21 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
           ) : (
             <CircularProgress />
           )}
-        </div>
+        </main>
         <div className={style.sideWrapper}>
-          <div className={style.searchInputWrapper}>
-            <SearchInput
-              keyword={keyword}
-              setKeyword={setKeyword}
-              onClickSearchButton={handleClickSearchButton}
-              onKeyDownSearch={handleKeyDownSearch}
-            />
-          </div>
-          <BlogTagList tags={tags} />
+          <BlogSideContents
+            keyword={keyword}
+            categories={categories}
+            tags={tags}
+            onClickSearchButton={handleClickSearchButton}
+            onKeyDownSearch={handleKeyDownSearch}
+            setKeyword={setKeyword}
+            topArticleBlogs={topArticleBlogs}
+            newBlogs={newBlogs}
+          />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -111,10 +116,23 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 }> => {
   const devCMS = new DevCMS();
   const tags = await devCMS.getTags();
+  const categories = await devCMS.getCategories();
+
+  const ids = await getTopArticlePaths();
+  const topBlogs = await devCMS.getBlogs({ ids });
+  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
+  const topArticleBlogs = compact(
+    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
+  );
+
+  const newBlogs = await devCMS.getBlogs();
 
   return {
     props: {
       tags,
+      categories,
+      topArticleBlogs,
+      newBlogs: newBlogs.contents,
     },
   };
 };

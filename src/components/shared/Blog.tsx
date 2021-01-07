@@ -19,7 +19,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
   const { blog, category, tag } = props;
 
   return (
-    <main className={style.contact}>
+    <div className={style.contact}>
       <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
       <div className={style.blog}>
         <Image
@@ -39,7 +39,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           className={[style.content, style.pre, 'markdown-body'].join(' ')}
         />
       </div>
-    </main>
+    </div>
   );
 };
 

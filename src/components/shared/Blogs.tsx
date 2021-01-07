@@ -48,7 +48,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
   );
 
   return (
-    <main>
+    <>
       <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
       {blogs.contents.map(
         (blog) =>
@@ -100,7 +100,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
           />
         </div>
       )}
-    </main>
+    </>
   );
 };
 

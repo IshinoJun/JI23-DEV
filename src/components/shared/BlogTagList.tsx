@@ -12,7 +12,7 @@ const BlogTagList: React.FC<Props> = (props) => {
   const { tags } = props;
 
   return (
-    <aside className={style.tagWrapper}>
+    <div className={style.tagWrapper}>
       <h2>Tags</h2>
       <ul>
         {tags.contents.map((tag) => (
@@ -21,7 +21,7 @@ const BlogTagList: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ const BlogCategoryList: React.FC<Props> = (props) => {
   const { categories } = props;
 
   return (
-    <aside className={style.tagWrapper}>
+    <div className={style.tagWrapper}>
       <h2>Categories</h2>
       <ul>
         {categories.contents.map((category) => (
@@ -23,7 +23,7 @@ const BlogCategoryList: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 };
 

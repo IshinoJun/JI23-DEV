@@ -43,25 +43,27 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
   );
 
   return (
-    <section className="padding-block border-bottom">
-      <div className={`${String(style.blogsContainer)} container`}>
-        <div className={style.mainWrapper}>
-          <Blogs blogs={blogs} showPagination />
-        </div>
-        <div className={style.sideWrapper}>
-          <BlogSideContents
-            keyword={keyword}
-            categories={categories}
-            tags={tags}
-            onClickSearchButton={handleClickSearchButton}
-            onKeyDownSearch={handleKeyDownSearch}
-            setKeyword={setKeyword}
-            topArticleBlogs={topArticleBlogs}
-            newBlogs={newBlogs}
-          />
-        </div>
+    <div
+      className={`${String(
+        style.blogsContainer,
+      )} container padding-block border-bottom`}
+    >
+      <main className={style.mainWrapper}>
+        <Blogs blogs={blogs} showPagination />
+      </main>
+      <div className={style.sideWrapper}>
+        <BlogSideContents
+          keyword={keyword}
+          categories={categories}
+          tags={tags}
+          onClickSearchButton={handleClickSearchButton}
+          onKeyDownSearch={handleKeyDownSearch}
+          setKeyword={setKeyword}
+          topArticleBlogs={topArticleBlogs}
+          newBlogs={newBlogs}
+        />
       </div>
-    </section>
+    </div>
   );
 };
 

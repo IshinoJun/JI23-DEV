@@ -63,14 +63,14 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
           content={`${targetCategory.name}  | ${defaultTitle}`}
         />
       </Head>
-      <section className="padding-block border-bottom">
+      <div className="padding-block border-bottom">
         <div className={style.tagNameWrapper}>
           <h1>{targetCategory.name}</h1>
         </div>
         <div className={`${String(style.blogsContainer)} container`}>
-          <div className={style.mainWrapper}>
+          <main className={style.mainWrapper}>
             <Blogs blogs={blogs} showPagination category={targetCategory} />
-          </div>
+          </main>
           <div className={style.sideWrapper}>
             <BlogSideContents
               keyword={keyword}
@@ -84,7 +84,7 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
             />
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
