@@ -20,7 +20,6 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
 
   return (
     <div className={style.contact}>
-      <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
       <div className={style.blog}>
         <Image
           src={`/ogp/${blog.id}.png`}
@@ -28,9 +27,12 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           width={900}
           height={472.5}
         />
+        <div className={style.breadcrumbsWrapper}>
+          <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
+        </div>
         <div className={style.entryHeader}>
-          <BlogDate blog={blog} />
           <h1>{blog.title}</h1>
+          <BlogDate blog={blog} />
           <BlogCategory category={blog.category} />
           <Tags tags={blog.tags} tagsPosition="left" />
         </div>

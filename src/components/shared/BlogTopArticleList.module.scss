@@ -2,57 +2,72 @@
 @use 'style/function';
 @use 'style/settings';
 
-.title {
-  padding: function.em(20, 6) function.em(20, 10);
-  font-size: function.fz(20);
-  font-weight: 700;
-  background-color: settings.$color-hight-gray;
-  border-radius: 5px;
-}
-
-.list {
-  margin-bottom: function.em(14, 10);
+.wrapper {
+  width: 100%;
+  padding: function.em(14, 28) function.em(14, 15) function.em(14, 15) function.em(14, 15);
+  border: settings.$color-hight-gray solid 1px;
 
   @include mixin.tab {
-    margin-bottom: function.em(16, 10);
+    padding: function.em(16, 15) function.em(16, 15) function.em(16, 15) function.em(16, 15);
   }
 
-  list-style: none;
+  h1 {
+    padding-bottom: function.em(16, 20);
+    font-size: function.fz(16);
+    color: settings.$color-dark-blue;
+    text-align: center;
+  }
 
-  a {
-    display: block;
-    padding: function.em(14, 10);
+  .list {
+    margin-bottom: function.em(14, 10);
+    list-style: none;
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     @include mixin.tab {
+      margin-bottom: function.em(16, 10);
+    }
+
+    a {
       display: flex;
-      padding: function.em(16, 10);
-    }
+      padding: function.em(14, 10);
 
-    @include mixin.pc {
-      display: inherit;
-      padding: function.em(16, 10);
-    }
-  }
+      @include mixin.tab {
+        padding: function.em(16, 10);
+      }
 
-  p {
-    padding-left: 0;
+      div {
+        position: relative;
+        display: flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        margin-right: 1em;
+        overflow: hidden;
+        font-size: function.fz(20);
+        font-weight: bold;
+        color: settings.$color-dark-blue;
+        background-color: settings.$color-hight-blue;
+        border-radius: 3px;
+      }
 
-    @include mixin.tab {
-      padding-left: 20px;
-    }
+      p {
+        display: flex;
+        align-items: center;
+        font-size: function.fz(12);
 
-    @include mixin.pc {
-      padding-left: 0;
-    }
-  }
+        @include mixin.tab {
+          font-size: function.fz(14);
+        }
+      }
 
-  img {
-    @include mixin.tab {
-      width: function.em(16, 140);
-    }
-
-    @include mixin.pc {
-      width: inherit;
+      p:hover {
+        color: settings.$color-hight-gray;
+      }
     }
   }
 }

@@ -4,12 +4,11 @@
 
 .tagWrapper {
   width: 100%;
-  padding: function.em(14, 48) function.em(14, 30) function.em(14, 30) function.em(14, 30);
+  padding: function.em(14, 28) function.em(14, 15) function.em(14, 15) function.em(14, 15);
   border: settings.$color-hight-gray solid 1px;
 
   @include mixin.tab {
-    padding: function.em(16, 48) function.em(16, 30) function.em(16, 30) function.em(16, 30);
-    margin-bottom: function.em(16, 48);
+    padding: function.em(16, 15) function.em(16, 15) function.em(16, 15) function.em(16, 15);
   }
 
   h2 {
@@ -39,9 +38,5 @@
     background: whitesmoke;
     border-bottom: solid 2px #ddd;
     border-left: solid 6px settings.$color-right-blue;
-  }
-
-  @include mixin.tab {
-    font-size: function.em(16, 7);
   }
 }

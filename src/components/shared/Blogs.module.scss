@@ -2,6 +2,14 @@
 @use 'style/function';
 @use 'style/settings';
 
+.breadcrumbsWrapper {
+  padding-bottom: function.em(14, 20);
+
+  @include mixin.tab {
+    padding-bottom: function.em(16, 20);
+  }
+}
+
 .content {
   &:nth-child(2) {
     padding-top: 0;

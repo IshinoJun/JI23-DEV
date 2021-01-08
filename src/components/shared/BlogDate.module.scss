@@ -5,30 +5,27 @@
 .date {
   display: flex;
   align-items: center;
-  margin-top: function.em(14, 10);
+  margin-bottom: function.em(14, 10);
 
   @include mixin.tab {
-    margin-top: function.em(16, 10);
+    margin-bottom: function.em(16, 10);
   }
 
   svg {
-    font-size: function.fz(13);
+    margin-right: 5px;
+    font-size: function.fz(14);
     color: settings.$color-right-blue;
-  }
-
-  svg:nth-of-type(2) {
-    margin-left: function.em(13, 5);
 
     @include mixin.tab {
-      margin-left: function.em(13, 8);
+      font-size: function.fz(16);
     }
   }
 
-  time {
-    font-size: function.fz(10);
+  svg:nth-of-type(2) {
+    margin-left: function.em(14, 8);
 
     @include mixin.tab {
-      font-size: function.fz(12);
+      margin-left: function.em(16, 8);
     }
   }
 }

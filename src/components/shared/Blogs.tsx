@@ -49,7 +49,9 @@ const Blogs: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
+      <div className={style.breadcrumbsWrapper}>
+        <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
+      </div>
       {blogs.contents.map(
         (blog) =>
           blog.id && (
@@ -65,12 +67,12 @@ const Blogs: React.FC<Props> = (props: Props) => {
                     />
                   </a>
                 </Link>
-                <BlogDate blog={blog} />
                 <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
                   <a>
                     <h2>{blog.title}</h2>
                   </a>
                 </Link>
+                <BlogDate blog={blog} />
                 <BlogCategory category={blog.category} />
                 <Tags tags={blog.tags} tagsPosition="left" />
                 <Button

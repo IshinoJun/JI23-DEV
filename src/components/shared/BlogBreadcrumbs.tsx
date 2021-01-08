@@ -5,7 +5,6 @@ import {
 import * as React from 'react';
 import Link from 'next/link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import style from './BlogBreadcrumbs.module.scss';
 import Category from '../../models/Category';
 import Blog from '../../models/Blog';
 import Tag from '../../models/Tag';
@@ -21,7 +20,7 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
   const { blog, tag, category, keyword } = props;
 
   return (
-    <div className={style.wrapper}>
+    <div>
       <MaterialBreadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -40,7 +39,6 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
             {blog.category.name}
           </Link>
         )}
-        {blog && <Typography color="textPrimary">{blog.title}</Typography>}
       </MaterialBreadcrumbs>
     </div>
   );

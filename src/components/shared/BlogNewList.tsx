@@ -11,8 +11,8 @@ const BlogNewList: React.FC<Props> = (props) => {
   const { blogs } = props;
 
   return (
-    <div>
-      <h1 className={style.title}>最新の記事</h1>
+    <div className={style.wrapper}>
+      <h1>New Blogs</h1>
       <ul>
         {blogs.map((blog) => (
           <li className={style.list} key={blog.id}>

@@ -15,18 +15,30 @@
       margin: 0 auto;
     }
 
+    .breadcrumbsWrapper {
+      padding-top: function.em(14, 20);
+
+      @include mixin.tab {
+        padding-top: function.em(16, 20);
+      }
+    }
+
     .entryHeader {
-      margin-bottom: function.em(14, 28);
+      padding-top: function.em(14, 7);
+      padding-bottom: function.em(14, 40);
+
+      @include mixin.tab {
+        padding-top: function.em(16, 40);
+        padding-bottom: function.em(16, 40);
+      }
 
       h1 {
-        margin: function.em(18, 12) 0;
-        font-size: function.fz(18);
-        line-height: function.em(18, 36);
+        margin-bottom: function.em(24, 12);
+        font-size: function.fz(24);
 
         @include mixin.tab {
-          margin: function.em(20, 12) 0;
-          font-size: function.fz(20);
-          line-height: function.em(20, 40);
+          margin-bottom: function.em(30, 24);
+          font-size: function.fz(30);
         }
       }
     }
@@ -36,6 +48,11 @@
 
       @include mixin.tab {
         font-size: function.fz(16);
+      }
+
+      h3 {
+        padding-left: function.em(20, 10);
+        border-left: 5px solid #ededed;
       }
     }
 

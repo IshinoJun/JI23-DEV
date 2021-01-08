@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({
   const topArticleBlogs = compact(
     ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
   );
-  const newBlogs = await devCMS.getBlogs();
+  const newBlogs = await devCMS.getBlogs({ offset: '0', limit: '5' });
 
   return {
     props: {

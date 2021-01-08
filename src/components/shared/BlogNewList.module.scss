@@ -2,44 +2,43 @@
 @use 'style/function';
 @use 'style/settings';
 
-.title {
-  padding: function.em(20, 6) function.em(20, 10);
-  font-size: function.fz(20);
-  font-weight: 700;
-  background-color: settings.$color-hight-gray;
-  border-radius: 5px;
-}
+.wrapper {
+  width: 100%;
+  padding: function.em(14, 28) function.em(14, 15) function.em(14, 15) function.em(14, 15);
+  border: settings.$color-hight-gray solid 1px;
 
-.list {
-  list-style: none;
-  border-bottom: 1px solid settings.$color-hight-gray;
-
-  &:last-child {
-    border-bottom: none;
+  @include mixin.tab {
+    padding: function.em(16, 15) function.em(16, 15) function.em(16, 15) function.em(16, 15);
   }
 
-  a {
-    display: block;
-    padding: function.em(14, 10);
-
-    @include mixin.tab {
-      display: flex;
-      padding: function.em(16, 10);
-    }
-
-    @include mixin.pc {
-      display: inherit;
-      padding: function.em(16, 10);
-    }
+  h1 {
+    padding-bottom: function.em(16, 20);
+    font-size: function.fz(16);
+    color: settings.$color-dark-blue;
+    text-align: center;
   }
 
-  img {
-    @include mixin.tab {
-      width: function.em(16, 140);
+  .list {
+    list-style: none;
+    border-bottom: 1px solid settings.$color-hight-gray;
+
+    &:last-child {
+      border-bottom: none;
     }
 
-    @include mixin.pc {
-      width: inherit;
+    a {
+      display: block;
+      padding: function.em(12, 10);
+      font-size: function.fz(12);
+
+      @include mixin.tab {
+        padding: function.em(14, 10);
+        font-size: function.fz(14);
+      }
+    }
+
+    a:hover {
+      color: settings.$color-hight-gray;
     }
   }
 }
