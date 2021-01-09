@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -14,6 +14,8 @@ import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
 import { getTopArticlePaths } from '../../../../../utils/server/analyisUtils';
+
+import SearchContext from '../../../../../context/searchContext';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -34,20 +36,20 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
     newBlogs,
   } = props;
   const defaultTitle = 'JI23-DEV';
-  const [keyword, setKeyword] = useState<string>('');
+  const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
 
   const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${keyword}`);
-  }, [keyword, router]);
+    void router.push(`/blogs/search/?keyword=${search}`);
+  }, [search, router]);
 
   const handleKeyDownSearch = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${keyword}`);
+        void router.push(`/blogs/search/?keyword=${search}`);
       }
     },
-    [keyword, router],
+    [search, router],
   );
 
   return (
@@ -73,12 +75,12 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
           </main>
           <div className={style.sideWrapper}>
             <BlogSideContents
-              keyword={keyword}
+              keyword={search}
               categories={categories}
               tags={tags}
               onClickSearchButton={handleClickSearchButton}
               onKeyDownSearch={handleKeyDownSearch}
-              setKeyword={setKeyword}
+              setKeyword={setSearch}
               topArticleBlogs={topArticleBlogs}
               newBlogs={newBlogs}
             />

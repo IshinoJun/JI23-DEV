@@ -1,7 +1,7 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { compact } from 'lodash';
 import Error from '../_error';
@@ -17,6 +17,8 @@ import BlogSideContents from '../../components/shared/BlogSideContents';
 import Category from '../../models/Category';
 import { getTopArticlePaths } from '../../utils/server/analyisUtils';
 
+import SearchContext from '../../context/searchContext';
+
 interface Props {
   blog: Blog | null;
   errors?: string;
@@ -30,20 +32,20 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
   const { blog, tags, categories, topArticleBlogs, newBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
-  const [keyword, setKeyword] = useState<string>('');
+  const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
 
   const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${keyword}`);
-  }, [keyword, router]);
+    void router.push(`/blogs/search/?keyword=${search}`);
+  }, [search, router]);
 
   const handleKeyDownSearch = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${keyword}`);
+        void router.push(`/blogs/search/?keyword=${search}`);
       }
     },
-    [keyword, router],
+    [search, router],
   );
 
   useEffect(() => {
@@ -69,12 +71,12 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
             </main>
             <div className={style.sideWrapper}>
               <BlogSideContents
-                keyword={keyword}
+                keyword={search}
                 categories={categories}
                 tags={tags}
                 onClickSearchButton={handleClickSearchButton}
                 onKeyDownSearch={handleKeyDownSearch}
-                setKeyword={setKeyword}
+                setKeyword={setSearch}
                 contents={contents}
                 blog={blog}
                 topArticleBlogs={topArticleBlogs}
