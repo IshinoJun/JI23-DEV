@@ -29,7 +29,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
             {categories.contents.map((category) => (
               <ul key={category.id}>
                 <li className={style.category}>
-                  <Link href="/category/[id]" as={`/category/${category.id}`}>
+                  <Link href={`/blogs/categories/${category.id}/page/1`}>
                     <a>{category.name}</a>
                   </Link>
                 </li>
@@ -37,7 +37,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
                   <ul>
                     {category.posts.map((post) => (
                       <li key={post.id}>
-                        <Link href="/blogs/[id]" as={`/blogs/${post.id}`}>
+                        <Link href={`/blogs/${post.id}`}>
                           <a>{post.title}</a>
                         </Link>
                       </li>
