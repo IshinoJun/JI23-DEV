@@ -12,35 +12,38 @@
 
 .sideFlow {
   position: relative;
-  margin-bottom: function.em(14, 15);
+  margin-bottom: function.em(14, 20);
 
   @include mixin.tab {
     position: sticky;
     top: function.em(16, 90);
-    margin-bottom: function.em(16, 15);
+    margin-bottom: function.em(16, 20);
   }
 
   .contentsWrapper {
-    margin-bottom: function.em(14, 15);
-
-    @include mixin.tab {
-      margin-bottom: function.em(16, 15);
-    }
-  }
-
-  .shareArea {
     margin-bottom: function.em(14, 20);
 
     @include mixin.tab {
-      margin-bottom: 0 function.em(16, 20);
+      margin-bottom: function.em(16, 20);
     }
+  }
+}
 
-    button {
-      margin-right: 5px;
-    }
+.sideBlogContentsFlow {
+  position: relative;
+  margin-bottom: function.em(14, 20);
 
-    button:last-child {
-      margin-right: 0;
+  @include mixin.tab {
+    position: sticky;
+    top: function.em(16, 370);
+    margin-bottom: function.em(16, 20);
+  }
+
+  .contentsWrapper {
+    margin-bottom: function.em(14, 20);
+
+    @include mixin.tab {
+      margin-bottom: function.em(16, 20);
     }
   }
 }

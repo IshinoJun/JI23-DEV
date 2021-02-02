@@ -1,0 +1,68 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.profile {
+  padding: 1.5em;
+  border: settings.$color-hight-gray solid 1px;
+
+  .nameArea {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin-right: function.em(14, 10);
+      background-color: settings.$color-hight-gray;
+
+      img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+      }
+    }
+
+    h2 {
+      color: settings.$color-dark-blue;
+    }
+  }
+
+  .profileContentArea {
+    margin-top: function.em(14, 10);
+
+    .description {
+      font-size: function.fz(14);
+    }
+
+    .linkArea {
+      display: flex;
+      justify-content: center;
+      margin-top: function.em(14, 12);
+      margin-bottom: function.em(14, 12);
+
+      @include mixin.tab {
+        margin-top: function.em(16, 12);
+        margin-bottom: function.em(16, 12);
+      }
+
+      a,
+      button {
+        margin-left: function.em(14, 20);
+
+        @include mixin.tab {
+          margin-left: function.em(16, 20);
+        }
+      }
+
+      :first-child {
+        margin-left: 0;
+
+        @include mixin.tab {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

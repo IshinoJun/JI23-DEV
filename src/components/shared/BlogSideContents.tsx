@@ -6,6 +6,7 @@ import style from './BlogSideContents.module.scss';
 import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
+import BlogProfile from './BlogProfile';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -43,6 +44,11 @@ const BlogSideContents: React.FC<Props> = (props) => {
         <BlogCategoryList categories={categories} />
       </aside>
       <aside className={style.sideFlow}>
+        <div className={style.contentsWrapper}>
+          <BlogProfile />
+        </div>
+      </aside>
+      <aside className={style.sideBlogContentsFlow}>
         {contents && (
           <div className={style.contentsWrapper}>
             <BlogContents contents={contents} />

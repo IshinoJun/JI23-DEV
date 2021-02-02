@@ -43,7 +43,11 @@
       }
 
       h5 {
-        font-size: function.fz(18);
+        font-size: function.fz(14);
+
+        @include mixin.tab {
+          font-size: function.fz(18);
+        }
       }
     }
   }
