@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import Link from 'next/link';
 import React from 'react';
 import Blog from '../../models/Blog';
@@ -16,17 +16,15 @@ const BlogTopArticleList: React.FC<Props> = (props) => {
     <div className={style.topBlogArea}>
       {topArticleBlogs.map((topBlog, index) => (
         <Card variant="outlined" className={style.list} key={topBlog.id}>
-          <CardContent>
-            <Link href={`/blogs/${topBlog.id}`}>
-              <a>
-                <div>{index + 1}</div>
-                <div>
-                  <h5>{topBlog.title}</h5>
-                  <BlogDate blog={topBlog} />
-                </div>
-              </a>
-            </Link>
-          </CardContent>
+          <Link href={`/blogs/${topBlog.id}`}>
+            <a>
+              <div>{index + 1}</div>
+              <div>
+                <h5>{topBlog.title}</h5>
+                <BlogDate blog={topBlog} />
+              </div>
+            </a>
+          </Link>
         </Card>
       ))}
     </div>

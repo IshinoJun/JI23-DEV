@@ -3,7 +3,7 @@
 @use 'style/settings';
 
 .topBlogArea {
-  padding: 2em 2.5em;
+  padding: function.em(14, 32) function.em(14, 14);
   background: rgb(241, 244, 247);
 
   .list {
@@ -19,10 +19,10 @@
 
     a {
       display: flex;
-      padding: function.em(14, 10);
+      padding: function.em(14, 20) function.em(14, 10);
 
       @include mixin.tab {
-        padding: function.em(16, 10);
+        padding: function.em(16, 20) function.em(16, 10);
       }
 
       div:first-child {
