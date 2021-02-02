@@ -18,6 +18,7 @@ import Tag from '../../models/Tag';
 import BlogCategory from './BlogCategory';
 import BlogShare from './BlogShare';
 import TwitterFollowButton from './TwitterFollowButton';
+import BlogTopArticleList from './BlogTopArticleList';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
@@ -28,12 +29,13 @@ hljs.registerLanguage('json', json);
 
 interface Props {
   blog: Blog;
+  topArticleBlogs: Blog[];
   category?: Category;
   tag?: Tag;
 }
 
 const BlogComponent: React.FC<Props> = (props: Props) => {
-  const { blog, category, tag } = props;
+  const { blog, category, tag, topArticleBlogs } = props;
 
   useEffect(() => {
     hljs.initHighlighting();
@@ -60,11 +62,18 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           />
           <TwitterFollowButton />
         </div>
-        <BlogShare blog={blog} />
+        <aside>
+          <div className={style.bottomWrap}>
+            <BlogShare blog={blog} />
+          </div>
+          <div className={style.bottomWrap}>
+            <BlogTopArticleList topArticleBlogs={topArticleBlogs} />
+          </div>
+          <div className={style.breadcrumbsWrapper}>
+            <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
+          </div>
+        </aside>
       </section>
-      <div className={style.breadcrumbsWrapper}>
-        <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
-      </div>
     </>
   );
 };

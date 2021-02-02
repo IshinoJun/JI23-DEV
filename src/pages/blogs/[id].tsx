@@ -23,11 +23,10 @@ interface Props {
   errors?: string;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
-  newBlogs: Blog[];
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, categories, topArticleBlogs, newBlogs } = props;
+  const { blog, categories, topArticleBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const { search, setSearch } = useContext(SearchContext);
@@ -65,7 +64,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
             )} container padding-block border-bottom`}
           >
             <main className={style.mainWrapper} id="blog">
-              <BlogComponent blog={blog} />
+              <BlogComponent blog={blog} topArticleBlogs={topArticleBlogs} />
             </main>
             <div className={style.sideWrapper}>
               <BlogSideContents
@@ -76,8 +75,6 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
                 setKeyword={setSearch}
                 contents={contents}
                 blog={blog}
-                topArticleBlogs={topArticleBlogs}
-                newBlogs={newBlogs}
               />
             </div>
           </div>
@@ -124,14 +121,12 @@ export const getStaticProps: GetStaticProps = async ({
   const topArticleBlogs = compact(
     ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
   );
-  const newBlogs = await devCMS.getBlogs({ offset: '0', limit: '5' });
 
   return {
     props: {
       blog,
       categories,
       topArticleBlogs,
-      newBlogs: newBlogs.contents,
     },
   };
 };

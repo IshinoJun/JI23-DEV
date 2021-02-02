@@ -2,32 +2,19 @@
 @use 'style/function';
 @use 'style/settings';
 
-.wrapper {
-  width: 100%;
-  padding: function.em(14, 28) function.em(14, 15) function.em(14, 15) function.em(14, 15);
-  border: settings.$color-hight-gray solid 1px;
-
-  @include mixin.tab {
-    padding: function.em(16, 15) function.em(16, 15) function.em(16, 15) function.em(16, 15);
-  }
-
-  h1 {
-    padding-bottom: function.em(16, 20);
-    font-size: function.fz(16);
-    color: settings.$color-dark-blue;
-    text-align: center;
-  }
+.topBlogArea {
+  padding: 2em 2.5em;
+  background: rgb(241, 244, 247);
 
   .list {
-    margin-bottom: function.em(14, 10);
-    list-style: none;
+    margin-top: function.em(14, 10);
 
-    &:last-child {
-      border-bottom: none;
+    :hover {
+      background: aliceblue;
     }
 
     @include mixin.tab {
-      margin-bottom: function.em(16, 10);
+      margin-top: function.em(16, 10);
     }
 
     a {
@@ -38,7 +25,7 @@
         padding: function.em(16, 10);
       }
 
-      div {
+      div:first-child {
         position: relative;
         display: flex;
         flex: none;
@@ -55,18 +42,8 @@
         border-radius: 3px;
       }
 
-      p {
-        display: flex;
-        align-items: center;
-        font-size: function.fz(12);
-
-        @include mixin.tab {
-          font-size: function.fz(14);
-        }
-      }
-
-      p:hover {
-        color: settings.$color-hight-gray;
+      h5 {
+        font-size: function.fz(18);
       }
     }
   }

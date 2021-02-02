@@ -6,8 +6,6 @@ import style from './BlogSideContents.module.scss';
 import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
-import BlogTopArticleList from './BlogTopArticleList';
-import BlogNewList from './BlogNewList';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -19,8 +17,6 @@ interface Props {
   ) => void;
   contents?: HTMLHeadingElement[];
   blog?: Blog;
-  topArticleBlogs: Blog[];
-  newBlogs: Blog[];
 }
 
 const BlogSideContents: React.FC<Props> = (props) => {
@@ -31,8 +27,6 @@ const BlogSideContents: React.FC<Props> = (props) => {
     onClickSearchButton,
     onKeyDownSearch,
     contents,
-    topArticleBlogs,
-    newBlogs,
   } = props;
 
   return (
@@ -47,12 +41,6 @@ const BlogSideContents: React.FC<Props> = (props) => {
       </aside>
       <aside className={style.wrapper}>
         <BlogCategoryList categories={categories} />
-      </aside>
-      <aside className={style.wrapper}>
-        <BlogTopArticleList blogs={topArticleBlogs} />
-      </aside>
-      <aside className={style.wrapper}>
-        <BlogNewList blogs={newBlogs} />
       </aside>
       <aside className={style.sideFlow}>
         {contents && (

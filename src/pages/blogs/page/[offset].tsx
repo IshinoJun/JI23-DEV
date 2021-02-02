@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import { compact } from 'lodash';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -11,19 +10,16 @@ import Blogs from '../../../components/shared/Blogs';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
 import BlogsQuery from '../../../models/BlogsQuery';
 import Category from '../../../models/Category';
-import { getTopArticlePaths } from '../../../utils/server/analyisUtils';
 
 import SearchContext from '../../../context/searchContext';
 
 interface Props {
   blogs: ArrayList<Blog>;
   categories: ArrayList<Category>;
-  topArticleBlogs: Blog[];
-  newBlogs: Blog[];
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, categories, topArticleBlogs, newBlogs } = props;
+  const { blogs, categories } = props;
   const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
 
@@ -56,8 +52,6 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
           onClickSearchButton={handleClickSearchButton}
           onKeyDownSearch={handleKeyDownSearch}
           setKeyword={setSearch}
-          topArticleBlogs={topArticleBlogs}
-          newBlogs={newBlogs}
         />
       </div>
     </div>
@@ -91,20 +85,10 @@ export const getStaticProps: GetStaticProps = async ({
   const blogs = await devCMS.getBlogs(query);
   const categories = await devCMS.getCategories();
 
-  const ids = await getTopArticlePaths();
-  const topBlogs = await devCMS.getBlogs({ ids });
-  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
-  const topArticleBlogs = compact(
-    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
-  );
-  const newBlogs = await devCMS.getBlogs({ offset: '0', limit: '5' });
-
   return {
     props: {
       blogs,
       categories,
-      topArticleBlogs,
-      newBlogs: newBlogs.contents,
     },
   };
 };

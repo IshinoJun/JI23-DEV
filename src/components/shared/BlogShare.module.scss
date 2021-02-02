@@ -4,12 +4,10 @@
 
 .shareArea {
   padding: 0 function.em(14, 35);
-  margin: function.em(14, 35) 0 0;
   text-align: center;
 
   @include mixin.tab {
     padding: 0 function.em(16, 35);
-    margin: function.em(16, 35) 0 0;
   }
 
   .title {

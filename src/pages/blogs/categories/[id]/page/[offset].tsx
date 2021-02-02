@@ -2,7 +2,6 @@ import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { compact } from 'lodash';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../../../api/DevCMS';
@@ -12,26 +11,16 @@ import Blogs from '../../../../../components/shared/Blogs';
 import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
-import { getTopArticlePaths } from '../../../../../utils/server/analyisUtils';
-
 import SearchContext from '../../../../../context/searchContext';
 
 interface Props {
   blogs: ArrayList<Blog>;
   targetCategory: Category;
   categories: ArrayList<Category>;
-  topArticleBlogs: Blog[];
-  newBlogs: Blog[];
 }
 
 const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
-  const {
-    blogs,
-    targetCategory,
-    categories,
-    topArticleBlogs,
-    newBlogs,
-  } = props;
+  const { blogs, targetCategory, categories } = props;
   const defaultTitle = 'JI23-DEV';
   const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
@@ -77,8 +66,6 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
               onClickSearchButton={handleClickSearchButton}
               onKeyDownSearch={handleKeyDownSearch}
               setKeyword={setSearch}
-              topArticleBlogs={topArticleBlogs}
-              newBlogs={newBlogs}
             />
           </div>
         </div>
@@ -148,22 +135,11 @@ export const getStaticProps: GetStaticProps = async ({
   const categories = await devCMS.getCategories();
   const targetCategory = await devCMS.getCategory(categoryId);
 
-  const ids = await getTopArticlePaths();
-  const topBlogs = await devCMS.getBlogs({ ids });
-  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
-  const topArticleBlogs = compact(
-    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
-  );
-
-  const newBlogs = await devCMS.getBlogs({ offset: '0', limit: '5' });
-
   return {
     props: {
       blogs,
       targetCategory,
       categories,
-      topArticleBlogs,
-      newBlogs: newBlogs.contents,
     },
   };
 };

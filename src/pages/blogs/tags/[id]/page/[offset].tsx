@@ -2,7 +2,6 @@ import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { compact } from 'lodash';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../../../api/DevCMS';
@@ -13,7 +12,6 @@ import Tag from '../../../../../models/Tag';
 import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
-import { getTopArticlePaths } from '../../../../../utils/server/analyisUtils';
 
 import SearchContext from '../../../../../context/searchContext';
 
@@ -21,12 +19,10 @@ interface Props {
   blogs: ArrayList<Blog>;
   targetTag: Tag;
   categories: ArrayList<Category>;
-  topArticleBlogs: Blog[];
-  newBlogs: Blog[];
 }
 
 const TagBlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, targetTag, categories, topArticleBlogs, newBlogs } = props;
+  const { blogs, targetTag, categories } = props;
   const defaultTitle = 'JI23-DEV';
   const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
@@ -72,8 +68,6 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
               onClickSearchButton={handleClickSearchButton}
               onKeyDownSearch={handleKeyDownSearch}
               setKeyword={setSearch}
-              topArticleBlogs={topArticleBlogs}
-              newBlogs={newBlogs}
             />
           </div>
         </div>
@@ -131,21 +125,11 @@ export const getStaticProps: GetStaticProps = async ({
   const categories = await devCMS.getCategories();
   const targetTag = await devCMS.getTag(tagId);
 
-  const ids = await getTopArticlePaths();
-  const topBlogs = await devCMS.getBlogs({ ids });
-  // cmsが順番を作成順に変えてしまうので、Articleのid順に修正
-  const topArticleBlogs = compact(
-    ids.map((id) => topBlogs.contents.find((b) => b.id === id)),
-  );
-  const newBlogs = await devCMS.getBlogs({ offset: '0', limit: '5' });
-
   return {
     props: {
       blogs,
       targetTag,
       categories,
-      topArticleBlogs,
-      newBlogs: newBlogs.contents,
     },
   };
 };
