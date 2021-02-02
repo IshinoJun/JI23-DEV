@@ -1,0 +1,36 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.shareArea {
+  padding: 0 function.em(14, 35);
+  margin: function.em(14, 35) 0 0;
+  text-align: center;
+
+  @include mixin.tab {
+    padding: 0 function.em(16, 35);
+    margin: function.em(16, 35) 0 0;
+  }
+
+  .title {
+    font-size: function.fz(20);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .linkArea {
+    margin-top: function.em(14, 7);
+
+    @include mixin.tab {
+      margin-top: function.em(16, 7);
+    }
+
+    button {
+      margin: 0 function.em(14, 6);
+
+      @include mixin.tab {
+        margin: 0 function.em(16, 6);
+      }
+    }
+  }
+}

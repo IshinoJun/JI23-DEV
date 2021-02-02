@@ -12,7 +12,6 @@ import style from './id.module.scss';
 import ArrayList from '../../models/Array';
 import BlogHead from '../../components/shared/BlogHead';
 import BlogComponent from '../../components/shared/Blog';
-import Tag from '../../models/Tag';
 import BlogSideContents from '../../components/shared/BlogSideContents';
 import Category from '../../models/Category';
 import { getTopArticlePaths } from '../../utils/server/analyisUtils';
@@ -22,14 +21,13 @@ import SearchContext from '../../context/searchContext';
 interface Props {
   blog: Blog | null;
   errors?: string;
-  tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
   newBlogs: Blog[];
 }
 
 const BlogDetailPage: NextPage<Props> = (props: Props) => {
-  const { blog, tags, categories, topArticleBlogs, newBlogs } = props;
+  const { blog, categories, topArticleBlogs, newBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
   const { search, setSearch } = useContext(SearchContext);
@@ -73,7 +71,6 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
               <BlogSideContents
                 keyword={search}
                 categories={categories}
-                tags={tags}
                 onClickSearchButton={handleClickSearchButton}
                 onKeyDownSearch={handleKeyDownSearch}
                 setKeyword={setSearch}
@@ -119,7 +116,6 @@ export const getStaticProps: GetStaticProps = async ({
     blog = await devCMS.getBlog(paramsId);
   }
 
-  const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
 
   const ids = await getTopArticlePaths();
@@ -133,7 +129,6 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       blog,
-      tags,
       categories,
       topArticleBlogs,
       newBlogs: newBlogs.contents,

@@ -12,10 +12,7 @@ const Tags: React.FC<Props> = (props: Props) => {
   const { tags, tagsPosition, styleProps } = props;
 
   return tags ? (
-    <div
-      style={{ textAlign: tagsPosition, ...styleProps }}
-      className={style.tags}
-    >
+    <div style={{ textAlign: tagsPosition, ...styleProps }}>
       {tags.map((tag) => (
         <Link href={`/blogs/tags/${tag.id}/page/1`} key={tag.id}>
           <a className={style.tag}>

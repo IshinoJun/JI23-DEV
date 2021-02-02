@@ -16,6 +16,8 @@ import BlogBreadcrumbs from './BlogBreadcrumbs';
 import Category from '../../models/Category';
 import Tag from '../../models/Tag';
 import BlogCategory from './BlogCategory';
+import BlogShare from './BlogShare';
+import TwitterFollowButton from './TwitterFollowButton';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
@@ -38,29 +40,32 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <div className={style.contact}>
-      <div className={style.blog}>
+    <>
+      <section className={style.contact}>
         <Image
           src={`/ogp/${blog.id}.png`}
           alt="ブログ画像"
           width={900}
           height={472.5}
         />
-        <div className={style.breadcrumbsWrapper}>
-          <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
-        </div>
-        <div className={style.entryHeader}>
-          <h1>{blog.title}</h1>
+        <div className={style.blog}>
           <BlogDate blog={blog} />
+          <h1>{blog.title}</h1>
           <BlogCategory category={blog.category} />
           <Tags tags={blog.tags} tagsPosition="left" />
+          <div
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+            className={[style.content, style.pre, 'markdown-body'].join(' ')}
+          />
+          <TwitterFollowButton />
         </div>
-        <div
-          dangerouslySetInnerHTML={{ __html: blog.content }}
-          className={[style.content, style.pre, 'markdown-body'].join(' ')}
-        />
+        <BlogShare blog={blog} />
+      </section>
+      <div className={style.breadcrumbsWrapper}>
+        <BlogBreadcrumbs blog={blog} category={category} tag={tag} />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -9,7 +9,6 @@ import DevCMS from '../../../../api/DevCMS';
 import Blog from '../../../../../models/Blog';
 import ArrayList from '../../../../../models/Array';
 import Blogs from '../../../../../components/shared/Blogs';
-import Tag from '../../../../../models/Tag';
 import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
@@ -19,7 +18,6 @@ import SearchContext from '../../../../../context/searchContext';
 
 interface Props {
   blogs: ArrayList<Blog>;
-  tags: ArrayList<Tag>;
   targetCategory: Category;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
@@ -29,7 +27,6 @@ interface Props {
 const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
   const {
     blogs,
-    tags,
     targetCategory,
     categories,
     topArticleBlogs,
@@ -77,7 +74,6 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
             <BlogSideContents
               keyword={search}
               categories={categories}
-              tags={tags}
               onClickSearchButton={handleClickSearchButton}
               onKeyDownSearch={handleKeyDownSearch}
               setKeyword={setSearch}
@@ -149,7 +145,6 @@ export const getStaticProps: GetStaticProps = async ({
     limit: '3',
   };
   const blogs = await devCMS.getBlogs(query);
-  const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
   const targetCategory = await devCMS.getCategory(categoryId);
 
@@ -165,7 +160,6 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       blogs,
-      tags,
       targetCategory,
       categories,
       topArticleBlogs,

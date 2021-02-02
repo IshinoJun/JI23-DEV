@@ -8,7 +8,6 @@ import DevCMS from '../api/DevCMS';
 import Blog from '../../models/Blog';
 import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
-import Tag from '../../models/Tag';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
 import createOgp from '../../utils/server/ogpUtils';
@@ -20,14 +19,13 @@ import SearchContext from '../../context/searchContext';
 
 interface Props {
   blogs: ArrayList<Blog>;
-  tags: ArrayList<Tag>;
   categories: ArrayList<Category>;
   topArticleBlogs: Blog[];
   newBlogs: Blog[];
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
-  const { blogs, tags, categories, topArticleBlogs, newBlogs } = props;
+  const { blogs, categories, topArticleBlogs, newBlogs } = props;
   const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
 
@@ -57,7 +55,6 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
         <BlogSideContents
           keyword={search}
           categories={categories}
-          tags={tags}
           onClickSearchButton={handleClickSearchButton}
           onKeyDownSearch={handleKeyDownSearch}
           setKeyword={setSearch}
@@ -78,7 +75,6 @@ export const getStaticProps: GetStaticProps = async ({
   const query: BlogsQuery = { offset: '0', limit: '3' };
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
-  const tags = await devCMS.getTags();
   const categories = await devCMS.getCategories();
 
   if (process.env.BUILD_OGP === 'true') {
@@ -107,7 +103,6 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       blogs,
-      tags,
       categories,
       topArticleBlogs,
       newBlogs: newBlogs.contents,

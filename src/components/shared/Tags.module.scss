@@ -2,25 +2,13 @@
 @use 'style/settings';
 @use 'style/mixin';
 
-.tags {
-  margin-bottom: function.em(14, 10);
-
-  @include mixin.tab {
-    margin-bottom: function.em(16, 10);
-  }
-
-  a:first-child {
-    margin-left: 0;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: function.em(14, 4) function.em(14, 16);
-    margin: 0 0 function.em(14, 8) function.em(14, 16);
-    font-size: function.fz(12);
-    color: settings.$color-blue;
-    background-color: settings.$color-white;
-    border: 1px solid settings.$color-blue;
-    border-radius: 2px;
-  }
+.tag {
+  display: inline-block;
+  padding: 2.5px 6px;
+  margin: function.em(11, 8) function.em(11, 16) 0 0;
+  font-size: function.fz(11);
+  font-weight: 600;
+  color: settings.$color-white;
+  background-color: settings.$color-dark-blue;
+  border-radius: 2px;
 }
