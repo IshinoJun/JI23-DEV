@@ -21,9 +21,7 @@
 
   padding: function.em(14, 48) function.em(14, 30) function.em(14, 30) function.em(14, 30);
   background-color: settings.$color-hight-blue;
-  border-color: settings.$color-hight-gray;
-  border-style: solid;
-  border-width: 1px;
+  box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
 
   @include mixin.tab {
     padding: function.em(16, 48) function.em(16, 30) function.em(16, 30) function.em(16, 30);

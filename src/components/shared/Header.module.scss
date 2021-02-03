@@ -3,9 +3,9 @@
 @use 'style/settings';
 
 .head {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  // position: sticky;
+  // top: 0;
+  // z-index: 100;
   padding: function.em(14, 7) 0;
   background-color: settings.$color-white;
   border-bottom-color: settings.$color-gray;

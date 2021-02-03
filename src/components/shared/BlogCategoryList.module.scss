@@ -5,7 +5,7 @@
 .tagWrapper {
   width: 100%;
   padding: function.em(14, 28) function.em(14, 15) function.em(14, 15) function.em(14, 15);
-  border: settings.$color-hight-gray solid 1px;
+  box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
 
   @include mixin.tab {
     padding: function.em(16, 15) function.em(16, 15) function.em(16, 15) function.em(16, 15);

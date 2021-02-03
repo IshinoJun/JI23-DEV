@@ -1,4 +1,5 @@
 import React from 'react';
+import Sticky from 'react-stickynode';
 import ArrayList from '../../models/Array';
 import BlogContents from './BlogContents';
 import SearchInput from './SearchInput';
@@ -7,6 +8,7 @@ import Blog from '../../models/Blog';
 import BlogCategoryList from './BlogCategoryList';
 import Category from '../../models/Category';
 import BlogProfile from './BlogProfile';
+import useMedia from '../../hooks/useMedia';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -21,6 +23,8 @@ interface Props {
 }
 
 const BlogSideContents: React.FC<Props> = (props) => {
+  const isPC = useMedia('pc');
+
   const {
     categories,
     keyword,
@@ -45,13 +49,17 @@ const BlogSideContents: React.FC<Props> = (props) => {
       </aside>
       <aside className={style.sideFlow}>
         <div className={style.contentsWrapper}>
-          <BlogProfile />
+          <Sticky innerZ={1} top={90} enabled={isPC}>
+            <BlogProfile />
+          </Sticky>
         </div>
       </aside>
       <aside className={style.sideBlogContentsFlow}>
         {contents && (
           <div className={style.contentsWrapper}>
-            <BlogContents contents={contents} />
+            <Sticky innerZ={1} top={375} enabled={isPC}>
+              <BlogContents contents={contents} />
+            </Sticky>
           </div>
         )}
       </aside>

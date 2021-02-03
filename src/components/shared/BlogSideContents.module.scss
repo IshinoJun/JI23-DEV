@@ -15,8 +15,6 @@
   margin-bottom: function.em(14, 20);
 
   @include mixin.tab {
-    position: sticky;
-    top: function.em(16, 90);
     margin-bottom: function.em(16, 20);
   }
 
@@ -34,8 +32,6 @@
   margin-bottom: function.em(14, 20);
 
   @include mixin.tab {
-    position: sticky;
-    top: function.em(16, 370);
     margin-bottom: function.em(16, 20);
   }
 

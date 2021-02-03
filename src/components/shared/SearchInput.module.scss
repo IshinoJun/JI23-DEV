@@ -5,7 +5,7 @@
 .search {
   display: flex;
   padding-left: function.em(16, 15);
-  border: settings.$color-hight-gray solid 1px;
+  box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
 
   @include mixin.tab {
     padding-left: function.em(14, 15);

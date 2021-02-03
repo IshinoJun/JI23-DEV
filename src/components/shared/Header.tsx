@@ -4,6 +4,7 @@ import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import Image from 'next/image';
+import Sticky from 'react-stickynode';
 import style from './Header.module.scss';
 import HeaderDrawer from './HeaderDrawer';
 import useMedia from '../../hooks/useMedia';
@@ -63,46 +64,48 @@ const Header: React.FC<Props> = (props) => {
 
   return (
     <>
-      <header className={style.head}>
-        <div className="container">
-          <div className={style.row}>
-            <div className={style.titleArea}>
-              <div className={style.icon}>
-                <Link href="/">
-                  <a className={style.link}>
-                    <Image
-                      src="/logo.png"
-                      alt="ロゴ画像"
-                      width={192}
-                      height={48}
-                    />
-                  </a>
-                </Link>
+      <Sticky innerZ={10}>
+        <header className={style.head}>
+          <div className="container">
+            <div className={style.row}>
+              <div className={style.titleArea}>
+                <div className={style.icon}>
+                  <Link href="/">
+                    <a className={style.link}>
+                      <Image
+                        src="/logo.png"
+                        alt="ロゴ画像"
+                        width={192}
+                        height={48}
+                      />
+                    </a>
+                  </Link>
+                </div>
               </div>
+              {isPc ? (
+                <nav className={style.globalNav}>
+                  <ul>
+                    {globalNav.map((nav) => (
+                      <li key={nav.title}>
+                        <Link href={nav.linkProps.href}>{nav.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ) : (
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="end"
+                  onClick={onClickDrawer}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
             </div>
-            {isPc ? (
-              <nav className={style.globalNav}>
-                <ul>
-                  {globalNav.map((nav) => (
-                    <li key={nav.title}>
-                      <Link href={nav.linkProps.href}>{nav.title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ) : (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
-                onClick={onClickDrawer}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
           </div>
-        </div>
-      </header>
+        </header>
+      </Sticky>
       <HeaderDrawer
         isOpen={isOpen}
         onClickDrawer={onClickDrawer}
