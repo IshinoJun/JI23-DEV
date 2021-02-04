@@ -11,6 +11,8 @@
   }
 
   .blog {
+    padding: function.em(16, 25) 0 0 0;
+
     @include mixin.tab {
       padding: function.em(16, 25) function.em(16, 35);
     }
@@ -53,5 +55,26 @@
 
   @include mixin.tab {
     margin-top: function.em(16, 20);
+  }
+}
+
+.blogTop {
+  position: relative;
+  min-height: 230px;
+  background-image: url(/blogTop.png);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include mixin.tab {
+    background-size: contain;
+  }
+
+  .img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    text-align: center;
+    transform: translate(-50%, -50%);
   }
 }

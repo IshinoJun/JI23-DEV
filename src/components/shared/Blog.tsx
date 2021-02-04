@@ -44,12 +44,11 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
   return (
     <>
       <section className={style.contact}>
-        <Image
-          src={`/ogp/${blog.id}.png`}
-          alt="ブログ画像"
-          width={900}
-          height={472.5}
-        />
+        <div className={style.blogTop}>
+          <figure className={style.img}>
+            <Image src={blog.blogImage.url} width={150} height={150} />
+          </figure>
+        </div>
         <div className={style.blog}>
           <BlogDate blog={blog} />
           <h1>{blog.title}</h1>

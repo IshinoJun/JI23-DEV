@@ -1,6 +1,9 @@
 const { resolve } = require("path");
 
 const nextConfig = {
+  images: {
+    domains: ['images.microcms-assets.io'],
+  },
   experimental: {
     optimizeFonts: true,
   },
