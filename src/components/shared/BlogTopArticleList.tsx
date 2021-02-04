@@ -14,6 +14,7 @@ const BlogTopArticleList: React.FC<Props> = (props) => {
 
   return (
     <div className={style.topBlogArea}>
+      <div className={style.title}>RANKING</div>
       {topArticleBlogs.map((topBlog, index) => (
         <Card variant="outlined" className={style.list} key={topBlog.id}>
           <Link href={`/blogs/${topBlog.id}`}>

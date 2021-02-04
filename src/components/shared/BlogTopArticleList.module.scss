@@ -6,6 +6,13 @@
   padding: function.em(14, 32) function.em(14, 14);
   background: rgb(241, 244, 247);
 
+  .title {
+    font-size: function.fz(20);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
   .list {
     margin-top: function.em(14, 10);
 
