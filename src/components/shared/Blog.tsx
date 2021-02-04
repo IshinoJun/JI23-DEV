@@ -46,7 +46,12 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
       <section className={style.contact}>
         <div className={style.blogTop}>
           <figure className={style.img}>
-            <Image src={blog.blogImage.url} width={150} height={150} />
+            <Image
+              src={blog.blogImage.url}
+              width={150}
+              height={150}
+              alt="ブログトップ画像"
+            />
           </figure>
         </div>
         <div className={style.blog}>

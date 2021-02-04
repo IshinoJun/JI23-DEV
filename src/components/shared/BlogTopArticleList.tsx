@@ -20,7 +20,7 @@ const BlogTopArticleList: React.FC<Props> = (props) => {
             <a>
               <div>{index + 1}</div>
               <div>
-                <h5>{topBlog.title}</h5>
+                <h4>{topBlog.title}</h4>
                 <BlogDate blog={topBlog} />
               </div>
             </a>
