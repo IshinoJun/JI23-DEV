@@ -44,6 +44,7 @@
 
       p {
         font-size: function.fz(14);
+        font-weight: bold;
 
         @include mixin.tab {
           font-size: function.fz(18);
