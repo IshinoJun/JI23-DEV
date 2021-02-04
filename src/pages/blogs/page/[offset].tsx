@@ -59,7 +59,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const query: BlogsQuery = { offset: '0', limit: '3' };
+  const query: BlogsQuery = { offset: '0', limit: '10' };
 
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ({
   const offset = params?.offset ? String(params?.offset) : '0';
   const query: BlogsQuery = {
     offset: String(Math.ceil(Number.parseInt(offset, 10) - 1) * 3),
-    limit: '3',
+    limit: '10',
   };
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);

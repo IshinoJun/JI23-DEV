@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
-import { Button } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
@@ -49,44 +48,32 @@ const Blogs: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className={style.breadcrumbsWrapper}>
-        <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
-      </div>
       {blogs.contents.map(
         (blog) =>
           blog.id && (
-            <div key={blog.id} className={style.content}>
-              <div className={style.blog}>
-                <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                  <a>
+            <div key={blog.id} className={style.warp}>
+              <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+                <a className={style.card}>
+                  <div className={style.icon}>
                     <Image
-                      src={`/ogp/${blog.id}.png`}
+                      src={blog.blogImage.url}
                       alt="ブログ画像"
-                      width={900}
-                      height={472.5}
+                      width={70}
+                      height={70}
                     />
-                  </a>
-                </Link>
-                <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                  <a>
+                  </div>
+                  <div className={style.content}>
                     <h2>{blog.title}</h2>
-                  </a>
-                </Link>
-                <BlogDate blog={blog} />
-                <BlogCategory category={blog.category} />
-                <Tags tags={blog.tags} tagsPosition="left" />
-                <Button
-                  style={{ marginTop: 20 }}
-                  type="button"
-                  variant="contained"
-                  className={style.read}
-                  aria-label="記事を読む"
-                >
-                  <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
-                    <a>記事を読む</a>
-                  </Link>
-                </Button>
-              </div>
+                    <div className={style.contentWarp}>
+                      <BlogDate blog={blog} />
+                    </div>
+                    <div className={style.contentWarp}>
+                      <BlogCategory category={blog.category} />
+                    </div>
+                    <Tags tags={blog.tags} tagsPosition="left" />
+                  </div>
+                </a>
+              </Link>
             </div>
           ),
       )}
@@ -102,6 +89,9 @@ const Blogs: React.FC<Props> = (props: Props) => {
           />
         </div>
       )}
+      <div className={style.breadcrumbsWrapper}>
+        <BlogBreadcrumbs tag={tag} category={category} keyword={keyword} />
+      </div>
     </>
   );
 };

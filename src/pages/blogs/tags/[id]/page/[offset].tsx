@@ -119,7 +119,7 @@ export const getStaticProps: GetStaticProps = async ({
   const query: BlogsQuery = {
     tagId,
     offset: String((Number.parseInt(offset, 10) - 1) * 3),
-    limit: '3',
+    limit: '10',
   };
   const blogs = await devCMS.getBlogs(query);
   const categories = await devCMS.getCategories();

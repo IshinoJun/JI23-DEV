@@ -100,7 +100,7 @@ const getPaths = async (categories: ArrayList<Category>) => {
   categories.contents.forEach((category) => {
     const query: BlogsQuery = {
       categoryId: category.id,
-      limit: '3',
+      limit: '10',
       offset: '0',
     };
     const blogs = devCMS.getBlogs(query);
@@ -129,7 +129,7 @@ export const getStaticProps: GetStaticProps = async ({
   const query: BlogsQuery = {
     categoryId,
     offset: String((Number.parseInt(offset, 10) - 1) * 3),
-    limit: '3',
+    limit: '10',
   };
   const blogs = await devCMS.getBlogs(query);
   const categories = await devCMS.getCategories();

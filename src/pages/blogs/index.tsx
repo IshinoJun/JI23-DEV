@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({
 }): Promise<{
   props: Props;
 }> => {
-  const query: BlogsQuery = { offset: '0', limit: '3' };
+  const query: BlogsQuery = { offset: '0', limit: '10' };
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
   const categories = await devCMS.getCategories();

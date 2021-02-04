@@ -2,83 +2,57 @@
 @use 'style/function';
 @use 'style/settings';
 
-.breadcrumbsWrapper {
-  padding-bottom: function.em(14, 20);
-
-  @include mixin.tab {
-    padding-bottom: function.em(16, 20);
-  }
-}
-
-.content {
-  &:nth-child(2) {
-    padding-top: 0;
+.warp {
+  &:hover {
+    background: aliceblue;
   }
 
-  padding: function.em(14, 48) 0;
-  border-bottom-color: settings.$color-hight-gray;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-
-  @include mixin.tab {
-    padding: function.em(16, 48) 0;
-  }
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  h2 {
-    margin: function.em(18, 12) 0;
-    font-size: function.fz(18);
-    line-height: function.em(18, 36);
-
-    @include mixin.tab {
-      margin: function.em(20, 12) 0;
-      font-size: function.fz(20);
-      line-height: function.em(20, 40);
-    }
-  }
-
-  .photo {
+  .card {
     display: flex;
-    justify-content: center;
-  }
+    align-items: center;
+    padding: function.em(14, 16) 0;
+    border-bottom: 1px solid settings.$color-hight-gray;
 
-  .blog {
     @include mixin.tab {
-      margin: 0 auto;
+      padding: function.em(16, 24) 0;
     }
 
-    .date {
-      display: flex;
-      align-items: center;
-      margin-top: function.em(14, 10);
+    .icon {
+      padding: function.em(14, 10);
 
       @include mixin.tab {
-        margin-top: function.em(16, 10);
+        padding: function.em(16, 10);
       }
 
-      svg {
-        margin-right: function.em(13, 5);
-        font-size: function.fz(13);
-        color: settings.$color-right-blue;
+      background: settings.$color-hight-gray;
+      border-radius: 4px;
+    }
+
+    .content {
+      width: calc(100% - 90px);
+      padding-left: function.em(16, 20);
+
+      @include mixin.tab {
+        padding-left: function.em(16, 20);
       }
 
-      span {
-        font-size: function.fz(13);
+      .contentWarp {
+        margin-top: function.em(14, 5);
+
+        @include mixin.tab {
+          margin-top: function.em(16, 5);
+        }
       }
     }
 
     h2 {
-      line-height: function.em(14, 20);
-    }
-  }
+      font-size: function.fz(16);
+      line-height: 1.4;
 
-  .read {
-    color: settings.$color-white;
-    background-color: settings.$color-dark-blue !important;
-    border-radius: 2px;
+      @include mixin.tab {
+        font-size: function.fz(18);
+      }
+    }
   }
 }
 
@@ -89,5 +63,13 @@
 
   @include mixin.tab {
     margin-top: function.em(16, 20);
+  }
+}
+
+.breadcrumbsWrapper {
+  padding-top: function.em(14, 20);
+
+  @include mixin.tab {
+    padding-top: function.em(16, 20);
   }
 }

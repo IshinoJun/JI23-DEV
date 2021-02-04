@@ -6,6 +6,10 @@
   display: block;
   font-size: function.fz(12);
 
+  @include mixin.tab {
+    font-size: function.fz(14);
+  }
+
   a {
     color: rgba(0, 0, 0, 0.54);
   }

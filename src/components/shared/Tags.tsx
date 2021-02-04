@@ -7,18 +7,25 @@ interface Props {
   tags?: Tag[];
   tagsPosition: 'center' | 'left' | 'right';
   styleProps?: React.CSSProperties;
+  doLink?: boolean;
 }
 const Tags: React.FC<Props> = (props: Props) => {
-  const { tags, tagsPosition, styleProps } = props;
+  const { tags, tagsPosition, styleProps, doLink } = props;
 
   return tags ? (
     <div style={{ textAlign: tagsPosition, ...styleProps }}>
       {tags.map((tag) => (
-        <Link href={`/blogs/tags/${tag.id}/page/1`} key={tag.id}>
-          <a className={style.tag}>
-            <span>{tag.name}</span>
-          </a>
-        </Link>
+        <React.Fragment key={tag.id}>
+          {doLink ? (
+            <Link href={`/blogs/tags/${tag.id}/page/1`}>
+              <a className={style.tag}>
+                <span>{tag.name}</span>
+              </a>
+            </Link>
+          ) : (
+            <span className={style.tag}>{tag.name}</span>
+          )}
+        </React.Fragment>
       ))}
     </div>
   ) : null;

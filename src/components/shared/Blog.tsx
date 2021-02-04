@@ -57,8 +57,8 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
         <div className={style.blog}>
           <BlogDate blog={blog} />
           <h1>{blog.title}</h1>
-          <BlogCategory category={blog.category} />
-          <Tags tags={blog.tags} tagsPosition="left" />
+          <BlogCategory category={blog.category} doLink />
+          <Tags tags={blog.tags} tagsPosition="left" doLink />
           <div
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: blog.content }}

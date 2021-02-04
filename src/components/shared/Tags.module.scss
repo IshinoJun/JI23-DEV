@@ -4,9 +4,16 @@
 
 .tag {
   display: inline-block;
-  padding: 2.5px 6px;
-  margin: function.em(12, 8) function.em(12, 16) 0 0;
-  font-size: function.fz(12);
+  padding: function.em(11, 2.5) function.em(11, 6);
+  margin: function.em(11, 8) function.em(11, 8) 0 0;
+
+  @include mixin.tab {
+    padding: function.em(12, 2.5) function.em(12, 6);
+    margin: function.em(12, 8) function.em(12, 8) 0 0;
+    font-size: function.fz(12);
+  }
+
+  font-size: function.fz(11);
   font-weight: 600;
   color: settings.$color-white;
   background-color: settings.$color-dark-blue;
