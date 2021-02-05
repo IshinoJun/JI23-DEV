@@ -8,6 +8,7 @@ import java from 'highlight.js/lib/languages/java';
 import xml from 'highlight.js/lib/languages/xml';
 import json from 'highlight.js/lib/languages/json';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Blog from '../../models/Blog';
 import style from './Blog.module.scss';
 import Tags from './Tags';
@@ -36,10 +37,13 @@ interface Props {
 
 const BlogComponent: React.FC<Props> = (props: Props) => {
   const { blog, category, tag, topArticleBlogs } = props;
+  const router = useRouter();
 
   useEffect(() => {
     hljs.initHighlighting();
-  }, []);
+    // hljsの闇
+    ((hljs.initHighlighting as unknown) as { called: boolean }).called = false;
+  }, [router]);
 
   return (
     <>
