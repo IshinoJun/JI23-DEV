@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Sticky from 'react-stickynode';
 import ArrayList from '../../models/Array';
 import BlogContents from './BlogContents';
@@ -24,6 +24,7 @@ interface Props {
 
 const BlogSideContents: React.FC<Props> = (props) => {
   const isPC = useMedia('pc');
+  const divEl = useRef<HTMLDivElement>(null);
 
   const {
     categories,
@@ -35,8 +36,8 @@ const BlogSideContents: React.FC<Props> = (props) => {
   } = props;
 
   return (
-    <>
-      <aside className={style.wrapper}>
+    <div ref={divEl} className={style.content}>
+      <aside>
         <SearchInput
           keyword={keyword}
           setKeyword={setKeyword}
@@ -47,23 +48,22 @@ const BlogSideContents: React.FC<Props> = (props) => {
       <aside className={style.wrapper}>
         <BlogCategoryList categories={categories} />
       </aside>
-      <aside className={style.sideFlow}>
-        <div className={style.contentsWrapper}>
-          <Sticky innerZ={1} top={90} enabled={isPC}>
-            <BlogProfile />
-          </Sticky>
-        </div>
-      </aside>
-      <aside className={style.sideBlogContentsFlow}>
+      <Sticky
+        innerZ={1}
+        top={60}
+        enabled={isPC}
+        bottomBoundary={divEl.current?.clientHeight}
+      >
+        <aside className={style.wrapper}>
+          <BlogProfile />
+        </aside>
         {contents && (
-          <div className={style.contentsWrapper}>
-            <Sticky innerZ={1} top={375} enabled={isPC}>
-              <BlogContents contents={contents} />
-            </Sticky>
-          </div>
+          <aside className={style.wrapper}>
+            <BlogContents contents={contents} />
+          </aside>
         )}
-      </aside>
-    </>
+      </Sticky>
+    </div>
   );
 };
 
