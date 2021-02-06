@@ -27,26 +27,31 @@ const Header: React.FC<Props> = (props) => {
       title: 'home',
       subTitle: 'ホーム',
       linkProps: { href: '/' },
+      imgProps: { src: '/icon.png', alt: 'ホームのアイコン' },
     },
     {
       title: 'profile',
       subTitle: 'プロフィール',
       linkProps: { href: '/profile' },
+      imgProps: { src: '/profile.png', alt: 'プロフィールのアイコン' },
     },
     {
       title: 'portfolio',
       subTitle: 'ポートフォリオ',
       linkProps: { href: '/portfolio' },
+      imgProps: { src: '/portfolio.png', alt: 'ポートフォリオのアイコン' },
     },
     {
       title: 'blogs',
       subTitle: 'ブログ一覧',
       linkProps: { href: '/blogs' },
+      imgProps: { src: '/blog.png', alt: 'ブログのアイコン' },
     },
     {
       title: 'contact',
       subTitle: 'お問い合わせ',
       linkProps: { href: '/contact' },
+      imgProps: { src: '/contact.png', alt: '問い合わせのアイコン' },
     },
   ];
 

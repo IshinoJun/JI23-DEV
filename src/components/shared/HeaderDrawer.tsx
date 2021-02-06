@@ -74,7 +74,7 @@ const HeaderDrawer: React.FC<Props> = (props) => {
         {globalNav.map((nav) => (
           <ListItem button key={nav.title} onClick={onClickDrawer}>
             <div className={style.icon}>
-              <img {...nav.imgProps} alt="ヘッダー画像" />
+              <img src={nav.imgProps.src} alt={nav.imgProps.alt} />
             </div>
             <Link href={nav.linkProps.href}>
               <ListItemText primary={nav.title} className={classes.title} />
