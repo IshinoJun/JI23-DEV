@@ -5,16 +5,17 @@
 .warp {
   &:hover {
     background: aliceblue;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
   }
 
   .card {
     display: flex;
     align-items: center;
-    padding: function.em(14, 16) 0;
+    padding: function.em(14, 16) 0 function.em(14, 16) function.em(14, 8);
     border-bottom: 1px solid settings.$color-hight-gray;
 
     @include mixin.tab {
-      padding: function.em(16, 24) 0;
+      padding: function.em(16, 24) 0 function.em(16, 24) function.em(16, 12);
     }
 
     .icon {

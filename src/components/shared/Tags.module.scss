@@ -7,6 +7,12 @@
   padding: function.em(11, 2.5) function.em(11, 6);
   margin: function.em(11, 8) function.em(11, 8) 0 0;
 
+  &:hover {
+    &[data-is-hover] {
+      box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    }
+  }
+
   @include mixin.tab {
     padding: function.em(12, 2.5) function.em(12, 6);
     margin: function.em(12, 8) function.em(12, 8) 0 0;

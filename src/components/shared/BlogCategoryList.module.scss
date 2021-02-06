@@ -31,12 +31,21 @@
   ul li,
   ol li {
     padding: function.em(14, 10);
-    margin-bottom: 5px;
+    margin-bottom: function.em(14, 5);
     font-weight: bold;
     line-height: 1.5;
     list-style-type: none !important;
     background: whitesmoke;
     border-bottom: solid 2px #ddd;
     border-left: solid 6px settings.$color-right-blue;
+
+    @include mixin.tab {
+      padding: function.em(16, 10);
+      margin-bottom: function.em(16, 5);
+    }
+
+    &:hover {
+      box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    }
   }
 }

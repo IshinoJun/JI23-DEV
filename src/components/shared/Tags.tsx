@@ -18,7 +18,7 @@ const Tags: React.FC<Props> = (props: Props) => {
         <React.Fragment key={tag.id}>
           {doLink ? (
             <Link href={`/blogs/tags/${tag.id}/page/1`}>
-              <a className={style.tag}>
+              <a data-is-hover={doLink} className={style.tag}>
                 <span>{tag.name}</span>
               </a>
             </Link>
