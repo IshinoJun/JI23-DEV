@@ -13,7 +13,6 @@ import Layout from '../components/shared/Layout';
 import useRouterScroll from '../hooks/useRouterScroll';
 import SearchContext from '../context/searchContext';
 import BlogsQuery from '../models/BlogsQuery';
-import 'highlight.js/styles/github.css';
 
 // Binding events.
 Router.events.on('routeChangeStart', () => NProgress.start());

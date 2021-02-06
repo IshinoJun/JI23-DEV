@@ -20,6 +20,7 @@ import BlogCategory from './BlogCategory';
 import BlogShare from './BlogShare';
 import TwitterFollowButton from './TwitterFollowButton';
 import BlogTopArticleList from './BlogTopArticleList';
+import 'highlight.js/styles/vs2015.css';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
