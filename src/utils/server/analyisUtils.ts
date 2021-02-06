@@ -54,7 +54,7 @@ const getTopArticle = async (): Promise<analyticsreporting_v4.Schema$GetReportsR
                 {
                   dimensionName: 'ga:pagePath',
                   operator: 'REGEXP',
-                  expressions: ['^/blogs/[0-9a-zA-Z\\-]+$'],
+                  expressions: ['^/blogs/[0-9a-zA-Z\\-\\_]+$'],
                 },
               ],
             },

@@ -3,20 +3,40 @@
 @use 'style/settings';
 
 .topBlogArea {
-  padding: function.em(14, 32) function.em(14, 14);
+  padding: function.em(14, 14) function.em(14, 20) function.em(14, 32) function.em(14, 20);
   background: rgb(241, 244, 247);
+
+  & :nth-child(2) .rank {
+    background: #dbb400;
+  }
+
+  & :nth-child(3) .rank {
+    background: #c9caca;
+  }
+
+  & :nth-child(4) .rank {
+    background: #c47022;
+  }
+
+  @include mixin.tab {
+    padding: function.em(16, 14) function.em(16, 20) function.em(16, 32) function.em(16, 20);
+  }
 
   .title {
     font-size: function.fz(20);
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.05em;
+
+    img {
+      margin-right: function.em(20, 20);
+    }
   }
 
   .list {
     margin-top: function.em(14, 10);
 
-    :hover {
+    &:hover {
       background: aliceblue;
     }
 
@@ -44,8 +64,7 @@
         overflow: hidden;
         font-size: function.fz(20);
         font-weight: bold;
-        color: settings.$color-dark-blue;
-        background-color: settings.$color-hight-blue;
+        color: #fff;
         border-radius: 3px;
       }
 
