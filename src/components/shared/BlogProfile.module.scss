@@ -3,6 +3,32 @@
 @use 'style/settings';
 
 .profile {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 20px solid settings.$color-hight-blue;
+    border-right: 20px solid transparent;
+  }
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    width: 0;
+    height: 0;
+    content: '';
+    border-bottom: 20px solid settings.$color-hight-blue;
+    border-left: 20px solid transparent;
+  }
+
   padding: 1.5em;
   box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
 
