@@ -9,7 +9,6 @@ import ArrayList from '../../models/Array';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
-import createOgp from '../../utils/server/ogpUtils';
 import BlogsQuery from '../../models/BlogsQuery';
 import Category from '../../models/Category';
 
@@ -70,12 +69,6 @@ export const getStaticProps: GetStaticProps = async ({
   const devCMS = new DevCMS();
   const blogs = await devCMS.getBlogs(query);
   const categories = await devCMS.getCategories();
-
-  if (process.env.BUILD_OGP === 'true') {
-    blogs.contents.forEach((blog) => {
-      void createOgp(blog);
-    });
-  }
 
   // プレビュー時は draft のコンテンツを追加
   if (preview && isPreviewData(previewData)) {
