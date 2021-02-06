@@ -22,8 +22,6 @@ const Header: React.FC<Props> = (props) => {
   const isPc = useMedia('pc');
   const router = useRouter();
 
-  console.log(router);
-
   const globalNav: GlobalNav[] = [
     {
       title: 'home',

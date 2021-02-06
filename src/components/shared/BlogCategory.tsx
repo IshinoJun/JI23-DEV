@@ -11,16 +11,17 @@ const BlogCategory: React.FC<Props> = (props: Props) => {
   const { category, doLink } = props;
 
   return (
-    <span className={style.category}>
-      カテゴリー:
+    <>
       {doLink ? (
         <Link href={`/blogs/categories/${category.id}/page/1`}>
-          {category.name}
+          <a data-is-hover={doLink} className={style.category}>
+            {category.name}
+          </a>
         </Link>
       ) : (
-        category.name
+        <span className={style.category}>{category.name}</span>
       )}
-    </span>
+    </>
   );
 };
 

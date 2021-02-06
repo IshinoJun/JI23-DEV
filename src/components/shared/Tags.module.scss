@@ -6,9 +6,14 @@
   display: inline-block;
   padding: function.em(11, 2.5) function.em(11, 6);
   margin: function.em(11, 8) function.em(11, 8) 0 0;
+  font-size: function.fz(11);
+  font-weight: bold;
+  color: settings.$color-white;
+  background-color: settings.$color-dark-blue;
+  border-radius: 2px;
 
   &:hover {
-    &[data-is-hover] {
+    &[data-is-hover='true'] {
       box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
     }
   }
@@ -18,10 +23,4 @@
     margin: function.em(12, 8) function.em(12, 8) 0 0;
     font-size: function.fz(12);
   }
-
-  font-size: function.fz(11);
-  font-weight: 600;
-  color: settings.$color-white;
-  background-color: settings.$color-dark-blue;
-  border-radius: 2px;
 }

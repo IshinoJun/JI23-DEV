@@ -2,9 +2,11 @@
 @use 'style/mixin';
 
 .wrapper {
-  padding-top: function.em(14, 20);
+  a {
+    font-size: function.fz(14);
 
-  @include mixin.tab {
-    padding-top: function.em(16, 20);
+    @include mixin.tab {
+      font-size: function.fz(16);
+    }
   }
 }

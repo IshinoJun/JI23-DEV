@@ -19,7 +19,7 @@ const Tags: React.FC<Props> = (props: Props) => {
           {doLink ? (
             <Link href={`/blogs/tags/${tag.id}/page/1`}>
               <a data-is-hover={doLink} className={style.tag}>
-                <span>{tag.name}</span>
+                {tag.name}
               </a>
             </Link>
           ) : (

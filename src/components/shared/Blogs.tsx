@@ -67,9 +67,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
                     <div className={style.contentWarp}>
                       <BlogDate blog={blog} />
                     </div>
-                    <div className={style.contentWarp}>
-                      <BlogCategory category={blog.category} />
-                    </div>
+                    <BlogCategory category={blog.category} />
                     <Tags tags={blog.tags} tagsPosition="left" />
                   </div>
                 </a>

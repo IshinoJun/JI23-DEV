@@ -3,14 +3,24 @@
 @use 'style/settings';
 
 .category {
-  display: block;
-  font-size: function.fz(12);
+  display: inline-block;
+  padding: function.em(11, 2.5) function.em(11, 6);
+  margin: function.em(11, 8) function.em(11, 8) 0 0;
+  font-size: function.fz(11);
+  font-weight: bold;
+  color: settings.$color-dark-blue;
+  background-color: settings.$color-right-blue;
+  border-radius: 2px;
 
-  @include mixin.tab {
-    font-size: function.fz(14);
+  &:hover {
+    &[data-is-hover='true'] {
+      box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    }
   }
 
-  a {
-    color: rgba(0, 0, 0, 0.54);
+  @include mixin.tab {
+    padding: function.em(12, 2.5) function.em(12, 6);
+    margin: function.em(12, 8) function.em(12, 8) 0 0;
+    font-size: function.fz(12);
   }
 }
