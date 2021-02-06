@@ -3,9 +3,6 @@
 @use 'style/settings';
 
 .head {
-  // position: sticky;
-  // top: 0;
-  // z-index: 100;
   padding: function.em(14, 7) 0;
   background-color: settings.$color-white;
   border-bottom-color: settings.$color-gray;
@@ -23,17 +20,6 @@
 
     @include mixin.tab {
       margin: 0;
-    }
-
-    .title {
-      h2 {
-        font-size: function.fz(16);
-      }
-
-      h3 {
-        font-size: function.fz(14);
-        font-weight: normal;
-      }
     }
   }
 
@@ -75,12 +61,35 @@
       margin-right: function.em(14, 10);
     }
 
-    li {
+    .title {
       list-style: none;
 
       a {
+        position: relative;
         padding: function.em(14, 5);
+        font-weight: bold;
+        color: settings.$color-dark-blue;
         text-transform: uppercase;
+      }
+
+      a::before {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 2px;
+        content: '';
+        background-color: settings.$color-right-blue;
+        transition: transform 0.3s;
+        transform: scaleX(0);
+      }
+
+      a:hover::before {
+        transform: scaleX(1);
+      }
+
+      &[data-is-select='true'] > a {
+        color: settings.$color-right-blue !important;
       }
     }
   }

@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import Image from 'next/image';
 import Sticky from 'react-stickynode';
+import { useRouter } from 'next/router';
 import style from './Header.module.scss';
 import HeaderDrawer from './HeaderDrawer';
 import useMedia from '../../hooks/useMedia';
@@ -19,37 +20,35 @@ const Header: React.FC<Props> = (props) => {
   const { isOpen, onClickDrawer } = props;
   const [hasMounted, setHasMounted] = React.useState(false);
   const isPc = useMedia('pc');
+  const router = useRouter();
+
+  console.log(router);
 
   const globalNav: GlobalNav[] = [
     {
-      title: 'Home',
+      title: 'home',
       subTitle: 'ホーム',
       linkProps: { href: '/' },
-      imgProps: { src: '/icon.png', alt: 'Home' },
     },
     {
-      title: 'Profile',
+      title: 'profile',
       subTitle: 'プロフィール',
       linkProps: { href: '/profile' },
-      imgProps: { src: '/profile.png', alt: 'Profile' },
     },
     {
-      title: 'Portfolio',
+      title: 'portfolio',
       subTitle: 'ポートフォリオ',
       linkProps: { href: '/portfolio' },
-      imgProps: { src: '/portfolio.png', alt: 'Portfolio' },
     },
     {
-      title: 'Blogs',
+      title: 'blogs',
       subTitle: 'ブログ一覧',
       linkProps: { href: '/blogs' },
-      imgProps: { src: '/blog.png', alt: 'Blogs' },
     },
     {
-      title: 'Contact',
+      title: 'contact',
       subTitle: 'お問い合わせ',
       linkProps: { href: '/contact' },
-      imgProps: { src: '/contact.png', alt: 'Contact' },
     },
   ];
 
@@ -86,8 +85,14 @@ const Header: React.FC<Props> = (props) => {
                 <nav className={style.globalNav}>
                   <ul>
                     {globalNav.map((nav) => (
-                      <li key={nav.title}>
-                        <Link href={nav.linkProps.href}>{nav.title}</Link>
+                      <li
+                        key={nav.title}
+                        className={style.title}
+                        data-is-select={router.asPath.includes(nav.title)}
+                      >
+                        <Link href={nav.linkProps.href}>
+                          <a>{nav.title}</a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
