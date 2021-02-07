@@ -12,13 +12,21 @@
     font-size: function.fz(14);
   }
 
-  svg {
-    margin-right: function.em(15, 3);
-    font-size: function.fz(15);
+  > time {
+    margin-right: function.em(12, 10);
 
     @include mixin.tab {
-      margin-right: function.em(16, 3);
-      font-size: function.fz(16);
+      margin-right: function.em(14, 10);
+    }
+  }
+
+  svg {
+    margin-right: function.em(12, 3);
+    font-size: function.fz(12);
+
+    @include mixin.tab {
+      margin-right: function.em(14, 3);
+      font-size: function.fz(14);
     }
   }
 }

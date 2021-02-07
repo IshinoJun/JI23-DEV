@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateIcon from '@material-ui/icons/Create';
 import UpdateIcon from '@material-ui/icons/Update';
 import Blog from '../../models/Blog';
 import { formatDate } from '../../utils/FormatUtils';
@@ -13,8 +14,12 @@ const BlogDate: React.FC<Props> = (props) => {
 
   return (
     <div className={style.date}>
-      {blog.revisedAt && (
+      {blog.revisedAt && blog.publishedAt && (
         <>
+          <CreateIcon fontSize="small" />
+          <time itemProp="datePublished">
+            {formatDate(new Date(blog.publishedAt))}
+          </time>
           <UpdateIcon fontSize="small" />
           <time itemProp="dateModified">
             {formatDate(new Date(blog.revisedAt))}
