@@ -1,7 +1,6 @@
-import React, { useCallback, useContext } from 'react';
+import React from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import style from './[offset].module.scss';
 
@@ -14,8 +13,6 @@ import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import Category from '../../../../../models/Category';
 
-import SearchContext from '../../../../../context/searchContext';
-
 interface Props {
   blogs: ArrayList<Blog>;
   targetTag: Tag;
@@ -25,21 +22,6 @@ interface Props {
 const TagBlogsPage: NextPage<Props> = (props: Props) => {
   const { blogs, targetTag, categories } = props;
   const defaultTitle = 'JI23-DEV';
-  const { search, setSearch } = useContext(SearchContext);
-  const router = useRouter();
-
-  const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${search}`);
-  }, [search, router]);
-
-  const handleKeyDownSearch = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${search}`);
-      }
-    },
-    [search, router],
-  );
 
   return (
     <>
@@ -63,13 +45,7 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
             <Blogs blogs={blogs} showPagination tag={targetTag} />
           </main>
           <div className={style.sideWrapper}>
-            <BlogSideContents
-              keyword={search}
-              categories={categories}
-              onClickSearchButton={handleClickSearchButton}
-              onKeyDownSearch={handleKeyDownSearch}
-              setKeyword={setSearch}
-            />
+            <BlogSideContents categories={categories} />
           </div>
         </div>
       </div>

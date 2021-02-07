@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@material-ui/core';
@@ -16,8 +16,6 @@ import useLoading from '../../../hooks/useLoading';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
 import Category from '../../../models/Category';
 
-import SearchContext from '../../../context/searchContext';
-
 interface Props {
   categories: ArrayList<Category>;
 }
@@ -26,23 +24,9 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   const { categories } = props;
   const [blogsQuery, setBlogsQuery] = useState<BlogsQuery | null>(null);
 
-  const { search, setSearch } = useContext(SearchContext);
   const [blogs, setBlogs] = useState<ArrayList<Blog> | null>(null);
   const router = useRouter();
   const { isLoading, doHidden, doLoading } = useLoading(false);
-
-  const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${search}`);
-  }, [search, router]);
-
-  const handleKeyDownSearch = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${search}`);
-      }
-    },
-    [search, router],
-  );
 
   useEffect(() => {
     const urlQuery = router.query as BlogsQuery;
@@ -85,13 +69,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
               )}
             </main>
             <div className={style.sideWrapper}>
-              <BlogSideContents
-                keyword={search}
-                categories={categories}
-                onClickSearchButton={handleClickSearchButton}
-                onKeyDownSearch={handleKeyDownSearch}
-                setKeyword={setSearch}
-              />
+              <BlogSideContents categories={categories} />
             </div>
           </div>
         </div>

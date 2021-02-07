@@ -1,25 +1,33 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { IconButton, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { useRouter } from 'next/router';
 import style from './SearchInput.module.scss';
+import SearchContext from '../../context/searchContext';
 
-interface Props {
-  keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
-  onClickSearchButton: () => void;
-  onKeyDownSearch: (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-}
-const SearchInput: React.FC<Props> = (props: Props) => {
-  const { keyword, setKeyword, onClickSearchButton, onKeyDownSearch } = props;
+const SearchInput: React.FC = () => {
+  const { search, setSearch } = useContext(SearchContext);
+  const router = useRouter();
 
   const handleChangeKeyword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { value } = e.currentTarget;
-      setKeyword(value);
+      setSearch(value);
     },
-    [setKeyword],
+    [setSearch],
+  );
+
+  const handleClickSearchButton = useCallback(() => {
+    void router.push(`/blogs/search/?keyword=${search}`);
+  }, [search, router]);
+
+  const handleKeyDownSearch = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') {
+        void router.push(`/blogs/search/?keyword=${search}`);
+      }
+    },
+    [search, router],
   );
 
   return (
@@ -28,13 +36,13 @@ const SearchInput: React.FC<Props> = (props: Props) => {
         placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
         className={style.searchInput}
-        value={keyword}
+        value={search}
         onChange={handleChangeKeyword}
-        onKeyDown={onKeyDownSearch}
+        onKeyDown={handleKeyDownSearch}
       />
       <IconButton
         className={style.searchIcon}
-        onClick={onClickSearchButton}
+        onClick={handleClickSearchButton}
         aria-label="Search"
       >
         <SearchIcon />

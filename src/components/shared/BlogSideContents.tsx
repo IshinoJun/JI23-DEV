@@ -12,12 +12,6 @@ import useMedia from '../../hooks/useMedia';
 
 interface Props {
   categories: ArrayList<Category>;
-  keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
-  onClickSearchButton: () => void;
-  onKeyDownSearch: (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
   contents?: HTMLHeadingElement[];
   blog?: Blog;
 }
@@ -26,24 +20,12 @@ const BlogSideContents: React.FC<Props> = (props) => {
   const isPC = useMedia('pc');
   const divEl = useRef<HTMLDivElement>(null);
 
-  const {
-    categories,
-    keyword,
-    setKeyword,
-    onClickSearchButton,
-    onKeyDownSearch,
-    contents,
-  } = props;
+  const { categories, contents } = props;
 
   return (
     <div ref={divEl} className={style.content}>
       <aside>
-        <SearchInput
-          keyword={keyword}
-          setKeyword={setKeyword}
-          onClickSearchButton={onClickSearchButton}
-          onKeyDownSearch={onKeyDownSearch}
-        />
+        <SearchInput />
       </aside>
       <aside>
         <BlogCategoryList categories={categories} />

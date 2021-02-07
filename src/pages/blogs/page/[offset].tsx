@@ -1,6 +1,5 @@
-import React, { useCallback, useContext } from 'react';
+import React from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 import classnames from 'classnames';
 import style from './[offset].module.scss';
 
@@ -12,8 +11,6 @@ import BlogSideContents from '../../../components/shared/BlogSideContents';
 import BlogsQuery from '../../../models/BlogsQuery';
 import Category from '../../../models/Category';
 
-import SearchContext from '../../../context/searchContext';
-
 interface Props {
   blogs: ArrayList<Blog>;
   categories: ArrayList<Category>;
@@ -21,21 +18,6 @@ interface Props {
 
 const BlogsPage: NextPage<Props> = (props: Props) => {
   const { blogs, categories } = props;
-  const { search, setSearch } = useContext(SearchContext);
-  const router = useRouter();
-
-  const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${search}`);
-  }, [search, router]);
-
-  const handleKeyDownSearch = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${search}`);
-      }
-    },
-    [search, router],
-  );
 
   return (
     <div
@@ -50,13 +32,7 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
         <Blogs blogs={blogs} showPagination />
       </main>
       <div className={style.sideWrapper}>
-        <BlogSideContents
-          keyword={search}
-          categories={categories}
-          onClickSearchButton={handleClickSearchButton}
-          onKeyDownSearch={handleKeyDownSearch}
-          setKeyword={setSearch}
-        />
+        <BlogSideContents categories={categories} />
       </div>
     </div>
   );

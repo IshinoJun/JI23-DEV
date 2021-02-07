@@ -1,7 +1,7 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
 
-import { useCallback, useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { compact } from 'lodash';
 import classNames from 'classnames';
@@ -17,8 +17,6 @@ import BlogSideContents from '../../components/shared/BlogSideContents';
 import Category from '../../models/Category';
 import { getTopArticlePaths } from '../../utils/server/analyisUtils';
 
-import SearchContext from '../../context/searchContext';
-
 interface Props {
   blog: Blog | null;
   errors?: string;
@@ -30,21 +28,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
   const { blog, categories, topArticleBlogs } = props;
 
   const [contents, setContents] = useState<HTMLHeadingElement[]>([]);
-  const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
-
-  const handleClickSearchButton = useCallback(() => {
-    void router.push(`/blogs/search/?keyword=${search}`);
-  }, [search, router]);
-
-  const handleKeyDownSearch = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (e.key === 'Enter') {
-        void router.push(`/blogs/search/?keyword=${search}`);
-      }
-    },
-    [search, router],
-  );
 
   useEffect(() => {
     const e = document.getElementById('blog');
@@ -72,11 +56,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
             </main>
             <div className={style.sideWrapper}>
               <BlogSideContents
-                keyword={search}
                 categories={categories}
-                onClickSearchButton={handleClickSearchButton}
-                onKeyDownSearch={handleKeyDownSearch}
-                setKeyword={setSearch}
                 contents={contents}
                 blog={blog}
               />
