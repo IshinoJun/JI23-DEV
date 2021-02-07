@@ -27,7 +27,7 @@ const Header: React.FC<Props> = (props) => {
       title: 'home',
       subTitle: 'ホーム',
       linkProps: { href: '/' },
-      imgProps: { src: '/icon.png', alt: 'ホームのアイコン' },
+      imgProps: { src: '/character.png', alt: 'ホームのアイコン' },
     },
     {
       title: 'profile',
