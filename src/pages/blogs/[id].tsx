@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useCallback, useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { compact } from 'lodash';
+import classNames from 'classnames';
 import Error from '../_error';
 import Blog from '../../models/Blog';
 import DevCMS from '../api/DevCMS';
@@ -59,9 +60,12 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
         <>
           <BlogHead blog={blog} />
           <div
-            className={`${String(
+            className={classNames(
               style.blogsContainer,
-            )} container padding-block border-bottom`}
+              'container',
+              'padding-block',
+              'border-bottom',
+            )}
           >
             <main className={style.mainWrapper} id="blog">
               <BlogComponent blog={blog} topArticleBlogs={topArticleBlogs} />

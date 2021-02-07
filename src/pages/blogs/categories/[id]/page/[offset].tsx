@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import classNames from 'classnames';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../../../api/DevCMS';
@@ -55,7 +56,7 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
         <div className={style.tagNameWrapper}>
           <h1>{targetCategory.name}</h1>
         </div>
-        <div className={`${String(style.blogsContainer)} container`}>
+        <div className={classNames(style.blogsContainer, 'container')}>
           <main className={style.mainWrapper}>
             <Blogs blogs={blogs} showPagination category={targetCategory} />
           </main>

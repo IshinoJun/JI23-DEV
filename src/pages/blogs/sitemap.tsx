@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,7 +24,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
         <meta name="twitter:title" content={title} />
       </Head>
       <section className="padding-block border-bottom">
-        <div className={`${String(style.container)} container`}>
+        <div className={classNames(style.blogsContainer, 'container')}>
           <h1>Sitemap</h1>
           <div className={style.wrapper}>
             {categories.contents.map((category) => (

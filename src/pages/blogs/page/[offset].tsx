@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
+import classnames from 'classnames';
 import style from './[offset].module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -38,9 +39,12 @@ const BlogsPage: NextPage<Props> = (props: Props) => {
 
   return (
     <div
-      className={`${String(
+      className={classnames(
         style.blogsContainer,
-      )} container padding-block border-bottom`}
+        'container',
+        'padding-block',
+        'border-bottom',
+      )}
     >
       <main className={style.mainWrapper}>
         <Blogs blogs={blogs} showPagination />

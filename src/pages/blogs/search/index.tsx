@@ -3,6 +3,7 @@ import { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { CircularProgress } from '@material-ui/core';
 import { isEmpty } from 'lodash';
+import classNames from 'classnames';
 import style from './index.module.scss';
 
 import DevCMS from '../../api/DevCMS';
@@ -69,39 +70,39 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   }, [blogsQuery, doLoading, doHidden]);
 
   return (
-    <div className="padding-block border-bottom">
-      <div className={style.searchContainer}>
-        <h1>
-          {!isLoading ? (
-            `${blogsQuery?.keyword ?? ''} の検索結果`
-          ) : (
-            <CircularProgress />
-          )}
-        </h1>
-      </div>
-      <div className={`${String(style.blogsContainer)} container`}>
-        <main className={style.mainWrapper}>
-          {!isLoading ? (
-            blogs && blogs.contents.length ? (
-              <Blogs blogs={blogs} keyword={blogsQuery?.keyword} />
-            ) : (
-              '投稿がありません'
-            )
-          ) : (
-            <CircularProgress />
-          )}
-        </main>
-        <div className={style.sideWrapper}>
-          <BlogSideContents
-            keyword={search}
-            categories={categories}
-            onClickSearchButton={handleClickSearchButton}
-            onKeyDownSearch={handleKeyDownSearch}
-            setKeyword={setSearch}
-          />
+    <>
+      {!isLoading ? (
+        <div className="padding-block border-bottom">
+          <div className={style.searchContainer}>
+            <h1>{blogsQuery?.keyword ?? ''} の検索結果</h1>
+          </div>
+          <div className={classNames(style.blogsContainer, 'container')}>
+            <main className={style.mainWrapper}>
+              {blogs && blogs.contents.length ? (
+                <Blogs blogs={blogs} keyword={blogsQuery?.keyword} />
+              ) : (
+                '投稿がありません'
+              )}
+            </main>
+            <div className={style.sideWrapper}>
+              <BlogSideContents
+                keyword={search}
+                categories={categories}
+                onClickSearchButton={handleClickSearchButton}
+                onKeyDownSearch={handleKeyDownSearch}
+                setKeyword={setSearch}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div
+          className={classNames(style.wrap, 'padding-block', 'border-bottom')}
+        >
+          <CircularProgress color="secondary" size={60} />
+        </div>
+      )}
+    </>
   );
 };
 
