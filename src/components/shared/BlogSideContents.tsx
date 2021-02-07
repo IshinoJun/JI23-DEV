@@ -45,20 +45,20 @@ const BlogSideContents: React.FC<Props> = (props) => {
           onKeyDownSearch={onKeyDownSearch}
         />
       </aside>
-      <aside className={style.wrapper}>
+      <aside>
         <BlogCategoryList categories={categories} />
       </aside>
       <Sticky
         innerZ={1}
-        top={60}
+        top={90}
         enabled={isPC}
         bottomBoundary={divEl.current?.clientHeight}
       >
-        <aside className={style.wrapper}>
+        <aside>
           <BlogProfile />
         </aside>
         {contents && (
-          <aside className={style.wrapper}>
+          <aside>
             <BlogContents contents={contents} />
           </aside>
         )}

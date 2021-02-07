@@ -15,33 +15,12 @@
 
   .row {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin: 0 function.em(16, 20);
 
     @include mixin.tab {
       margin: 0;
-    }
-  }
-
-  .titleArea {
-    display: flex;
-  }
-
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .link {
-      display: flex;
-    }
-  }
-
-  .close {
-    padding: 0 !important;
-
-    svg {
-      font-size: function.fz(54);
     }
   }
 }

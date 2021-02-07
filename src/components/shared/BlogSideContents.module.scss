@@ -5,11 +5,11 @@
 .content {
   height: 100%;
 
-  .wrapper {
-    margin-top: function.em(14, 20);
+  aside {
+    margin-bottom: function.em(14, 20);
 
     @include mixin.tab {
-      margin-top: 0 function.em(16, 20);
+      margin-bottom: 0 function.em(16, 20);
     }
   }
 }

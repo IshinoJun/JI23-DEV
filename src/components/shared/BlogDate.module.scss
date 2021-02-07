@@ -3,9 +3,22 @@
 @use 'style/settings';
 
 .date {
+  display: flex;
+  align-items: center;
   font-size: function.fz(12);
+  text-align: center;
 
   @include mixin.tab {
     font-size: function.fz(14);
+  }
+
+  svg {
+    margin-right: function.em(15, 3);
+    font-size: function.fz(15);
+
+    @include mixin.tab {
+      margin-right: function.em(16, 3);
+      font-size: function.fz(16);
+    }
   }
 }

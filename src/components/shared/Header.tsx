@@ -70,20 +70,16 @@ const Header: React.FC<Props> = (props) => {
         <header className={style.head}>
           <div className="container">
             <div className={style.row}>
-              <div className={style.titleArea}>
-                <div className={style.icon}>
-                  <Link href="/">
-                    <a className={style.link}>
-                      <Image
-                        src="/logo.png"
-                        alt="ロゴ画像"
-                        width={192}
-                        height={48}
-                      />
-                    </a>
-                  </Link>
-                </div>
-              </div>
+              <Link href="/">
+                <a className={style.link}>
+                  <Image
+                    src="/logo.png"
+                    alt="ロゴ画像"
+                    width={192}
+                    height={48}
+                  />
+                </a>
+              </Link>
               {isPc ? (
                 <nav className={style.globalNav}>
                   <ul>
