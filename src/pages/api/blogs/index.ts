@@ -2,7 +2,7 @@ import { NextApiResponse, NextApiRequest } from 'next';
 import { isBlogsQuery } from '../../../utils/TypeGuardUtils';
 import DevCMS from '../DevCMS';
 
-const contact = async (
+const getSearchBlogs = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
@@ -15,9 +15,7 @@ const contact = async (
 
   const blogs = await devCMS.getBlogs(req.body);
 
-  res.status(200).json(blogs);
-
-  return res.end('Contact enabled');
+  return res.status(200).json(blogs);
 };
 
-export default contact;
+export default getSearchBlogs;
