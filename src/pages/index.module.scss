@@ -67,7 +67,8 @@
     .icon {
       width: function.em(20, 238);
       height: function.em(20, 238);
-      border: 3px solid settings.$color-black;
+      background-color: settings.$color-hight-gray;
+      border: 1px solid settings.$color-black;
 
       img {
         width: auto;

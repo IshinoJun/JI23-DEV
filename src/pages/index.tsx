@@ -91,7 +91,7 @@ const Home: NextPage<Props> = (props: Props) => {
             <div className={style.iconArea}>
               <Avatar
                 className={style.icon}
-                src="/icon.png"
+                src="/myIcon.png"
                 alt="ロボットのロゴ画像"
               />
             </div>

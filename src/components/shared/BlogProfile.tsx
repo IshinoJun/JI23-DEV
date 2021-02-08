@@ -10,8 +10,8 @@ const BlogProfile: React.FC = () => {
       <div className={style.nameArea}>
         <Avatar
           className={style.icon}
-          src="/character.png"
-          alt="ロボットのロゴ画像"
+          src="/myIcon.png"
+          alt="カバのロボットのロゴ画像"
         />
         <h2>Jun Ishino</h2>
       </div>
