@@ -57,8 +57,9 @@ export const getStaticProps: GetStaticProps = async ({
   props: Props;
 }> => {
   const offset = params?.offset ? String(params?.offset) : '0';
+  const num = Number.parseInt(offset, 10);
   const query: BlogsQuery = {
-    offset: String(Math.ceil(Number.parseInt(offset, 10) - 1) * 3),
+    offset: String((num - 1) * 10),
     limit: '10',
   };
   const devCMS = new DevCMS();

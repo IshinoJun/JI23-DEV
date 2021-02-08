@@ -93,9 +93,11 @@ export const getStaticProps: GetStaticProps = async ({
   const devCMS = new DevCMS();
   const tagId = params?.id?.toString() ?? '';
   const offset = params?.offset ? String(params?.offset) : '0';
+  const num = Number.parseInt(offset, 10);
+
   const query: BlogsQuery = {
     tagId,
-    offset: String((Number.parseInt(offset, 10) - 1) * 3),
+    offset: String((num - 1) * 10),
     limit: '10',
   };
   const blogs = await devCMS.getBlogs(query);
