@@ -13,6 +13,7 @@ import BlogBreadcrumbs from './BlogBreadcrumbs';
 import Category from '../../models/Category';
 import Tag from '../../models/Tag';
 import BlogCategory from './BlogCategory';
+import { pagesPath } from '../../utils/$path';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -52,7 +53,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
         (blog) =>
           blog.id && (
             <div key={blog.id} className={style.warp}>
-              <Link href="/blogs/[id]" as={`/blogs/${blog.id}`}>
+              <Link href={pagesPath.blogs._id(blog.id).$url()}>
                 <a className={style.card}>
                   <div className={style.icon}>
                     <Image

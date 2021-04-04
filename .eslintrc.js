@@ -100,7 +100,8 @@ module.exports = {
     'react/no-unused-prop-types': ['off'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
-    "no-nested-ternary":"off"
+    "no-nested-ternary":"off",
+    "no-underscore-dangle":"off"
   },
   overrides: [
     {

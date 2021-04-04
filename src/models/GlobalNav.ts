@@ -1,7 +1,9 @@
+import { LinkProps } from 'next/link';
+
 interface GlobalNav {
   title: string;
   subTitle: string;
-  linkProps: { href: string };
+  linkProps: LinkProps;
   imgProps: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 

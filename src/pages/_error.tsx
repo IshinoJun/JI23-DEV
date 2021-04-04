@@ -2,6 +2,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import style from './_error.module.scss';
+import { pagesPath } from '../utils/$path';
 
 interface Props {
   statusCode: number;
@@ -14,10 +15,8 @@ const Error: NextPage<Props> = ({ statusCode }) => {
           <div className={style.content}>
             <h1>{statusCode}</h1>
             <p>申し訳ありませんが、お探しのページは見つかりませんでした</p>
-            <Link href="/" as="/">
-              <a href="/">
-                <p>トップページへ</p>
-              </a>
+            <Link href={pagesPath.$url()}>
+              <p>トップページへ</p>
             </Link>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Category from '../../models/Category';
 import Blog from '../../models/Blog';
 import Tag from '../../models/Tag';
 import style from './BlogBreadcrumbs.module.scss';
+import { pagesPath } from '../../utils/$path';
 
 interface Props {
   blog?: Blog;
@@ -26,17 +27,31 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
       >
-        <Link href="/">ホーム</Link>
-        <Link href="/blogs">ブログ一覧</Link>
-        {tag && <Link href={`/blogs/tags/${tag.id}/page/1`}>{tag.name}</Link>}
+        <Link href={pagesPath.$url()}>ホーム</Link>
+        <Link href={pagesPath.blogs.$url()}>ブログ一覧</Link>
+        {tag && (
+          <Link href={pagesPath.blogs.tags._id(tag.id).page._offset(1).$url()}>
+            {tag.name}
+          </Link>
+        )}
         {category && (
-          <Link href={`/blogs/categories/${category.id}/page/1`}>
+          <Link
+            href={pagesPath.blogs.categories
+              ._id(category.id)
+              .page._offset(1)
+              .$url()}
+          >
             {category.name}
           </Link>
         )}
         {keyword && <Typography color="textPrimary">{keyword}</Typography>}
         {blog && (
-          <Link href={`/blogs/categories/${blog.category.id}/page/1`}>
+          <Link
+            href={pagesPath.blogs.categories
+              ._id(blog.category.id)
+              .page._offset(1)
+              .$url()}
+          >
             {blog.category.name}
           </Link>
         )}

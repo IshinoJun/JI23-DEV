@@ -6,6 +6,7 @@ import Link from 'next/link';
 import style from './index.module.scss';
 import DevCMS from '../../api/DevCMS';
 import SNS from '../../../models/SNS';
+import { pagesPath } from '../../../utils/$path';
 
 interface Props {
   sns: SNS;
@@ -22,7 +23,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
             <h2>大変申し訳ありません、送信に失敗しました。</h2>
             <p>
               改めて、
-              <Link href="/contact" as="/contact">
+              <Link href={pagesPath.contact.$url()}>
                 <a className={style.formText}>問い合わせフォーム</a>
               </Link>
               からご連絡頂くか、
@@ -43,7 +44,7 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
             className={style.back}
             aria-label="ホームに戻る"
           >
-            <Link href="/" as="/">
+            <Link href={pagesPath.$url()}>
               <a>ホームに戻る</a>
             </Link>
           </Button>

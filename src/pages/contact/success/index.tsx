@@ -5,6 +5,7 @@ import Link from 'next/link';
 import style from './index.module.scss';
 
 import useMedia from '../../../hooks/useMedia';
+import { pagesPath } from '../../../utils/$path';
 
 const SuccessIndex: NextPage = () => {
   const isTab = useMedia('tab');
@@ -32,8 +33,8 @@ const SuccessIndex: NextPage = () => {
             className={style.back}
             aria-label="ホームに戻る"
           >
-            <Link href="/">
-              <a href="/">ホームに戻る</a>
+            <Link href={pagesPath.$url()}>
+              <a>ホームに戻る</a>
             </Link>
           </Button>
         </div>

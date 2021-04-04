@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Category from '../../models/Category';
+import { pagesPath } from '../../utils/$path';
 import style from './BlogCategory.module.scss';
 
 interface Props {
@@ -13,7 +14,12 @@ const BlogCategory: React.FC<Props> = (props: Props) => {
   return (
     <>
       {doLink ? (
-        <Link href={`/blogs/categories/${category.id}/page/1`}>
+        <Link
+          href={pagesPath.blogs.categories
+            ._id(category.id)
+            .page._offset(1)
+            .$url()}
+        >
           <a data-is-hover={doLink} className={style.category}>
             {category.name}
           </a>

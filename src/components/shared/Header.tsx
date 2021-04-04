@@ -10,6 +10,7 @@ import style from './Header.module.scss';
 import HeaderDrawer from './HeaderDrawer';
 import useMedia from '../../hooks/useMedia';
 import GlobalNav from '../../models/GlobalNav';
+import { pagesPath } from '../../utils/$path';
 
 interface Props {
   isOpen: boolean;
@@ -26,31 +27,31 @@ const Header: React.FC<Props> = (props) => {
     {
       title: 'home',
       subTitle: 'ホーム',
-      linkProps: { href: '/' },
+      linkProps: { href: pagesPath.$url() },
       imgProps: { src: '/character.png', alt: 'ホームのアイコン' },
     },
     {
       title: 'profile',
       subTitle: 'プロフィール',
-      linkProps: { href: '/profile' },
+      linkProps: { href: pagesPath.profile.$url() },
       imgProps: { src: '/profile.png', alt: 'プロフィールのアイコン' },
     },
     {
       title: 'portfolio',
       subTitle: 'ポートフォリオ',
-      linkProps: { href: '/portfolio' },
+      linkProps: { href: pagesPath.portfolio.$url() },
       imgProps: { src: '/portfolio.png', alt: 'ポートフォリオのアイコン' },
     },
     {
       title: 'blogs',
       subTitle: 'ブログ一覧',
-      linkProps: { href: '/blogs' },
+      linkProps: { href: pagesPath.blogs.$url() },
       imgProps: { src: '/blog.png', alt: 'ブログのアイコン' },
     },
     {
       title: 'contact',
       subTitle: 'お問い合わせ',
-      linkProps: { href: '/contact' },
+      linkProps: { href: pagesPath.contact.$url() },
       imgProps: { src: '/contact.png', alt: '問い合わせのアイコン' },
     },
   ];
@@ -70,7 +71,7 @@ const Header: React.FC<Props> = (props) => {
         <header className={style.head}>
           <div className="container">
             <div className={style.row}>
-              <Link href="/">
+              <Link href={pagesPath.$url()}>
                 <a className={style.link}>
                   <Image
                     src="/logo.png"

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Tag from '../../models/Tag';
+import { pagesPath } from '../../utils/$path';
 import style from './Tags.module.scss';
 
 interface Props {
@@ -17,7 +18,9 @@ const Tags: React.FC<Props> = (props: Props) => {
       {tags.map((tag) => (
         <React.Fragment key={tag.id}>
           {doLink ? (
-            <Link href={`/blogs/tags/${tag.id}/page/1`}>
+            <Link
+              href={pagesPath.blogs.tags._id(tag.id).page._offset(1).$url()}
+            >
               <a data-is-hover={doLink} className={style.tag}>
                 {tag.name}
               </a>

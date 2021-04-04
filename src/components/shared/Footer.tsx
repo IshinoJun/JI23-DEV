@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { pagesPath } from '../../utils/$path';
 import style from './Footer.module.scss';
 
 const Footer: React.FC = () => {
@@ -8,19 +9,21 @@ const Footer: React.FC = () => {
       <div className="container">
         <ul className={style.footerContent}>
           <li>
-            <Link href="/">ホーム</Link>
+            <Link href={pagesPath.$url()}>ホーム</Link>
           </li>
           <li>
-            <Link href="/profile">運営者</Link>
+            <Link href={pagesPath.profile.$url()}>運営者</Link>
           </li>
           <li>
-            <Link href="/blogs/sitemap">ブログサイトマップ</Link>
+            <Link href={pagesPath.blogs.sitemap.$url()}>
+              ブログサイトマップ
+            </Link>
           </li>
           <li>
-            <Link href="/privacy">プライバシーポリシー</Link>
+            <Link href={pagesPath.privacy.$url()}>プライバシーポリシー</Link>
           </li>
           <li>
-            <Link href="/contact">お問い合わせ</Link>
+            <Link href={pagesPath.contact.$url()}>お問い合わせ</Link>
           </li>
         </ul>
         <p className={style.title}>© JI23-DEV</p>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Blog from '../../models/Blog';
+import { pagesPath } from '../../utils/$path';
 import style from './BlogNewList.module.scss';
 
 interface Props {
@@ -16,7 +17,7 @@ const BlogNewList: React.FC<Props> = (props) => {
       <ul>
         {blogs.map((blog) => (
           <li className={style.list} key={blog.id}>
-            <Link href={`/blogs/${blog.id}`}>
+            <Link href={pagesPath.blogs._id(blog.id).$url()}>
               <a>{blog.title}</a>
             </Link>
           </li>

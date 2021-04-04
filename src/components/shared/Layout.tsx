@@ -6,6 +6,7 @@ import Footer from './Footer';
 import JI23Head from './JI23Head';
 import style from './Layout.module.scss';
 import TopScrollButton from './TopScrollButton';
+import { pagesPath } from '../../utils/$path';
 
 interface Props {
   children: React.ReactNode;
@@ -58,7 +59,7 @@ const Layout: React.FC<Props> = (props: Props) => {
           <Header onClickDrawer={handleClickDrawer} isOpen={isOpen} />
         ) : (
           <header className={style.logo}>
-            <Link href="/" as="/">
+            <Link href={pagesPath.$url()}>
               <a>
                 <img src="/logo.png" alt="ロゴ画像" />
               </a>

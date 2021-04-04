@@ -5,6 +5,7 @@ import Link from 'next/link';
 import * as React from 'react';
 import ArrayList from '../../models/Array';
 import Category from '../../models/Category';
+import { pagesPath } from '../../utils/$path';
 import DevCMS from '../api/DevCMS';
 import style from './sitemap.module.scss';
 
@@ -30,7 +31,12 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
             {categories.contents.map((category) => (
               <ul key={category.id}>
                 <li className={style.category}>
-                  <Link href={`/blogs/categories/${category.id}/page/1`}>
+                  <Link
+                    href={pagesPath.blogs.categories
+                      ._id(category.id)
+                      .page._offset(1)
+                      .$url()}
+                  >
                     <a>{category.name}</a>
                   </Link>
                 </li>
@@ -38,7 +44,7 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
                   <ul>
                     {category.posts.map((post) => (
                       <li key={post.id}>
-                        <Link href={`/blogs/${post.id}`}>
+                        <Link href={pagesPath.blogs._id(post.id).$url()}>
                           <a>{post.title}</a>
                         </Link>
                       </li>
