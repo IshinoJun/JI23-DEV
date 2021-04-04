@@ -72,7 +72,7 @@ const BlogDetailPage: NextPage<Props> = (props: Props) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const devCMS = new DevCMS();
-  const blogs = await devCMS.getBlogs();
+  const blogs = await devCMS.getBlogs({ offset: '0', limit: '9999' });
   const paths = blogs.contents.map((blog) => `/blogs/${blog.id ?? ''}`);
 
   return { paths, fallback: false };
