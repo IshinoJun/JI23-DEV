@@ -16,7 +16,7 @@ const preview = async (
     typeof draftKey !== 'string'
   ) {
     return res.status(401).json({
-      message: `Invalid query, ${SECRET_KEY}`,
+      message: `Invalid query`,
     });
   }
 
