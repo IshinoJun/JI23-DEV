@@ -1,9 +1,11 @@
+@use 'sass:math';
+
 /**
  * 引数のfontSizeをremに変換する関数
  * @param fontSize フォントサイズ
  */
 @function fz($fontSize) {
-  @return $fontSize / 16 + rem;
+  @return math.div($fontSize, 16) + rem;
 }
 
 /**
@@ -12,7 +14,7 @@
  * @param px 変換するpx数
  */
 @function vw($maxScreenSize, $px) {
-  @return ($px / $maxScreenSize) * 100 + vw;
+  @return (math.div($px, $maxScreenSize)) * 100 + vw;
 }
 
 /**
@@ -21,7 +23,7 @@
  * @param px 変換するpx数
  */
 @function rate($percent, $px) {
-  @return ($px / ($percent / 100)) * 100 * (1 / 100);
+  @return (math.div($px, (math.div($percent, 100)))) * 100 * (1 / 100);
 }
 
 /**
@@ -30,5 +32,5 @@
  * @param px 変換するpx数
  */
 @function em($fontSize, $px) {
-  @return $px / $fontSize + em;
+  @return math.div($px, $fontSize) + em;
 }

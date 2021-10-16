@@ -23,7 +23,11 @@ const validationSchema = Yup.object().shape({
 const ContactForm: React.FC<Props> = (props: Props) => {
   const { sns, onSubmit } = props;
 
-  const { control, handleSubmit, errors } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
   });
@@ -43,33 +47,43 @@ const ContactForm: React.FC<Props> = (props: Props) => {
         <input type="text" name="_gotcha" style={{ display: 'none' }} />
         <Grid item xs={12}>
           <Controller
-            as={TextField}
-            control={control}
-            variant="outlined"
-            required
-            fullWidth
-            id="name"
-            label="お名前"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                variant="outlined"
+                required
+                fullWidth
+                id="name"
+                label="お名前"
+                name="name"
+                autoComplete="name"
+                defaultValue=""
+                error={!!errors.name?.message}
+              />
+            )}
             name="name"
-            autoComplete="name"
-            defaultValue=""
-            error={!!errors.name?.message}
+            control={control}
           />
           {errors.name && <p className={style.error}>{errors.name.message}</p>}
         </Grid>
         <Grid item xs={12}>
           <Controller
-            as={TextField}
-            control={control}
-            variant="outlined"
-            required
-            fullWidth
-            id="email"
-            label="メールアドレス"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="メールアドレス"
+                name="email"
+                autoComplete="email"
+                defaultValue=""
+                error={!!errors.email?.message}
+              />
+            )}
             name="email"
-            autoComplete="email"
-            defaultValue=""
-            error={!!errors.email?.message}
+            control={control}
           />
           {errors.email && (
             <p className={style.error}>{errors.email.message}</p>
@@ -77,19 +91,24 @@ const ContactForm: React.FC<Props> = (props: Props) => {
         </Grid>
         <Grid item xs={12}>
           <Controller
-            as={TextField}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                variant="outlined"
+                required
+                fullWidth
+                multiline
+                rows={6}
+                name="body"
+                label="内容"
+                id="body"
+                autoComplete="body"
+                defaultValue=""
+                error={!!errors.body?.message}
+              />
+            )}
             control={control}
-            variant="outlined"
-            required
-            fullWidth
-            multiline
-            rows={6}
             name="body"
-            label="内容"
-            id="body"
-            autoComplete="body"
-            defaultValue=""
-            error={!!errors.body?.message}
           />
           {errors.body && <p className={style.error}>{errors.body.message}</p>}
         </Grid>
