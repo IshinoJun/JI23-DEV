@@ -1,13 +1,12 @@
-import React from 'react';
-import { NextPage, GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import style from './index.module.scss';
-
+import React from 'react';
+import DevCMS from '../../clients/DevCMS';
+import ContactForm from '../../components/shared/ContactForm';
 import Contact from '../../models/Contact';
 import SNS from '../../models/SNS';
-import DevCMS from '../api/DevCMS';
-import ContactForm from '../../components/shared/ContactForm';
 import fetchWrapper from '../../utils/FetchUtils';
+import style from './index.module.scss';
 
 interface Props {
   sns: SNS;
@@ -27,8 +26,8 @@ const ContactIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <section className="padding-block border-bottom">
-      <div className="container">
+    <section className='padding-block border-bottom'>
+      <div className='container'>
         <div className={style.content}>
           <div className={style.contact}>
             <div className={style.title}>

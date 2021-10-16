@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import DevCMS from '../../../../../clients/DevCMS';
 import Blogs from '../../../../../components/shared/Blogs';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
 import ArrayList from '../../../../../models/Array';
 import Blog from '../../../../../models/Blog';
 import BlogsQuery from '../../../../../models/BlogsQuery';
 import Category from '../../../../../models/Category';
-import DevCMS from '../../../../api/DevCMS';
 import style from './[offset].module.scss';
 
 interface Props {

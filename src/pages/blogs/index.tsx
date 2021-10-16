@@ -1,16 +1,15 @@
-import React from 'react';
-import { NextPage, GetStaticProps } from 'next';
 import classNames from 'classnames';
-import style from './index.module.scss';
-
-import DevCMS from '../api/DevCMS';
-import Blog from '../../models/Blog';
-import ArrayList from '../../models/Array';
-import { isPreviewData } from '../../utils/TypeGuardUtils';
+import { GetStaticProps, NextPage } from 'next';
+import React from 'react';
+import DevCMS from '../../clients/DevCMS';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
+import ArrayList from '../../models/Array';
+import Blog from '../../models/Blog';
 import BlogsQuery from '../../models/BlogsQuery';
 import Category from '../../models/Category';
+import { isPreviewData } from '../../utils/TypeGuardUtils';
+import style from './index.module.scss';
 
 interface Props {
   blogs: ArrayList<Blog>;

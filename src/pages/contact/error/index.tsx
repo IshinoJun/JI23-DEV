@@ -1,12 +1,11 @@
-import React from 'react';
-
-import { NextPage, GetStaticProps } from 'next';
 import { Button } from '@material-ui/core';
+import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
-import style from './index.module.scss';
-import DevCMS from '../../api/DevCMS';
+import React from 'react';
+import DevCMS from '../../../clients/DevCMS';
 import SNS from '../../../models/SNS';
 import { pagesPath } from '../../../utils/$path';
+import style from './index.module.scss';
 
 interface Props {
   sns: SNS;
@@ -16,8 +15,8 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
   const { sns } = props;
 
   return (
-    <section className="padding-block border-bottom">
-      <div className="container">
+    <section className='padding-block border-bottom'>
+      <div className='container'>
         <div className={style.contact}>
           <div>
             <h2>大変申し訳ありません、送信に失敗しました。</h2>
@@ -29,8 +28,8 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
               からご連絡頂くか、
               <a
                 href={sns.twitterUrl}
-                target="_blank"
-                rel="noreferrer"
+                target='_blank'
+                rel='noreferrer'
                 className={style.twitterText}
               >
                 Twitter
@@ -39,10 +38,10 @@ const ErrorIndex: NextPage<Props> = (props: Props) => {
             </p>
           </div>
           <Button
-            type="button"
-            variant="contained"
+            type='button'
+            variant='contained'
             className={style.back}
-            aria-label="ホームに戻る"
+            aria-label='ホームに戻る'
           >
             <Link href={pagesPath.$url()}>
               <a>ホームに戻る</a>

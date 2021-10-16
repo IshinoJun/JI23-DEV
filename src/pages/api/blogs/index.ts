@@ -1,6 +1,6 @@
-import { NextApiResponse, NextApiRequest } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
+import DevCMS from '../../../clients/DevCMS';
 import { isBlogsQuery } from '../../../utils/TypeGuardUtils';
-import DevCMS from '../DevCMS';
 
 const getSearchBlogs = async (
   req: NextApiRequest,

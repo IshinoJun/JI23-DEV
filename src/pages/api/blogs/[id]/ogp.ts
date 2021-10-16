@@ -1,7 +1,7 @@
-import { createCanvas, registerFont, loadImage, Canvas } from 'canvas';
-import * as path from 'path';
+import { Canvas, createCanvas, loadImage, registerFont } from 'canvas';
 import { NextApiRequest, NextApiResponse } from 'next';
-import DevCMS from '../../DevCMS';
+import * as path from 'path';
+import DevCMS from '../../../../clients/DevCMS';
 
 interface SeparatedText {
   line: string;

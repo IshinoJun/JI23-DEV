@@ -1,9 +1,8 @@
+import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import { NextPage, GetStaticProps } from 'next';
-import style from './index.module.scss';
-
-import DevCMS from '../api/DevCMS';
+import DevCMS from '../../clients/DevCMS';
 import Profile from '../../models/Profile';
+import style from './index.module.scss';
 
 interface Props {
   profile: Profile;
@@ -30,8 +29,8 @@ const ProfileIndex: NextPage<Props> = (props: Props) => {
   };
 
   return (
-    <section className="padding-block border-bottom">
-      <div className="container">
+    <section className='padding-block border-bottom'>
+      <div className='container'>
         <div className={style.content}>
           <div className={style.title}>
             <h3>About me</h3>

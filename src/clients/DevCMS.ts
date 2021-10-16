@@ -3,16 +3,16 @@ import Axios, {
   AxiosRequestConfig,
   CancelTokenSource,
 } from 'axios';
-import ArrayList from '../../models/Array';
-import Blog from '../../models/Blog';
-import BlogsQuery from '../../models/BlogsQuery';
-import Category from '../../models/Category';
-import Contact from '../../models/Contact';
-import Portfolio from '../../models/Portfolio';
-import Profile from '../../models/Profile';
-import SNS from '../../models/SNS';
-import Tag from '../../models/Tag';
-import { generateBlogsUrl } from '../../utils/GenerateUtils';
+import ArrayList from '../models/Array';
+import Blog from '../models/Blog';
+import BlogsQuery from '../models/BlogsQuery';
+import Category from '../models/Category';
+import Contact from '../models/Contact';
+import Portfolio from '../models/Portfolio';
+import Profile from '../models/Profile';
+import SNS from '../models/SNS';
+import Tag from '../models/Tag';
+import { generateBlogsUrl } from '../utils/GenerateUtils';
 
 class DevCMS {
   private axios = Axios.create({

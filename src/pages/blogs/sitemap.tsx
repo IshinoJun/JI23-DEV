@@ -3,10 +3,10 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
+import DevCMS from '../../clients/DevCMS';
 import ArrayList from '../../models/Array';
 import Category from '../../models/Category';
 import { pagesPath } from '../../utils/$path';
-import DevCMS from '../api/DevCMS';
 import style from './sitemap.module.scss';
 
 interface Props {
@@ -21,10 +21,10 @@ const BlogSitemapPage: NextPage<Props> = (props) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:title" content={title} />
-        <meta name="twitter:title" content={title} />
+        <meta property='og:title' content={title} />
+        <meta name='twitter:title' content={title} />
       </Head>
-      <section className="padding-block border-bottom">
+      <section className='padding-block border-bottom'>
         <div className={classNames(style.blogsContainer, 'container')}>
           <h1>Sitemap</h1>
           <div className={style.wrapper}>

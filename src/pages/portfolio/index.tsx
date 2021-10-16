@@ -2,13 +2,13 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
+import DevCMS from '../../clients/DevCMS';
 import IconButton from '../../components/shared/IconButton';
 import Tags from '../../components/shared/Tags';
 import IconButtonType from '../../enums/IconButtonType';
 import ArrayList from '../../models/Array';
 import Portfolio from '../../models/Portfolio';
 import { formatEndMonth } from '../../utils/FormatUtils';
-import DevCMS from '../api/DevCMS';
 import style from './index.module.scss';
 
 interface Props {

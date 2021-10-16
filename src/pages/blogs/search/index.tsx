@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { NextPage, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import { CircularProgress } from '@material-ui/core';
-import { isEmpty } from 'lodash';
 import classNames from 'classnames';
-import style from './index.module.scss';
-
-import DevCMS from '../../api/DevCMS';
-import Blog from '../../../models/Blog';
-import ArrayList from '../../../models/Array';
+import { isEmpty } from 'lodash';
+import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import DevCMS from '../../../clients/DevCMS';
 import Blogs from '../../../components/shared/Blogs';
-import fetchWrapper from '../../../utils/FetchUtils';
-import BlogsQuery from '../../../models/BlogsQuery';
-import useLoading from '../../../hooks/useLoading';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
+import useLoading from '../../../hooks/useLoading';
+import ArrayList from '../../../models/Array';
+import Blog from '../../../models/Blog';
+import BlogsQuery from '../../../models/BlogsQuery';
 import Category from '../../../models/Category';
+import fetchWrapper from '../../../utils/FetchUtils';
+import style from './index.module.scss';
 
 interface Props {
   categories: ArrayList<Category>;
@@ -56,7 +55,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   return (
     <>
       {!isLoading ? (
-        <div className="padding-block border-bottom">
+        <div className='padding-block border-bottom'>
           <div className={style.searchContainer}>
             <h1>{blogsQuery?.keyword ?? ''} の検索結果</h1>
           </div>
@@ -77,7 +76,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
         <div
           className={classNames(style.wrap, 'padding-block', 'border-bottom')}
         >
-          <CircularProgress color="secondary" size={60} />
+          <CircularProgress color='secondary' size={60} />
         </div>
       )}
     </>
