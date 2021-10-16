@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Header from './Header';
+import React, { useCallback, useEffect, useState } from 'react';
+import { pagesPath } from '../../utils/$path';
 import Footer from './Footer';
+import Header from './Header';
 import JI23Head from './JI23Head';
 import style from './Layout.module.scss';
 import TopScrollButton from './TopScrollButton';
-import { pagesPath } from '../../utils/$path';
 
 interface Props {
   children: React.ReactNode;
@@ -46,7 +47,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
@@ -54,14 +55,14 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <JI23Head />
-      <div className="wrapper">
+      <div className='wrapper'>
         {!isTop ? (
           <Header onClickDrawer={handleClickDrawer} isOpen={isOpen} />
         ) : (
           <header className={style.logo}>
             <Link href={pagesPath.$url()}>
               <a>
-                <img src="/logo.png" alt="ロゴ画像" />
+                <img src='/logo.png' alt='ロゴ画像' />
               </a>
             </Link>
           </header>

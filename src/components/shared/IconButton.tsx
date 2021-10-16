@@ -1,9 +1,9 @@
-import React from 'react';
 import { Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkIcon from '@material-ui/icons/Link';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import Image from 'next/image';
+import React from 'react';
 import IconButtonType from '../../enums/IconButtonType';
 import style from './IconButton.module.scss';
 
@@ -17,16 +17,16 @@ interface Props {
 const GitHubButton: React.FC<Props> = (props: Props) => {
   const { href, iconButtonType, ariaLabel } = props;
 
-  const renderButton = () => {
+  const renderButton = (): JSX.Element => {
     switch (iconButtonType) {
       case IconButtonType.gitHub: {
         return (
           <Button
-            variant="contained"
+            variant='contained'
             className={style.github}
             href={href}
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             aria-label={ariaLabel}
           >
             <GitHubIcon />
@@ -37,11 +37,11 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
       case IconButtonType.twitter: {
         return (
           <Button
-            variant="contained"
+            variant='contained'
             className={style.twitter}
             href={href}
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             aria-label={ariaLabel}
           >
             <TwitterIcon />
@@ -52,10 +52,10 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
       case IconButtonType.siteLink: {
         return (
           <Button
-            variant="contained"
+            variant='contained'
             href={href}
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             aria-label={ariaLabel}
           >
             <LinkIcon />
@@ -66,14 +66,14 @@ const GitHubButton: React.FC<Props> = (props: Props) => {
       case IconButtonType.zenn: {
         return (
           <Button
-            variant="contained"
+            variant='contained'
             className={style.zenn}
             href={href}
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             aria-label={ariaLabel}
           >
-            <Image src="/zenn.jpeg" alt="ブログ画像" width={32} height={24} />
+            <Image src='/zenn.jpeg' alt='ブログ画像' width={32} height={24} />
           </Button>
         );
       }

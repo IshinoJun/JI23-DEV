@@ -1,16 +1,16 @@
-import React from 'react';
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import classNames from 'classnames';
-import style from './[offset].module.scss';
-
-import DevCMS from '../../../../api/DevCMS';
-import Blog from '../../../../../models/Blog';
-import ArrayList from '../../../../../models/Array';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
+import React from 'react';
 import Blogs from '../../../../../components/shared/Blogs';
-import BlogsQuery from '../../../../../models/BlogsQuery';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
+import ArrayList from '../../../../../models/Array';
+import Blog from '../../../../../models/Blog';
+import BlogsQuery from '../../../../../models/BlogsQuery';
 import Category from '../../../../../models/Category';
+import DevCMS from '../../../../api/DevCMS';
+import style from './[offset].module.scss';
 
 interface Props {
   blogs: ArrayList<Blog>;
@@ -27,15 +27,15 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
       <Head>
         <title>{`${targetCategory.name} | ${defaultTitle}`}</title>
         <meta
-          property="og:title"
+          property='og:title'
           content={`${targetCategory.name} | ${defaultTitle}`}
         />
         <meta
-          name="twitter:title"
+          name='twitter:title'
           content={`${targetCategory.name}  | ${defaultTitle}`}
         />
       </Head>
-      <div className="padding-block border-bottom">
+      <div className='padding-block border-bottom'>
         <div className={style.tagNameWrapper}>
           <h1>{targetCategory.name}</h1>
         </div>
@@ -55,7 +55,7 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
 const createPath = (
   categories: ArrayList<Category>,
   blogs: ArrayList<Blog>[],
-) => {
+): string[] => {
   return categories.contents.reduce(
     (paths: string[], category: Category, i: number) => {
       const nextPaths = [
@@ -72,7 +72,7 @@ const createPath = (
   );
 };
 
-const getPaths = async (categories: ArrayList<Category>) => {
+const getPaths = async (categories: ArrayList<Category>): Promise<string[]> => {
   const devCMS = new DevCMS();
   const res: Promise<ArrayList<Blog>>[] = [];
   categories.contents.forEach((category) => {

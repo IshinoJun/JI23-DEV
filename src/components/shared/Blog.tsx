@@ -1,33 +1,33 @@
-import Image from 'next/image';
-import * as React from 'react';
 import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
-import scss from 'highlight.js/lib/languages/scss';
 import java from 'highlight.js/lib/languages/java';
-import xml from 'highlight.js/lib/languages/xml';
+import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
-import { useEffect } from 'react';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+import 'highlight.js/styles/vs2015.css';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import * as React from 'react';
+import { useEffect } from 'react';
 import Blog from '../../models/Blog';
-import style from './Blog.module.scss';
-import Tags from './Tags';
-import BlogDate from './BlogDate';
-import BlogBreadcrumbs from './BlogBreadcrumbs';
 import Category from '../../models/Category';
 import Tag from '../../models/Tag';
+import style from './Blog.module.scss';
+import BlogBreadcrumbs from './BlogBreadcrumbs';
 import BlogCategory from './BlogCategory';
+import BlogDate from './BlogDate';
 import BlogShare from './BlogShare';
-import TwitterFollowButton from './TwitterFollowButton';
 import BlogTopArticleList from './BlogTopArticleList';
-import 'highlight.js/styles/vs2015.css';
+import Tags from './Tags';
+import TwitterFollowButton from './TwitterFollowButton';
 
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('java', java);
-hljs.registerLanguage('scss', scss);
-hljs.registerLanguage('xml', xml);
-hljs.registerLanguage('json', json);
+hljs.registerLanguage('javascript', javascript as unknown as LanguageFn);
+hljs.registerLanguage('typescript', typescript as unknown as LanguageFn);
+hljs.registerLanguage('java', java as unknown as LanguageFn);
+hljs.registerLanguage('scss', scss as unknown as LanguageFn);
+hljs.registerLanguage('xml', xml as unknown as LanguageFn);
+hljs.registerLanguage('json', json as unknown as LanguageFn);
 
 interface Props {
   blog: Blog;
@@ -43,7 +43,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     hljs.initHighlighting();
     // hljsの闇
-    ((hljs.initHighlighting as unknown) as { called: boolean }).called = false;
+    (hljs.initHighlighting as unknown as { called: boolean }).called = false;
   }, [router]);
 
   return (
@@ -55,7 +55,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
               src={blog.blogImage.url}
               width={blog.blogImage.width}
               height={blog.blogImage.height}
-              alt="ブログトップ画像"
+              alt='ブログトップ画像'
             />
           </figure>
         </div>
@@ -63,7 +63,7 @@ const BlogComponent: React.FC<Props> = (props: Props) => {
           <BlogDate blog={blog} />
           <h1>{blog.title}</h1>
           <BlogCategory category={blog.category} doLink />
-          <Tags tags={blog.tags} tagsPosition="left" doLink />
+          <Tags tags={blog.tags} tagsPosition='left' doLink />
           <div
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: blog.content }}

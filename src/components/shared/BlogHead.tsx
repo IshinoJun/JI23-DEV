@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { htmlToText } from 'html-to-text';
 import Head from 'next/head';
-import { fromString } from 'html-to-text';
+import * as React from 'react';
 import Blog from '../../models/Blog';
 
 interface Props {
@@ -12,7 +12,7 @@ const BlogHead: React.FC<Props> = (props: Props) => {
   const defaultTitle = 'JI23-DEV';
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
-  const getDescription = (description: string) => {
+  const getDescription = (description: string): string => {
     const body = description.trim().replace(/[ \r\n]/g, '');
     if (body.length < 140) {
       return body;
@@ -21,22 +21,22 @@ const BlogHead: React.FC<Props> = (props: Props) => {
     return `${body.substring(0, 140)}...`;
   };
 
-  const description = getDescription(fromString(blog.content));
+  const description = getDescription(htmlToText(blog.content));
 
   return blog.id ? (
     <Head>
       <title>{`${blog.title} | ${defaultTitle}`}</title>
-      <meta name="description" content={description} />
-      <meta property="og:title" content={`${blog.title} | ${defaultTitle}`} />
-      <meta property="og:description" content={description} />
+      <meta name='description' content={description} />
+      <meta property='og:title' content={`${blog.title} | ${defaultTitle}`} />
+      <meta property='og:description' content={description} />
       <meta
-        property="og:image"
+        property='og:image'
         content={`${baseUrl}/api/blogs/${blog.id}/ogp`}
       />
-      <meta name="twitter:title" content={`${blog.title} | ${defaultTitle}`} />
-      <meta name="twitter:description" content={description} />
+      <meta name='twitter:title' content={`${blog.title} | ${defaultTitle}`} />
+      <meta name='twitter:description' content={description} />
       <meta
-        name="twitter:image"
+        name='twitter:image'
         content={`${baseUrl}/api/blogs/${blog.id}/ogp`}
       />
     </Head>

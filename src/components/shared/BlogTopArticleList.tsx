@@ -1,11 +1,11 @@
 import { Card } from '@material-ui/core';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
 import Blog from '../../models/Blog';
+import { pagesPath } from '../../utils/$path';
 import BlogDate from './BlogDate';
 import style from './BlogTopArticleList.module.scss';
-import { pagesPath } from '../../utils/$path';
 
 interface Props {
   topArticleBlogs: Blog[];
@@ -17,11 +17,11 @@ const BlogTopArticleList: React.FC<Props> = (props) => {
   return (
     <div className={style.topBlogArea}>
       <div className={style.title}>
-        <Image src="/ranking.svg" height={35} width={35} />
+        <Image src='/ranking.svg' height={35} width={35} alt='RANKING' />
         <p>RANKING</p>
       </div>
       {topArticleBlogs.map((topBlog, index) => (
-        <Card variant="outlined" className={style.list} key={topBlog.id}>
+        <Card variant='outlined' className={style.list} key={topBlog.id}>
           <Link href={pagesPath.blogs._id(topBlog.id).$url()}>
             <a>
               <div className={style.rank}>{index + 1}</div>

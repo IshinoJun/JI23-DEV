@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { ServerStyleSheets } from '@material-ui/core';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 import { GA_ID } from '../lib/gtag';
 
 class CustomDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="ja-JP">
-        <Head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+      <Html lang='ja-JP'>
+        <Head prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#'>
           {/* Google Analytics */}
           {GA_ID && (
             <>
@@ -30,11 +31,11 @@ class CustomDocument extends Document {
             </>
           )}
           <meta
-            name="google-site-verification"
+            name='google-site-verification'
             content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_ID}
           />
-          <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
-          <link rel="icon" type="image/png" href="/icon.png" sizes="192x192" />
+          <link rel='apple-touch-icon' sizes='180x180' href='/icon.png' />
+          <link rel='icon' type='image/png' href='/icon.png' sizes='192x192' />
         </Head>
         <body>
           <Main />
@@ -61,7 +62,7 @@ CustomDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
-      <React.Fragment key="styles">
+      <React.Fragment key='styles'>
         {initialProps.styles}
         {sheets.getStyleElement()}
       </React.Fragment>,

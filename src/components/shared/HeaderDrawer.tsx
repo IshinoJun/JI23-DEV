@@ -1,5 +1,3 @@
-import React from 'react';
-import Link from 'next/link';
 import {
   Divider,
   Drawer,
@@ -12,9 +10,10 @@ import {
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
-import style from './HeaderDrawer.module.scss';
+import Link from 'next/link';
+import React from 'react';
 import GlobalNav from '../../models/GlobalNav';
+import style from './HeaderDrawer.module.scss';
 
 const drawerWidth = 240;
 
@@ -53,7 +52,7 @@ const HeaderDrawer: React.FC<Props> = (props) => {
   return (
     <Drawer
       className={classes.drawer}
-      anchor="right"
+      anchor='right'
       open={isOpen}
       onClose={onClickDrawer}
       classes={{
@@ -61,7 +60,7 @@ const HeaderDrawer: React.FC<Props> = (props) => {
       }}
     >
       <div className={classes.drawerHeader}>
-        <IconButton onClick={onClickDrawer} aria-label="ChevronIcon">
+        <IconButton onClick={onClickDrawer} aria-label='ChevronIcon'>
           {theme.direction === 'rtl' ? (
             <ChevronLeftIcon />
           ) : (
@@ -74,9 +73,10 @@ const HeaderDrawer: React.FC<Props> = (props) => {
         {globalNav.map((nav) => (
           <ListItem button key={nav.title} onClick={onClickDrawer}>
             <div className={style.icon}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={nav.imgProps.src} alt={nav.imgProps.alt} />
             </div>
-            <Link href={nav.linkProps.href}>
+            <Link href={nav.linkProps.href} passHref>
               <ListItemText primary={nav.title} className={classes.title} />
             </Link>
           </ListItem>

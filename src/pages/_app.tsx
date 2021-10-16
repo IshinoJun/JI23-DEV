@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
-import 'ress';
-import '../../styles.scss';
+import Head from 'next/head';
+import { Router, useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { Router, useRouter } from 'next/router';
-import Head from 'next/head';
-import * as gtag from '../lib/gtag';
-import theme from '../components/theme';
+import React, { useEffect, useState } from 'react';
+import 'ress';
+import '../../styles.scss';
 import Layout from '../components/shared/Layout';
-import useRouterScroll from '../hooks/useRouterScroll';
+import theme from '../components/theme';
 import SearchContext from '../context/searchContext';
+import useRouterScroll from '../hooks/useRouterScroll';
+import * as gtag from '../lib/gtag';
 import BlogsQuery from '../models/BlogsQuery';
 
 // Binding events.
@@ -19,8 +19,7 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const MyApp = (props: AppProps): JSX.Element => {
-  const { Component, pageProps } = props;
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useRouterScroll();
 
   const [search, setSearch] = useState<string>('');
@@ -34,13 +33,13 @@ const MyApp = (props: AppProps): JSX.Element => {
     }
 
     if (gtag.GA_ID) {
-      const handleRouteChange = (path: string) => {
+      const handleRouteChange = (path: string): void => {
         gtag.pageView(path);
       };
 
       Router.events.on('routeChangeComplete', handleRouteChange);
 
-      return () => {
+      return (): void => {
         Router.events.off('routeChangeComplete', handleRouteChange);
       };
     }
@@ -61,10 +60,10 @@ const MyApp = (props: AppProps): JSX.Element => {
     <>
       <Head>
         <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css"
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css'
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <ThemeProvider theme={theme}>
         <SearchContext.Provider value={{ search, setSearch }}>

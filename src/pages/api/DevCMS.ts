@@ -1,32 +1,32 @@
 import Axios, {
-  CancelTokenSource,
-  AxiosRequestConfig,
   AxiosPromise,
+  AxiosRequestConfig,
+  CancelTokenSource,
 } from 'axios';
-import Profile from '../../models/Profile';
+import ArrayList from '../../models/Array';
+import Blog from '../../models/Blog';
+import BlogsQuery from '../../models/BlogsQuery';
+import Category from '../../models/Category';
 import Contact from '../../models/Contact';
 import Portfolio from '../../models/Portfolio';
-import ArrayList from '../../models/Array';
+import Profile from '../../models/Profile';
 import SNS from '../../models/SNS';
-import Blog from '../../models/Blog';
 import Tag from '../../models/Tag';
-import BlogsQuery from '../../models/BlogsQuery';
 import { generateBlogsUrl } from '../../utils/GenerateUtils';
-import Category from '../../models/Category';
 
 class DevCMS {
   private axios = Axios.create({
     baseURL: process.env.END_POINT,
     headers: {
       'Content-Type': 'application/json',
-      'X-API-KEY': process.env.API_KEY,
-      'X-WRITE-API-KEY': process.env.WRITE_API_KEY,
+      'X-API-KEY': process.env.API_KEY ?? '',
+      'X-WRITE-API-KEY': process.env.WRITE_API_KEY ?? '',
     },
   });
 
   private cancelTokenSource: CancelTokenSource | null = null;
 
-  private resolveConfig = () => {
+  private resolveConfig = (): AxiosRequestConfig => {
     if (!this.cancelTokenSource)
       this.cancelTokenSource = Axios.CancelToken.source();
 
@@ -37,7 +37,7 @@ class DevCMS {
     return config;
   };
 
-  private resolvePromise = <T>(promise: AxiosPromise<T>) => {
+  private resolvePromise = <T>(promise: AxiosPromise<T>): Promise<T> => {
     return new Promise<T>((resolve, reject) => {
       promise
         .then((response) => {
@@ -57,25 +57,25 @@ class DevCMS {
     });
   };
 
-  private get<T>(url: string) {
+  private get<T>(url: string): Promise<T> {
     return this.resolvePromise(this.axios.get<T>(url, this.resolveConfig()));
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  private post<T>(url: string, data?: object) {
+  private post<T>(url: string, data?: object): Promise<T> {
     return this.resolvePromise(
       this.axios.post<T>(url, data, this.resolveConfig()),
     );
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  private put<T>(url: string, data?: object) {
+  private put<T>(url: string, data?: object): Promise<T> {
     return this.resolvePromise(
       this.axios.put<T>(url, data, this.resolveConfig()),
     );
   }
 
-  private delete<T>(url: string) {
+  private delete<T>(url: string): Promise<T> {
     return this.resolvePromise<T>(this.axios.delete(url, this.resolveConfig()));
   }
 

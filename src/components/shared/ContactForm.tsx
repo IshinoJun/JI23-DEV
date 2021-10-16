@@ -1,11 +1,12 @@
-import { Grid, TextField, Button } from '@material-ui/core';
-import * as Yup from 'yup';
-import { useForm, Controller } from 'react-hook-form';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Grid, TextField } from '@material-ui/core';
 import * as React from 'react';
-import style from './ContactForm.module.scss';
+import { Controller, useForm } from 'react-hook-form';
+import * as Yup from 'yup';
 import Contact from '../../models/Contact';
 import SNS from '../../models/SNS';
+import style from './ContactForm.module.scss';
 
 interface Props {
   sns: SNS;
@@ -37,52 +38,52 @@ const ContactForm: React.FC<Props> = (props: Props) => {
       <div className={style.message}>
         <p>
           お問い合わせがある場合は、
-          <a href={sns.twitterUrl} target="_blank" rel="noreferrer">
+          <a href={sns.twitterUrl} target='_blank' rel='noreferrer'>
             Twitter
           </a>
           でDMして頂くか、下記のフォームからご連絡ください。
         </p>
       </div>
       <Grid container spacing={2}>
-        <input type="text" name="_gotcha" style={{ display: 'none' }} />
+        <input type='text' name='_gotcha' style={{ display: 'none' }} />
         <Grid item xs={12}>
           <Controller
-            render={({ field }) => (
+            render={({ field }): JSX.Element => (
               <TextField
                 {...field}
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="name"
-                label="お名前"
-                name="name"
-                autoComplete="name"
-                defaultValue=""
+                id='name'
+                label='お名前'
+                name='name'
+                autoComplete='name'
+                defaultValue=''
                 error={!!errors.name?.message}
               />
             )}
-            name="name"
+            name='name'
             control={control}
           />
           {errors.name && <p className={style.error}>{errors.name.message}</p>}
         </Grid>
         <Grid item xs={12}>
           <Controller
-            render={({ field }) => (
+            render={({ field }): JSX.Element => (
               <TextField
                 {...field}
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
-                label="メールアドレス"
-                name="email"
-                autoComplete="email"
-                defaultValue=""
+                id='email'
+                label='メールアドレス'
+                name='email'
+                autoComplete='email'
+                defaultValue=''
                 error={!!errors.email?.message}
               />
             )}
-            name="email"
+            name='email'
             control={control}
           />
           {errors.email && (
@@ -91,33 +92,33 @@ const ContactForm: React.FC<Props> = (props: Props) => {
         </Grid>
         <Grid item xs={12}>
           <Controller
-            render={({ field }) => (
+            render={({ field }): JSX.Element => (
               <TextField
                 {...field}
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
                 multiline
                 rows={6}
-                name="body"
-                label="内容"
-                id="body"
-                autoComplete="body"
-                defaultValue=""
+                name='body'
+                label='内容'
+                id='body'
+                autoComplete='body'
+                defaultValue=''
                 error={!!errors.body?.message}
               />
             )}
             control={control}
-            name="body"
+            name='body'
           />
           {errors.body && <p className={style.error}>{errors.body.message}</p>}
         </Grid>
       </Grid>
       <Button
-        type="submit"
-        variant="contained"
+        type='submit'
+        variant='contained'
         className={style.send}
-        aria-label="送信"
+        aria-label='送信'
       >
         送信
       </Button>

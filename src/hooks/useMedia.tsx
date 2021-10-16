@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const size = {
   tab: 768,
@@ -6,7 +6,7 @@ const size = {
   pc: 1200,
 } as const;
 
-const isMediaWindowSize = (key: keyof typeof size) => {
+const isMediaWindowSize = (key: keyof typeof size): boolean => {
   if (typeof window !== 'undefined') {
     if (window.matchMedia(`(min-width: ${size[key]}px)`).matches) {
       return true;
@@ -26,7 +26,7 @@ const useMedia = (key: keyof typeof size): boolean => {
   useEffect(() => {
     window.addEventListener('resize', resizeEvent);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('resize', resizeEvent);
     };
   }, [resizeEvent]);

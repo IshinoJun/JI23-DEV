@@ -1,6 +1,6 @@
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
 
-const handleResponse = <T>(res: Response) => {
+const handleResponse = <T>(res: Response): Promise<T> => {
   return res.text().then((text) => {
     const data: T = JSON.parse(text) as T;
 
