@@ -7,7 +7,7 @@ import 'nprogress/nprogress.css';
 import React, { useEffect, useState } from 'react';
 import 'ress';
 import '../../styles.scss';
-import { Layout } from '../components';
+import { Layout } from '../components/common/layout/Layout';
 import { SearchContext } from '../context';
 import { useRouterScroll } from '../hooks';
 import * as gtag from '../lib/gtag';

@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import Sticky from 'react-stickynode';
-import { BlogCategoryList, BlogContents, BlogProfile } from '.';
-import { SearchInput } from '../..';
 import { useMedia } from '../../../hooks';
 import { Blog, Category, List } from '../../../models';
+import { SearchInput } from '../../common/input/SearchInput';
+import { BlogCategoryList } from './BlogCategoryList';
+import { BlogContents } from './BlogContents';
+import { BlogProfile } from './BlogProfile';
 import style from './BlogSideContents.module.scss';
 
 interface Props {

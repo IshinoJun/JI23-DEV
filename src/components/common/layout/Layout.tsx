@@ -2,8 +2,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Footer, Header, JI23Head, TopScrollButton } from '../../../components';
 import { pagesPath } from '../../../utils/$path';
+import { TopScrollButton } from '../button/TopScrollButton';
+import { Footer } from '../footer/Footer';
+import { JI23Head } from '../head/JI23Head';
+import { Header } from '../header/Header';
 import style from './Layout.module.scss';
 
 interface Props {

@@ -10,16 +10,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useEffect } from 'react';
-import {
-  BlogBreadcrumbs,
-  BlogCategory,
-  BlogDate,
-  BlogShare,
-  BlogTopArticleList,
-} from '.';
-import { Tags, TwitterFollowButton } from '../..';
 import { Blog, Category, Tag } from '../../../models';
+import { TwitterFollowButton } from '../../common/button/TwitterFollowButton';
+import { Tags } from '../../common/tag/Tags';
 import style from './Blog.module.scss';
+import { BlogBreadcrumbs } from './BlogBreadcrumbs';
+import { BlogCategory } from './BlogCategory';
+import { BlogDate } from './BlogDate';
+import { BlogShare } from './BlogShare';
+import { BlogTopArticleList } from './BlogTopArticleList';
 
 hljs.registerLanguage('javascript', javascript as unknown as LanguageFn);
 hljs.registerLanguage('typescript', typescript as unknown as LanguageFn);

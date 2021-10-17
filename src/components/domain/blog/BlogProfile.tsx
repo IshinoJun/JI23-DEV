@@ -1,7 +1,7 @@
 import { Avatar } from '@material-ui/core';
 import * as React from 'react';
-import { IconButton } from '../..';
 import { IconButtonType } from '../../../enums';
+import { IconButton } from '../../common/button/IconButton';
 import style from './BlogProfile.module.scss';
 
 export const BlogProfile: React.FC = () => {

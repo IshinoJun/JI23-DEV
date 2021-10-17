@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useCallback } from 'react';
-import { BlogBreadcrumbs, BlogCategory, BlogDate } from '.';
-import { Tags } from '../..';
 import { Blog, Category, List, Tag } from '../../../models';
 import { pagesPath } from '../../../utils/$path';
+import { Tags } from '../../common/tag/Tags';
+import { BlogBreadcrumbs } from './BlogBreadcrumbs';
+import { BlogCategory } from './BlogCategory';
+import { BlogDate } from './BlogDate';
 import style from './Blogs.module.scss';
 
 interface Props {

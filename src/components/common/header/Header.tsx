@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Sticky from 'react-stickynode';
-import { HeaderDrawer } from '../../../components';
 import { useMedia } from '../../../hooks';
 import { GlobalNav } from '../../../models';
 import { pagesPath } from '../../../utils/$path';
 import style from './Header.module.scss';
+import { HeaderDrawer } from './HeaderDrawer';
 
 interface Props {
   isOpen: boolean;
