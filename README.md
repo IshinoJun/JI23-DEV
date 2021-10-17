@@ -1,6 +1,6 @@
 # JI23-DEV
 
-JI23-DEVのブログ兼ポートフォリオサイトです。
+JI23-DEV のブログ兼ポートフォリオサイトです。
 
 ## 機能
 
@@ -13,12 +13,12 @@ JI23-DEVのブログ兼ポートフォリオサイトです。
 
 ## 構成
 
-- React / Next.js / TypeScript / Vercel / microCMSでJAMstackなCMS構築
-- UIライブラリはMaterial UI
+- React / Next.js / TypeScript / Vercel / microCMS で JAMstack な CMS 構築
+- UI ライブラリは Material UI
 
 ## ビルド環境
 
-- [Node.JS](https://nodejs.org) >= 12.18.0
+- [Node.JS](https://nodejs.org) >= 14.17.5
 - [Yarn](https://yarnpkg.com) >= 1.16.0
 
 ## スクリプト
@@ -32,7 +32,6 @@ JI23-DEVのブログ兼ポートフォリオサイトです。
 ### build
 
 本番環境用のファイルをビルドします。
-
 
 ## 作者
 
