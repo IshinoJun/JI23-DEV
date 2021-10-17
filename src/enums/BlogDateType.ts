@@ -1,6 +1,4 @@
-enum BlogDateType {
+export enum BlogDateType {
   create = 'CREATE',
   Update = 'Update',
 }
-
-export default BlogDateType;

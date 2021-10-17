@@ -12,7 +12,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Link from 'next/link';
 import React from 'react';
-import GlobalNav from '../../models/GlobalNav';
+import { GlobalNav } from '../../models';
 import style from './HeaderDrawer.module.scss';
 
 const drawerWidth = 240;

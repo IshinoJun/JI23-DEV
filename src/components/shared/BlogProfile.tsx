@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Avatar } from '@material-ui/core';
-import IconButtonType from '../../enums/IconButtonType';
+import * as React from 'react';
+import { IconButtonType } from '../../enums';
 import style from './BlogProfile.module.scss';
 import IconButton from './IconButton';
 
@@ -10,8 +10,8 @@ const BlogProfile: React.FC = () => {
       <div className={style.nameArea}>
         <Avatar
           className={style.icon}
-          src="/myIcon.png"
-          alt="カバのロボットのロゴ画像"
+          src='/myIcon.png'
+          alt='カバのロボットのロゴ画像'
         />
         <h2>Jun Ishino</h2>
       </div>
@@ -22,18 +22,18 @@ const BlogProfile: React.FC = () => {
         <div className={style.linkArea}>
           <IconButton
             iconButtonType={IconButtonType.twitter}
-            href="https://twitter.com/JJ_1123_I"
-            ariaLabel="twitterのリンク"
+            href='https://twitter.com/JJ_1123_I'
+            ariaLabel='twitterのリンク'
           />
           <IconButton
             iconButtonType={IconButtonType.gitHub}
-            href="https://github.com/IshinoJun"
-            ariaLabel="gitHubのリンク"
+            href='https://github.com/IshinoJun'
+            ariaLabel='gitHubのリンク'
           />
           <IconButton
             iconButtonType={IconButtonType.zenn}
-            href="https://zenn.dev/jun1123"
-            ariaLabel="zennのリンク"
+            href='https://zenn.dev/jun1123'
+            ariaLabel='zennのリンク'
           />
         </div>
       </div>

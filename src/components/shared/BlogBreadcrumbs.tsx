@@ -2,14 +2,12 @@ import {
   Breadcrumbs as MaterialBreadcrumbs,
   Typography,
 } from '@material-ui/core';
-import * as React from 'react';
-import Link from 'next/link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Category from '../../models/Category';
-import Blog from '../../models/Blog';
-import Tag from '../../models/Tag';
-import style from './BlogBreadcrumbs.module.scss';
+import Link from 'next/link';
+import * as React from 'react';
+import { Blog, Category, Tag } from '../../models';
 import { pagesPath } from '../../utils/$path';
+import style from './BlogBreadcrumbs.module.scss';
 
 interface Props {
   blog?: Blog;
@@ -24,8 +22,8 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
   return (
     <div className={style.wrapper}>
       <MaterialBreadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        aria-label="breadcrumb"
+        separator={<NavigateNextIcon fontSize='small' />}
+        aria-label='breadcrumb'
       >
         <Link href={pagesPath.$url()}>ホーム</Link>
         <Link href={pagesPath.blogs.$url()}>ブログ一覧</Link>
@@ -44,7 +42,7 @@ const BlogBreadcrumbs: React.FC<Props> = (props) => {
             {category.name}
           </Link>
         )}
-        {keyword && <Typography color="textPrimary">{keyword}</Typography>}
+        {keyword && <Typography color='textPrimary'>{keyword}</Typography>}
         {blog && (
           <Link
             href={pagesPath.blogs.categories

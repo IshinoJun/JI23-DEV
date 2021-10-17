@@ -1,17 +1,15 @@
 import React, { useRef } from 'react';
 import Sticky from 'react-stickynode';
-import ArrayList from '../../models/Array';
-import BlogContents from './BlogContents';
-import SearchInput from './SearchInput';
-import style from './BlogSideContents.module.scss';
-import Blog from '../../models/Blog';
+import { useMedia } from '../../hooks';
+import { Blog, Category, List } from '../../models';
 import BlogCategoryList from './BlogCategoryList';
-import Category from '../../models/Category';
+import BlogContents from './BlogContents';
 import BlogProfile from './BlogProfile';
-import useMedia from '../../hooks/useMedia';
+import style from './BlogSideContents.module.scss';
+import SearchInput from './SearchInput';
 
 interface Props {
-  categories: ArrayList<Category>;
+  categories: List<Category>;
   contents?: HTMLHeadingElement[];
   blog?: Blog;
 }

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const useRouterScroll = (): void => {
+export const useRouterScroll = (): void => {
   const router = useRouter();
   useEffect(() => {
     const handler = (): void => {
@@ -14,5 +14,3 @@ const useRouterScroll = (): void => {
     };
   });
 };
-
-export default useRouterScroll;

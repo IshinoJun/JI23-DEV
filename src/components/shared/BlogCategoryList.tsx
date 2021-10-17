@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
-import ArrayList from '../../models/Array';
-import Category from '../../models/Category';
+import { Category, List } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import style from './BlogCategoryList.module.scss';
 
 interface Props {
-  categories: ArrayList<Category>;
+  categories: List<Category>;
 }
 
 const BlogCategoryList: React.FC<Props> = (props) => {

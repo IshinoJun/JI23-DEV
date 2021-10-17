@@ -3,14 +3,13 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
-import DevCMS from '../../clients/DevCMS';
-import ArrayList from '../../models/Array';
-import Category from '../../models/Category';
+import { DevCMS } from '../../clients';
+import { Category, List } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import style from './sitemap.module.scss';
 
 interface Props {
-  categories: ArrayList<Category>;
+  categories: List<Category>;
 }
 
 const BlogSitemapPage: NextPage<Props> = (props) => {

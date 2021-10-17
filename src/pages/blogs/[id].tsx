@@ -4,22 +4,19 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import DevCMS from '../../clients/DevCMS';
+import { DevCMS } from '../../clients';
 import BlogComponent from '../../components/shared/Blog';
 import BlogHead from '../../components/shared/BlogHead';
 import BlogSideContents from '../../components/shared/BlogSideContents';
-import ArrayList from '../../models/Array';
-import Blog from '../../models/Blog';
-import Category from '../../models/Category';
-import { getTopArticlePaths } from '../../utils/server/analyisUtils';
-import { isPreviewData } from '../../utils/TypeGuardUtils';
+import { Blog, Category, List } from '../../models';
+import { getTopArticlePaths, isPreviewData } from '../../utils';
 import Error from '../_error';
 import style from './id.module.scss';
 
 interface Props {
   blog: Blog | null;
   errors?: string;
-  categories: ArrayList<Category>;
+  categories: List<Category>;
   topArticleBlogs: Blog[];
 }
 

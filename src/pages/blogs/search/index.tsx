@@ -4,26 +4,23 @@ import { isEmpty } from 'lodash';
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import DevCMS from '../../../clients/DevCMS';
+import { DevCMS } from '../../../clients';
 import Blogs from '../../../components/shared/Blogs';
 import BlogSideContents from '../../../components/shared/BlogSideContents';
-import useLoading from '../../../hooks/useLoading';
-import ArrayList from '../../../models/Array';
-import Blog from '../../../models/Blog';
-import BlogsQuery from '../../../models/BlogsQuery';
-import Category from '../../../models/Category';
+import { useLoading } from '../../../hooks';
+import { Blog, BlogsQuery, Category, List } from '../../../models';
 import fetchWrapper from '../../../utils/FetchUtils';
 import style from './index.module.scss';
 
 interface Props {
-  categories: ArrayList<Category>;
+  categories: List<Category>;
 }
 
 const BlogsSearchPage: NextPage<Props> = (props: Props) => {
   const { categories } = props;
   const [blogsQuery, setBlogsQuery] = useState<BlogsQuery | null>(null);
 
-  const [blogs, setBlogs] = useState<ArrayList<Blog> | null>(null);
+  const [blogs, setBlogs] = useState<List<Blog> | null>(null);
   const router = useRouter();
   const { isLoading, doHidden, doLoading } = useLoading(false);
 
@@ -38,7 +35,7 @@ const BlogsSearchPage: NextPage<Props> = (props: Props) => {
       doLoading();
       void (async (): Promise<void> => {
         try {
-          const res = await fetchWrapper.post<ArrayList<Blog>>(
+          const res = await fetchWrapper.post<List<Blog>>(
             `/api/blogs`,
             blogsQuery,
           );

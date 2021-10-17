@@ -2,17 +2,16 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
-import DevCMS from '../../clients/DevCMS';
+import { DevCMS } from '../../clients';
 import IconButton from '../../components/shared/IconButton';
 import Tags from '../../components/shared/Tags';
-import IconButtonType from '../../enums/IconButtonType';
-import ArrayList from '../../models/Array';
-import Portfolio from '../../models/Portfolio';
+import { IconButtonType } from '../../enums';
+import { List, Portfolio } from '../../models';
 import { formatEndMonth } from '../../utils/FormatUtils';
 import style from './index.module.scss';
 
 interface Props {
-  portfolioAry: ArrayList<Portfolio>;
+  portfolioAry: List<Portfolio>;
 }
 
 const PortfolioIndex: NextPage<Props> = (props: Props) => {

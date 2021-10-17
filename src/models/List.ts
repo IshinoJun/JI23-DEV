@@ -1,8 +1,6 @@
-interface ArrayList<T> {
+export interface List<T> {
   contents: T[];
   offset: number;
   limit: number;
   totalCount: number;
 }
-
-export default ArrayList;

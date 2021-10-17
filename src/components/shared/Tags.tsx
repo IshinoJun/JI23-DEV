@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import Tag from '../../models/Tag';
+import { Tag } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import style from './Tags.module.scss';
 

@@ -2,8 +2,8 @@ import { Button } from '@material-ui/core';
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
-import DevCMS from '../../../clients/DevCMS';
-import SNS from '../../../models/SNS';
+import { DevCMS } from '../../../clients';
+import { SNS } from '../../../models';
 import { pagesPath } from '../../../utils/$path';
 import style from './index.module.scss';
 

@@ -3,20 +3,16 @@ import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import DevCMS from '../../../../../clients/DevCMS';
+import { DevCMS } from '../../../../../clients';
 import Blogs from '../../../../../components/shared/Blogs';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
-import ArrayList from '../../../../../models/Array';
-import Blog from '../../../../../models/Blog';
-import BlogsQuery from '../../../../../models/BlogsQuery';
-import Category from '../../../../../models/Category';
-import Tag from '../../../../../models/Tag';
+import { Blog, BlogsQuery, Category, List, Tag } from '../../../../../models';
 import style from './[offset].module.scss';
 
 interface Props {
-  blogs: ArrayList<Blog>;
+  blogs: List<Blog>;
   targetTag: Tag;
-  categories: ArrayList<Category>;
+  categories: List<Category>;
 }
 
 const TagBlogsPage: NextPage<Props> = (props: Props) => {
@@ -53,10 +49,7 @@ const TagBlogsPage: NextPage<Props> = (props: Props) => {
   );
 };
 
-const createPath = (
-  tags: ArrayList<Tag>,
-  blogs: ArrayList<Blog>[],
-): string[] => {
+const createPath = (tags: List<Tag>, blogs: List<Blog>[]): string[] => {
   return tags.contents.reduce((paths: string[], tag: Tag, i: number) => {
     const nextPaths = [
       ...Array(Math.ceil(blogs[i].totalCount / blogs[i].limit)),
@@ -68,9 +61,9 @@ const createPath = (
   }, []);
 };
 
-const getPaths = async (tags: ArrayList<Tag>): Promise<string[]> => {
+const getPaths = async (tags: List<Tag>): Promise<string[]> => {
   const devCMS = new DevCMS();
-  const res: Promise<ArrayList<Blog>>[] = [];
+  const res: Promise<List<Blog>>[] = [];
   tags.contents.forEach((tag) => {
     const query: BlogsQuery = { tagId: tag.id, limit: '3', offset: '0' };
     const blogs = devCMS.getBlogs(query);

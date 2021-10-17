@@ -2,7 +2,7 @@ import { Card } from '@material-ui/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Blog from '../../models/Blog';
+import { Blog } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import BlogDate from './BlogDate';
 import style from './BlogTopArticleList.module.scss';

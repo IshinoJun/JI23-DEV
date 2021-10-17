@@ -1,12 +1,12 @@
-import React, { useCallback, useContext } from 'react';
 import { IconButton, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useRouter } from 'next/router';
+import React, { useCallback } from 'react';
+import { useSearch } from '../../hooks';
 import style from './SearchInput.module.scss';
-import SearchContext from '../../context/searchContext';
 
 const SearchInput: React.FC = () => {
-  const { search, setSearch } = useContext(SearchContext);
+  const { search, setSearch } = useSearch();
   const router = useRouter();
 
   const handleChangeKeyword = useCallback(
@@ -33,7 +33,7 @@ const SearchInput: React.FC = () => {
   return (
     <div className={style.search}>
       <InputBase
-        placeholder="Search…"
+        placeholder='Search…'
         inputProps={{ 'aria-label': 'search' }}
         className={style.searchInput}
         value={search}
@@ -43,7 +43,7 @@ const SearchInput: React.FC = () => {
       <IconButton
         className={style.searchIcon}
         onClick={handleClickSearchButton}
-        aria-label="Search"
+        aria-label='Search'
       >
         <SearchIcon />
       </IconButton>

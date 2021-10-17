@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import Blog from '../../models/Blog';
+import { Blog } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import style from './BlogNewList.module.scss';
 

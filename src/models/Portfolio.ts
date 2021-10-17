@@ -1,8 +1,6 @@
-import Model from './Model';
-import CmsImage from './CmsImage';
-import Tag from './Tag';
+import { CmsImage, Model, Tag } from '.';
 
-interface Portfolio extends Model {
+export interface Portfolio extends Model {
   name: string;
   date: string;
   introduction: string;
@@ -11,5 +9,3 @@ interface Portfolio extends Model {
   siteLink: string;
   tags?: Tag[];
 }
-
-export default Portfolio;

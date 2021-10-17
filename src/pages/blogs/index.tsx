@@ -1,19 +1,16 @@
 import classNames from 'classnames';
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import DevCMS from '../../clients/DevCMS';
+import { DevCMS } from '../../clients';
 import Blogs from '../../components/shared/Blogs';
 import BlogSideContents from '../../components/shared/BlogSideContents';
-import ArrayList from '../../models/Array';
-import Blog from '../../models/Blog';
-import BlogsQuery from '../../models/BlogsQuery';
-import Category from '../../models/Category';
+import { Blog, BlogsQuery, Category, List } from '../../models';
 import { isPreviewData } from '../../utils/TypeGuardUtils';
 import style from './index.module.scss';
 
 interface Props {
-  blogs: ArrayList<Blog>;
-  categories: ArrayList<Category>;
+  blogs: List<Blog>;
+  categories: List<Category>;
 }
 
 const BlogsPage: NextPage<Props> = (props: Props) => {

@@ -7,7 +7,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
-import Blog from '../../models/Blog';
+import { Blog } from '../../models';
 import style from './BlogShare.module.scss';
 
 interface Props {

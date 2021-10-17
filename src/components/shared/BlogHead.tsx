@@ -1,7 +1,7 @@
 import { htmlToText } from 'html-to-text';
 import Head from 'next/head';
 import * as React from 'react';
-import Blog from '../../models/Blog';
+import { Blog } from '../../models';
 
 interface Props {
   blog: Blog;

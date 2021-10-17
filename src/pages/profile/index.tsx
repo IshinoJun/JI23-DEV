@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import DevCMS from '../../clients/DevCMS';
-import Profile from '../../models/Profile';
+import { DevCMS } from '../../clients';
+import { Profile } from '../../models';
 import style from './index.module.scss';
 
 interface Props {

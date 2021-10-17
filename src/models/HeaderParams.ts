@@ -1,4 +1,4 @@
-interface HeaderParams {
+export interface HeaderParams {
   title: string;
   subTitle: string;
   imgProps: React.DetailedHTMLProps<
@@ -6,5 +6,3 @@ interface HeaderParams {
     HTMLImageElement
   >;
 }
-
-export default HeaderParams;

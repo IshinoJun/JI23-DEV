@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import DevCMS from '../../clients/DevCMS';
+import { DevCMS } from '../../clients';
 
 const preview = async (
   req: NextApiRequest,

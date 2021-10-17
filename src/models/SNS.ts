@@ -1,9 +1,7 @@
-import Model from './Model';
+import { Model } from '.';
 
-interface SNS extends Model {
+export interface SNS extends Model {
   gitHubUrl: string;
   twitterUrl: string;
   zennUrl: string;
 }
-
-export default SNS;

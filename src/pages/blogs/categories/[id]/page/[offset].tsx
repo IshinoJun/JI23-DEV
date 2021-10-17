@@ -3,19 +3,16 @@ import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import DevCMS from '../../../../../clients/DevCMS';
+import { DevCMS } from '../../../../../clients';
 import Blogs from '../../../../../components/shared/Blogs';
 import BlogSideContents from '../../../../../components/shared/BlogSideContents';
-import ArrayList from '../../../../../models/Array';
-import Blog from '../../../../../models/Blog';
-import BlogsQuery from '../../../../../models/BlogsQuery';
-import Category from '../../../../../models/Category';
+import { Blog, BlogsQuery, Category, List } from '../../../../../models';
 import style from './[offset].module.scss';
 
 interface Props {
-  blogs: ArrayList<Blog>;
+  blogs: List<Blog>;
   targetCategory: Category;
-  categories: ArrayList<Category>;
+  categories: List<Category>;
 }
 
 const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
@@ -53,8 +50,8 @@ const CategoryBlogsPage: NextPage<Props> = (props: Props) => {
 };
 
 const createPath = (
-  categories: ArrayList<Category>,
-  blogs: ArrayList<Blog>[],
+  categories: List<Category>,
+  blogs: List<Blog>[],
 ): string[] => {
   return categories.contents.reduce(
     (paths: string[], category: Category, i: number) => {
@@ -72,9 +69,9 @@ const createPath = (
   );
 };
 
-const getPaths = async (categories: ArrayList<Category>): Promise<string[]> => {
+const getPaths = async (categories: List<Category>): Promise<string[]> => {
   const devCMS = new DevCMS();
-  const res: Promise<ArrayList<Blog>>[] = [];
+  const res: Promise<List<Blog>>[] = [];
   categories.contents.forEach((category) => {
     const query: BlogsQuery = {
       categoryId: category.id,

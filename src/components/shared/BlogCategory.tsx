@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import Category from '../../models/Category';
+import { Category } from '../../models';
 import { pagesPath } from '../../utils/$path';
 import style from './BlogCategory.module.scss';
 

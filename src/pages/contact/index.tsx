@@ -1,10 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
-import DevCMS from '../../clients/DevCMS';
+import { DevCMS } from '../../clients';
 import ContactForm from '../../components/shared/ContactForm';
-import Contact from '../../models/Contact';
-import SNS from '../../models/SNS';
+import { Contact, SNS } from '../../models';
 import fetchWrapper from '../../utils/FetchUtils';
 import style from './index.module.scss';
 

@@ -16,7 +16,7 @@ const isMediaWindowSize = (key: keyof typeof size): boolean => {
   return false;
 };
 
-const useMedia = (key: keyof typeof size): boolean => {
+export const useMedia = (key: keyof typeof size): boolean => {
   const [isMedia, setIsMedia] = useState(isMediaWindowSize(key));
 
   const resizeEvent = useCallback(() => {
@@ -33,5 +33,3 @@ const useMedia = (key: keyof typeof size): boolean => {
 
   return isMedia;
 };
-
-export default useMedia;

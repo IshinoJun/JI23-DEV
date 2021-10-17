@@ -1,7 +1,4 @@
-import Blog from '../models/Blog';
-import BlogsQuery from '../models/BlogsQuery';
-import Contact from '../models/Contact';
-import Tag from '../models/Tag';
+import { Blog, BlogsQuery, Contact, Tag } from '../models';
 
 interface PreviewData {
   draftKey: string;

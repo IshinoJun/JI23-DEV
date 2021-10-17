@@ -8,11 +8,11 @@ import React, { useEffect, useState } from 'react';
 import 'ress';
 import '../../styles.scss';
 import Layout from '../components/shared/Layout';
-import theme from '../components/theme';
-import SearchContext from '../context/searchContext';
-import useRouterScroll from '../hooks/useRouterScroll';
+import { SearchContext } from '../context';
+import { useRouterScroll } from '../hooks';
 import * as gtag from '../lib/gtag';
-import BlogsQuery from '../models/BlogsQuery';
+import theme from '../lib/theme';
+import { BlogsQuery } from '../models';
 
 // Binding events.
 Router.events.on('routeChangeStart', () => NProgress.start());

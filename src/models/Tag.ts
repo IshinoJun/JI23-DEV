@@ -1,8 +1,6 @@
-import Model from './Model';
+import { Model } from '.';
 
-interface Tag extends Model {
+export interface Tag extends Model {
   id: string;
   name: string;
 }
-
-export default Tag;

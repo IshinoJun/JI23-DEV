@@ -1,16 +1,15 @@
-import React from 'react';
-import Link from 'next/link';
 import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-
 import Image from 'next/image';
-import Sticky from 'react-stickynode';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
+import Sticky from 'react-stickynode';
+import { useMedia } from '../../hooks';
+import { GlobalNav } from '../../models';
+import { pagesPath } from '../../utils/$path';
 import style from './Header.module.scss';
 import HeaderDrawer from './HeaderDrawer';
-import useMedia from '../../hooks/useMedia';
-import GlobalNav from '../../models/GlobalNav';
-import { pagesPath } from '../../utils/$path';
 
 interface Props {
   isOpen: boolean;
@@ -69,13 +68,13 @@ const Header: React.FC<Props> = (props) => {
     <>
       <Sticky innerZ={10}>
         <header className={style.head}>
-          <div className="container">
+          <div className='container'>
             <div className={style.row}>
               <Link href={pagesPath.$url()}>
                 <a className={style.link}>
                   <Image
-                    src="/logo.png"
-                    alt="ロゴ画像"
+                    src='/logo.png'
+                    alt='ロゴ画像'
                     width={192}
                     height={48}
                   />
@@ -99,9 +98,9 @@ const Header: React.FC<Props> = (props) => {
                 </nav>
               ) : (
                 <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="end"
+                  color='inherit'
+                  aria-label='open drawer'
+                  edge='end'
                   onClick={onClickDrawer}
                 >
                   <MenuIcon />

@@ -1,4 +1,4 @@
-interface BlogsQuery {
+export interface BlogsQuery {
   tagId?: string;
   categoryId?: string;
   keyword?: string;
@@ -6,5 +6,3 @@ interface BlogsQuery {
   offset?: string;
   ids?: string[];
 }
-
-export default BlogsQuery;

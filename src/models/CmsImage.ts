@@ -1,5 +1,3 @@
-interface CmsImage {
+export interface CmsImage {
   url: string;
 }
-
-export default CmsImage;

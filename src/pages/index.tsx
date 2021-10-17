@@ -1,11 +1,11 @@
 import { Avatar } from '@material-ui/core';
 import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
-import DevCMS from '../clients/DevCMS';
+import { DevCMS } from '../clients';
 import HomeContent from '../components/shared/HomeContent';
 import IconButton from '../components/shared/IconButton';
-import IconButtonType from '../enums/IconButtonType';
-import SNS from '../models/SNS';
+import { IconButtonType } from '../enums';
+import { SNS } from '../models';
 import style from './index.module.scss';
 
 interface Props {

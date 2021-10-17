@@ -4,7 +4,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Image from 'next/image';
 import React from 'react';
-import IconButtonType from '../../enums/IconButtonType';
+import { IconButtonType } from '../../enums';
 import style from './IconButton.module.scss';
 
 interface Props {

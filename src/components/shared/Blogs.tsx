@@ -1,22 +1,19 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import * as React from 'react';
 import { Pagination } from '@material-ui/lab';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import * as React from 'react';
 import { useCallback } from 'react';
-import ArrayList from '../../models/Array';
-import Blog from '../../models/Blog';
+import { Blog, Category, List, Tag } from '../../models';
+import { pagesPath } from '../../utils/$path';
+import BlogBreadcrumbs from './BlogBreadcrumbs';
+import BlogCategory from './BlogCategory';
+import BlogDate from './BlogDate';
 import style from './Blogs.module.scss';
 import Tags from './Tags';
-import BlogDate from './BlogDate';
-import BlogBreadcrumbs from './BlogBreadcrumbs';
-import Category from '../../models/Category';
-import Tag from '../../models/Tag';
-import BlogCategory from './BlogCategory';
-import { pagesPath } from '../../utils/$path';
 
 interface Props {
-  blogs: ArrayList<Blog>;
+  blogs: List<Blog>;
   showPagination?: boolean;
   tag?: Tag;
   category?: Category;
@@ -58,7 +55,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
                   <div className={style.icon}>
                     <Image
                       src={blog.blogImage.url}
-                      alt="ブログ画像"
+                      alt='ブログ画像'
                       width={70}
                       height={70}
                     />
@@ -69,7 +66,7 @@ const Blogs: React.FC<Props> = (props: Props) => {
                       <BlogDate blog={blog} />
                     </div>
                     <BlogCategory category={blog.category} />
-                    <Tags tags={blog.tags} tagsPosition="left" />
+                    <Tags tags={blog.tags} tagsPosition='left' />
                   </div>
                 </a>
               </Link>
@@ -80,9 +77,9 @@ const Blogs: React.FC<Props> = (props: Props) => {
         <div className={style.paginationWrapper}>
           <Pagination
             count={Math.ceil(blogs.totalCount / blogs.limit)}
-            variant="outlined"
-            shape="rounded"
-            color="secondary"
+            variant='outlined'
+            shape='rounded'
+            color='secondary'
             page={offset}
             onChange={handleChangePage}
           />

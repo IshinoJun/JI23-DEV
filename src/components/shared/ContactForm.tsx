@@ -4,8 +4,7 @@ import { Button, Grid, TextField } from '@material-ui/core';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
-import Contact from '../../models/Contact';
-import SNS from '../../models/SNS';
+import { Contact, SNS } from '../../models';
 import style from './ContactForm.module.scss';
 
 interface Props {

@@ -4,7 +4,7 @@ import * as React from 'react';
  * Loadingの状態を管理するカスタムフック
  * @param initValue 初期値
  */
-const useLoading = (
+export const useLoading = (
   initValue: boolean,
 ): {
   isLoading: boolean;
@@ -27,5 +27,3 @@ const useLoading = (
     doHidden,
   };
 };
-
-export default useLoading;

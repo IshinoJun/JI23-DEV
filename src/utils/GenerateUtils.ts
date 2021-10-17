@@ -1,6 +1,5 @@
 import { NextRouter } from 'next/router';
-import BlogsQuery from '../models/BlogsQuery';
-import HeadParams from '../models/HeadParams';
+import { BlogsQuery, HeadParams } from '../models';
 
 const generateHeadParams = (router: NextRouter): HeadParams => {
   const { pathname } = router;

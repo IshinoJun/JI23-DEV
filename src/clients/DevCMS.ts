@@ -3,18 +3,20 @@ import Axios, {
   AxiosRequestConfig,
   CancelTokenSource,
 } from 'axios';
-import ArrayList from '../models/Array';
-import Blog from '../models/Blog';
-import BlogsQuery from '../models/BlogsQuery';
-import Category from '../models/Category';
-import Contact from '../models/Contact';
-import Portfolio from '../models/Portfolio';
-import Profile from '../models/Profile';
-import SNS from '../models/SNS';
-import Tag from '../models/Tag';
+import {
+  Blog,
+  BlogsQuery,
+  Category,
+  Contact,
+  List,
+  Portfolio,
+  Profile,
+  SNS,
+  Tag,
+} from '../models';
 import { generateBlogsUrl } from '../utils/GenerateUtils';
 
-class DevCMS {
+export class DevCMS {
   private axios = Axios.create({
     baseURL: process.env.END_POINT,
     headers: {
@@ -87,8 +89,8 @@ class DevCMS {
     return this.post('contacts', contact);
   }
 
-  public getPortfolio(): Promise<ArrayList<Portfolio>> {
-    return this.get<ArrayList<Portfolio>>('portfolio');
+  public getPortfolio(): Promise<List<Portfolio>> {
+    return this.get<List<Portfolio>>('portfolio');
   }
 
   public getSNS(id = 'guy_hqnt8'): Promise<SNS> {
@@ -99,30 +101,29 @@ class DevCMS {
     return this.get<Blog>(`blogs/${id}`);
   }
 
-  public getBlogs(query?: BlogsQuery): Promise<ArrayList<Blog>> {
+  public getBlogs(query?: BlogsQuery): Promise<List<Blog>> {
     const url = (query && generateBlogsUrl(query)) ?? 'blogs';
 
-    return this.get<ArrayList<Blog>>(url);
+    return this.get<List<Blog>>(url);
   }
 
   public getBlogPreview(id: string, draftKey: string): Promise<Blog> {
     return this.get<Blog>(`blogs/${id}?draftKey=${draftKey}`);
   }
 
-  public getCategories(): Promise<ArrayList<Category>> {
-    return this.get<ArrayList<Category>>(`category`);
+  public getCategories(): Promise<List<Category>> {
+    return this.get<List<Category>>(`category`);
   }
 
   public getCategory(id: string): Promise<Category> {
     return this.get<Category>(`category/${id}`);
   }
 
-  public getTags(): Promise<ArrayList<Tag>> {
-    return this.get<ArrayList<Tag>>(`tag`);
+  public getTags(): Promise<List<Tag>> {
+    return this.get<List<Tag>>(`tag`);
   }
 
   public getTag(id: string): Promise<Tag> {
     return this.get<Tag>(`tag/${id}`);
   }
 }
-export default DevCMS;
