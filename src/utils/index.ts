@@ -1,4 +1,3 @@
-export * from './$path';
 export * from './AnalysisUtils';
 export * from './FetchUtils';
 export * from './FormatUtils';

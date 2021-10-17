@@ -1,0 +1,68 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.content {
+  position: relative;
+  display: inline-block;
+  width: function.em(14, 170);
+  padding-top: function.em(14, 17);
+  padding-bottom: function.em(14, 17);
+  margin-right: function.em(14, 22);
+  margin-bottom: function.em(14, 22);
+  margin-left: function.em(14, 22);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: settings.$color-hight-blue;
+  border-color: settings.$color-gray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+
+  @include mixin.pc {
+    width: function.em(16, 170);
+    height: function.em(16, 170);
+    padding-top: initial;
+    padding-bottom: initial;
+    margin-right: function.em(16, 20);
+    margin-bottom: function.em(16, 20);
+    margin-left: function.em(16, 20);
+  }
+
+  .before {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: function.em(14, 128);
+    overflow: hidden;
+
+    @include mixin.pc {
+      position: relative;
+      z-index: 4;
+      width: function.em(16, 170);
+      height: function.em(16, 170);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+
+  &:hover .before {
+    @include mixin.pc {
+      margin-top: -(function.em(16, 172));
+    }
+  }
+
+  .after {
+    top: 0;
+    display: block;
+    padding-top: function.em(16, 10);
+    text-align: center;
+
+    @include mixin.pc {
+      z-index: 3;
+      width: function.em(21, 170);
+      padding-top: function.em(21, 75);
+      font-size: function.fz(21);
+    }
+  }
+}

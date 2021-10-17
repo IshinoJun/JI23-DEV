@@ -2,8 +2,7 @@ import classnames from 'classnames';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import { DevCMS } from '../../../clients';
-import Blogs from '../../../components/shared/Blogs';
-import BlogSideContents from '../../../components/shared/BlogSideContents';
+import { Blogs, BlogSideContents } from '../../../components';
 import { Blog, BlogsQuery, Category, List } from '../../../models';
 import style from './[offset].module.scss';
 

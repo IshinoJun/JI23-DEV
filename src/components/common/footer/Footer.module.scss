@@ -1,0 +1,62 @@
+@use 'style/mixin';
+@use 'style/function';
+@use 'style/settings';
+
+.footer {
+  padding: function.em(14, 17);
+
+  @include mixin.tab {
+    padding: function.em(16, 17);
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  .footerContent {
+    display: list-item;
+    margin-top: function.em(14, 10);
+    text-align: center;
+
+    @include mixin.tab {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: function.em(16, 10);
+      text-align: inherit;
+    }
+
+    li {
+      padding-bottom: function.em(12, 24);
+      font-size: function.fz(12);
+      white-space: nowrap;
+
+      @include mixin.tab {
+        padding-bottom: 0;
+        font-size: function.fz(14);
+
+        &::after {
+          margin: 0 function.em(12, 24);
+          content: '|';
+
+          @include mixin.tab {
+            margin: 0 function.em(14, 24);
+          }
+        }
+
+        &:last-child::after {
+          margin: 0;
+          content: '';
+        }
+      }
+    }
+  }
+
+  .title {
+    margin-top: function.em(14, 20);
+    font-size: function.fz(14);
+    text-align: center;
+  }
+}
