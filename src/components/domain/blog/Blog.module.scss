@@ -18,9 +18,14 @@
     }
 
     h1 {
-      margin: function.em(24, 3) 0 function.em(24, 12);
-      font-size: function.fz(24);
+      margin: function.em(21, 3) 0 function.em(21, 12);
+      font-size: function.fz(21);
       line-height: 1.5;
+
+      @include mixin.tab {
+        margin: function.em(24, 3) 0 function.em(24, 12);
+        font-size: function.fz(24);
+      }
     }
 
     .content {
