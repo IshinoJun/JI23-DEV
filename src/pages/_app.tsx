@@ -6,6 +6,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import React, { useEffect, useState } from 'react';
 import 'ress';
+import 'scroll-behavior-polyfill';
 import '../../styles.scss';
 import { Layout } from '../components/common/layout/Layout';
 import { SearchContext } from '../context';

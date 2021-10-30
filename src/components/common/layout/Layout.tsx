@@ -22,7 +22,10 @@ export const Layout: React.FC<Props> = (props: Props) => {
   const isTop = router.pathname === '/';
 
   const handleClickScrollTopButton = useCallback((): void => {
-    document.scrollingElement?.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
 
   const handleScroll = useCallback(() => {
