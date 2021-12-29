@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { Button, Grid, TextField } from '@material-ui/core';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
