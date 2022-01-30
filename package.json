@@ -36,7 +36,7 @@
     "@types/sass": "^1.16.1",
     "@types/yup": "^0.29.13",
     "axios": "0.23.0",
-    "canvas": "2.6.1",
+    "canvas": "2.9.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "googleapis": "^88.2.0",
