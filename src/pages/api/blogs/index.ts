@@ -10,12 +10,13 @@ const getSearchBlogs = async (
 
   // クエリのチェック
   if (!isBlogsQuery(req.body)) {
-    return res.status(404).end();
+    res.status(404).end();
+    return;
   }
 
   const blogs = await devCMS.getBlogs(req.body);
-
-  return res.status(200).json(blogs);
+  res.status(200).json(blogs);
+  return;
 };
 
 export default getSearchBlogs;

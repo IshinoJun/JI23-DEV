@@ -48,7 +48,8 @@ const createOgp = async (
 ): Promise<void> => {
   // クエリのチェック
   if (typeof req.query.id !== 'string') {
-    return res.status(404).end();
+    res.status(404).end();
+    return;
   }
   const { id } = req.query;
   const devCMS = new DevCMS();
@@ -86,7 +87,8 @@ const createOgp = async (
     'Content-Length': buffer.length,
   });
 
-  return res.end(buffer, 'binary');
+  res.end(buffer, 'binary');
+  return;
 };
 
 export default createOgp;

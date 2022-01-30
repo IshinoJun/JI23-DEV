@@ -10,14 +10,16 @@ const contact = async (
 
   // クエリのチェック
   if (!isContact(req.body)) {
-    return res.status(404).end();
+    res.status(404).end();
+    return;
   }
 
   await devCMS.createContact(req.body);
 
   res.status(200).json({ statusCode: 200, message: 'OK' });
 
-  return res.end('Contact enabled');
+  res.end('Contact enabled');
+  return;
 };
 
 export default contact;
