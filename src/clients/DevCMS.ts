@@ -112,7 +112,7 @@ export class DevCMS {
   }
 
   public getCategories(): Promise<List<Category>> {
-    return this.get<List<Category>>(`category`);
+    return this.get<List<Category>>(`category?limit=9999`);
   }
 
   public getCategory(id: string): Promise<Category> {
@@ -120,7 +120,7 @@ export class DevCMS {
   }
 
   public getTags(): Promise<List<Tag>> {
-    return this.get<List<Tag>>(`tag`);
+    return this.get<List<Tag>>(`tag?limit=9999`);
   }
 
   public getTag(id: string): Promise<Tag> {
