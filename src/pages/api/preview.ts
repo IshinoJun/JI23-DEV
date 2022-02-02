@@ -31,8 +31,7 @@ const preview = async (
 
   res.writeHead(307, { Location: `/blogs/${id}` });
 
-  res.end('Preview mode enabled');
-  return;
+  return res.end('Preview mode enabled');
 };
 
 export default preview;
