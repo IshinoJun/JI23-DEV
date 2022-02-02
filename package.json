@@ -16,7 +16,7 @@
     "lint:style:fix": "stylelint --fix 'src/**/*.{css,scss}'",
     "lint:conflict": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "postinstall": "typesync",
-    "now-build": "cp node12_canvas_lib64_layer/lib/*so.1 node_modules/canvas/build/Release/ && yarn build",
+    "now-build": "cp canvas_lib64/*so.1 node_modules/canvas/build/Release/ && yarn build",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "postbuild": "next-sitemap"
