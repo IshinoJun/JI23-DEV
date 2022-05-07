@@ -22,6 +22,10 @@
     @include mixin.tab {
       margin: 0;
     }
+
+    .link {
+      display: flex;
+    }
   }
 }
 
