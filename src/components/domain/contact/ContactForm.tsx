@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid, TextField } from '@material-ui/core';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -27,7 +26,7 @@ const ContactForm: React.FC<Props> = (props: Props) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<Contact>({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
   });
@@ -98,7 +97,7 @@ const ContactForm: React.FC<Props> = (props: Props) => {
                 required
                 fullWidth
                 multiline
-                rows={6}
+                minRows={6}
                 name='body'
                 label='内容'
                 id='body'

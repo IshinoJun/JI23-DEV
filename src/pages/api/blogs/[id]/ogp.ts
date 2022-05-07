@@ -1,5 +1,5 @@
 import { Canvas, createCanvas, loadImage, registerFont } from 'canvas';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import * as path from 'path';
 import { DevCMS } from '../../../../clients';
 
@@ -42,10 +42,10 @@ const createTextLines = (canvas: Canvas, text: string): string[] => {
   return lines;
 };
 
-const createOgp = async (
+const createOgp: NextApiHandler<Response> = async (
   req: NextApiRequest,
   res: NextApiResponse,
-): Promise<void> => {
+) => {
   // クエリのチェック
   if (typeof req.query.id !== 'string') {
     return res.status(404).end();

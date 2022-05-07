@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { DevCMS } from '../../clients';
 
-const preview = async (
+const preview: NextApiHandler<Response> = async (
   req: NextApiRequest,
   res: NextApiResponse,
-): Promise<void> => {
+) => {
   const SECRET_KEY = process.env.SECRET_KEY ?? '';
   const devCMS = new DevCMS();
 
