@@ -1,3 +1,4 @@
+import { LanguageFn } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
 import java from 'highlight.js/lib/languages/java';
 import javascript from 'highlight.js/lib/languages/javascript';
