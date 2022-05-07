@@ -2,45 +2,41 @@
 @use 'style/function';
 @use 'style/settings';
 
-.container {
+.blogsContainer {
   padding: 0 function.em(14, 20);
 
   .wrapper {
-    margin-top: function.em(14, 30);
+    a {
+      color: settings.$color-blue;
+    }
+
+    margin-top: function.em(14, 16);
+    list-style: none;
 
     @include mixin.tab {
-      margin-top: function.em(16, 30);
+      margin-top: function.em(16, 24);
     }
 
-    ul {
-      margin-bottom: function.em(14, 20);
+    > :nth-of-type(n + 2) {
+      margin-top: function.em(16, 8);
 
       @include mixin.tab {
-        margin-top: function.em(14, 20);
-      }
-
-      a {
-        color: settings.$color-blue;
+        margin-top: function.em(16, 16);
       }
     }
 
-    .category {
+    .categoryListItem {
       list-style: none;
     }
 
     .postList {
+      margin-top: function.em(16, 8);
+      margin-left: function.em(16, 16);
       list-style: none;
 
-      ul {
-        margin-left: function.em(14, 20);
-
-        @include mixin.tab {
-          margin-top: function.em(14, 20);
-        }
-
-        li {
-          line-height: 200%;
-        }
+      @include mixin.tab {
+        margin-top: function.em(16, 16);
+        margin-left: function.em(16, 32);
       }
     }
   }
