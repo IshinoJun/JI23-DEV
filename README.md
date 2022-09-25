@@ -1,3 +1,7 @@
+# 最新版
+
+https://github.com/IshinoJun/JI23-DEV-v2.0
+
 # JI23-DEV
 
 JI23-DEV のブログ兼ポートフォリオサイトです。
