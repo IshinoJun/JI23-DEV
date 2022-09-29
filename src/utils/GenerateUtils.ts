@@ -78,31 +78,33 @@ const generateHeadParams = (router: NextRouter): HeadParams => {
 // TODO:項目が増えたらちゃんと考える
 const generateBlogsUrl = (query: BlogsQuery): string | null => {
   if (query.limit && query.offset && query.tagId) {
-    return `blogs?filters=tags[contains]${query.tagId}&offset=${query.offset}&limit=${query.limit}`;
+    return `blogs?filters=tags[contains]${query.tagId}[and]createdAt[less_than]2022-07&offset=${query.offset}&limit=${query.limit}`;
   }
   if (query.limit && query.offset && query.categoryId) {
-    return `blogs?filters=category[equals]${query.categoryId}&offset=${query.offset}&limit=${query.limit}`;
+    return `blogs?filters=category[equals]${query.categoryId}[and]createdAt[less_than]2022-07&offset=${query.offset}&limit=${query.limit}`;
   }
   if (query.keyword && query.tagId) {
-    return `blogs?filters=title[contains]${query.keyword}[or]content[contains]${query.keyword}[or]tags[contains]${query.tagId}`;
+    return `blogs?filters=title[contains]${query.keyword}[and]createdAt[less_than]2022-07[or]content[contains]${query.keyword}[and]createdAt[less_than]2022-07[or]tags[contains]${query.tagId}[and]createdAt[less_than]2022-07`;
   }
   if (query.keyword) {
-    return `blogs?q=${encodeURI(query.keyword)}`;
+    return `blogs?q=${encodeURI(
+      query.keyword,
+    )}?filters=&createdAt[less_than]2022-07`;
   }
   if (query.tagId) {
-    return `blogs?filters=tags[contains]${query.tagId}`;
+    return `blogs?filters=tags[contains]${query.tagId}[and]createdAt[less_than]2022-07`;
   }
   if (query.categoryId) {
-    return `blogs?filters=tags[contains]${query.categoryId}`;
+    return `blogs?filters=tags[contains]${query.categoryId}[and]createdAt[less_than]2022-07`;
   }
   if (query.limit && query.offset) {
-    return `blogs?offset=${query.offset}&limit=${query.limit}`;
+    return `blogs?offset=${query.offset}&limit=${query.limit}&filters=createdAt[less_than]2022-07`;
   }
 
   if (query.ids) {
     const str = query.ids.join(',');
 
-    return `blogs?ids=${str}`;
+    return `blogs?ids=${str}&filters=createdAt[less_than]2022-07`;
   }
 
   return null;

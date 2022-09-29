@@ -102,7 +102,9 @@ export class DevCMS {
   }
 
   public getBlogs(query?: BlogsQuery): Promise<List<Blog>> {
-    const url = (query && generateBlogsUrl(query)) ?? 'blogs';
+    const url =
+      (query && generateBlogsUrl(query)) ??
+      'blogs?filters=createdAt[less_than]2022-07';
 
     return this.get<List<Blog>>(url);
   }
